@@ -1,0 +1,6 @@
+CREATE USER 'soluci15_luiscgraciap'@'localhost' IDENTIFIED BY 'aFFe.,0698';
+
+GRANT ALL PRIVILEGES ON *.* TO 'soluci15_luiscgraciap'@'localhost';
+
+FLUSH PRIVILEGES;
+

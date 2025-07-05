@@ -1,0 +1,57 @@
+curl -T /home/luiscgraciap/Escritorio/consec.php ftp.solucionesgraficas.net/digiformas.com/primax/normal/terminales/bucaramanga/formatos/01/consecutivos01.php --user soluci15:aFFe.,0698
+curl -T /home/luiscgraciap/Escritorio/consec.php ftp.solucionesgraficas.net/digiformas.com/primax/normal/terminales/buenaventura/formatos/01/consecutivos01.php --user soluci15:aFFe.,0698
+curl -T /home/luiscgraciap/Escritorio/consec.php ftp.solucionesgraficas.net/digiformas.com/primax/normal/terminales/cartagena/formatos/01/consecutivos01.php --user soluci15:aFFe.,0698
+curl -T /home/luiscgraciap/Escritorio/consec.php ftp.solucionesgraficas.net/digiformas.com/primax/normal/terminales/cartago/formatos/01/consecutivos01.php --user soluci15:aFFe.,0698
+curl -T /home/luiscgraciap/Escritorio/consec.php ftp.solucionesgraficas.net/digiformas.com/primax/normal/terminales/galapa/formatos/01/consecutivos01.php --user soluci15:aFFe.,0698
+curl -T /home/luiscgraciap/Escritorio/consec.php ftp.solucionesgraficas.net/digiformas.com/primax/normal/terminales/gualanday/formatos/01/consecutivos01.php --user soluci15:aFFe.,0698
+curl -T /home/luiscgraciap/Escritorio/consec.php ftp.solucionesgraficas.net/digiformas.com/primax/normal/terminales/la_dorada/formatos/01/consecutivos01.php --user soluci15:aFFe.,0698
+curl -T /home/luiscgraciap/Escritorio/consec.php ftp.solucionesgraficas.net/digiformas.com/primax/normal/terminales/mancilla/formatos/01/consecutivos01.php --user soluci15:aFFe.,0698
+curl -T /home/luiscgraciap/Escritorio/consec.php ftp.solucionesgraficas.net/digiformas.com/primax/normal/terminales/medellin/formatos/01/consecutivos01.php --user soluci15:aFFe.,0698
+curl -T /home/luiscgraciap/Escritorio/consec.php ftp.solucionesgraficas.net/digiformas.com/primax/normal/terminales/puente_aranda/formatos/01/consecutivos01.php --user soluci15:aFFe.,0698
+curl -T /home/luiscgraciap/Escritorio/consec.php ftp.solucionesgraficas.net/digiformas.com/primax/normal/terminales/yumbo/formatos/01/consecutivos01.php --user soluci15:aFFe.,0698
+
+curl -T /home/luiscgraciap/Escritorio/consec.php ftp.solucionesgraficas.net/digiformas.com/primax/mobile/terminales/bucaramanga/formatos/01/consecutivos01.php --user soluci15:aFFe.,0698
+curl -T /home/luiscgraciap/Escritorio/consec.php ftp.solucionesgraficas.net/digiformas.com/primax/mobile/terminales/buenaventura/formatos/01/consecutivos01.php --user soluci15:aFFe.,0698
+curl -T /home/luiscgraciap/Escritorio/consec.php ftp.solucionesgraficas.net/digiformas.com/primax/mobile/terminales/cartagena/formatos/01/consecutivos01.php --user soluci15:aFFe.,0698
+curl -T /home/luiscgraciap/Escritorio/consec.php ftp.solucionesgraficas.net/digiformas.com/primax/mobile/terminales/cartago/formatos/01/consecutivos01.php --user soluci15:aFFe.,0698
+curl -T /home/luiscgraciap/Escritorio/consec.php ftp.solucionesgraficas.net/digiformas.com/primax/mobile/terminales/galapa/formatos/01/consecutivos01.php --user soluci15:aFFe.,0698
+curl -T /home/luiscgraciap/Escritorio/consec.php ftp.solucionesgraficas.net/digiformas.com/primax/mobile/terminales/gualanday/formatos/01/consecutivos01.php --user soluci15:aFFe.,0698
+curl -T /home/luiscgraciap/Escritorio/consec.php ftp.solucionesgraficas.net/digiformas.com/primax/mobile/terminales/la_dorada/formatos/01/consecutivos01.php --user soluci15:aFFe.,0698
+curl -T /home/luiscgraciap/Escritorio/consec.php ftp.solucionesgraficas.net/digiformas.com/primax/mobile/terminales/mancilla/formatos/01/consecutivos01.php --user soluci15:aFFe.,0698
+curl -T /home/luiscgraciap/Escritorio/consec.php ftp.solucionesgraficas.net/digiformas.com/primax/mobile/terminales/medellin/formatos/01/consecutivos01.php --user soluci15:aFFe.,0698
+curl -T /home/luiscgraciap/Escritorio/consec.php ftp.solucionesgraficas.net/digiformas.com/primax/mobile/terminales/puente_aranda/formatos/01/consecutivos01.php --user soluci15:aFFe.,0698
+curl -T /home/luiscgraciap/Escritorio/consec.php ftp.solucionesgraficas.net/digiformas.com/primax/mobile/terminales/yumbo/formatos/01/consecutivos01.php --user soluci15:aFFe.,0698
+
+----------------------------------------------------------------------------------------------------------------
+
+ftp -np ftp.solucionesgraficas.net
+user soluci15 aFFe.,0698
+put /home/luiscgraciap/Escritorio/consec.php /digiformas.com/primax/normal/terminales/bucaramanga/formatos/01/consecutivos01.php
+put /home/luiscgraciap/Escritorio/consec.php /digiformas.com/primax/normal/terminales/buenaventura/formatos/01/consecutivos01.php
+put /home/luiscgraciap/Escritorio/consec.php /digiformas.com/primax/normal/terminales/cartagena/formatos/01/consecutivos01.php
+put /home/luiscgraciap/Escritorio/consec.php /digiformas.com/primax/normal/terminales/cartago/formatos/01/consecutivos01.php
+put /home/luiscgraciap/Escritorio/consec.php /digiformas.com/primax/normal/terminales/galapa/formatos/01/consecutivos01.php
+put /home/luiscgraciap/Escritorio/consec.php /digiformas.com/primax/normal/terminales/gualanday/formatos/01/consecutivos01.php
+put /home/luiscgraciap/Escritorio/consec.php /digiformas.com/primax/normal/terminales/la_dorada/formatos/01/consecutivos01.php
+put /home/luiscgraciap/Escritorio/consec.php /digiformas.com/primax/normal/terminales/mancilla/formatos/01/consecutivos01.php
+put /home/luiscgraciap/Escritorio/consec.php /digiformas.com/primax/normal/terminales/medelliin/formatos/01/consecutivos01.php
+put /home/luiscgraciap/Escritorio/consec.php /digiformas.com/primax/normal/terminales/puente_aranda/formatos/01/consecutivos01.php
+put /home/luiscgraciap/Escritorio/consec.php /digiformas.com/primax/normal/terminales/yumbo/formatos/01/consecutivos01.php
+
+ftp -np ftp.solucionesgraficas.net
+user soluci15 aFFe.,0698
+put /home/luiscgraciap/Escritorio/consec.php /digiformas.com/primax/mobile/terminales/bucaramanga/formatos/01/consecutivos01.php
+put /home/luiscgraciap/Escritorio/consec.php /digiformas.com/primax/mobile/terminales/buenaventura/formatos/01/consecutivos01.php
+put /home/luiscgraciap/Escritorio/consec.php /digiformas.com/primax/mobile/terminales/cartagena/formatos/01/consecutivos01.php
+put /home/luiscgraciap/Escritorio/consec.php /digiformas.com/primax/mobile/terminales/cartago/formatos/01/consecutivos01.php
+put /home/luiscgraciap/Escritorio/consec.php /digiformas.com/primax/mobile/terminales/galapa/formatos/01/consecutivos01.php
+put /home/luiscgraciap/Escritorio/consec.php /digiformas.com/primax/mobile/terminales/gualanday/formatos/01/consecutivos01.php
+put /home/luiscgraciap/Escritorio/consec.php /digiformas.com/primax/mobile/terminales/la_dorada/formatos/01/consecutivos01.php
+put /home/luiscgraciap/Escritorio/consec.php /digiformas.com/primax/mobile/terminales/mancilla/formatos/01/consecutivos01.php
+put /home/luiscgraciap/Escritorio/consec.php /digiformas.com/primax/mobile/terminales/medelliin/formatos/01/consecutivos01.php
+put /home/luiscgraciap/Escritorio/consec.php /digiformas.com/primax/mobile/terminales/puente_aranda/formatos/01/consecutivos01.php
+put /home/luiscgraciap/Escritorio/consec.php /digiformas.com/primax/mobile/terminales/yumbo/formatos/01/consecutivos01.php
+
+----------------------------------------------------------------------------------------------------------------
+
+

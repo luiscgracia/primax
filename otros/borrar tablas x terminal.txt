@@ -1,0 +1,32 @@
+DROP TABLE `soluci15_primax_bucaramanga`.`formulario01`;
+DROP TABLE `soluci15_primax_bucaramanga`.`formulario02`;
+
+DROP TABLE `soluci15_primax_buenaventura`.`formulario01`;
+DROP TABLE `soluci15_primax_buenaventura`.`formulario02`;
+
+DROP TABLE `soluci15_primax_cartagena`.`formulario01`;
+DROP TABLE `soluci15_primax_cartagena`.`formulario02`;
+
+DROP TABLE `soluci15_primax_cartago`.`formulario01`;
+DROP TABLE `soluci15_primax_cartago`.`formulario02`;
+
+DROP TABLE `soluci15_primax_galapa`.`formulario01`;
+DROP TABLE `soluci15_primax_galapa`.`formulario02`;
+
+DROP TABLE `soluci15_primax_gualanday`.`formulario01`;
+DROP TABLE `soluci15_primax_gualanday`.`formulario02`;
+
+DROP TABLE `soluci15_primax_la_dorada`.`formulario01`;
+DROP TABLE `soluci15_primax_la_dorada`.`formulario02`;
+
+DROP TABLE `soluci15_primax_mancilla`.`formulario01`;
+DROP TABLE `soluci15_primax_mancilla`.`formulario02`;
+
+DROP TABLE `soluci15_primax_medellin`.`formulario01`;
+DROP TABLE `soluci15_primax_medellin`.`formulario02`;
+
+DROP TABLE `soluci15_primax_puente_aranda`.`formulario01`;
+DROP TABLE `soluci15_primax_puente_aranda`.`formulario02`;
+
+DROP TABLE `soluci15_primax_yumbo`.`formulario01`;
+DROP TABLE `soluci15_primax_yumbo`.`formulario02`;

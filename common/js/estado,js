@@ -1,0 +1,11 @@
+	function getExistingValues(estado) { // Optiene los valores existentes del datalist "estado"
+		const optionInputs = document.getElementById(estado).children;
+		let values = [];
+		for (const childrenValue of optionInputs) {values.push(childrenValue.innerHTML);}
+		return values;}
+	$(document).ready(function () {
+		$('#form').submit(e => {
+			let EXISTING_VALUES = getExistingValues('estado');
+			const inputValue = $('#input').val();
+			if (EXISTING_VALUES.indexOf(inputValue) == -1) {e.preventDefault(); alert('El valor del input no existe en la base de datos');}});});
+

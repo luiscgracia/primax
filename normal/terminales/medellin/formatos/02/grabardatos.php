@@ -1,0 +1,843 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../../../../../common/css/fuentes.css">
+<link rel="SHORTCUT ICON" href="../../../../../common/imagenes/iconoPRIMAX1.ico">
+<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<style>
+  body,html {color:rgba(40,40,40,1); background-color:rgba(255,255,255,1); text-align:center}
+</style>
+<script language="JavaScript">
+  function cerrar_x_tiempo() {setTimeout("window.close()",5000);}
+</script>
+</head>
+<body onLoad="cerrar_x_tiempo()" style="font-size:36px; font-family:Arlrdbd">
+<?php
+//se conecta a la base de datos y se verifica el consecutivo inicial (o el siguiente libre)
+$formato = basename(dirname(__FILE__));
+include ("../../../../../common/datos.php");
+$forma = "formulario".$formato;
+include ("consecutivos".$formato.".php");
+include ("../../conectar_db.php");
+$cons = "SELECT MAX(consecutivo) as consecutivo FROM formulario".$formato." LIMIT 1";
+$consult = $conexion->query($cons);
+$consulta = $consult->fetch_array(MYSQLI_ASSOC);
+$consec = (empty($consulta['consecutivo']) ? $primerconsecutivo : $consulta['consecutivo']+=1);
+error_reporting(E_ALL ^ E_NOTICE);
+
+$consecutivo = $consec;
+$estado = $_REQUEST['estado'];
+$usuario = $_REQUEST['usuario'];
+$fecha = $_REQUEST['fecha'];
+$descripcion = $_REQUEST['descripcion'];
+$cantidad = $_REQUEST['cantidad'];
+$nombre1 = $_REQUEST['nombre1'];
+$nombre2 = $_REQUEST['nombre2'];
+$nombre3 = $_REQUEST['nombre3'];
+$nombre4 = $_REQUEST['nombre4'];
+$fechaA = $_REQUEST['fechaA'];
+$horainicialA = $_REQUEST['horainicialA'];
+$horafinalA = $_REQUEST['horafinalA'];
+$certhabilit = $_REQUEST['certhabilit'];
+$B1 = $_REQUEST['B1'];
+$B2 = $_REQUEST['B2'];
+$B3 = $_REQUEST['B3'];
+$B4 = $_REQUEST['B4'];
+$B5 = $_REQUEST['B5'];
+$B6 = $_REQUEST['B6'];
+$B7 = $_REQUEST['B7'];
+$B8 = $_REQUEST['B8'];
+$B9 = $_REQUEST['B9'];
+$B10 = $_REQUEST['B10'];
+$B11 = $_REQUEST['B11'];
+$B13 = $_REQUEST['B13'];
+$B14 = $_REQUEST['B14'];
+$B15 = $_REQUEST['B15'];
+$B15a = $_REQUEST['B15a'];
+$B15b = $_REQUEST['B15b'];
+$B16 = $_REQUEST['B16'];
+$B17 = $_REQUEST['B17'];
+$B18 = $_REQUEST['B18'];
+$B18a = $_REQUEST['B18a'];
+$B19 = $_REQUEST['B19'];
+$B20 = $_REQUEST['B20'];
+$B21 = $_REQUEST['B21'];
+$B12a = $_REQUEST['B12a'];
+$B12b = $_REQUEST['B12b'];
+$B12c = $_REQUEST['B12c'];
+$B12d = $_REQUEST['B12d'];
+$B12e = $_REQUEST['B12e'];
+$B12f = $_REQUEST['B12f'];
+$B12g = $_REQUEST['B12g'];
+$B12h = $_REQUEST['B12h'];
+$B12i = $_REQUEST['B12i'];
+$B12j = $_REQUEST['B12j'];
+$B12k = $_REQUEST['B12k'];
+$B12l = $_REQUEST['B12l'];
+$B22a = $_REQUEST['B22a'];
+$B22b = $_REQUEST['B22b'];
+$B22c = $_REQUEST['B22c'];
+$B22d = $_REQUEST['B22d'];
+$B22e = $_REQUEST['B22e'];
+$B22f = $_REQUEST['B22f'];
+$B22g = $_REQUEST['B22g'];
+$B22h = $_REQUEST['B22h'];
+$B22A1 = $_REQUEST['B22A1'];
+$B22B1 = $_REQUEST['B22B1'];
+$B22C1 = $_REQUEST['B22C1'];
+$B22D1 = $_REQUEST['B22D1'];
+$B22E1 = $_REQUEST['B22E1'];
+$B22F1 = $_REQUEST['B22F1'];
+$B22G1 = $_REQUEST['B22G1'];
+$B22H1 = $_REQUEST['B22H1'];
+$B22I1 = $_REQUEST['B22I1'];
+$B22J1 = $_REQUEST['B22J1'];
+$B22K1 = $_REQUEST['B22K1'];
+$B22L1 = $_REQUEST['B22L1'];
+$B22M1 = $_REQUEST['B22M1'];
+$B22N1 = $_REQUEST['B22N1'];
+$B22O1 = $_REQUEST['B22O1'];
+$B22P1 = $_REQUEST['B22P1'];
+$B22A2 = $_REQUEST['B22A2'];
+$B22B2 = $_REQUEST['B22B2'];
+$B22C2 = $_REQUEST['B22C2'];
+$B22D2 = $_REQUEST['B22D2'];
+$B22E2 = $_REQUEST['B22E2'];
+$B22F2 = $_REQUEST['B22F2'];
+$B22G2 = $_REQUEST['B22G2'];
+$B22H2 = $_REQUEST['B22H2'];
+$B22I2 = $_REQUEST['B22I2'];
+$B22J2 = $_REQUEST['B22J2'];
+$B22K2 = $_REQUEST['B22K2'];
+$B22L2 = $_REQUEST['B22L2'];
+$B22M2 = $_REQUEST['B22M2'];
+$B22N2 = $_REQUEST['B22N2'];
+$B22O2 = $_REQUEST['B22O2'];
+$B22P2 = $_REQUEST['B22P2'];
+$B22A3 = $_REQUEST['B22A3'];
+$B22B3 = $_REQUEST['B22B3'];
+$B22C3 = $_REQUEST['B22C3'];
+$B22D3 = $_REQUEST['B22D3'];
+$B22E3 = $_REQUEST['B22E3'];
+$B22F3 = $_REQUEST['B22F3'];
+$B22G3 = $_REQUEST['B22G3'];
+$B22H3 = $_REQUEST['B22H3'];
+$B22I3 = $_REQUEST['B22I3'];
+$B22J3 = $_REQUEST['B22J3'];
+$B22K3 = $_REQUEST['B22K3'];
+$B22L3 = $_REQUEST['B22L3'];
+$B22M3 = $_REQUEST['B22M3'];
+$B22N3 = $_REQUEST['B22N3'];
+$B22O3 = $_REQUEST['B22O3'];
+$B22P3 = $_REQUEST['B22P3'];
+$B22A4 = $_REQUEST['B22A4'];
+$B22B4 = $_REQUEST['B22B4'];
+$B22C4 = $_REQUEST['B22C4'];
+$B22D4 = $_REQUEST['B22D4'];
+$B22E4 = $_REQUEST['B22E4'];
+$B22F4 = $_REQUEST['B22F4'];
+$B22G4 = $_REQUEST['B22G4'];
+$B22H4 = $_REQUEST['B22H4'];
+$B22I4 = $_REQUEST['B22I4'];
+$B22J4 = $_REQUEST['B22J4'];
+$B22K4 = $_REQUEST['B22K4'];
+$B22L4 = $_REQUEST['B22L4'];
+$B22M4 = $_REQUEST['B22M4'];
+$B22N4 = $_REQUEST['B22N4'];
+$B22O4 = $_REQUEST['B22O4'];
+$B22P4 = $_REQUEST['B22P4'];
+$B22A5 = $_REQUEST['B22A5'];
+$B22B5 = $_REQUEST['B22B5'];
+$B22C5 = $_REQUEST['B22C5'];
+$B22D5 = $_REQUEST['B22D5'];
+$B22E5 = $_REQUEST['B22E5'];
+$B22F5 = $_REQUEST['B22F5'];
+$B22G5 = $_REQUEST['B22G5'];
+$B22H5 = $_REQUEST['B22H5'];
+$B22I5 = $_REQUEST['B22I5'];
+$B22J5 = $_REQUEST['B22J5'];
+$B22K5 = $_REQUEST['B22K5'];
+$B22L5 = $_REQUEST['B22L5'];
+$B22M5 = $_REQUEST['B22M5'];
+$B22N5 = $_REQUEST['B22N5'];
+$B22O5 = $_REQUEST['B22O5'];
+$B22P5 = $_REQUEST['B22P5'];
+$B22A6 = $_REQUEST['B22A6'];
+$B22B6 = $_REQUEST['B22B6'];
+$B22C6 = $_REQUEST['B22C6'];
+$B22D6 = $_REQUEST['B22D6'];
+$B22E6 = $_REQUEST['B22E6'];
+$B22F6 = $_REQUEST['B22F6'];
+$B22G6 = $_REQUEST['B22G6'];
+$B22H6 = $_REQUEST['B22H6'];
+$B22I6 = $_REQUEST['B22I6'];
+$B22J6 = $_REQUEST['B22J6'];
+$B22K6 = $_REQUEST['B22K6'];
+$B22L6 = $_REQUEST['B22L6'];
+$B22M6 = $_REQUEST['B22M6'];
+$B22N6 = $_REQUEST['B22N6'];
+$B22O6 = $_REQUEST['B22O6'];
+$B22P6 = $_REQUEST['B22P6'];
+$B22A7 = $_REQUEST['B22A7'];
+$B22B7 = $_REQUEST['B22B7'];
+$B22C7 = $_REQUEST['B22C7'];
+$B22D7 = $_REQUEST['B22D7'];
+$B22E7 = $_REQUEST['B22E7'];
+$B22F7 = $_REQUEST['B22F7'];
+$B22G7 = $_REQUEST['B22G7'];
+$B22H7 = $_REQUEST['B22H7'];
+$B22I7 = $_REQUEST['B22I7'];
+$B22J7 = $_REQUEST['B22J7'];
+$B22K7 = $_REQUEST['B22K7'];
+$B22L7 = $_REQUEST['B22L7'];
+$B22M7 = $_REQUEST['B22M7'];
+$B22N7 = $_REQUEST['B22N7'];
+$B22O7 = $_REQUEST['B22O7'];
+$B22P7 = $_REQUEST['B22P7'];
+$B231 = $_REQUEST['B231'];
+$B23A1 = $_REQUEST['B23A1'];
+$B23B1 = $_REQUEST['B23B1'];
+$B23C1 = $_REQUEST['B23C1'];
+$B23D1 = $_REQUEST['B23D1'];
+$B23E1 = $_REQUEST['B23E1'];
+$B23F1 = $_REQUEST['B23F1'];
+$B23G1 = $_REQUEST['B23G1'];
+$B23H1 = $_REQUEST['B23H1'];
+$B23I1 = $_REQUEST['B23I1'];
+$B23J1 = $_REQUEST['B23J1'];
+$B23K1 = $_REQUEST['B23K1'];
+$B23L1 = $_REQUEST['B23L1'];
+$B23M1 = $_REQUEST['B23M1'];
+$B23N1 = $_REQUEST['B23N1'];
+$B232 = $_REQUEST['B232'];
+$B23A2 = $_REQUEST['B23A2'];
+$B23B2 = $_REQUEST['B23B2'];
+$B23C2 = $_REQUEST['B23C2'];
+$B23D2 = $_REQUEST['B23D2'];
+$B23E2 = $_REQUEST['B23E2'];
+$B23F2 = $_REQUEST['B23F2'];
+$B23G2 = $_REQUEST['B23G2'];
+$B23H2 = $_REQUEST['B23H2'];
+$B23I2 = $_REQUEST['B23I2'];
+$B23J2 = $_REQUEST['B23J2'];
+$B23K2 = $_REQUEST['B23K2'];
+$B23L2 = $_REQUEST['B23L2'];
+$B23M2 = $_REQUEST['B23M2'];
+$B23N2 = $_REQUEST['B23N2'];
+$B233 = $_REQUEST['B233'];
+$B23A3 = $_REQUEST['B23A3'];
+$B23B3 = $_REQUEST['B23B3'];
+$B23C3 = $_REQUEST['B23C3'];
+$B23D3 = $_REQUEST['B23D3'];
+$B23E3 = $_REQUEST['B23E3'];
+$B23F3 = $_REQUEST['B23F3'];
+$B23G3 = $_REQUEST['B23G3'];
+$B23H3 = $_REQUEST['B23H3'];
+$B23I3 = $_REQUEST['B23I3'];
+$B23J3 = $_REQUEST['B23J3'];
+$B23K3 = $_REQUEST['B23K3'];
+$B23L3 = $_REQUEST['B23L3'];
+$B23M3 = $_REQUEST['B23M3'];
+$B23N3 = $_REQUEST['B23N3'];
+$B234 = $_REQUEST['B234'];
+$B23A4 = $_REQUEST['B23A4'];
+$B23B4 = $_REQUEST['B23B4'];
+$B23C4 = $_REQUEST['B23C4'];
+$B23D4 = $_REQUEST['B23D4'];
+$B23E4 = $_REQUEST['B23E4'];
+$B23F4 = $_REQUEST['B23F4'];
+$B23G4 = $_REQUEST['B23G4'];
+$B23H4 = $_REQUEST['B23H4'];
+$B23I4 = $_REQUEST['B23I4'];
+$B23J4 = $_REQUEST['B23J4'];
+$B23K4 = $_REQUEST['B23K4'];
+$B23L4 = $_REQUEST['B23L4'];
+$B23M4 = $_REQUEST['B23M4'];
+$B23N4 = $_REQUEST['B23N4'];
+$B235 = $_REQUEST['B235'];
+$B23A5 = $_REQUEST['B23A5'];
+$B23B5 = $_REQUEST['B23B5'];
+$B23C5 = $_REQUEST['B23C5'];
+$B23D5 = $_REQUEST['B23D5'];
+$B23E5 = $_REQUEST['B23E5'];
+$B23F5 = $_REQUEST['B23F5'];
+$B23G5 = $_REQUEST['B23G5'];
+$B23H5 = $_REQUEST['B23H5'];
+$B23I5 = $_REQUEST['B23I5'];
+$B23J5 = $_REQUEST['B23J5'];
+$B23K5 = $_REQUEST['B23K5'];
+$B23L5 = $_REQUEST['B23L5'];
+$B23M5 = $_REQUEST['B23M5'];
+$B23N5 = $_REQUEST['B23N5'];
+$cancelacion = $_REQUEST['cancelacion'];
+$ejecutorC = $_REQUEST['ejecutorC'];
+$fechaejecC = $_REQUEST['fechaejecC'];
+$horaejecC = $_REQUEST['horaejecC'];
+$inspectorC = $_REQUEST['inspectorC'];
+$fechainspC = $_REQUEST['fechainspC'];
+$horainspC = $_REQUEST['horainspC'];
+$emisorD = $_REQUEST['emisorD'];
+$nombreemisorD = $_REQUEST['nombreemisorD'];
+$fechaemisorD = $_REQUEST['fechaemisorD'];
+$horaemisorD = $_REQUEST['horaemisorD'];
+$ejecutorE = $_REQUEST['ejecutorE'];
+$fechaejecE = $_REQUEST['fechaejecE'];
+$horaejecE = $_REQUEST['horaejecE'];
+$inspectorE = $_REQUEST['inspectorE'];
+$fechainspE = $_REQUEST['fechainspE'];
+$horainspE = $_REQUEST['horainspE'];
+$emisorE = $_REQUEST['emisorE'];
+$fechaemisorE = $_REQUEST['fechaemisorE'];
+$horaemisorE = $_REQUEST['horaemisorE'];
+
+$datos = "INSERT INTO formulario".$formato." (
+`consecutivo`,
+`estado`,
+`usuario`,
+`fecha`,
+`descripcion`,
+`cantidad`,
+`nombre1`,
+`nombre2`,
+`nombre3`,
+`nombre4`,
+`fechaA`,
+`horainicialA`,
+`horafinalA`,
+`certhabilit`,
+`B1`,
+`B2`,
+`B3`,
+`B4`,
+`B5`,
+`B6`,
+`B7`,
+`B8`,
+`B9`,
+`B10`,
+`B11`,
+`B13`,
+`B14`,
+`B15`,
+`B15a`,
+`B15b`,
+`B16`,
+`B17`,
+`B18`,
+`B18a`,
+`B19`,
+`B20`,
+`B21`,
+`B12a`,
+`B12b`,
+`B12c`,
+`B12d`,
+`B12e`,
+`B12f`,
+`B12g`,
+`B12h`,
+`B12i`,
+`B12j`,
+`B12k`,
+`B12l`,
+`B22a`,
+`B22b`,
+`B22c`,
+`B22d`,
+`B22e`,
+`B22f`,
+`B22g`,
+`B22h`,
+`B22A1`,
+`B22B1`,
+`B22C1`,
+`B22D1`,
+`B22E1`,
+`B22F1`,
+`B22G1`,
+`B22H1`,
+`B22I1`,
+`B22J1`,
+`B22K1`,
+`B22L1`,
+`B22M1`,
+`B22N1`,
+`B22O1`,
+`B22P1`,
+`B22A2`,
+`B22B2`,
+`B22C2`,
+`B22D2`,
+`B22E2`,
+`B22F2`,
+`B22G2`,
+`B22H2`,
+`B22I2`,
+`B22J2`,
+`B22K2`,
+`B22L2`,
+`B22M2`,
+`B22N2`,
+`B22O2`,
+`B22P2`,
+`B22A3`,
+`B22B3`,
+`B22C3`,
+`B22D3`,
+`B22E3`,
+`B22F3`,
+`B22G3`,
+`B22H3`,
+`B22I3`,
+`B22J3`,
+`B22K3`,
+`B22L3`,
+`B22M3`,
+`B22N3`,
+`B22O3`,
+`B22P3`,
+`B22A4`,
+`B22B4`,
+`B22C4`,
+`B22D4`,
+`B22E4`,
+`B22F4`,
+`B22G4`,
+`B22H4`,
+`B22I4`,
+`B22J4`,
+`B22K4`,
+`B22L4`,
+`B22M4`,
+`B22N4`,
+`B22O4`,
+`B22P4`,
+`B22A5`,
+`B22B5`,
+`B22C5`,
+`B22D5`,
+`B22E5`,
+`B22F5`,
+`B22G5`,
+`B22H5`,
+`B22I5`,
+`B22J5`,
+`B22K5`,
+`B22L5`,
+`B22M5`,
+`B22N5`,
+`B22O5`,
+`B22P5`,
+`B22A6`,
+`B22B6`,
+`B22C6`,
+`B22D6`,
+`B22E6`,
+`B22F6`,
+`B22G6`,
+`B22H6`,
+`B22I6`,
+`B22J6`,
+`B22K6`,
+`B22L6`,
+`B22M6`,
+`B22N6`,
+`B22O6`,
+`B22P6`,
+`B22A7`,
+`B22B7`,
+`B22C7`,
+`B22D7`,
+`B22E7`,
+`B22F7`,
+`B22G7`,
+`B22H7`,
+`B22I7`,
+`B22J7`,
+`B22K7`,
+`B22L7`,
+`B22M7`,
+`B22N7`,
+`B22O7`,
+`B22P7`,
+`B231`,
+`B23A1`,
+`B23B1`,
+`B23C1`,
+`B23D1`,
+`B23E1`,
+`B23F1`,
+`B23G1`,
+`B23H1`,
+`B23I1`,
+`B23J1`,
+`B23K1`,
+`B23L1`,
+`B23M1`,
+`B23N1`,
+`B232`,
+`B23A2`,
+`B23B2`,
+`B23C2`,
+`B23D2`,
+`B23E2`,
+`B23F2`,
+`B23G2`,
+`B23H2`,
+`B23I2`,
+`B23J2`,
+`B23K2`,
+`B23L2`,
+`B23M2`,
+`B23N2`,
+`B233`,
+`B23A3`,
+`B23B3`,
+`B23C3`,
+`B23D3`,
+`B23E3`,
+`B23F3`,
+`B23G3`,
+`B23H3`,
+`B23I3`,
+`B23J3`,
+`B23K3`,
+`B23L3`,
+`B23M3`,
+`B23N3`,
+`B234`,
+`B23A4`,
+`B23B4`,
+`B23C4`,
+`B23D4`,
+`B23E4`,
+`B23F4`,
+`B23G4`,
+`B23H4`,
+`B23I4`,
+`B23J4`,
+`B23K4`,
+`B23L4`,
+`B23M4`,
+`B23N4`,
+`B235`,
+`B23A5`,
+`B23B5`,
+`B23C5`,
+`B23D5`,
+`B23E5`,
+`B23F5`,
+`B23G5`,
+`B23H5`,
+`B23I5`,
+`B23J5`,
+`B23K5`,
+`B23L5`,
+`B23M5`,
+`B23N5`,
+`cancelacion`,
+`ejecutorC`,
+`fechaejecC`,
+`horaejecC`,
+`inspectorC`,
+`fechainspC`,
+`horainspC`,
+`emisorD`,
+`nombreemisorD`,
+`fechaemisorD`,
+`horaemisorD`,
+`ejecutorE`,
+`fechaejecE`,
+`horaejecE`,
+`inspectorE`,
+`fechainspE`,
+`horainspE`,
+`emisorE`,
+`fechaemisorE`,
+`horaemisorE`
+)
+
+VALUES (
+'$consecutivo',
+'$estado',
+'$usuario',
+'$fecha',
+'$descripcion',
+'$cantidad',
+'$nombre1',
+'$nombre2',
+'$nombre3',
+'$nombre4',
+'$fechaA',
+'$horainicialA',
+'$horafinalA',
+'$certhabilit',
+'$B1',
+'$B2',
+'$B3',
+'$B4',
+'$B5',
+'$B6',
+'$B7',
+'$B8',
+'$B9',
+'$B10',
+'$B11',
+'$B13',
+'$B14',
+'$B15',
+'$B15a',
+'$B15b',
+'$B16',
+'$B17',
+'$B18',
+'$B18a',
+'$B19',
+'$B20',
+'$B21',
+'$B12a',
+'$B12b',
+'$B12c',
+'$B12d',
+'$B12e',
+'$B12f',
+'$B12g',
+'$B12h',
+'$B12i',
+'$B12j',
+'$B12k',
+'$B12l',
+'$B22a',
+'$B22b',
+'$B22c',
+'$B22d',
+'$B22e',
+'$B22f',
+'$B22g',
+'$B22h',
+'$B22A1',
+'$B22B1',
+'$B22C1',
+'$B22D1',
+'$B22E1',
+'$B22F1',
+'$B22G1',
+'$B22H1',
+'$B22I1',
+'$B22J1',
+'$B22K1',
+'$B22L1',
+'$B22M1',
+'$B22N1',
+'$B22O1',
+'$B22P1',
+'$B22A2',
+'$B22B2',
+'$B22C2',
+'$B22D2',
+'$B22E2',
+'$B22F2',
+'$B22G2',
+'$B22H2',
+'$B22I2',
+'$B22J2',
+'$B22K2',
+'$B22L2',
+'$B22M2',
+'$B22N2',
+'$B22O2',
+'$B22P2',
+'$B22A3',
+'$B22B3',
+'$B22C3',
+'$B22D3',
+'$B22E3',
+'$B22F3',
+'$B22G3',
+'$B22H3',
+'$B22I3',
+'$B22J3',
+'$B22K3',
+'$B22L3',
+'$B22M3',
+'$B22N3',
+'$B22O3',
+'$B22P3',
+'$B22A4',
+'$B22B4',
+'$B22C4',
+'$B22D4',
+'$B22E4',
+'$B22F4',
+'$B22G4',
+'$B22H4',
+'$B22I4',
+'$B22J4',
+'$B22K4',
+'$B22L4',
+'$B22M4',
+'$B22N4',
+'$B22O4',
+'$B22P4',
+'$B22A5',
+'$B22B5',
+'$B22C5',
+'$B22D5',
+'$B22E5',
+'$B22F5',
+'$B22G5',
+'$B22H5',
+'$B22I5',
+'$B22J5',
+'$B22K5',
+'$B22L5',
+'$B22M5',
+'$B22N5',
+'$B22O5',
+'$B22P5',
+'$B22A6',
+'$B22B6',
+'$B22C6',
+'$B22D6',
+'$B22E6',
+'$B22F6',
+'$B22G6',
+'$B22H6',
+'$B22I6',
+'$B22J6',
+'$B22K6',
+'$B22L6',
+'$B22M6',
+'$B22N6',
+'$B22O6',
+'$B22P6',
+'$B22A7',
+'$B22B7',
+'$B22C7',
+'$B22D7',
+'$B22E7',
+'$B22F7',
+'$B22G7',
+'$B22H7',
+'$B22I7',
+'$B22J7',
+'$B22K7',
+'$B22L7',
+'$B22M7',
+'$B22N7',
+'$B22O7',
+'$B22P7',
+'$B231',
+'$B23A1',
+'$B23B1',
+'$B23C1',
+'$B23D1',
+'$B23E1',
+'$B23F1',
+'$B23G1',
+'$B23H1',
+'$B23I1',
+'$B23J1',
+'$B23K1',
+'$B23L1',
+'$B23M1',
+'$B23N1',
+'$B232',
+'$B23A2',
+'$B23B2',
+'$B23C2',
+'$B23D2',
+'$B23E2',
+'$B23F2',
+'$B23G2',
+'$B23H2',
+'$B23I2',
+'$B23J2',
+'$B23K2',
+'$B23L2',
+'$B23M2',
+'$B23N2',
+'$B233',
+'$B23A3',
+'$B23B3',
+'$B23C3',
+'$B23D3',
+'$B23E3',
+'$B23F3',
+'$B23G3',
+'$B23H3',
+'$B23I3',
+'$B23J3',
+'$B23K3',
+'$B23L3',
+'$B23M3',
+'$B23N3',
+'$B234',
+'$B23A4',
+'$B23B4',
+'$B23C4',
+'$B23D4',
+'$B23E4',
+'$B23F4',
+'$B23G4',
+'$B23H4',
+'$B23I4',
+'$B23J4',
+'$B23K4',
+'$B23L4',
+'$B23M4',
+'$B23N4',
+'$B235',
+'$B23A5',
+'$B23B5',
+'$B23C5',
+'$B23D5',
+'$B23E5',
+'$B23F5',
+'$B23G5',
+'$B23H5',
+'$B23I5',
+'$B23J5',
+'$B23K5',
+'$B23L5',
+'$B23M5',
+'$B23N5',
+'$cancelacion',
+'$ejecutorC',
+'$fechaejecC',
+'$horaejecC',
+'$inspectorC',
+'$fechainspC',
+'$horainspC',
+'$emisorD',
+'$nombreemisorD',
+'$fechaemisorD',
+'$horaemisorD',
+'$ejecutorE',
+'$fechaejecE',
+'$horaejecE',
+'$inspectorE',
+'$fechainspE',
+'$horainspE',
+'$emisorE',
+'$fechaemisorE',
+'$horaemisorE'
+)";
+
+//echo $datos;
+
+$conexion->query($datos) or die ('<br><br><b>ESE CONSECUTIVO YA ESTÁ ASIGNADO</b>');
+
+echo '<br><br><b>DATOS INGRESADOS SATISFACTORIAMENTE</b><br><br><br><br><br><br>';
+echo '<span style="font-family:Arial; font-size:48px; color:rgba(128,64,0,1)"><b>';
+echo "TERMINAL ".strtoupper($terminal)."<br><br>";
+echo $$forma."<br>";
+echo '</b></span>';
+echo '<span style="font-family:SCHLBKB; font-size:72px; color:red"># ';
+if ($consec <= 9) {echo "00000";} else {if ($consec <= 99) {echo "0000";} else {if ($consec <= 999) {echo "000";} else {if ($consec <= 9999) {echo "00";} else {if ($consec <= 99999) {echo "0";}}}}} echo $consec;
+echo '</span>';
+
+// se cierra la conexion a la base de datos
+$conexion->close();
+?>
+</body>
+</html>

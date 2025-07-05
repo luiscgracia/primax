@@ -1,0 +1,37 @@
+@charset "utf-8";
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.5);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+#popupBody{
+    width: 90%;
+    padding: 2%;
+    border-radius: 10px;
+    box-shadow: 0 0 5px #CCC;
+    background: rgba(255,255,255,1);
+    position: relative;
+    margin-top:33%;
+    transition: all 5s ease-in-out;
+    margin: 30% auto;    
+}
+#cerrar{
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: rgba(255,0,0,1);
+}
