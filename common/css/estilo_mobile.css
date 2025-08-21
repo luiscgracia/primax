@@ -1,23 +1,23 @@
-body					{touch-action:pan-down pan-x pinch-zoom}
+body								{touch-action:pan-down pan-x pinch-zoom}
 
-div.fijar			{position:fixed; z-index:120}
-div.aviso 		{position:fixed; margin: -5 0 0 -5; background-color:rgba(255,112,0,1); color:black; font-size:48px; z-index:120}
-a							{text-decoration:none}
-span					{font-size:29.50px}
-span.seccion	{font-size:32px; text-align:left}
-span.aviso		{font-size:32px; display:inline-block}
-table					{table-layout:fixed; width:100%; margin-left:auto; margin-right:auto; border-collapse:separate; border-spacing:0px 0px}
-input					{font-size:32px; height:10mm; font-family:Arial; color:rgba(0,0,191,1); background-color:rgba(0,255,0,0.1); border:2px solid rgba(255,112,0,1); vertical-align:middle}
-input:focus		{background-color:rgba(255,112,0,0.25)}
-input::placeholder	{text-align:center}
-hr						{width:100%; border-top:2px solid rgba(255,112,0,1)}
+div.fijar						{position:fixed; z-index:120}
+div.aviso 					{position:fixed; margin: -5 0 0 -5; background-color:rgba(255,112,0,1); color:black; font-size:48px; z-index:120}
+a										{text-decoration:none}
+span								{font-size:27px}
+span.seccion				{font-size:32px; text-align:left}
+span.aviso					{font-size:32px; display:inline-block}
+table								{table-layout:fixed; width:100%; margin-left:auto; margin-right:auto; border-collapse:separate; border-spacing:0px 0px}
+input								{font-size:32px; height:10mm; font-family:Arial; color:rgba(0,0,191,1); background-color:rgba(0,255,0,0.1); border:2px solid rgba(255,112,0,1); vertical-align:middle}
+input:focus					{background-color:rgba(255,112,0,0.25)}
+input::placeholder	{text-align:center; vertical-align:top; font-size:28px; color:rgba(0,0,255,0.5)}
+hr									{width:100%; border-top:2px solid rgba(255,112,0,1)}
 
-textarea			{min-height:38px; field-sizing:content; color:rgba(0,0,191,1); background-color:rgba(0,255,0,0.1);
-							 border:2px solid rgba(255,112,0,1); line-height:1; font-size:9.85px; font-family:Arial; resize:none;
-							 padding: 5px 5px; text-align:left; align-content:middle; border-radius:0px}
-textarea:focus{background-color:rgba(255,112,0,0.25)}
-textarea::-webkit-scrollbar{width:0}
-textarea::placeholder {font-size:36px}
+textarea						{min-height:38px; field-sizing:content; color:rgba(0,0,191,1); background-color:rgba(0,255,0,0.1);
+										 border:2px solid rgba(255,112,0,1); line-height:1; font-size:9.85px; font-family:Arial; resize:none;
+										 padding: 5px 5px; text-align:left; align-content:middle; border-radius:0px}
+textarea:focus			{background-color:rgba(255,112,0,0.25)}
+textarea::-webkit-scrollbar	{width:0}
+textarea::placeholder				{font-size:36px}
 /*@media only screen and (min-width: 481px) and (max-width: 1024px) and (orientation:portrait) {*/
 @media only screen and (min-height:300px) and (max-height:1600px) {textarea	{font-size:32px; background-color:none}}
 
@@ -35,33 +35,35 @@ input[type="checkbox"]:checked:before	{background:rgba(255,112,0,1)}
 
 input[type="time"]::-webkit-calendar-picker-indicator {display:inline; background-color:rgba(0,0,0,0)}
 input[type="time"]	{width:180px; text-align:center; color:rgba(0,0,191,1); background-color:rgba(0,255,0,0.1); display:inline}
-input.mostrarhora		{width:180px; text-align:center; color:rgba(0,0,0,0.4); background-color:rgba(255,255,255,1); border:0}
+input.mostrarhora		{width:180px; text-align:center; color:rgba(0,0,191,1); background-color:rgba(255,255,255,1); border:0; font-size:32px; opacity:0}
+
 input[type="date"]::-webkit-calendar-picker-indicator {display:inline; background-color:rgba(0,0,0,0)}
 input[type="date"]	{width:205px; text-align:center; color:rgba(0,0,191,1); background-color:rgba(0,255,0,0.1); display:inline}
-input.mostrarfecha	{width:205px; text-align:center; color:rgba(0,0,0,1); background-color:rgba(255,255,255,1); border:0}
-input[type="texto"]	{font-size:32px; height:10mm; width:99%; font-family:Arial; color:rgba(0,0,191,1); background-color:rgba(0,255,0,0.1); border:2px solid rgba(255,112,0,1); vertical-align:middle}
-input[type="texto"]:focus		{background-color:rgba(255,112,0,0.25)}
-input.consecutivo	{font-size:36px; height:10mm; width:100%; font-family:SCHLBKB; text-align:center; color:rgba(0,0,191,1); border:2px solid rgba(255,112,0,1)}
-button						{border:0; background-color:rgba(255,112,0,0); cursor:pointer}
-select						{font-size:40px; width:80%; height:70px; background-color:rgba(255,112,0,0.33); color:rgba(0,0,191,1); border:1px solid rgba(0,128,0,1); border-radius:15px; font-family:Arlrdlt}
-option						{font-size:50px}
-td								{font-size:28px; text-align:center}
-td.Ar							{font-size:28px; text-align:right}
-td.A1							{font-size:24px; width:100%; font-weight:bold}
-td.A2							{font-size:26px; width:100%; font-weight:bold; background-color:rgba(255,112,0,0.5)}
-td.A21						{font-size:26px; width:100%; font-weight:bold; background-color:rgba(0,0,0,0.0); text-align:center}
-td.A22						{font-size:26px; width:100%; font-weight:bold; background-color:rgba(0,0,0,0.1); text-align:center}
-td.A3							{font-size:32px; width:100%; font-weight:bold; background-color:rgba(0,0,0,0.2)}
-td.B							{font-size:32px; width:100%; text-align:left;	vertical-align:middle}
-td.BB							{font-size:21px; width:100%; text-align:center;	vertical-align:middle}
-td.Bl							{font-size:32px; width:100%; text-align:left;	vertical-align:middle}
-td.Bct						{font-size:32px; text-align:center; vertical-align:top}
-td.Bc							{font-size:32px; text-align:center; vertical-align:middle}
-td.Br							{font-size:32px; text-align:right;	vertical-align:middle}
-tr.C							{height:30px; vertical-align:top}
-tr.D							{height:30px}
-td.numero					{font-size:34px; text-align:right; vertical-align:top}
-td.texto2					{font-size:24px; text-align:right}
+input.mostrarfecha	{width:205px; text-align:center; color:rgba(0,0,191,1); background-color:rgba(255,255,255,1); border:0; font-size:32px; opacity:0}
 
-#hora							{width:100%}
-#numero						{width: 94%; text-align:center}
+input[type="texto"]	{font-size:32px; height:10mm; width:99%; font-family:Arial; color:rgba(0,0,191,1); background-color:rgba(0,255,0,0.1); border:2px solid rgba(255,112,0,1); vertical-align:middle}
+input[type="texto"]:focus	{background-color:rgba(255,112,0,0.25)}
+input.consecutivo		{font-size:36px; height:10mm; width:100%; font-family:SCHLBKB; text-align:center; color:rgba(0,0,191,1); border:2px solid rgba(255,112,0,1)}
+button							{border:0; background-color:rgba(255,112,0,0); cursor:pointer}
+select							{font-size:40px; width:80%; height:70px; background-color:rgba(255,112,0,0.33); color:rgba(0,0,191,1); border:1px solid rgba(0,128,0,1); border-radius:15px; font-family:Arlrdlt}
+option							{font-size:50px}
+td									{font-size:28px; text-align:center}
+td.Ar								{font-size:28px; text-align:right}
+td.A1								{font-size:24px; width:100%; font-weight:bold}
+td.A2								{font-size:26px; width:100%; font-weight:bold; background-color:rgba(255,112,0,0.5)}
+td.A21							{font-size:26px; width:100%; font-weight:bold; background-color:rgba(0,0,0,0.0); text-align:center}
+td.A22							{font-size:26px; width:100%; font-weight:bold; background-color:rgba(0,0,0,0.1); text-align:center}
+td.A3								{font-size:32px; width:100%; font-weight:bold; background-color:rgba(0,0,0,0.2)}
+td.B								{font-size:32px; width:100%; text-align:left;	vertical-align:middle}
+td.BB								{font-size:21px; width:100%; text-align:center;	vertical-align:middle}
+td.Bl								{font-size:32px; width:100%; text-align:left;	vertical-align:middle}
+td.Bct							{font-size:32px; text-align:center; vertical-align:top}
+td.Bc								{font-size:32px; text-align:center; vertical-align:middle}
+td.Br								{font-size:32px; text-align:right;	vertical-align:middle}
+tr.C								{height:30px; vertical-align:top}
+tr.D								{height:30px}
+td.numero						{font-size:34px; text-align:right; vertical-align:top}
+td.texto2						{font-size:24px; text-align:right}
+
+#hora								{width:100%}
+#numero							{width: 94%; text-align:center}

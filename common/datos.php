@@ -1,16 +1,20 @@
 <?php
+$radio = '&#10687;';		// símbolo para las casillas tipo radio
+$check = '&#10004;';		// símbolo para las casillas tipo checkbox
+
 date_default_timezone_set("America/Bogota");
 	$fecha_old = date("Y-m-d / g:i A");
 $fechaactual = date("Y-m-d");
  $horaactual = date("g:i A");
 
-//$hora = date("H:i");
-				 $hoy = date("0000-00-00");
-$fecha_oculta = date("0000-00-00");
-				$hora = "";			//se asigna una hora para el momento de diligenciar los formatos
+		 $fechacero = date("0000-00-00");			//se asigna esta fecha para los campos que pueden tener cualquier fecha, p. ej. las calibraciones
+	$fecha_oculta = date("2025-08-20");			//se asigna esta fecha para el momento de diligenciar los formatos
+//	$fecha_oculta = date("Y-m-d");
+					$hora = "";											//se asigna esta hora  para el momento de diligenciar los formatos
+//					$hora = date("H:i");
 
+$dias = 2;			// número de días para permitir la edición en los formatos
 $fechahoy = date("Y-m-d / g:i A");
-$dias = 2;			// número de días para permitir la edición de los formatos
 $fechamin = date("Y-m-d", strtotime("- $dias days", strtotime(date("Y-m-d"))));
 $fechamax = date("Y-m-d", strtotime("+ $dias days", strtotime(date("Y-m-d"))));
 //$fechaminA = date("Y-m-d", strtotime($row['fechaA']."- $dias days"));
