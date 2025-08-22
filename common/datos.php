@@ -8,8 +8,7 @@ $fechaactual = date("Y-m-d");
  $horaactual = date("g:i A");
 
 		 $fechacero = date("0000-00-00");			//se asigna esta fecha para los campos que pueden tener cualquier fecha, p. ej. las calibraciones
-	$fecha_oculta = date("2025-08-20");			//se asigna esta fecha para el momento de diligenciar los formatos
-//	$fecha_oculta = date("Y-m-d");
+	$fecha_oculta = date("Y-m-d");					//se asigna esta fecha para el momento de diligenciar los formatos
 					$hora = "";											//se asigna esta hora  para el momento de diligenciar los formatos
 //					$hora = date("H:i");
 

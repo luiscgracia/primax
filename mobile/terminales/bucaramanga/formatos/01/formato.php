@@ -41,9 +41,9 @@
 <!-- *****************************************			 INICIO DEL FORMULARIO			 ***************************************** (816px = 215,9 mm) -->
 <div class=noimprimir>
 <div class=fijar style="top:15px; left:15px">
-	<a href='https://api.whatsapp.com/send?phone=<? echo $celular_soporte; ?>
+	<a href='https://api.whatsapp.com/send?phone=<?=$celular_soporte; ?>
 	&text=<? if ($fecha <= date('Y-m-d / 12:00')) {echo 'Buenos días, ';} else {echo 'Buenas tardes, ';} ?>
-	le escribo de PRIMAX <? echo strtoupper($terminal); ?>, estoy diligenciando el formato <? echo $$formulario; ?>.' target=_blank>
+	le escribo de PRIMAX <?=strtoupper($terminal); ?>, estoy diligenciando el formato <?=$$formulario; ?>.' target=_blank>
 	<img src=../../../../../common/imagenes/whatsapp.png style=pointer-events:auto width=70 height=auto></a>
 </div>
 <form name=formato id=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
@@ -52,8 +52,8 @@
 			<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
 			<tr height=100>
 				<td colspan=2>
-					<input style=display:none name=estado type=texto value=<? echo $estado_formulario1; ?> readonly>
-					<span style='font-size:36px'><b><? echo $$formulario; ?></b></span>
+					<input style=display:none name=estado type=texto value=<?=$estado_formulario1; ?> readonly>
+					<span style='font-size:36px'><b><?=$$formulario; ?></b></span>
 				</td>
 				<td>
 					<input name=consecutivo class=consecutivo style="color:red; background-color:white; border:0px"
@@ -69,7 +69,7 @@
 					<span style=font-size:20.00px>CONSULTE EL MANUAL DE PERMISOS DE TRABAJO.</span><br>
 					<span style=font-size:20.00px>ESTE PERMISO ES VÁLIDO POR UN TURNO O MÁXIMO 12 HORAS.</span><br>
 					<span style=font-size:19.35px>ADVERTENCIA: EN CASO DE QUE SUENE UNA ALARMA DE EMERGENCIA ESTE CERTIFICADO PIERDE VALIDEZ</span><br>
-					<span style='font-size:24.00px; color:rgba(255,112,0,1)'><b>FORMATO WEB - Rev. Mayo 2014 - TERMINAL <?echo strtoupper($terminal);?></b></span>
+					<span style='font-size:24.00px; color:rgba(255,112,0,1)'><b>FORMATO WEB - Rev. Mayo 2014 - TERMINAL <?=strtoupper($terminal);?></b></span>
 				</td>
 			</tr>
 		</table>
@@ -103,11 +103,11 @@
 			<tr><td width= 4.75%></td><td width=27%></td><td width= 4.75%></td><td width=27%></td><td width= 4.75%></td><td width=27%></td><td width= 4.75%></td></tr>
 			<tr>
 				<td></td>
-				<td>FECHA<input name=fechaA type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> required></td>
+				<td>FECHA<input name=fechaA type=date value='<?=$hoy;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
 				<td></td>
-				<td>HORA INICIAL<input name=horainicioA type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
+				<td>HORA INICIAL<input name=horainicioA type=time value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
 				<td></td>
-				<td>HORA FINAL<input name=horafinalA type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
+				<td>HORA FINAL<input name=horafinalA type=time value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
 				<td></td>
 			</tr>
 			<tr height=30><td></td></tr>
@@ -149,7 +149,7 @@
 			<tr class=C><td>SI</td><td>NO</td><td colspan=2></td></tr>
 
 			<?
-			$riskQuestions = [
+			$preguntasSiNo1 = [
 				 1 => "Todas las personas tienen inducción SHE vigente?<span>(menor a 1 año)</span>",
 				 2 => "Trabajo en áreas clasificadas<br><span>(Clase 1 Div.I ó Div.II)?</span>",
 				 3 => "Trabajos en o adyacentes a un Llenadero?",
@@ -168,48 +168,48 @@
 				16 => "Radiografías o Fuentes de Radiación similares?"
 			];
 
-			foreach ($riskQuestions as $num => $question) {
+			foreach ($preguntasSiNo1 as $num => $pregunta) {
 				echo "<tr class='C'>
 					<td><input type='radio' id='C{$num}' name='C{$num}' value='SI' onclick='handleRadioClick(this)' required></td>
 					<td><input type='radio' id='c{$num}' name='C{$num}' value='NO' onclick='handleRadioClick(this)'></td>
 					<td class='numero'>{$num}.</td>
-					<td class='B'>{$question}</td>
+					<td class='B'>{$pregunta}</td>
 				</tr>";
 			}
 			?>
 
 			<tr class=C><td class=B colspan=4 style="background-color:rgba(255,112,0,1); color:rgba(255,255,255,1); text-align:center"><b><br>EXCAVACIÓN</b></td></tr>
 			<?
-			$excavationQuestions = [
+			$preguntasSiNo2 = [
 				17 => "Excavación Manual a más de 23 cms?",
 				18 => "Excavación con Máquina, cualquier profundidad?",
 				19 => "Inserción de Estacas en el terreno?"
 			];
 
-			foreach ($excavationQuestions as $num => $question) {
+			foreach ($preguntasSiNo2 as $num => $pregunta) {
 				echo "<tr class='C'>
 					<td><input type='radio' id='C{$num}' name='C{$num}' value='SI' onclick='handleRadioClick(this)' required></td>
 					<td><input type='radio' id='c{$num}' name='C{$num}' value='NO' onclick='handleRadioClick(this)'></td>
 					<td class='numero'>{$num}.</td>
-					<td class='B'>{$question}</td>
+					<td class='B'>{$pregunta}</td>
 				</tr>";
 			}
 			?>
 
 			<tr class=C><td class=B colspan=4 style="background-color:rgba(255,112,0,1); color:rgba(255,255,255,1); text-align:center"><b><br>SUSTANCIAS PELIGROSAS</b></td></tr>
 			<?
-			$substanceQuestions = [
+			$preguntasSiNo3 = [
 				20 => "Manejo/Exposición a Sustancias Peligrosas?",
 				21 => "Exposición a Productos con Plomo?",
 				22 => "Si respondió si a las anteriores, revisó las MSDS?"
 			];
 
-			foreach ($substanceQuestions as $num => $question) {
+			foreach ($preguntasSiNo3 as $num => $pregunta) {
 				echo "<tr class='C'>
 					<td><input type='radio' id='C{$num}' name='C{$num}' value='SI' onclick='handleRadioClick(this)' required></td>
 					<td><input type='radio' id='c{$num}' name='C{$num}' value='NO' onclick='handleRadioClick(this)'></td>
 					<td class='numero'>{$num}.</td>
-					<td class='B'>{$question}</td>
+					<td class='B'>{$pregunta}</td>
 				</tr>";
 			}
 			?>
@@ -217,7 +217,7 @@
 			<tr class=C><td class=B colspan=4 style="background-color:rgba(255,112,0,1); color:rgba(255,255,255,1); text-align:center"><b><br>FUENTES DE IGNICIÓN</b></td></tr>
 			<tr class=C><td>SI</td><td>NO</td><td colspan=2></td></tr>
 			<?
-			$ignitionQuestions = [
+			$preguntasSiNo4 = [
 				23 => "Fuentes de Ignición<br><span>(chispas, llamas, calor >200°C, etc.)?</span>",
 				24 => "Trabajo con Equipo de Oxiacetileno?",
 				25 => "Uso de Equipos con Motor de Combustión?",
@@ -226,19 +226,19 @@
 				28 => "SandBlasting / Granallado / WetBlasting?"
 			];
 
-			foreach ($ignitionQuestions as $num => $question) {
+			foreach ($preguntasSiNo4 as $num => $pregunta) {
 				echo "<tr class='C'>
 					<td><input type='radio' id='C{$num}' name='C{$num}' value='SI' onclick='handleRadioClick(this)' required></td>
 					<td><input type='radio' id='c{$num}' name='C{$num}' value='NO' onclick='handleRadioClick(this)'></td>
 					<td class='numero'>{$num}.</td>
-					<td class='B'>{$question}</td>
+					<td class='B'>{$pregunta}</td>
 				</tr>";
 			}
 			?>
 
 			<tr class=C><td class=B colspan=4 style="background-color:rgba(255,112,0,1); color:rgba(255,255,255,1); text-align:center"><b><br>ENERGÍAS PELIGROSAS</b></td></tr>
 			<?
-			$energyQuestions = [
+			$preguntasSiNo5 = [
 				29 => "Aislamiento Eléctrico de Equipos?",
 				30 => "Trabajos en Sistemas Eléctricos Energizados?",
 				31 => "Desacople Mecánico de Equipos?",
@@ -249,12 +249,12 @@
 				36 => "El trabajo requiere de un plan específico de emergencia?"
 			];
 
-			foreach ($energyQuestions as $num => $question) {
+			foreach ($preguntasSiNo5 as $num => $pregunta) {
 				echo "<tr class='C'>
 					<td><input type='radio' id='C{$num}' name='C{$num}' value='SI' onclick='handleRadioClick(this)' required></td>
 					<td><input type='radio' id='c{$num}' name='C{$num}' value='NO' onclick='handleRadioClick(this)'></td>
 					<td class='numero'>{$num}.</td>
-					<td class='B'>{$question}</td>
+					<td class='B'>{$pregunta}</td>
 				</tr>";
 			}
 			?>
@@ -344,15 +344,15 @@
 		<table border=0>
 			<tr>
 				<td width=55%><input name=ejecutorF		type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td width=26%><input name=fechaejecF	type=date  value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> required></td>
-				<td width=19%><input name=horaejecF		type=time  value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
+				<td width=26%><input name=fechaejecF	type=date  value='<?=$hoy;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
+				<td width=19%><input name=horaejecF		type=time  value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
 			</tr>
 			<tr><td>EJECUTOR</td><td>FECHA</td><td>HORA</td></tr>
 			<tr height=40><td></td></tr>
 			<tr>
 				<td><input name=inspectorF	type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td><input name=fechainspF	type=date  value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> required></td>
-				<td><input name=horainspF		type=time  value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
+				<td><input name=fechainspF	type=date  value='<?=$hoy;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
+				<td><input name=horainspF		type=time  value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
 			</tr>
 			<tr><td>INSPECTOR</td><td>FECHA</td><td>HORA</td></tr>
 		</table>
@@ -387,10 +387,10 @@
 		    <? for ($i = 1; $i <= 7; $i += 2): ?>
 		    <tr>
 				  <td></td>
-				  <td><input name="nombre<?= $i ?>" id="nombre<?= $i ?>" maxlength=30 style=display:none pattern=.{1,} onkeyup="this.value = this.value.toUpperCase()" placeholder="Nombre <?= $i == 1 ? '1er' : ($i == 3 ? '3er' : $i.'o') ?>. autorizado"></td>
+				  <td><input name="nombre<?=$i ?>" id="nombre<?=$i ?>" maxlength=30 style=display:none pattern=.{1,} onkeyup="this.value = this.value.toUpperCase()" placeholder="Nombre <?=$i == 1 ? '1er' : ($i == 3 ? '3er' : $i.'o') ?>. autorizado"></td>
 				  <td></td>
 				  <? if ($i < 7): ?>
-				  <td colspan=2><input name="nombre<?= $i+1 ?>" id="nombre<?= $i+1 ?>" maxlength=30 style=display:none pattern=.{1,} onkeyup="this.value = this.value.toUpperCase()" placeholder="Nombre <?= $i+1 ?>o. autorizado"></td>
+				  <td colspan=2><input name="nombre<?=$i+1 ?>" id="nombre<?=$i+1 ?>" maxlength=30 style=display:none pattern=.{1,} onkeyup="this.value = this.value.toUpperCase()" placeholder="Nombre <?=$i+1 ?>o. autorizado"></td>
 				  <? else: ?>
 				  <td colspan=2></td>
 					<? endif; ?>
@@ -404,15 +404,15 @@
 		<table border=0>
 			<tr>
 				<td width=55%><input name=aprobadorG	type=texto	maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td width=26%><input name=fechaaprobG	type=date		value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> required></td>
-				<td width=19%><input name=horaaprobG	type=time		value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
+				<td width=26%><input name=fechaaprobG	type=date		value='<?=$hoy;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
+				<td width=19%><input name=horaaprobG	type=time		value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
 			</tr>
 			<tr><td>APROBADOR SME</td><td>FECHA</td><td>HORA</td></tr>
 			<tr height=30><td></td></tr>
 			<tr>
 				<td><input name=emisorG				type=texto	maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td><input name=fechaemisorG	type=date		value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> required></td>
-				<td><input name=horaemisorG		type=time		value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
+				<td><input name=fechaemisorG	type=date		value='<?=$hoy;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
+				<td><input name=horaemisorG		type=time		value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
 			</tr>
 			<tr><td>EMISOR</td><td>FECHA</td><td>HORA</td></tr>
 		</table>
@@ -435,14 +435,14 @@
 			<tr>
 				<td width=55%><input name=ejecutorH maxlength=30 type=texto  pattern=.{1,} onkeyup=mayuscula(this) required></td>
 				<td width=26%></td>
-				<td width=19%><input type=time name=horaejecH value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
+				<td width=19%><input type=time name=horaejecH value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
 			</tr>
 			<tr><td>EJECUTOR</td><td></td><td>HORA</td></tr>
 			<tr height=30><td></td></tr>
 			<tr>
 				<td><input name=inspectorH maxlength=30 type=texto  pattern=.{1,} onkeyup=mayuscula(this) required></td>
 				<td></td>
-				<td><input type=time name=horainspH value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
+				<td><input type=time name=horainspH value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
 			</tr>
 			<tr>
 				<td>INSPECTOR</td><td></td><td>HORA</td></tr>
@@ -450,7 +450,7 @@
 			<tr>
 				<td><input name=emisorH maxlength=30 type=texto  pattern=.{1,} onkeyup=mayuscula(this) required></td>
 				<td></td>
-				<td><input type=time name=horaemisorH value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
+				<td><input type=time name=horaemisorH value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
 			</tr>
 			<tr><td>EMISOR</td><td></td><td>HORA</td></tr>
 		</table>
@@ -462,20 +462,19 @@
 						<select name=usuario id=usuario required>
 							<option value="" disabled selected>RESPONSABLE DEL FORMATO</option>
 							<? for ($i = 0; $i < $numero_usuarios && $i < 10; $i++): ?>
-								<option value="<?= $usuario[$i] ?>"><?= $usuario[$i] ?>@primax.com.co</option>
+								<option value="<?=$usuario[$i] ?>"><?=$usuario[$i] ?>@primax.com.co</option>
 							<? endfor; ?>
 						</select>
 					</td>
 				</tr>
 			<tr height=30><td></td></tr>
 		</table>
-
 		<hr>
 
 	<!-- *****************************************			 FIN DEL FORMULARIO			 ***************************************** -->
-		<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Fecha diligenciamiento: <?echo $fechaactual;?> / <?echo $horaactual;?></span>
-		<input style=display:none type=text name=fecha value="<?echo $fechaactual;?> / <?echo $horaactual;?>" readonly><br>
-<!--		<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Quedan <?echo number_format($consec_por_usar,0,',','.');?> consecutivos, incluido este.</span><br> -->
+		<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Fecha diligenciamiento: <?=$fechaactual;?> / <?=$horaactual;?></span>
+		<input style=display:none type=text name=fecha value="<?=$fechaactual;?> / <?=$horaactual;?>" readonly><br>
+<!--		<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Quedan <?=number_format($consec_por_usar,0,',','.');?> consecutivos, incluido este.</span><br> -->
 		<table border=0>
 			<tr height=200>
 				<td><input type=image src=../../../../../common/imagenes/grabar.png alt=Submit style="width:100; height:auto; border:0; background-color:rgba(0,0,0,0)"></td>
@@ -485,7 +484,7 @@
 			<tr>
 				<td><span style="font-family:Arlrdlt; font-size:30px; color:rgba(0,0,0,1)">REVISIÓN FRONT-END: 2024-10</span></td>
 				<td>
-					<a href="mailto:<?echo $correo_pedidos;?>?Subject=Solicitud%20pedido%20libretas%20permisos%20de%20trabajo">
+					<a href="mailto:<?=$correo_pedidos;?>?Subject=Solicitud%20pedido%20libretas%20permisos%20de%20trabajo">
 					<img src=../../../../../common/imagenes/piedepagina_horizontal.svg style="pointer-events:auto; width:100%; height:auto">
 					</a>
 				</td>
@@ -646,7 +645,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Check if consecutive limit exceeded
 <? if ($consec > $ultimo_consec): ?>
 setTimeout(() => window.close(), 10 * 60 * 1000);
-document.body.innerHTML = '<?= $aviso_pedido ?>';
+document.body.innerHTML = '<?=$aviso_pedido ?>';
 <? endif; ?>
 </script>
 

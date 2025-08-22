@@ -63,20 +63,20 @@
 ?>
 <!-- *****************************************			 INICIO DEL FORMULARIO			 ***************************************** (816px = 215,9 mm) -->
 <!-- 1 --> <div class=noimprimir>
-<!-- 2 --> <div class=fijar style="top:15px; left:15px">
-	<a href='https://api.whatsapp.com/send?phone=<? echo $celular_soporte; ?>
+<div class=fijar style="top:15px; left:15px">
+	<a href='https://api.whatsapp.com/send?phone=<?=$celular_soporte; ?>
 	&text=<? if ($fecha <= date('Y-m-d / 12:00')) {echo 'Buenos días, ';} else {echo 'Buenas tardes, ';} ?>
-	le escribo de PRIMAX <? echo strtoupper($terminal); ?>, estoy diligenciando el formato <? echo $$formulario; ?>.' target=_blank>
+	le escribo de PRIMAX <?=strtoupper($terminal); ?>, estoy diligenciando el formato <?=$$formulario; ?>.' target=_blank>
 	<img src=../../../../../common/imagenes/whatsapp.png style=pointer-events:auto width=70 height=auto></a>
-<!-- /2 -->	</div>
+</div>
 <form id=formato name=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
 <!-- 3 -->		<div style="position:absolute; left:50vw; margin-left:-50vw; top:0px; width:100%; height:7375px; overflow:hidden">
 		<table border=0 style="color:black; background-color:rgba(255,255,255,1)">
 			<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
 			<tr height=100>
 				<td colspan=2>
-					<input style=display:none name=estado type=texto value=value=<? echo $estado_formulario1; ?> readonly>
-					<span style="font-size:36px; width:100%; display:inline-block; background-color:none"><b><? echo $$formulario; ?></b></span>
+					<input style=display:none name=estado type=texto value=value=<?=$estado_formulario1; ?> readonly>
+					<span style="font-size:36px; width:100%; display:inline-block; background-color:none"><b><?=$$formulario; ?></b></span>
 				</td>
 				<td>
 					<input name=consecutivo class=consecutivo style="color:red; background-color:rgba(255,255,255,1); border:0" type=texto
@@ -91,7 +91,7 @@
 				<td colspan=3>
 					<span style="font-size:20.00px">CONSULTE EL MANUAL DE PERMISOS DE TRABAJO PARA DESARROLLAR ESTE FORMATO</span><br>
 					<span style="font-size:20.00px">ADVERTENCIA: EN CASO DE QUE SUENE UNA ALARMA DE EMERGENCIA, SE SUSPENDEN ACTIVIDADES Y SE DIRIGEN AL PUNTO DE ENCUENTRO.&nbsp;&nbsp;HASTA QUE EL EMISOR DETERMINE EL REINICIO O CANCELACIÓN DE LAS ACTIVIDADES</span><br>
-					<span style="font-size:24.00px; color:rgba(255,112,0,1)"><b>FORMATO WEB - Rev. Mayo 2014 / TERMINAL <?echo strtoupper($terminal);?></b></span>
+					<span style="font-size:24.00px; color:rgba(255,112,0,1)"><b>FORMATO WEB - Rev. Mayo 2014 / TERMINAL <?=strtoupper($terminal);?></b></span>
 				</td>
 			</tr>
 		</table>
@@ -129,43 +129,35 @@
 			</tr>
 		</table>
 		<table border=0>
-			<tr height=30px>
-				<td width=5%></td><td width=21.50%></td><td width=1.50%></td><td width=19.00%></td><td width=3%></td>
-				<td width=3%></td><td width=21.50%></td><td width=1.50%></td><td width=19.00%></td><td width=5%></td>
-			</tr>
-			<tr>
-				<td></td><td colspan=3>APERTURA PERMISO</td><td></td>
-				<td></td><td colspan=3>CIERRE PERMISO</td><td></td>
-			</tr>
+			<tr height=30px><td width=5%></td><td width=21.50%></td><td width=1.50%></td><td width=19.00%></td><td width=3%></td><td width=3%></td><td width=21.50%></td><td width=1.50%></td><td width=19.00%></td><td width=5%></td></tr>
+			<tr><td></td><td colspan=3>APERTURA PERMISO</td><td></td><td></td><td colspan=3>CIERRE PERMISO</td><td></td></tr>
 			<tr>
 				<td></td>
-				<td><input name=fecha_apertura type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> required></td><td></td>
-				<td><input name=hora_apertura	 type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
+				<td><input name=fecha_apertura type=date value='<?=$fecha_oculta;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td><td></td>
+				<td><input name=hora_apertura	 type=time value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
 				<td></td>
 				<td></td>
-				<td><input name=fecha_cierre	 type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> required></td><td></td>
-				<td><input name=hora_cierre		 type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
+				<td><input name=fecha_cierre	 type=date value='<?=$fecha_oculta;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td><td></td>
+				<td><input name=hora_cierre		 type=time value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
 				<td></td>
 			</tr>
 		</table>
 		<table border=0>
 			<tr height=30px><td width=79%></td><td width=1%></td><td width=20%></td></tr>
-			<tr>
-				<td colspan=3 style=text-align:center class=B>PERSONAS AUTORIZADAS PARA EL TRABAJO&nbsp;<input name=cantidad id=cantidad value='' style="width:8%; text-align:center" inputmode=numeric maxlength=1 pattern=[1-5]{1} title="Mínimo 1 máximo 5 personas." required></td>
-			</tr>
+			<tr><td colspan=3 style=text-align:center class=B>PERSONAS AUTORIZADAS PARA EL TRABAJO&nbsp;<input name=cantidad id=cantidad value='' style="width:8%; text-align:center" inputmode=numeric maxlength=1 pattern=^(?:[1-5]{1})$ title="Mínimo 1 máximo 5 personas." required></td></tr>
 			<tr height=10px><td></td></tr>
 		</table>
-<!-- 4 -->			<div id=nombre style="position:absolute; display:none; width:43.75%; left:0.50%; background-color:white">
+		<div id=nombre style="position:absolute; display:none; width:43.75%; left:0.50%; background-color:white">
 			<table border=0>
 				<tr height=80px><td class=A3><b>NOMBRE Y APELLIDOS</b></td></tr>
-				<tr><td><input name=nombre1 id=nombre1 value="" style="width:100%; display:none" placeholder=Persona&nbsp;autorizada&nbsp;1 maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-				<tr><td><input name=nombre2 id=nombre2 value="" style="width:100%; display:none" placeholder=Persona&nbsp;autorizada&nbsp;2 maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-				<tr><td><input name=nombre3 id=nombre3 value="" style="width:100%; display:none" placeholder=Persona&nbsp;autorizada&nbsp;3 maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-				<tr><td><input name=nombre4 id=nombre4 value="" style="width:100%; display:none" placeholder=Persona&nbsp;autorizada&nbsp;4 maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-				<tr><td><input name=nombre5 id=nombre5 value="" style="width:100%; display:none" placeholder=Persona&nbsp;autorizada&nbsp;5 maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
+				<tr><td><input name=nombre1 id=nombre1 value='' style="width:100%; display:none" placeholder=Persona&nbsp;autorizada&nbsp;1 maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
+				<tr><td><input name=nombre2 id=nombre2 value='' style="width:100%; display:none" placeholder=Persona&nbsp;autorizada&nbsp;2 maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
+				<tr><td><input name=nombre3 id=nombre3 value='' style="width:100%; display:none" placeholder=Persona&nbsp;autorizada&nbsp;3 maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
+				<tr><td><input name=nombre4 id=nombre4 value='' style="width:100%; display:none" placeholder=Persona&nbsp;autorizada&nbsp;4 maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
+				<tr><td><input name=nombre5 id=nombre5 value='' style="width:100%; display:none" placeholder=Persona&nbsp;autorizada&nbsp;5 maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
 			</table>
-<!-- /4 -->			</div>
-<!-- 5 -->			<div id=dkf style="position:absolute; display:none; width:55.00%; left:44.25%; background-color:white; overflow:scroll">
+		</div>
+		<div id=dkf style="position:absolute; display:none; width:55.00%; left:44.25%; background-color:white; overflow:scroll">
 			<table border=0>
 				<tr height=80px>
 					<td style=width:190px class=A2><b>CÉDULA</b></td>
@@ -174,152 +166,40 @@
 				</tr>
 				<tr>
 					<td><input name=cedula1 id=cedula1 value='' style="width:100%; display:none; text-align:center" maxlength=10 pattern=^(?:[0-9]{8,10})$ inputmode=numeric></td>
-					<td><input name=cargo1	id=cargo1  value="" style="width:100%; display:none" maxlength=20 pattern=.{1,} onkeyup=mayuscula(this)></td>
+					<td><input name=cargo1	id=cargo1  value='' style="width:100%; display:none" maxlength=20 pattern=.{1,} onkeyup=mayuscula(this)></td>
 					<td style="background-color:rgba(0,0,0,0.2); border:0px solid rgba(255,112,0,1)"></td>
 				</tr>
 				<tr>
 					<td><input name=cedula2 id=cedula2 value='' style="width:100%; display:none; text-align:center" maxlength=10 pattern=^(?:[0-9]{8,10})$ inputmode=numeric></td>
-					<td><input name=cargo2	id=cargo2  value="" style="width:100%; display:none" maxlength=20 pattern=.{1,} onkeyup=mayuscula(this)></td>
+					<td><input name=cargo2	id=cargo2  value='' style="width:100%; display:none" maxlength=20 pattern=.{1,} onkeyup=mayuscula(this)></td>
 					<td style="background-color:rgba(0,0,0,0.2); border:0px solid rgba(255,112,0,1)"></td>
 				</tr>
 				<tr>
 					<td><input name=cedula3 id=cedula3 value='' style="width:100%; display:none; text-align:center" maxlength=10 pattern=^(?:[0-9]{8,10})$ inputmode=numeric></td>
-					<td><input name=cargo3	id=cargo3  value="" style="width:100%; display:none" maxlength=20 pattern=.{1,} onkeyup=mayuscula(this)></td>
+					<td><input name=cargo3	id=cargo3  value='' style="width:100%; display:none" maxlength=20 pattern=.{1,} onkeyup=mayuscula(this)></td>
 					<td style="background-color:rgba(0,0,0,0.2); border:0px solid rgba(255,112,0,1)"></td>
 				</tr>
 				<tr>
 					<td><input name=cedula4 id=cedula4 value='' style="width:100%; display:none; text-align:center" maxlength=10 pattern=^(?:[0-9]{8,10})$ inputmode=numeric></td>
-					<td><input name=cargo4	id=cargo4  value="" style="width:100%; display:none" maxlength=20 pattern=.{1,} onkeyup=mayuscula(this)></td>
+					<td><input name=cargo4	id=cargo4  value='' style="width:100%; display:none" maxlength=20 pattern=.{1,} onkeyup=mayuscula(this)></td>
 					<td style="background-color:rgba(0,0,0,0.2); border:0px solid rgba(255,112,0,1)"></td>
 				</tr>
 				<tr>
 					<td><input name=cedula5 id=cedula5 value='' style="width:100%; display:none; text-align:center" maxlength=10 pattern=^(?:[0-9]{8,10})$ inputmode=numeric></td>
-					<td><input name=cargo5	id=cargo5  value="" style="width:100%; display:none" maxlength=20 pattern=.{1,} onkeyup=mayuscula(this)></td>
+					<td><input name=cargo5	id=cargo5  value='' style="width:100%; display:none" maxlength=20 pattern=.{1,} onkeyup=mayuscula(this)></td>
 					<td style="background-color:rgba(0,0,0,0.2); border:0px solid rgba(255,112,0,1)"></td>
 				</tr>
 			</table>
-		<script>
-			var
-				 c = document.getElementById("cantidad");
-				 n = document.getElementById("nombre");
-			 dkf = document.getElementById("dkf");
-				n1 = document.getElementById("nombre1");
-				n2 = document.getElementById("nombre2");
-				n3 = document.getElementById("nombre3");
-				n4 = document.getElementById("nombre4");
-				n5 = document.getElementById("nombre5");
-				c1 = document.getElementById("cedula1");
-				c2 = document.getElementById("cedula2");
-				c3 = document.getElementById("cedula3");
-				c4 = document.getElementById("cedula4");
-				c5 = document.getElementById("cedula5");
-				k1 = document.getElementById("cargo1");
-				k2 = document.getElementById("cargo2");
-				k3 = document.getElementById("cargo3");
-				k4 = document.getElementById("cargo4");
-				k5 = document.getElementById("cargo5");
-			document.getElementById("cantidad").addEventListener("blur", function(e) {
-				if (c.value <= 1) {c.value = 1;
-					n.disabled = false;		n.style.display = "block";
-				dkf.disabled = false; dkf.style.display = "block";
-				 n1.disabled = false; n1.style.display = "block"; n1.required = true;
-				 n2.disabled = true; n2.style.display = "none";
-				 n3.disabled = true; n3.style.display = "none";
-				 n4.disabled = true; n4.style.display = "none";
-				 n5.disabled = true; n5.style.display = "none";
-				 c1.disabled = false; c1.style.display = "block"; c1.required = true;
-				 c2.disabled = true; c2.style.display = "none";
-				 c3.disabled = true; c3.style.display = "none";
-				 c4.disabled = true; c4.style.display = "none";
-				 c5.disabled = true; c5.style.display = "none";
-				 k1.disabled = false; k1.style.display = "block"; k1.required = true;
-				 k2.disabled = true; k2.style.display = "none";
-				 k3.disabled = true; k3.style.display = "none";
-				 k4.disabled = true; k4.style.display = "none";
-				 k5.disabled = true; k5.style.display = "none";};
-				if (c.value == 2) {
-					n.disabled = false;		n.style.display = "block";
-				dkf.disabled = false; dkf.style.display = "block";
-				 n1.disabled = false; n1.style.display = "block"; n1.required = true;
-				 n2.disabled = false; n2.style.display = "block"; n2.required = true;
-				 n3.disabled = true; n3.style.display = "none";
-				 n4.disabled = true; n4.style.display = "none";
-				 n5.disabled = true; n5.style.display = "none";
-				 c1.disabled = false; c1.style.display = "block"; c1.required = true;
-				 c2.disabled = false; c2.style.display = "block"; c2.required = true;
-				 c3.disabled = true; c3.style.display = "none";
-				 c4.disabled = true; c4.style.display = "none";
-				 c5.disabled = true; c5.style.display = "none";
-				 k1.disabled = false; k1.style.display = "block"; k1.required = true;
-				 k2.disabled = false; k2.style.display = "block"; k2.required = true;
-				 k3.disabled = true; k3.style.display = "none";
-				 k4.disabled = true; k4.style.display = "none";
-				 k5.disabled = true; k5.style.display = "none";};
-				if (c.value == 3) {
-					n.disabled = false;		n.style.display = "block";
-				dkf.disabled = false; dkf.style.display = "block";
-				 n1.disabled = false; n1.style.display = "block"; n1.required = true;
-				 n2.disabled = false; n2.style.display = "block"; n2.required = true;
-				 n3.disabled = false; n3.style.display = "block"; n3.required = true;
-				 n4.disabled = true; n4.style.display = "none";
-				 n5.disabled = true; n5.style.display = "none";
-				 c1.disabled = false; c1.style.display = "block"; c1.required = true;
-				 c2.disabled = false; c2.style.display = "block"; c2.required = true;
-				 c3.disabled = false; c3.style.display = "block"; c3.required = true;
-				 c4.disabled = true; c4.style.display = "none";
-				 c5.disabled = true; c5.style.display = "none";
-				 k1.disabled = false; k1.style.display = "block"; k1.required = true;
-				 k2.disabled = false; k2.style.display = "block"; k2.required = true;
-				 k3.disabled = false; k3.style.display = "block"; k3.required = true;
-				 k4.disabled = true; k4.style.display = "none";
-				 k5.disabled = true; k5.style.display = "none";};
-				if (c.value == 4) {
-					n.disabled = false;		n.style.display = "block";
-				dkf.disabled = false; dkf.style.display = "block";
-				 n1.disabled = false; n1.style.display = "block"; n1.required = true;
-				 n2.disabled = false; n2.style.display = "block"; n2.required = true;
-				 n3.disabled = false; n3.style.display = "block"; n3.required = true;
-				 n4.disabled = false; n4.style.display = "block"; n4.required = true;
-				 n5.disabled = true; n5.style.display = "none";
-				 c1.disabled = false; c1.style.display = "block"; c1.required = true;
-				 c2.disabled = false; c2.style.display = "block"; c2.required = true;
-				 c3.disabled = false; c3.style.display = "block"; c3.required = true;
-				 c4.disabled = false; c4.style.display = "block"; c4.required = true;
-				 c5.disabled = true; c5.style.display = "none";
-				 k1.disabled = false; k1.style.display = "block"; k1.required = true;
-				 k2.disabled = false; k2.style.display = "block"; k2.required = true;
-				 k3.disabled = false; k3.style.display = "block"; k3.required = true;
-				 k4.disabled = false; k4.style.display = "block"; k4.required = true;
-				 k5.disabled = true; k5.style.display = "none";};
-				if (c.value == 5) {
-					n.disabled = false;		n.style.display = "block";
-				dkf.disabled = false; dkf.style.display = "block";
-				 n1.disabled = false; n1.style.display = "block"; n1.required = true;
-				 n2.disabled = false; n2.style.display = "block"; n2.required = true;
-				 n3.disabled = false; n3.style.display = "block"; n3.required = true;
-				 n4.disabled = false; n4.style.display = "block"; n4.required = true;
-				 n5.disabled = false; n5.style.display = "block"; n5.required = true;
-				 c1.disabled = false; c1.style.display = "block"; c1.required = true;
-				 c2.disabled = false; c2.style.display = "block"; c2.required = true;
-				 c3.disabled = false; c3.style.display = "block"; c3.required = true;
-				 c4.disabled = false; c4.style.display = "block"; c4.required = true;
-				 c5.disabled = false; c5.style.display = "block"; c5.required = true;
-				 k1.disabled = false; k1.style.display = "block"; k1.required = true;
-				 k2.disabled = false; k2.style.display = "block"; k2.required = true;
-				 k3.disabled = false; k3.style.display = "block"; k3.required = true;
-				 k4.disabled = false; k4.style.display = "block"; k4.required = true;
-				 k5.disabled = false; k5.style.display = "block"; k5.required = true;};});
-		</script>
-<!-- /5 -->			</div>
+		</div>
 
 <!-- *****************************************			 sección B			 ***************************************** -->
-<!-- 6 -->			<div style="position:relative; width:100%; top:280px">
+		<div style="position:relative; width:100%; top:280px">
 			<hr>
 			<table border=0>
 				<tr><td class=B><b>&nbsp;&nbsp;B. DOCUMENTACIÓN ADICIONAL Y APROBACIONES DIARIAS</b></td></tr>
 			</table>
-<!-- /6 -->			</div>
-<!-- 7 -->			<div style="position:relative; width:55.75%; left:0.50%; top:300px; background-color:white">
+		</div>
+		<div style="position:relative; width:55.75%; left:0.50%; top:300px; background-color:white">
 			<table border=1>
 				<tr class=C><td class=A3>DOCUMENTACIÓN</td></tr>
 				<tr class=C><td class=C style="padding:0 10"># CERTIFICADO HABILITACIÓN</td></tr>
@@ -332,16 +212,16 @@
 				<tr class=C><td class=C style="padding:0 10">FIRMA SUPERVISOR EC.</td></tr>
 				<tr class=C><td class=C style="padding:0 10">AUTORIZACIÓN EMISOR<br>(Antes del inicio de labores)</td></tr>
 			</table>
-<!-- /7 -->			</div>
+		</div>
 <!-- 8 -->			<div style="position:relative; width:43.00%; left:56.25%; top:-551.25px; background-color:white; overflow:scroll">
 			<table border=1>
 				<tr class=C>
-					<td style=width:205px class=A21>DÍA 1<input name=fechaB1 id=fechaB1 type=date onfocusout="f1a(); f1b()" value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> required></td>
-					<td style=width:205px class=A22>DÍA 2<input name=fechaB2 id=fechaB2 type=date onfocusout="f2a(); f2b()" value='<?echo $fecha_oculta;?>'></td>
-					<td style=width:205px class=A21>DÍA 3<input name=fechaB3 id=fechaB3 type=date onfocusout="f3a(); f3b()" value='<?echo $fecha_oculta;?>'></td>
-					<td style=width:205px class=A22>DÍA 4<input name=fechaB4 id=fechaB4 type=date onfocusout="f4a(); f4b()" value='<?echo $fecha_oculta;?>'></td>
-					<td style=width:205px class=A21>DÍA 5<input name=fechaB5 id=fechaB5 type=date onfocusout="f5a(); f5b()" value='<?echo $fecha_oculta;?>'></td>
-					<td style=width:205px class=A22>DÍA 6<input name=fechaB6 id=fechaB6 type=date onfocusout="f6a(); f6b()" value='<?echo $fecha_oculta;?>'></td>
+					<td style=width:205px class=A21>DÍA 1<input name=fechaB1 id=fechaB1 type=date onfocusout="f1a(); f1b()" value='<?=$fecha_oculta;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
+					<td style=width:205px class=A22>DÍA 2<input name=fechaB2 id=fechaB2 type=date onfocusout="f2a(); f2b()" value='<?=$fecha_oculta;?>'></td>
+					<td style=width:205px class=A21>DÍA 3<input name=fechaB3 id=fechaB3 type=date onfocusout="f3a(); f3b()" value='<?=$fecha_oculta;?>'></td>
+					<td style=width:205px class=A22>DÍA 4<input name=fechaB4 id=fechaB4 type=date onfocusout="f4a(); f4b()" value='<?=$fecha_oculta;?>'></td>
+					<td style=width:205px class=A21>DÍA 5<input name=fechaB5 id=fechaB5 type=date onfocusout="f5a(); f5b()" value='<?=$fecha_oculta;?>'></td>
+					<td style=width:205px class=A22>DÍA 6<input name=fechaB6 id=fechaB6 type=date onfocusout="f6a(); f6b()" value='<?=$fecha_oculta;?>'></td>
 				</tr>
 				<tr class=C>
 					<td class=A21><input name=num_cert_habil1 value='' inputmode=numeric style="width:60%; text-align:center" maxlength=6 pattern=^(?:[0-9]{4,6})$ required></td>
@@ -368,52 +248,52 @@
 					<td class=A22><input name=num_pers_autoreporte6 inputmode=numeric style="width:40%; text-align:center" maxlength=1 pattern=^(?:[0-5]{1})$></td>
 				</tr>
 				<tr class=C>
-					<td class=A21><input name=hora_inicio1 type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
-					<td class=A22><input name=hora_inicio2 type=time value='<?echo $hora;?>' min=<?echo date("H:i");?>></td>
-					<td class=A21><input name=hora_inicio3 type=time value='<?echo $hora;?>' min=<?echo date("H:i");?>></td>
-					<td class=A22><input name=hora_inicio4 type=time value='<?echo $hora;?>' min=<?echo date("H:i");?>></td>
-					<td class=A21><input name=hora_inicio5 type=time value='<?echo $hora;?>' min=<?echo date("H:i");?>></td>
-					<td class=A22><input name=hora_inicio6 type=time value='<?echo $hora;?>' min=<?echo date("H:i");?>></td>
+					<td class=A21><input name=hora_inicio1 type=time value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
+					<td class=A22><input name=hora_inicio2 type=time value='<?=$hora;?>' min=<?=date("H:i");?>></td>
+					<td class=A21><input name=hora_inicio3 type=time value='<?=$hora;?>' min=<?=date("H:i");?>></td>
+					<td class=A22><input name=hora_inicio4 type=time value='<?=$hora;?>' min=<?=date("H:i");?>></td>
+					<td class=A21><input name=hora_inicio5 type=time value='<?=$hora;?>' min=<?=date("H:i");?>></td>
+					<td class=A22><input name=hora_inicio6 type=time value='<?=$hora;?>' min=<?=date("H:i");?>></td>
 				</tr>
 				<tr class=C>
-					<td class=A21><input name=hora_final1 type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
-					<td class=A22><input name=hora_final2 type=time value='<?echo $hora;?>' min=<?echo date("H:i");?>></td>
-					<td class=A21><input name=hora_final3 type=time value='<?echo $hora;?>' min=<?echo date("H:i");?>></td>
-					<td class=A22><input name=hora_final4 type=time value='<?echo $hora;?>' min=<?echo date("H:i");?>></td>
-					<td class=A21><input name=hora_final5 type=time value='<?echo $hora;?>' min=<?echo date("H:i");?>></td>
-					<td class=A22><input name=hora_final6 type=time value='<?echo $hora;?>' min=<?echo date("H:i");?>></td>
+					<td class=A21><input name=hora_final1 type=time value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
+					<td class=A22><input name=hora_final2 type=time value='<?=$hora;?>' min=<?=date("H:i");?>></td>
+					<td class=A21><input name=hora_final3 type=time value='<?=$hora;?>' min=<?=date("H:i");?>></td>
+					<td class=A22><input name=hora_final4 type=time value='<?=$hora;?>' min=<?=date("H:i");?>></td>
+					<td class=A21><input name=hora_final5 type=time value='<?=$hora;?>' min=<?=date("H:i");?>></td>
+					<td class=A22><input name=hora_final6 type=time value='<?=$hora;?>' min=<?=date("H:i");?>></td>
 				</tr>
 				<tr class=C>
-					<td class=A21><input name=firma_ejecutor1	style="font-size:18px; text-align:center; display:none" value=""></td>
-					<td class=A22><input name=firma_ejecutor2	style="font-size:18px; text-align:center; display:none" value=""></td>
-					<td class=A21><input name=firma_ejecutor3	style="font-size:18px; text-align:center; display:none" value=""></td>
-					<td class=A22><input name=firma_ejecutor4	style="font-size:18px; text-align:center; display:none" value=""></td>
-					<td class=A21><input name=firma_ejecutor5	style="font-size:18px; text-align:center; display:none" value=""></td>
-					<td class=A22><input name=firma_ejecutor6	style="font-size:18px; text-align:center; display:none" value=""></td>
+					<td class=A21><input name=firma_ejecutor1	style="font-size:18px; text-align:center; display:none" value=''></td>
+					<td class=A22><input name=firma_ejecutor2	style="font-size:18px; text-align:center; display:none" value=''></td>
+					<td class=A21><input name=firma_ejecutor3	style="font-size:18px; text-align:center; display:none" value=''></td>
+					<td class=A22><input name=firma_ejecutor4	style="font-size:18px; text-align:center; display:none" value=''></td>
+					<td class=A21><input name=firma_ejecutor5	style="font-size:18px; text-align:center; display:none" value=''></td>
+					<td class=A22><input name=firma_ejecutor6	style="font-size:18px; text-align:center; display:none" value=''></td>
 				</tr>
 				<tr class=C>
-					<td class=A21><input name=firma_vigia1	style="font-size:18px; text-align:center; display:none" value=""></td>
-					<td class=A22><input name=firma_vigia2	style="font-size:18px; text-align:center; display:none" value=""></td>
-					<td class=A21><input name=firma_vigia3	style="font-size:18px; text-align:center; display:none" value=""></td>
-					<td class=A22><input name=firma_vigia4	style="font-size:18px; text-align:center; display:none" value=""></td>
-					<td class=A21><input name=firma_vigia5	style="font-size:18px; text-align:center; display:none" value=""></td>
-					<td class=A22><input name=firma_vigia6	style="font-size:18px; text-align:center; display:none" value=""></td>
+					<td class=A21><input name=firma_vigia1	style="font-size:18px; text-align:center; display:none" value=''></td>
+					<td class=A22><input name=firma_vigia2	style="font-size:18px; text-align:center; display:none" value=''></td>
+					<td class=A21><input name=firma_vigia3	style="font-size:18px; text-align:center; display:none" value=''></td>
+					<td class=A22><input name=firma_vigia4	style="font-size:18px; text-align:center; display:none" value=''></td>
+					<td class=A21><input name=firma_vigia5	style="font-size:18px; text-align:center; display:none" value=''></td>
+					<td class=A22><input name=firma_vigia6	style="font-size:18px; text-align:center; display:none" value=''></td>
 				</tr>
 				<tr class=C>
-					<td class=A21><input name=firma_supervisor1	style="font-size:18px; text-align:center; display:none" value=""></td>
-					<td class=A22><input name=firma_supervisor2	style="font-size:18px; text-align:center; display:none" value=""></td>
-					<td class=A21><input name=firma_supervisor3	style="font-size:18px; text-align:center; display:none" value=""></td>
-					<td class=A22><input name=firma_supervisor4	style="font-size:18px; text-align:center; display:none" value=""></td>
-					<td class=A21><input name=firma_supervisor5	style="font-size:18px; text-align:center; display:none" value=""></td>
-					<td class=A22><input name=firma_supervisor6	style="font-size:18px; text-align:center; display:none" value=""></td>
+					<td class=A21><input name=firma_supervisor1	style="font-size:18px; text-align:center; display:none" value=''></td>
+					<td class=A22><input name=firma_supervisor2	style="font-size:18px; text-align:center; display:none" value=''></td>
+					<td class=A21><input name=firma_supervisor3	style="font-size:18px; text-align:center; display:none" value=''></td>
+					<td class=A22><input name=firma_supervisor4	style="font-size:18px; text-align:center; display:none" value=''></td>
+					<td class=A21><input name=firma_supervisor5	style="font-size:18px; text-align:center; display:none" value=''></td>
+					<td class=A22><input name=firma_supervisor6	style="font-size:18px; text-align:center; display:none" value=''></td>
 				</tr>
 				<tr class=C>
-					<td class=A21><input name=autorizacion_emisor1	style="font-size:18px; text-align:center; display:none" value=""></td>
-					<td class=A22><input name=autorizacion_emisor2	style="font-size:18px; text-align:center; display:none" value=""></td>
-					<td class=A21><input name=autorizacion_emisor3	style="font-size:18px; text-align:center; display:none" value=""></td>
-					<td class=A22><input name=autorizacion_emisor4	style="font-size:18px; text-align:center; display:none" value=""></td>
-					<td class=A21><input name=autorizacion_emisor5	style="font-size:18px; text-align:center; display:none" value=""></td>
-					<td class=A22><input name=autorizacion_emisor6	style="font-size:18px; text-align:center; display:none" value=""></td>
+					<td class=A21><input name=autorizacion_emisor1	style="font-size:18px; text-align:center; display:none" value=''></td>
+					<td class=A22><input name=autorizacion_emisor2	style="font-size:18px; text-align:center; display:none" value=''></td>
+					<td class=A21><input name=autorizacion_emisor3	style="font-size:18px; text-align:center; display:none" value=''></td>
+					<td class=A22><input name=autorizacion_emisor4	style="font-size:18px; text-align:center; display:none" value=''></td>
+					<td class=A21><input name=autorizacion_emisor5	style="font-size:18px; text-align:center; display:none" value=''></td>
+					<td class=A22><input name=autorizacion_emisor6	style="font-size:18px; text-align:center; display:none" value=''></td>
 				</tr>
 			</table>
 <!-- /8 -->			</div>
@@ -1307,26 +1187,26 @@
 		<table border=0>
 			<tr height=30px><td width=60.49%></td><td width=21.00%></td><td width= 0.01%></td><td width=18.50%></td></tr>
 			<tr>
-				<td><input name=ejecutorD style=width:100% maxlength=30 value="" pattern=.{1,} onkeyup=mayuscula(this) required></td>
+				<td><input name=ejecutorD style=width:100% maxlength=30 value='' pattern=.{1,} onkeyup=mayuscula(this) required></td>
 				<td><input name=ejecutor_ccD inputmode=numeric value='' style="width:100%; text-align:center" maxlength=10 pattern=^(?:[0-9]{8,10})$ required></td>
-				<td><input name=ejecutor_fechaD type=date style="width:100%; display:none" value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?>></td>
-				<td><input name=ejecutor_horaD type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
+				<td><input name=ejecutor_fechaD type=date style="width:100%; display:none" value='<?=$fecha_oculta;?>' min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
+				<td><input name=ejecutor_horaD type=time value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
 			</tr>
 			<tr><td>EJECUTOR</td><td>CÉDULA</td><td></td><td>HORA</td></tr>
 			<tr style=height:20px><td colspan=7></td></tr>
 			<tr>
-				<td><input name=supervisorD style=width:100% maxlength=30 value="" pattern=.{1,} onkeyup=mayuscula(this) required></td>
+				<td><input name=supervisorD style=width:100% maxlength=30 value='' pattern=.{1,} onkeyup=mayuscula(this) required></td>
 				<td><input name=supervisor_ccD inputmode=numeric value='' style="width:100%; text-align:center" maxlength=10 pattern=^(?:[0-9]{8,10})$ required></td>
-				<td><input name=supervisor_fechaD type=date style="width:100%; display:none" value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?>></td>
-				<td><input name=supervisor_horaD type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
+				<td><input name=supervisor_fechaD type=date style="width:100%; display:none" value='<?=$fecha_oculta;?>' min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
+				<td><input name=supervisor_horaD type=time value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
 			</tr>
 			<tr><td>SUPERVISOR</td><td>CÉDULA</td><td></td><td>HORA</td></tr>
 			<tr style=height:20px><td colspan=7></td></tr>
 			<tr>
-				<td><input name=vigiaD style=width:100% maxlength=30 value="" pattern=.{1,} onkeyup=mayuscula(this) required></td>
+				<td><input name=vigiaD style=width:100% maxlength=30 value='' pattern=.{1,} onkeyup=mayuscula(this) required></td>
 				<td><input name=vigia_ccD inputmode=numeric value='' style="width:100%; text-align:center" maxlength=10 pattern=^(?:[0-9]{8,10})$ required></td>
-				<td><input name=vigia_fechaD type=date style="width:100%; display:none" value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?>></td>
-				<td><input name=vigia_horaD type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
+				<td><input name=vigia_fechaD type=date style="width:100%; display:none" value='<?=$fecha_oculta;?>' min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
+				<td><input name=vigia_horaD type=time value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
 			</tr>
 			<tr><td>VIGIA</td><td>CÉDULA</td><td></td><td>HORA</td></tr>
 		</table>
@@ -1352,10 +1232,10 @@
 		<table border=0>
 			<tr height=30px><td width=60.49%></td><td width=21.00%></td><td width= 0.01%></td><td width=18.50%></td></tr>
 			<tr>
-				<td><input name=emisorE style=width:100% maxlength=30 value="" pattern=.{1,} onkeyup=mayuscula(this) required></td>
+				<td><input name=emisorE style=width:100% maxlength=30 value='' pattern=.{1,} onkeyup=mayuscula(this) required></td>
 				<td><input name=emisor_ccE inputmode=numeric value='' style="width:100%; text-align:center" maxlength=10 pattern=^(?:[0-9]{8,10})$ required></td>
-				<td><input name=emisor_fechaE type=date style="width:100%; display:none" value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?>></td>
-				<td><input name=emisor_horaE type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
+				<td><input name=emisor_fechaE type=date style="width:100%; display:none" value='<?=$fecha_oculta;?>' min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
+				<td><input name=emisor_horaE type=time value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
 			</tr>
 			<tr><td>EMISOR</td><td>CÉDULA</td><td></td><td>HORA</td></tr>
 		</table>
@@ -1398,61 +1278,52 @@
 		<table border=0>
 			<tr height=30px><td width=60.49%></td><td width=21.00%></td><td width= 0.01%></td><td width=18.50%></td></tr>
 			<tr>
-				<td><input name=ejecutorF style=width:100% maxlength=30 value="" pattern=.{1,} onkeyup=mayuscula(this) required></td>
+				<td><input name=ejecutorF style=width:100% maxlength=30 value='' pattern=.{1,} onkeyup=mayuscula(this) required></td>
 				<td><input name=ejecutor_ccF inputmode=numeric value='' style="width:100%; text-align:center" maxlength=10 pattern=^(?:[0-9]{8,10})$ required></td>
-				<td><input name=ejecutor_fechaF type=date style="width:100%; display:none" value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?>></td>
-				<td><input name=ejecutor_horaF type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
+				<td><input name=ejecutor_fechaF type=date style="width:100%; display:none" value='<?=$fecha_oculta;?>' min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
+				<td><input name=ejecutor_horaF type=time value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
 			</tr>
 			<tr><td>EJECUTOR</td><td>CÉDULA</td><td></td><td>HORA</td></tr>
 			<tr style=height:20px><td></td></tr>
 			<tr>
-				<td><input name=supervisorF style=width:100% maxlength=30 value="" pattern=.{1,} onkeyup=mayuscula(this) required></td>
+				<td><input name=supervisorF style=width:100% maxlength=30 value='' pattern=.{1,} onkeyup=mayuscula(this) required></td>
 				<td><input name=supervisor_ccF inputmode=numeric value='' style="width:100%; text-align:center" maxlength=10 pattern=^(?:[0-9]{8,10})$ required></td>
-				<td><input name=supervisor_fechaF type=date style="width:100%; display:none" value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?>></td>
-				<td><input name=supervisor_horaF type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
+				<td><input name=supervisor_fechaF type=date style="width:100%; display:none" value='<?=$fecha_oculta;?>' min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
+				<td><input name=supervisor_horaF type=time value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
 				<td></td>
 			</tr>
 			<tr><td>SUPERVISOR</td><td>CÉDULA</td><td></td><td>HORA</td></tr>
 			<tr style=height:20px><td></td></tr>
 			<tr>
-				<td><input name=emisorF style=width:100% maxlength=30 value="" pattern=.{1,} onkeyup=mayuscula(this) required></td>
+				<td><input name=emisorF style=width:100% maxlength=30 value='' pattern=.{1,} onkeyup=mayuscula(this) required></td>
 				<td><input name=emisor_ccF inputmode=numeric value='' style="width:100%; text-align:center" maxlength=10 pattern=^(?:[0-9]{8,10})$ required></td>
-				<td><input name=emisor_fechaF type=date style="width:100%; display:none" value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?>></td>
-				<td><input name=emisor_horaF type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
+				<td><input name=emisor_fechaF type=date style="width:100%; display:none" value='<?=$fecha_oculta;?>' min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
+				<td><input name=emisor_horaF type=time value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
 			</tr>
 			<tr><td>EMISOR</td><td>CÉDULA</td><td></td><td>HORA</td></tr>
 		</table>
 		<hr>
-	<br>
-	<table>
-		<tr style="background-color:rgba(0,240,0,0); height:15%">
-		<td>
-			<form method=post>
-			<select name=usuario id=usuario required>
-				<option value="" disabled selected>RESPONSABLE DEL FORMATO</option>
-				<option style="<? if ($numero_usuarios <= 0) {echo 'display:none';} ?>" value="<? echo $usuario[0]; ?>"><? echo $usuario[0]."@primax.com.co"; ?></option>
-				<option style="<? if ($numero_usuarios <= 1) {echo 'display:none';} ?>" value="<? echo $usuario[1]; ?>"><? echo $usuario[1]."@primax.com.co"; ?></option>
-				<option style="<? if ($numero_usuarios <= 2) {echo 'display:none';} ?>" value="<? echo $usuario[2]; ?>"><? echo $usuario[2]."@primax.com.co"; ?></option>
-				<option style="<? if ($numero_usuarios <= 3) {echo 'display:none';} ?>" value="<? echo $usuario[3]; ?>"><? echo $usuario[3]."@primax.com.co"; ?></option>
-				<option style="<? if ($numero_usuarios <= 4) {echo 'display:none';} ?>" value="<? echo $usuario[4]; ?>"><? echo $usuario[4]."@primax.com.co"; ?></option>
-				<option style="<? if ($numero_usuarios <= 5) {echo 'display:none';} ?>" value="<? echo $usuario[5]; ?>"><? echo $usuario[5]."@primax.com.co"; ?></option>
-				<option style="<? if ($numero_usuarios <= 6) {echo 'display:none';} ?>" value="<? echo $usuario[6]; ?>"><? echo $usuario[6]."@primax.com.co"; ?></option>
-				<option style="<? if ($numero_usuarios <= 7) {echo 'display:none';} ?>" value="<? echo $usuario[7]; ?>"><? echo $usuario[7]."@primax.com.co"; ?></option>
-				<option style="<? if ($numero_usuarios <= 8) {echo 'display:none';} ?>" value="<? echo $usuario[8]; ?>"><? echo $usuario[8]."@primax.com.co"; ?></option>
-				<option style="<? if ($numero_usuarios <= 9) {echo 'display:none';} ?>" value="<? echo $usuario[9]; ?>"><? echo $usuario[9]."@primax.com.co"; ?></option>
-			</select>
-			</form>
-		</td>
-		</tr>
-	</table>
-	<br>
-	<hr>
+		<table>
+			<tr height=30><td></td></tr>
+				<tr style="background-color:rgba(0,240,0,0); height:15%">
+					<td>
+						<select name=usuario id=usuario required>
+							<option value='' disabled selected>RESPONSABLE DEL FORMATO</option>
+							<? for ($i = 0; $i < $numero_usuarios && $i < 10; $i++): ?>
+								<option value="<?=$usuario[$i] ?>"><?=$usuario[$i] ?>@primax.com.co</option>
+							<? endfor; ?>
+						</select>
+					</td>
+				</tr>
+			<tr height=30><td></td></tr>
+		</table>
+		<hr>
 
 		<!-- *****************************************			 FIN DEL FORMULARIO			 ***************************************** -->
 
-		<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Fecha diligenciamiento: <?echo $fechaactual;?> / <?echo $horaactual;?></span>
-		<input style="display:none; width:3.10cm" id="fecha" name="fecha" value="<?echo $fechaactual;?> / <?echo $horaactual;?>" readonly><br>
-<!--		<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Quedan <?echo number_format($consec_por_usar,0,',','.');?> consecutivos, incluido este.</span><br> -->
+		<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Fecha diligenciamiento: <?=$fechaactual;?> / <?=$horaactual;?></span>
+		<input style="display:none; width:3.10cm" id="fecha" name="fecha" value="<?=$fechaactual;?> / <?=$horaactual;?>" readonly><br>
+<!--		<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Quedan <?=number_format($consec_por_usar,0,',','.');?> consecutivos, incluido este.</span><br> -->
 		<table border=0px>
 			<tr height=200>
 				<td><input type="image" src="../../../../../common/imagenes/grabar.png" alt="Submit" style="width:100; height:auto; border:0; background-color:rgba(0,0,0,0)"></td>
@@ -1462,7 +1333,7 @@
 			<tr>
 				<td><span style="font-family:Arlrdlt; font-size:30px; color:rgba(0,0,0,1)">REVISIÓN FRONT-END: 2024-10</span></td>
 				<td>
-					<a href="mailto:<?echo $correo_pedidos;?>?Subject=Solicitud%20pedido%20libretas%20permisos%20de%20trabajo">
+					<a href="mailto:<?=$correo_pedidos;?>?Subject=Solicitud%20pedido%20libretas%20permisos%20de%20trabajo">
 					<img src="../../../../../common/imagenes/piedepagina_horizontal.svg" style="pointer-events:auto; width:100%; height:auto">
 					</a>
 				</td>
@@ -1592,6 +1463,122 @@ function closeAllSelect(elmnt) {
 document.addEventListener("click", closeAllSelect);
 </script>
 <!-- *****************************************			 FIN DES-SELECCIONAR INPUT radio			 ***************************************** -->
+
+<!-- *****************************************			Control Tabla Personas Autorizadas		 ***************************************** -->
+		<script>
+			var
+				 c = document.getElementById("cantidad");
+				 n = document.getElementById("nombre");
+			 dkf = document.getElementById("dkf");
+				n1 = document.getElementById("nombre1");
+				n2 = document.getElementById("nombre2");
+				n3 = document.getElementById("nombre3");
+				n4 = document.getElementById("nombre4");
+				n5 = document.getElementById("nombre5");
+				c1 = document.getElementById("cedula1");
+				c2 = document.getElementById("cedula2");
+				c3 = document.getElementById("cedula3");
+				c4 = document.getElementById("cedula4");
+				c5 = document.getElementById("cedula5");
+				k1 = document.getElementById("cargo1");
+				k2 = document.getElementById("cargo2");
+				k3 = document.getElementById("cargo3");
+				k4 = document.getElementById("cargo4");
+				k5 = document.getElementById("cargo5");
+			document.getElementById("cantidad").addEventListener("blur", function(e) {
+				if (c.value <= 1) {c.value = 1;
+					n.disabled = false;		n.style.display = "block";
+				dkf.disabled = false; dkf.style.display = "block";
+				 n1.disabled = false; n1.style.display = "block"; n1.required = true;
+				 n2.disabled = true; n2.style.display = "none";
+				 n3.disabled = true; n3.style.display = "none";
+				 n4.disabled = true; n4.style.display = "none";
+				 n5.disabled = true; n5.style.display = "none";
+				 c1.disabled = false; c1.style.display = "block"; c1.required = true;
+				 c2.disabled = true; c2.style.display = "none";
+				 c3.disabled = true; c3.style.display = "none";
+				 c4.disabled = true; c4.style.display = "none";
+				 c5.disabled = true; c5.style.display = "none";
+				 k1.disabled = false; k1.style.display = "block"; k1.required = true;
+				 k2.disabled = true; k2.style.display = "none";
+				 k3.disabled = true; k3.style.display = "none";
+				 k4.disabled = true; k4.style.display = "none";
+				 k5.disabled = true; k5.style.display = "none";};
+				if (c.value == 2) {
+					n.disabled = false;		n.style.display = "block";
+				dkf.disabled = false; dkf.style.display = "block";
+				 n1.disabled = false; n1.style.display = "block"; n1.required = true;
+				 n2.disabled = false; n2.style.display = "block"; n2.required = true;
+				 n3.disabled = true; n3.style.display = "none";
+				 n4.disabled = true; n4.style.display = "none";
+				 n5.disabled = true; n5.style.display = "none";
+				 c1.disabled = false; c1.style.display = "block"; c1.required = true;
+				 c2.disabled = false; c2.style.display = "block"; c2.required = true;
+				 c3.disabled = true; c3.style.display = "none";
+				 c4.disabled = true; c4.style.display = "none";
+				 c5.disabled = true; c5.style.display = "none";
+				 k1.disabled = false; k1.style.display = "block"; k1.required = true;
+				 k2.disabled = false; k2.style.display = "block"; k2.required = true;
+				 k3.disabled = true; k3.style.display = "none";
+				 k4.disabled = true; k4.style.display = "none";
+				 k5.disabled = true; k5.style.display = "none";};
+				if (c.value == 3) {
+					n.disabled = false;		n.style.display = "block";
+				dkf.disabled = false; dkf.style.display = "block";
+				 n1.disabled = false; n1.style.display = "block"; n1.required = true;
+				 n2.disabled = false; n2.style.display = "block"; n2.required = true;
+				 n3.disabled = false; n3.style.display = "block"; n3.required = true;
+				 n4.disabled = true; n4.style.display = "none";
+				 n5.disabled = true; n5.style.display = "none";
+				 c1.disabled = false; c1.style.display = "block"; c1.required = true;
+				 c2.disabled = false; c2.style.display = "block"; c2.required = true;
+				 c3.disabled = false; c3.style.display = "block"; c3.required = true;
+				 c4.disabled = true; c4.style.display = "none";
+				 c5.disabled = true; c5.style.display = "none";
+				 k1.disabled = false; k1.style.display = "block"; k1.required = true;
+				 k2.disabled = false; k2.style.display = "block"; k2.required = true;
+				 k3.disabled = false; k3.style.display = "block"; k3.required = true;
+				 k4.disabled = true; k4.style.display = "none";
+				 k5.disabled = true; k5.style.display = "none";};
+				if (c.value == 4) {
+					n.disabled = false;		n.style.display = "block";
+				dkf.disabled = false; dkf.style.display = "block";
+				 n1.disabled = false; n1.style.display = "block"; n1.required = true;
+				 n2.disabled = false; n2.style.display = "block"; n2.required = true;
+				 n3.disabled = false; n3.style.display = "block"; n3.required = true;
+				 n4.disabled = false; n4.style.display = "block"; n4.required = true;
+				 n5.disabled = true; n5.style.display = "none";
+				 c1.disabled = false; c1.style.display = "block"; c1.required = true;
+				 c2.disabled = false; c2.style.display = "block"; c2.required = true;
+				 c3.disabled = false; c3.style.display = "block"; c3.required = true;
+				 c4.disabled = false; c4.style.display = "block"; c4.required = true;
+				 c5.disabled = true; c5.style.display = "none";
+				 k1.disabled = false; k1.style.display = "block"; k1.required = true;
+				 k2.disabled = false; k2.style.display = "block"; k2.required = true;
+				 k3.disabled = false; k3.style.display = "block"; k3.required = true;
+				 k4.disabled = false; k4.style.display = "block"; k4.required = true;
+				 k5.disabled = true; k5.style.display = "none";};
+				if (c.value >= 5) {c.value = 5;
+					n.disabled = false;		n.style.display = "block";
+				dkf.disabled = false; dkf.style.display = "block";
+				 n1.disabled = false; n1.style.display = "block"; n1.required = true;
+				 n2.disabled = false; n2.style.display = "block"; n2.required = true;
+				 n3.disabled = false; n3.style.display = "block"; n3.required = true;
+				 n4.disabled = false; n4.style.display = "block"; n4.required = true;
+				 n5.disabled = false; n5.style.display = "block"; n5.required = true;
+				 c1.disabled = false; c1.style.display = "block"; c1.required = true;
+				 c2.disabled = false; c2.style.display = "block"; c2.required = true;
+				 c3.disabled = false; c3.style.display = "block"; c3.required = true;
+				 c4.disabled = false; c4.style.display = "block"; c4.required = true;
+				 c5.disabled = false; c5.style.display = "block"; c5.required = true;
+				 k1.disabled = false; k1.style.display = "block"; k1.required = true;
+				 k2.disabled = false; k2.style.display = "block"; k2.required = true;
+				 k3.disabled = false; k3.style.display = "block"; k3.required = true;
+				 k4.disabled = false; k4.style.display = "block"; k4.required = true;
+				 k5.disabled = false; k5.style.display = "block"; k5.required = true;};});
+		</script>
+<!-- *****************************************			FIN Control Tabla Personas Autorizadas		 ***************************************** -->
+
 </form>
 <!-- /1 --></div>
 <script type='text/javascript'>document.oncontextmenu = function(){return false}</script>

@@ -298,20 +298,20 @@
 			$l = range('A','P');
 
 			echo '<style>
-				.tabla22		{border-collapse:collapse; width:100%; border:2px solid #ff7000}
-				.tabla22 td	{border:1px solid #ff7000; height:70px; text-align:center; vertical-align:middle; padding:0px}
-				.hora				{width:190px; background:#ff7000; color:#fff; font-weight:bold}
-				.result			{width:150px; background:#ff7000; color:#fff; font-weight:bold}
-				.i22				{width:95%; height:35px; border:2px solid rgba(255,112,0,1); border-radius:5px; padding:0px; text-align:center}
-				.i22:focus	{border-color:#ff7000; outline:none}
-				.req22			{border-color:rgba(0,0,255,0.5); background:rgba(0,255,0,0.1)}
+				.tabla22		{border-collapse:collapse; width:100%}
+				.tabla22 td	{border:2px solid #ff7000ff; height:70px; text-align:center; vertical-align:middle; padding:0px}
+				.hora				{width:190px; background:#ff7000bf; color:#000000ff; font-weight:bold}
+				.result			{width:150px; background:#ff7000bf; color:#000000ff; font-weight:bold}
+				.i22				{width:95%; height:35px; border:2px solid #ff7000ff; border-radius:5px; padding:0px; text-align:center}
+				.i22:focus	{border-color:#ff0000ff; outline:none}
+				.req22			{border:2px solid rgba(0,0,255,1); background:rgba(0,255,0,0.1)}
 			</style>';
 
 			echo '<table class=tabla22>
 				<tr>';
 					for ($i = 1; $i <= $columnas; $i++)
-						echo "<td style='border:1px solid #ffffff' class=hora>Hora<br>$i</td>
-						<td style='border:1px solid #ffffff' class=result>Resultado<br>$i</td>";
+						echo "<td style='border:2px solid #000000ff' class='hora'>Hora<br>$i</td>
+						<td style='border:2px solid #000000ff' class='result'>Resultado<br>$i</td>";
 				echo '</tr>';
 				for($i = 0; $i < $filas; $i++) {
 				echo '<tr>';
@@ -349,7 +349,7 @@
 
 		<div style="position:relative; width:59.50%; left:0.50%; top:580px; background-color:white">
 			<table border=1>
-				<tr height=75px><td class=A3>PERSONAL<br>QUE INGRESA</td></tr>
+				<tr height=80px><td class=A3>PERSONAL<br>QUE INGRESA</td></tr>
 				<tr height=50px><td class=A1><input name=B231 maxlength=30 type=texto pattern=.{1,} onkeyup=mayuscula(this) value="" required></td></tr>
 				<tr height=50px><td class=A1><input name=B232 maxlength=30 type=texto pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
 				<tr height=50px><td class=A1><input name=B233 maxlength=30 type=texto pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
@@ -357,27 +357,27 @@
 				<tr height=50px><td class=A1><input name=B235 maxlength=30 type=texto pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
 			</table>
 		</div>
-		<div style="position:relative; width:39.25%; left:60.00%; top:253.50px; background-color:white; overflow:scroll">
+		<div style="position:relative; width:39.25%; left:60.00%; top:248px; background-color:white; overflow:scroll">
 			<?php
 			$filas = 5;
 			$columnas = 7;
 			$l = range('A','P');
 
 			echo '<style>
-				.tabla23		{border-collapse:collapse; width:100%; border:2px solid #ff7000}
-				.tabla23 td	{border:1px solid #ff7000; text-align:center; vertical-align:middle; padding:0px}
-				.horaE			{width:190px; background:#ff7000; color:#fff; font-weight:bold}
-				.horaS			{width:190px; background:#ff7000; color:#fff; font-weight:bold}
-				.i23				{width:95%; height:35px; border:2px solid rgba(255,112,0,1); border-radius:5px; padding:0px; text-align:center}
-				.i23:focus	{border-color:#ff7000; outline:none}
-				.req23			{border-color:rgba(0,0,255,0.5); background:rgba(0,255,0,0.1)}
+				.tabla23		{border-collapse:collapse; width:100%; border:2px solid #ff7000ff}
+				.tabla23 td	{border:2px solid #ff7000ff; text-align:center; vertical-align:middle; padding:0px}
+				.horaE			{width:190px; background:#ff7000bf; color:#000000ff; font-weight:bold}
+				.horaS			{width:190px; background:#ff7000bf; color:#000000ff; font-weight:bold}
+				.i23				{width:95%; height:35px; border:2px solid #ff7000ff; border-radius:5px; padding:0px; text-align:center}
+				.i23:focus	{border-color:#ff7000ff; outline:none}
+				.req23			{border:2px solid rgba(0,0,255,1); background:#ff7000ff}
 			</style>';
 
 			echo '<table class=tabla23>
-				<tr style=height:75px>';
+				<tr style=height:80px>';
 					for ($i = 1; $i <= $columnas; $i++)
-						echo "<td style='border:1px solid #ffffff' class=horaE>Hora Entrada<br>$i</td>
-						<td style='border:1px solid #ffffff' class=horaS>Hora Salida<br>$i</td>";
+						echo "<td style='border:2px solid #000000ff' class=horaE>Hora Entrada<br>$i</td>
+						<td style='border:2px solid #000000ff' class=horaS>Hora Salida<br>$i</td>";
 				echo '</tr>';
 				for ($i = 0; $i < $filas; $i++) {
 				echo '<tr style=height:50px>';
