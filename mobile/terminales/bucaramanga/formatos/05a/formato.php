@@ -7,13 +7,13 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <title>Diligenciar Consecutivo</title>
 <style>
-	td.C			{font-size:30px; text-align:left; font-weight:bold}
-	td.Cn			{font-size:30px; text-align:right}
-	td.Cp			{font-size:30px; text-align:left; padding:0 5}
+	td.C			{font-size:30px; text-align:left;		font-weight:bold}
+	td.Cn			{font-size:28px; text-align:center;	vertical-align:middle}
+	td.Cp			{font-size:28px; text-align:left;		vertical-align:middle; padding:0 7 0 7}
 	tr.C			{height: 85px; vertical-align:middle}
 	tr.Cn			{height:180px; vertical-align:middle}
 	tr.Cn0		{height:111px; vertical-align:top}
-	tr.Cn1		{height: 44px; vertical-align:top}
+	tr.Cn1		{height: 48px; vertical-align:top}
 	tr.Cn2		{height: 72px; vertical-align:top}
 	tr.Cn3		{height:108px; vertical-align:top}
 	tr.Cn4		{height:144px; vertical-align:top}
@@ -30,12 +30,6 @@
 	function f4a() {document.getElementById("fechaB4a").value = document.getElementById("fechaB4").value;}
 	function f5a() {document.getElementById("fechaB5a").value = document.getElementById("fechaB5").value;}
 	function f6a() {document.getElementById("fechaB6a").value = document.getElementById("fechaB6").value;}
-	function f1b() {document.getElementById("fechaB1b").value = document.getElementById("fechaB1").value;}
-	function f2b() {document.getElementById("fechaB2b").value = document.getElementById("fechaB2").value;}
-	function f3b() {document.getElementById("fechaB3b").value = document.getElementById("fechaB3").value;}
-	function f4b() {document.getElementById("fechaB4b").value = document.getElementById("fechaB4").value;}
-	function f5b() {document.getElementById("fechaB5b").value = document.getElementById("fechaB5").value;}
-	function f6b() {document.getElementById("fechaB6b").value = document.getElementById("fechaB6").value;}
 </script>
 <body style="font-family:Arial; color:rgba(0,0,0,1); text-align:center">
 <?
@@ -45,6 +39,9 @@
 	include ("../../../../../common/conectar_db_usuarios.php");
 	include ("../../../../../normal/usuarios.php");
 	include ("../../../../../normal/terminales/".$terminal."/formatos/".basename(dirname(__FILE__))."/consecutivos".basename(dirname(__FILE__)).".php");
+	$fechamin  = date("Y-m-d", strtotime("-  0 days", strtotime(date("Y-m-d"))));
+	$fechamax  = date("Y-m-d", strtotime("+ 15 days", strtotime(date("Y-m-d"))));
+
 	$formato = basename(dirname(__FILE__));
 	$formulario = "formulario".$formato;
 	$cons = "SELECT MAX(consecutivo) as consecutivo FROM formulario".$formato." LIMIT 1";
@@ -70,7 +67,7 @@
 	<img src=../../../../../common/imagenes/whatsapp.png style=pointer-events:auto width=70 height=auto></a>
 </div>
 <form id=formato name=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
-<!-- 3 -->		<div style="position:absolute; left:50vw; margin-left:-50vw; top:0px; width:100%; height:7375px; overflow:hidden">
+<!-- 3 -->		<div style="position:absolute; left:50vw; margin-left:-50vw; top:0px; width:100%; height:7490px; overflow:hidden">
 		<table border=0 style="color:black; background-color:rgba(255,255,255,1)">
 			<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
 			<tr height=100>
@@ -216,12 +213,12 @@
 <!-- 8 -->			<div style="position:relative; width:43.00%; left:56.25%; top:-551.25px; background-color:white; overflow:scroll">
 			<table border=1>
 				<tr class=C>
-					<td style=width:205px class=A21>DÍA 1<input name=fechaB1 id=fechaB1 type=date onfocusout="f1a(); f1b()" value='<?=$fecha_oculta;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
-					<td style=width:205px class=A22>DÍA 2<input name=fechaB2 id=fechaB2 type=date onfocusout="f2a(); f2b()" value='<?=$fecha_oculta;?>'></td>
-					<td style=width:205px class=A21>DÍA 3<input name=fechaB3 id=fechaB3 type=date onfocusout="f3a(); f3b()" value='<?=$fecha_oculta;?>'></td>
-					<td style=width:205px class=A22>DÍA 4<input name=fechaB4 id=fechaB4 type=date onfocusout="f4a(); f4b()" value='<?=$fecha_oculta;?>'></td>
-					<td style=width:205px class=A21>DÍA 5<input name=fechaB5 id=fechaB5 type=date onfocusout="f5a(); f5b()" value='<?=$fecha_oculta;?>'></td>
-					<td style=width:205px class=A22>DÍA 6<input name=fechaB6 id=fechaB6 type=date onfocusout="f6a(); f6b()" value='<?=$fecha_oculta;?>'></td>
+					<td style=width:205px class=A21>DÍA 1<input name=fechaB1 id=fechaB1 type=date onfocusout="f1a()" min=<?=$fechamin ;?> max=<?=$fechamax;?> required></td>
+					<td style=width:205px class=A22>DÍA 2<input name=fechaB2 id=fechaB2 type=date onfocusout="f2a()" min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
+					<td style=width:205px class=A21>DÍA 3<input name=fechaB3 id=fechaB3 type=date onfocusout="f3a()" min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
+					<td style=width:205px class=A22>DÍA 4<input name=fechaB4 id=fechaB4 type=date onfocusout="f4a()" min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
+					<td style=width:205px class=A21>DÍA 5<input name=fechaB5 id=fechaB5 type=date onfocusout="f5a()" min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
+					<td style=width:205px class=A22>DÍA 6<input name=fechaB6 id=fechaB6 type=date onfocusout="f6a()" min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
 				</tr>
 				<tr class=C>
 					<td class=A21><input name=num_cert_habil1 value='' inputmode=numeric style="width:60%; text-align:center" maxlength=6 pattern=^(?:[0-9]{4,6})$ required></td>
@@ -332,815 +329,176 @@
 		</table>
 
 <!-- 10 -->			<div style="position:relative; width:22.60%; left:0.50%; top:8.75px; background-color:white; overflow:scroll">
-			<table border=1>
-				<tr height=70px>
-					<td colspan=3 style=width:210px class=A21>DÍA 1<input id=fechaB1a style="width:100%; text-align:center; font-size:30px; background-color:rgba(0,0,0,0); border:0" readonly></td>
-					<td colspan=3 style=width:210px class=A22>DÍA 2<input id=fechaB2a style="width:100%; text-align:center; font-size:30px; background-color:rgba(0,0,0,0); border:0" readonly></td>
-					<td colspan=3 style=width:210px class=A21>DÍA 3<input id=fechaB3a style="width:100%; text-align:center; font-size:30px; background-color:rgba(0,0,0,0); border:0" readonly></td>
-					<td colspan=3 style=width:210px class=A22>DÍA 4<input id=fechaB4a style="width:100%; text-align:center; font-size:30px; background-color:rgba(0,0,0,0); border:0" readonly></td>
-					<td colspan=3 style=width:210px class=A21>DÍA 5<input id=fechaB5a style="width:100%; text-align:center; font-size:30px; background-color:rgba(0,0,0,0); border:0" readonly></td>
-					<td colspan=3 style=width:210px class=A22>DÍA 6<input id=fechaB6a style="width:100%; text-align:center; font-size:30px; background-color:rgba(0,0,0,0); border:0" readonly></td>
-				</tr>
-				<tr height=40px>
-					<td class=A21>SI</td><td class=A21>NO</td><td class=A21>NA</td>
-					<td class=A22>SI</td><td class=A22>NO</td><td class=A22>NA</td>
-					<td class=A21>SI</td><td class=A21>NO</td><td class=A21>NA</td>
-					<td class=A22>SI</td><td class=A22>NO</td><td class=A22>NA</td>
-					<td class=A21>SI</td><td class=A21>NO</td><td class=A21>NA</td>
-					<td class=A22>SI</td><td class=A22>NO</td><td class=A22>NA</td>
-				</tr>
-				<tr class=Cn3>
-					<td class=A21><input name=C1_1 id=C1_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C1_1 id=C1a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C1_1 id=C1b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C1_2 id=C1_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C1_2 id=C1a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C1_2 id=C1b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C1_3 id=C1_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C1_3 id=C1a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C1_3 id=C1b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C1_4 id=C1_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C1_4 id=C1a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C1_4 id=C1b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C1_5 id=C1_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C1_5 id=C1a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C1_5 id=C1b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C1_6 id=C1_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C1_6 id=C1a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C1_6 id=C1b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>
-				<tr class=Cn2>
-					<td class=A21><input name=C2_1 id=C2_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C2_1 id=C2a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C2_1 id=C2b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C2_2 id=C2_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C2_2 id=C2a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C2_2 id=C2b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C2_3 id=C2_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C2_3 id=C2a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C2_3 id=C2b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C2_4 id=C2_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C2_4 id=C2a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C2_4 id=C2b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C2_5 id=C2_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C2_5 id=C2a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C2_5 id=C2b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C2_6 id=C2_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C2_6 id=C2a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C2_6 id=C2b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>
-				<tr class=Cn3>
-					<td class=A21><input name=C3_1 id=C3_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C3_1 id=C3a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C3_1 id=C3b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C3_2 id=C3_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C3_2 id=C3a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C3_2 id=C3b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C3_3 id=C3_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C3_3 id=C3a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C3_3 id=C3b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C3_4 id=C3_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C3_4 id=C3a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C3_4 id=C3b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C3_5 id=C3_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C3_5 id=C3a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C3_5 id=C3b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C3_6 id=C3_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C3_6 id=C3a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C3_6 id=C3b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>	
-				<tr class=Cn3>
-					<td class=A21><input name=C4_1 id=C4_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C4_1 id=C4a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C4_1 id=C4b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C4_2 id=C4_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C4_2 id=C4a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C4_2 id=C4b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C4_3 id=C4_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C4_3 id=C4a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C4_3 id=C4b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C4_4 id=C4_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C4_4 id=C4a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C4_4 id=C4b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C4_5 id=C4_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C4_5 id=C4a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C4_5 id=C4b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C4_6 id=C4_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C4_6 id=C4a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C4_6 id=C4b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>
-				<tr class=Cn2>
-					<td class=A21><input name=C5_1 id=C5_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C5_1 id=C5a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C5_1 id=C5b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C5_2 id=C5_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C5_2 id=C5a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C5_2 id=C5b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C5_3 id=C5_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C5_3 id=C5a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C5_3 id=C5b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C5_4 id=C5_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C5_4 id=C5a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C5_4 id=C5b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C5_5 id=C5_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C5_5 id=C5a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C5_5 id=C5b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C5_6 id=C5_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C5_6 id=C5a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C5_6 id=C5b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>
-				<tr class=Cn1>
-					<td class=A21><input name=C6_1 id=C6_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C6_1 id=C6a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C6_1 id=C6b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C6_2 id=C6_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C6_2 id=C6a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C6_2 id=C6b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C6_3 id=C6_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C6_3 id=C6a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C6_3 id=C6b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C6_4 id=C6_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C6_4 id=C6a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C6_4 id=C6b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C6_5 id=C6_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C6_5 id=C6a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C6_5 id=C6b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C6_6 id=C6_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C6_6 id=C6a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C6_6 id=C6b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>
-				<tr class=Cn2>
-					<td class=A21><input name=C7_1 id=C7_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C7_1 id=C7a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C7_1 id=C7b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C7_2 id=C7_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C7_2 id=C7a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C7_2 id=C7b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C7_3 id=C7_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C7_3 id=C7a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C7_3 id=C7b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C7_4 id=C7_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C7_4 id=C7a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C7_4 id=C7b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C7_5 id=C7_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C7_5 id=C7a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C7_5 id=C7b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C7_6 id=C7_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C7_6 id=C7a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C7_6 id=C7b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>
-				<tr class=Cn4>
-					<td class=A21><input name=C8_1 id=C8_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C8_1 id=C8a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C8_1 id=C8b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C8_2 id=C8_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C8_2 id=C8a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C8_2 id=C8b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C8_3 id=C8_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C8_3 id=C8a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C8_3 id=C8b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C8_4 id=C8_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C8_4 id=C8a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C8_4 id=C8b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C8_5 id=C8_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C8_5 id=C8a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C8_5 id=C8b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C8_6 id=C8_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C8_6 id=C8a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C8_6 id=C8b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>
-				<tr class=Cn1>
-					<td class=A21><input name=C9_1 id=C9_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C9_1 id=C9a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C9_1 id=C9b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C9_2 id=C9_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C9_2 id=C9a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C9_2 id=C9b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C9_3 id=C9_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C9_3 id=C9a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C9_3 id=C9b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C9_4 id=C9_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C9_4 id=C9a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C9_4 id=C9b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C9_5 id=C9_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C9_5 id=C9a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C9_5 id=C9b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C9_6 id=C9_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C9_6 id=C9a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C9_6 id=C9b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>
-				<tr class=Cn2>
-					<td class=A21><input name=C10_1 id=C10_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C10_1 id=C10a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C10_1 id=C10b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C10_2 id=C10_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C10_2 id=C10a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C10_2 id=C10b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C10_3 id=C10_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C10_3 id=C10a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C10_3 id=C10b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C10_4 id=C10_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C10_4 id=C10a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C10_4 id=C10b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C10_5 id=C10_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C10_5 id=C10a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C10_5 id=C10b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C10_6 id=C10_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C10_6 id=C10a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C10_6 id=C10b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>
-				<tr class=Cn1>
-					<td class=A21><input name=C11_1 id=C11_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C11_1 id=C11a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C11_1 id=C11b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C11_2 id=C11_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C11_2 id=C11a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C11_2 id=C11b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C11_3 id=C11_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C11_3 id=C11a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C11_3 id=C11b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C11_4 id=C11_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C11_4 id=C11a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C11_4 id=C11b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C11_5 id=C11_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C11_5 id=C11a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C11_5 id=C11b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C11_6 id=C11_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C11_6 id=C11a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C11_6 id=C11b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>
-				<tr class=Cn2>
-					<td class=A21><input name=C12_1 id=C12_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C12_1 id=C12a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C12_1 id=C12b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C12_2 id=C12_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C12_2 id=C12a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C12_2 id=C12b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C12_3 id=C12_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C12_3 id=C12a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C12_3 id=C12b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C12_4 id=C12_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C12_4 id=C12a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C12_4 id=C12b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C12_5 id=C12_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C12_5 id=C12a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C12_5 id=C12b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C12_6 id=C12_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C12_6 id=C12a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C12_6 id=C12b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>
-					<tr class=Cn4>
-					<td class=A21><input name=C13_1 id=C13_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C13_1 id=C13a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C13_1 id=C13b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C13_2 id=C13_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C13_2 id=C13a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C13_2 id=C13b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C13_3 id=C13_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C13_3 id=C13a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C13_3 id=C13b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C13_4 id=C13_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C13_4 id=C13a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C13_4 id=C13b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C13_5 id=C13_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C13_5 id=C13a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C13_5 id=C13b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C13_6 id=C13_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C13_6 id=C13a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C13_6 id=C13b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>
-				<tr class=Cn1>
-					<td class=A21><input name=C14_1 id=C14_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C14_1 id=C14a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C14_1 id=C14b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C14_2 id=C14_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C14_2 id=C14a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C14_2 id=C14b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C14_3 id=C14_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C14_3 id=C14a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C14_3 id=C14b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C14_4 id=C14_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C14_4 id=C14a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C14_4 id=C14b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C14_5 id=C14_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C14_5 id=C14a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C14_5 id=C14b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C14_6 id=C14_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C14_6 id=C14a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C14_6 id=C14b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>
-				<tr class=Cn3>
-					<td class=A21><input name=C15_1 id=C15_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C15_1 id=C15a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C15_1 id=C15b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C15_2 id=C15_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C15_2 id=C15a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C15_2 id=C15b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C15_3 id=C15_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C15_3 id=C15a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C15_3 id=C15b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C15_4 id=C15_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C15_4 id=C15a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C15_4 id=C15b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C15_5 id=C15_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C15_5 id=C15a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C15_5 id=C15b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C15_6 id=C15_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C15_6 id=C15a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C15_6 id=C15b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>	
-				<tr class=Cn1>
-					<td class=A21><input name=C16_1 id=C16_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C16_1 id=C16a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C16_1 id=C16b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C16_2 id=C16_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C16_2 id=C16a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C16_2 id=C16b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C16_3 id=C16_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C16_3 id=C16a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C16_3 id=C16b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C16_4 id=C16_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C16_4 id=C16a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C16_4 id=C16b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C16_5 id=C16_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C16_5 id=C16a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C16_5 id=C16b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C16_6 id=C16_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C16_6 id=C16a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C16_6 id=C16b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>
-				<tr class=Cn2>
-					<td class=A21><input name=C17_1 id=C17_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C17_1 id=C17a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C17_1 id=C17b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C17_2 id=C17_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C17_2 id=C17a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C17_2 id=C17b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C17_3 id=C17_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C17_3 id=C17a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C17_3 id=C17b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C17_4 id=C17_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C17_4 id=C17a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C17_4 id=C17b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C17_5 id=C17_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C17_5 id=C17a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C17_5 id=C17b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C17_6 id=C17_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C17_6 id=C17a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C17_6 id=C17b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>	
-				<tr class=Cn1>
-					<td class=A21><input name=C18_1 id=C18_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C18_1 id=C18a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C18_1 id=C18b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C18_2 id=C18_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C18_2 id=C18a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C18_2 id=C18b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C18_3 id=C18_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C18_3 id=C18a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C18_3 id=C18b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C18_4 id=C18_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C18_4 id=C18a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C18_4 id=C18b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C18_5 id=C18_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C18_5 id=C18a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C18_5 id=C18b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C18_6 id=C18_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C18_6 id=C18a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C18_6 id=C18b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>
-				<tr class=Cn2>
-					<td class=A21><input name=C19_1 id=C19_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C19_1 id=C19a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C19_1 id=C19b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C19_2 id=C19_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C19_2 id=C19a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C19_2 id=C19b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C19_3 id=C19_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C19_3 id=C19a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C19_3 id=C19b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C19_4 id=C19_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C19_4 id=C19a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C19_4 id=C19b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C19_5 id=C19_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C19_5 id=C19a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C19_5 id=C19b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C19_6 id=C19_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C19_6 id=C19a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C19_6 id=C19b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>	
-				<tr class=Cn2>
-					<td class=A21><input name=C20_1 id=C20_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C20_1 id=C20a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C20_1 id=C20b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C20_2 id=C20_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C20_2 id=C20a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C20_2 id=C20b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C20_3 id=C20_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C20_3 id=C20a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C20_3 id=C20b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C20_4 id=C20_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C20_4 id=C20a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C20_4 id=C20b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C20_5 id=C20_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C20_5 id=C20a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C20_5 id=C20b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C20_6 id=C20_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C20_6 id=C20a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C20_6 id=C20b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>	
-				<tr class=Cn3>
-					<td class=A21><input name=C21_1 id=C21_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C21_1 id=C21a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C21_1 id=C21b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C21_2 id=C21_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C21_2 id=C21a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C21_2 id=C21b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C21_3 id=C21_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C21_3 id=C21a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C21_3 id=C21b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C21_4 id=C21_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C21_4 id=C21a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C21_4 id=C21b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C21_5 id=C21_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C21_5 id=C21a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C21_5 id=C21b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C21_6 id=C21_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C21_6 id=C21a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C21_6 id=C21b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>	
-				<tr class=Cn2>
-					<td class=A21><input name=C22_1 id=C22_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C22_1 id=C22a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C22_1 id=C22b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C22_2 id=C22_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C22_2 id=C22a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C22_2 id=C22b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C22_3 id=C22_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C22_3 id=C22a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C22_3 id=C22b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C22_4 id=C22_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C22_4 id=C22a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C22_4 id=C22b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C22_5 id=C22_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C22_5 id=C22a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C22_5 id=C22b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C22_6 id=C22_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C22_6 id=C22a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C22_6 id=C22b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>
-				<tr class=Cn3>
-					<td class=A21><input name=C23_1 id=C23_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C23_1 id=C23a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C23_1 id=C23b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C23_2 id=C23_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C23_2 id=C23a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C23_2 id=C23b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C23_3 id=C23_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C23_3 id=C23a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C23_3 id=C23b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C23_4 id=C23_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C23_4 id=C23a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C23_4 id=C23b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C23_5 id=C23_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C23_5 id=C23a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C23_5 id=C23b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C23_6 id=C23_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C23_6 id=C23a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C23_6 id=C23b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>
+		<?php
+		// Configuración simple
+		$config = [
+							'dias' => 6,
+							'criterios' => 34,
+							'opciones' => ['SI', 'NO', 'NA'],
+							'clases' => ['A21', 'A22'],
+							'alturas' => ['Cn3', 'Cn2', 'Cn3', 'Cn3', 'Cn2', 'Cn1', 'Cn2', 'Cn4', 'Cn1', 'Cn2',
+														'Cn1', 'Cn2', 'Cn4', 'Cn1', 'Cn3', 'Cn1', 'Cn2', 'Cn1', 'Cn2', 'Cn2',
+														'Cn3', 'Cn2', 'Cn3', 'Cn2', 'Cn2', 'Cn1', 'Cn1', 'Cn1', 'Cn1', 'Cn1',
+														'Cn1', 'Cn1', 'Cn1', 'Cn1']];
 
-<!--
-				<tr height=70px>
-					<td colspan=3 class=A21>DÍA 1<input id=fechaB1b style="width:100%; text-align:center; font-size:30px; background-color:rgba(0,0,0,0); border:0" readonly></td>
-					<td colspan=3 class=A22>DÍA 2<input id=fechaB2b style="width:100%; text-align:center; font-size:30px; background-color:rgba(0,0,0,0); border:0" readonly></td>
-					<td colspan=3 class=A21>DÍA 3<input id=fechaB3b style="width:100%; text-align:center; font-size:30px; background-color:rgba(0,0,0,0); border:0" readonly></td>
-					<td colspan=3 class=A22>DÍA 4<input id=fechaB4b style="width:100%; text-align:center; font-size:30px; background-color:rgba(0,0,0,0); border:0" readonly></td>
-					<td colspan=3 class=A21>DÍA 5<input id=fechaB5b style="width:100%; text-align:center; font-size:30px; background-color:rgba(0,0,0,0); border:0" readonly></td>
-					<td colspan=3 class=A22>DÍA 6<input id=fechaB6b style="width:100%; text-align:center; font-size:30px; background-color:rgba(0,0,0,0); border:0" readonly></td>
-				</tr>
-				<tr height=40px>
-					<td class=A21>SI</td><td class=A21>NO</td><td class=A21>NA</td>
-					<td class=A22>SI</td><td class=A22>NO</td><td class=A22>NA</td>
-					<td class=A21>SI</td><td class=A21>NO</td><td class=A21>NA</td>
-					<td class=A22>SI</td><td class=A22>NO</td><td class=A22>NA</td>
-					<td class=A21>SI</td><td class=A21>NO</td><td class=A21>NA</td>
-					<td class=A22>SI</td><td class=A22>NO</td><td class=A22>NA</td>
-				</tr>
--->
-				<tr height=70px><td colspan=18 style=background-color:rgba(0,0,0,0.20)></td></tr>
+		// Función simple para generar ID
+		function getId($criterio, $dia, $index) {return $index == 0 ? "C{$criterio}_{$dia}" : "C{$criterio}" . chr(96 + $index) . "_{$dia}";}
+		?>
 
-				<tr class=Cn2>
-					<td class=A21><input name=C24_1 id=C24_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C24_1 id=C24a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C24_1 id=C24b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C24_2 id=C24_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C24_2 id=C24a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C24_2 id=C24b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C24_3 id=C24_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C24_3 id=C24a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C24_3 id=C24b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C24_4 id=C24_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C24_4 id=C24a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C24_4 id=C24b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C24_5 id=C24_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C24_5 id=C24a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C24_5 id=C24b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C24_6 id=C24_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C24_6 id=C24a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C24_6 id=C24b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>	
-				<tr class=Cn2>
-					<td class=A21><input name=C25_1 id=C25_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C25_1 id=C25a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C25_1 id=C25b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C25_2 id=C25_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C25_2 id=C25a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C25_2 id=C25b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C25_3 id=C25_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C25_3 id=C25a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C25_3 id=C25b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C25_4 id=C25_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C25_4 id=C25a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C25_4 id=C25b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C25_5 id=C25_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C25_5 id=C25a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C25_5 id=C25b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C25_6 id=C25_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C25_6 id=C25a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C25_6 id=C25b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
+		<style>
+		.tabla-verificacion			{width: 100%; border-collapse: collapse; font-family: Arial}
+		.tabla-verificacion td	{border: 1px solid #000; text-align: center; vertical-align: middle; padding: 5px}
+		.fecha-input						{width: 100%; text-align: center; font-size: 30px; background-color: transparent; border: 0}
+		.A21										{background-color: #f8f8f8}
+		.A22										{background-color: #e8e8e8}
+		.Cn1										{height: 44px}
+		.Cn2										{height: 72px}
+		.Cn3										{height: 108px}
+		.Cn4										{height: 144px}
+		@media (max-width: 768px) {.fecha-input {font-size: 20px} .tabla-verificacion {font-size: 12px}}
+		</style>
+
+		<table class="tabla-verificacion" border="1">
+			<!-- Encabezado días -->
+			<tr style="height: 70px;">
+				<?php for ($dia = 1; $dia <= $config['dias']; $dia++): ?>
+					<td colspan="3" class="<?= $config['clases'][($dia - 1) % 2] ?>" style="width: 210px; font-weight: bold;">
+						 DÍA <?= $dia ?>
+						 <input id="fechaB<?= $dia ?>a" class="fecha-input" readonly>
+					</td>
+				<?php endfor; ?>
+			</tr>
+
+			<!-- Encabezado opciones -->
+			<tr style="height: 40px; font-weight: bold;">
+				<?php for ($dia = 1; $dia <= $config['dias']; $dia++): ?>
+					<?php foreach ($config['opciones'] as $opcion): ?>
+						<td class="<?= $config['clases'][($dia - 1) % 2] ?>"><?= $opcion ?></td>
+					<?php endforeach; ?>
+				<?php endfor; ?>
+			</tr>
+
+			<!-- Filas de criterios -->
+			<?php for ($criterio = 1; $criterio <= 23; $criterio++): ?>
+				<tr class="<?= $config['alturas'][$criterio - 1] ?>">
+					<?php for ($dia = 1; $dia <= $config['dias']; $dia++): ?>
+						<?php foreach ($config['opciones'] as $index => $opcion): ?>
+							<td class="<?= $config['clases'][($dia - 1) % 2] ?>">
+								<input 
+										name="C<?= $criterio ?>_<?= $dia ?>" 
+										id="<?= getId($criterio, $dia, $index) ?>" 
+										type="radio" 
+										value="<?= $opcion ?>" 
+										onclick="gestionarClickRadio(this)"
+										<?= ($criterio == 1 && $dia == 1) ? 'required' : '' ?>
+								>
+							</td>
+						<?php endforeach; ?>
+					<?php endfor; ?>
 				</tr>
-				<tr class=Cn1>
-					<td class=A21><input name=C26_1 id=C26_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C26_1 id=C26a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C26_1 id=C26b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C26_2 id=C26_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C26_2 id=C26a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C26_2 id=C26b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C26_3 id=C26_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C26_3 id=C26a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C26_3 id=C26b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C26_4 id=C26_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C26_4 id=C26a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C26_4 id=C26b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C26_5 id=C26_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C26_5 id=C26a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C26_5 id=C26b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C26_6 id=C26_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C26_6 id=C26a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C26_6 id=C26b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
+			<?php endfor; ?>
+
+			<!-- Separador EPPs -->
+			<tr style="height: 70px;">
+				<td colspan="<?= $config['dias'] * 3 ?>" style="background-color: rgba(0,0,0,0.20);"></td>
+			</tr>
+				
+			<!-- EPPs (criterios 24-34) -->
+			<?php for ($criterio = 24; $criterio <= $config['criterios']; $criterio++): ?>
+				<tr class="<?= $config['alturas'][$criterio - 1] ?>">
+					<?php for ($dia = 1; $dia <= $config['dias']; $dia++): ?>
+						<?php foreach ($config['opciones'] as $index => $opcion): ?>
+							<td class="<?= $config['clases'][($dia - 1) % 2] ?>">
+								<input 
+										name="C<?= $criterio ?>_<?= $dia ?>" 
+										id="<?= getId($criterio, $dia, $index) ?>" 
+										type="radio" 
+										value="<?= $opcion ?>" 
+										onclick="gestionarClickRadio(this)"
+										<?= ($criterio == 1 && $dia == 1) ? 'required' : '' ?>
+								>
+							</td>
+						<?php endforeach; ?>
+					<?php endfor; ?>
 				</tr>
-				<tr class=Cn1>
-					<td class=A21><input name=C27_1 id=C27_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C27_1 id=C27a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C27_1 id=C27b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C27_2 id=C27_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C27_2 id=C27a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C27_2 id=C27b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C27_3 id=C27_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C27_3 id=C27a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C27_3 id=C27b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C27_4 id=C27_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C27_4 id=C27a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C27_4 id=C27b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C27_5 id=C27_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C27_5 id=C27a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C27_5 id=C27b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C27_6 id=C27_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C27_6 id=C27a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C27_6 id=C27b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>	
-				<tr class=Cn1>
-					<td class=A21><input name=C28_1 id=C28_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C28_1 id=C28a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C28_1 id=C28b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C28_2 id=C28_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C28_2 id=C28a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C28_2 id=C28b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C28_3 id=C28_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C28_3 id=C28a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C28_3 id=C28b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C28_4 id=C28_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C28_4 id=C28a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C28_4 id=C28b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C28_5 id=C28_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C28_5 id=C28a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C28_5 id=C28b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C28_6 id=C28_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C28_6 id=C28a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C28_6 id=C28b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>
-				<tr class=Cn1>
-					<td class=A21><input name=C29_1 id=C29_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C29_1 id=C29a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C29_1 id=C29b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C29_2 id=C29_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C29_2 id=C29a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C29_2 id=C29b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C29_3 id=C29_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C29_3 id=C29a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C29_3 id=C29b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C29_4 id=C29_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C29_4 id=C29a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C29_4 id=C29b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C29_5 id=C29_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C29_5 id=C29a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C29_5 id=C29b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C29_6 id=C29_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C29_6 id=C29a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C29_6 id=C29b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>
-				<tr class=Cn1>
-					<td class=A21><input name=C30_1 id=C30_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C30_1 id=C30a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C30_1 id=C30b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C30_2 id=C30_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C30_2 id=C30a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C30_2 id=C30b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C30_3 id=C30_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C30_3 id=C30a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C30_3 id=C30b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C30_4 id=C30_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C30_4 id=C30a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C30_4 id=C30b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C30_5 id=C30_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C30_5 id=C30a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C30_5 id=C30b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C30_6 id=C30_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C30_6 id=C30a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C30_6 id=C30b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>
-				<tr class=Cn1>
-					<td class=A21><input name=C31_1 id=C31_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C31_1 id=C31a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C31_1 id=C31b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C31_2 id=C31_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C31_2 id=C31a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C31_2 id=C31b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C31_3 id=C31_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C31_3 id=C31a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C31_3 id=C31b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C31_4 id=C31_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C31_4 id=C31a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C31_4 id=C31b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C31_5 id=C31_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C31_5 id=C31a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C31_5 id=C31b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C31_6 id=C31_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C31_6 id=C31a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C31_6 id=C31b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>
-				<tr class=Cn1>
-					<td class=A21><input name=C32_1 id=C32_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C32_1 id=C32a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C32_1 id=C32b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C32_2 id=C32_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C32_2 id=C32a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C32_2 id=C32b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C32_3 id=C32_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C32_3 id=C32a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C32_3 id=C32b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C32_4 id=C32_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C32_4 id=C32a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C32_4 id=C32b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C32_5 id=C32_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C32_5 id=C32a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C32_5 id=C32b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C32_6 id=C32_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C32_6 id=C32a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C32_6 id=C32b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>
-				<tr class=Cn1>
-					<td class=A21><input name=C33_1 id=C33_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C33_1 id=C33a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C33_1 id=C33b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C33_2 id=C33_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C33_2 id=C33a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C33_2 id=C33b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C33_3 id=C33_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C33_3 id=C33a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C33_3 id=C33b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C33_4 id=C33_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C33_4 id=C33a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C33_4 id=C33b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C33_5 id=C33_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C33_5 id=C33a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C33_5 id=C33b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C33_6 id=C33_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C33_6 id=C33a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C33_6 id=C33b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>	
-				<tr class=Cn1>
-					<td class=A21><input name=C34_1 id=C34_1	type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=A21><input name=C34_1 id=C34a_1	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C34_1 id=C34b_1	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C34_2 id=C34_2	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C34_2 id=C34a_2	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C34_2 id=C34b_2	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C34_3 id=C34_3	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C34_3 id=C34a_3	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C34_3 id=C34b_3	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C34_4 id=C34_4	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C34_4 id=C34a_4	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C34_4 id=C34b_4	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C34_5 id=C34_5	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C34_5 id=C34a_5	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A21><input name=C34_5 id=C34b_5	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C34_6 id=C34_6	type=radio value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C34_6 id=C34a_6	type=radio value=NO onclick=gestionarClickRadio(this)></td>
-					<td class=A22><input name=C34_6 id=C34b_6	type=radio value=NA onclick=gestionarClickRadio(this)></td>
-				</tr>
-			</table>
+			<?php endfor; ?>
+		</table>
+
+		<script>
+		// JavaScript mínimo - solo funcionalidad básica
+		function gestionarClickRadio(radio) {console.log('Radio seleccionado:', radio.name, radio.value);}
+
+		// Funciones básicas de utilidad
+		const TablaSimple = {
+			// Obtener valores seleccionados
+			getValues() {
+				const valores = {};
+				document.querySelectorAll('input[type="radio"]:checked').forEach(radio => {valores[radio.name] = radio.value;});
+				return valores;},
+
+				// Resetear formulario
+				reset() {if (confirm('¿Resetear formulario?')) {document.querySelectorAll('input[type="radio"]').forEach(radio => {radio.checked = false;});}},
+
+				// Cargar datos
+				load(data) {Object.entries(data).forEach(([name, value]) => {const radio = document.querySelector(`input[name="${name}"][value="${value}"]`);	if (radio) radio.checked = true;});},
+
+				// Exportar como JSON
+				export() {
+					const data = {fecha: new Date().toISOString().split('T')[0], valores: this.getValues()};
+					const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+					const link = document.createElement('a');
+					link.href = URL.createObjectURL(blob);
+					link.download = `tabla_${data.fecha}.json`;
+					link.click();}};
+
+			// API global simple
+			window.Tabla = TablaSimple;
+			console.log('Tabla simple cargada. Uso: Tabla.getValues(), Tabla.reset(), Tabla.export()');
+			</script>
 <!-- /10 -->			</div>
-<!-- 11 -->			<div style="position:relative; width:5.30%; left:23.10%; top:-2562.25px; background-color:white">
+		<div style="position:relative; width:76.15%; left:23.10%; top:-2634.25px; background-color:white">
 			<table border=1>
-				<tr rowspan=2 height=111.75px><td class=A2></td></tr>
-				<tr class=Cn3><td class=Cn>1.</td></tr>
-				<tr class=Cn2><td class=Cn>2.</td></tr>
-				<tr class=Cn3><td class=Cn>3.</td></tr>
-				<tr class=Cn3><td class=Cn>4.</td></tr>
-				<tr class=Cn2><td class=Cn>5.</td></tr>
-				<tr class=Cn1><td class=Cn>6.</td></tr>
-				<tr class=Cn2><td class=Cn>7.</td></tr>
-				<tr class=Cn4><td class=Cn>8.</td></tr>
-				<tr class=Cn1><td class=Cn>9.</td></tr>
-				<tr class=Cn2><td class=Cn>10.</td></tr>
-				<tr class=Cn1><td class=Cn>11.</td></tr>
-				<tr class=Cn2><td class=Cn>12.</td></tr>
-				<tr class=Cn4><td class=Cn>13.</td></tr>
-				<tr class=Cn1><td class=Cn>14.</td></tr>
-				<tr class=Cn3><td class=Cn>15.</td></tr>
-				<tr class=Cn1><td class=Cn>16.</td></tr>
-				<tr class=Cn2><td class=Cn>17.</td></tr>
-				<tr class=Cn1><td class=Cn>18.</td></tr>
-				<tr class=Cn2><td class=Cn>19.</td></tr>
-				<tr class=Cn2><td class=Cn>20.</td></tr>
-				<tr class=Cn3><td class=Cn>21.</td></tr>
-				<tr class=Cn2><td class=Cn>22.</td></tr>
-				<tr class=Cn3><td class=Cn>23.</td></tr>
-
-<!--				<tr rowspan=2 height=111.50px><td class=A2></td></tr> -->
-<!--				<tr height=70><td class=A2></td></tr>		<tr height=40><td class=A2></td></tr> -->
-				<tr height=70><td style=background-color:rgba(0,0,0,0.20)></td></tr>
-
-				<tr class=Cn2><td class=Cn>24.</td></tr>
-				<tr class=Cn2><td class=Cn>25.</td></tr>
-				<tr class=Cn1><td class=Cn>26.</td></tr>
-				<tr class=Cn1><td class=Cn>27.</td></tr>
-				<tr class=Cn1><td class=Cn>28.</td></tr>
-				<tr class=Cn1><td class=Cn>29.</td></tr>
-				<tr class=Cn1><td class=Cn>30.</td></tr>
-				<tr class=Cn1><td class=Cn>31.</td></tr>
-				<tr class=Cn1><td class=Cn>32.</td></tr>
-				<tr class=Cn1><td class=Cn>33.</td></tr>
-				<tr class=Cn1><td class=Cn>34.</td></tr>
+				<tr><td style="width:7%; border:none"></td><td style="width:93%; border:none"></td></tr>
+				<tr rowspan=2 height=122px><td colspan=2 class=A2 style="text-align:center; vertical-align:middle">DESCRIPCIÓN</td></tr>
+				<tr class=Cn3><td class=Cn> 1</td><td class=Cp>El personal tiene vigente la seguridad social, concepto médico de aptitud, entrenamiento y certificación en espacio confinado según el rol?</td></tr>
+				<tr class=Cn2><td class=Cn> 2</td><td class=Cp>Hay un procedimiento específico de la actividad a realizar?</td></tr>
+				<tr class=Cn3><td class=Cn> 3</td><td class=Cp>El personal destinado para la atención de emergencias está entrenado y participó en el simulacro previo a la actividad?</td></tr>
+				<tr class=Cn3><td class=Cn> 4</td><td class=Cp>Líneas de entrada y salida del espacio confinado se encuentran con aislamiento, bloqueadas y etiquetadas?</td></tr>
+				<tr class=Cn2><td class=Cn> 5</td><td class=Cp>Permiten los factores externos hacer el trabajo con seguridad? (viento, tormentas, lluvia, sol, etc.)</td></tr>
+				<tr class=Cn1><td class=Cn> 6</td><td class=Cp>El sitio de trabajo está desgasificado y limpio?</td></tr>
+				<tr class=Cn2><td class=Cn> 7</td><td class=Cp>Se realiza medición de la atmósfera del espacio confinado?</td></tr>
+				<tr class=Cn4><td class=Cn> 8</td><td class=Cp>Este permiso incluye desacople de equipos operativos, que puedan generar drenaje, vapores de producto u otra energía peligrosa? Ver requerimientos respaldo de esta hoja</td?</tr>
+				<tr class=Cn1><td class=Cn> 9</td><td class=Cp>Se tiene iluminación adecuada?</td></tr>
+				<tr class=Cn2><td class=Cn>10</td><td class=Cp>Se requiere ventilación y extracción forzada?, ¿Equipos disponibles?</td></tr>
+				<tr class=Cn1><td class=Cn>11</td><td class=Cp>Se tiene ingreso y salida libres?</td></tr>
+				<tr class=Cn2><td class=Cn>12</td><td class=Cp>Se han definido los tiempos de trabajo y relevos en el EC?</td></tr>
+				<tr class=Cn4><td class=Cn>13</td><td class=Cp>Se tiene en cuenta la posibilidad de cambios en la atmósfera del Espacio Confinado? Ver requerimientos para soldadura en el respaldo de esta hoja</td></tr>
+				<tr class=Cn1><td class=Cn>14</td><td class=Cp>Se tienen precauciones para el estrés térmico?</td></tr>
+				<tr class=Cn3><td class=Cn>15</td><td class=Cp>Están los desagües y áreas cercanas limpias y libres de sustancias combustibles, inflamables, tóxicos?</td></tr>
+				<tr class=Cn1><td class=Cn>16</td><td class=Cp>Se demarcó y señalizó el área bajo control?</td></tr>
+				<tr class=Cn2><td class=Cn>17</td><td class=Cp>Está disponible y listo el Equipo de Primeros Auxilios?</td></tr>
+				<tr class=Cn1><td class=Cn>18</td><td class=Cp>Está disponible y listo el Equipo Contra Incendio?</td></tr>
+				<tr class=Cn2><td class=Cn>19</td><td class=Cp>Se han suspendido tareas vecinas que puedan afectar el trabajo?</td></tr>
+				<tr class=Cn2><td class=Cn>20</td><td class=Cp>Se tienen precauciones para exposición al plomo?</td></tr>
+				<tr class=Cn3><td class=Cn>21</td><td class=Cp>El procedimiento de rescate y plan de emergencias específico para la tarea está disponible y ha sido probado?</td></tr>
+				<tr class=Cn2><td class=Cn>22</td><td class=Cp>Hay un medio de comunicación permanente con el exterior?</td></tr>
+				<tr class=Cn3><td class=Cn>23</td><td class=Cp>Todo el personal que va a ingresar al espacio confinado realizó el autoreporte de condiciones de salud?</td></tr>
+				<tr height=70><td colspan=2 style="background-color:rgba(0,0,0,0.20); color:rgba(0,0,0,1); font-size:27px; text-align:center"><b>Elementos de Protección</b><br>(Ver matriz de EPPs vigente)</td></tr>
+				<tr class=Cn2><td class=Cn>24</td><td class=Cp>Respirador autónomo (Suministro aire grado D, SCBA, 5 min, etc)</td></tr>
+				<tr class=Cn2><td class=Cn>25</td><td class=Cp>Protección respiratoria (con cartucho o filtro purificador de aire)</td></tr>
+				<tr class=Cn1><td class=Cn>26</td><td class=Cp>Protección auditiva</td></tr>
+				<tr class=Cn1><td class=Cn>27</td><td class=Cp>Protección facial</td></tr>
+				<tr class=Cn1><td class=Cn>28</td><td class=Cp>Gafas de seguridad</td></tr>
+				<tr class=Cn1><td class=Cn>29</td><td class=Cp>Zapatos de seguridad tipo:</td></tr>
+				<tr class=Cn1><td class=Cn>30</td><td class=Cp>Guantes tipo:</td></tr>
+				<tr class=Cn1><td class=Cn>31</td><td class=Cp>Arnés de seguridad, eslingas, línea de vida</td></tr>
+				<tr class=Cn1><td class=Cn>32</td><td class=Cp>Equipo de salvamento</td></tr>
+				<tr class=Cn1><td class=Cn>33</td><td class=Cp>Ropa tipo:</td></tr>
+				<tr class=Cn1><td class=Cn>34</td><td class=Cp>Otro:</td></tr>
 			</table>
-<!-- /11 -->			</div>
-<!-- 12 -->			<div style="position:relative; width:70.85%; left:28.40%; top:-5133.25px">
-			<table border=1>
-<!-- style="border-top:2px solid rgba(255,112,0,1); border-right:2px solid rgba(255,112,0,1); border-bottom:2px solid rgba(255,112,0,1)" -->
-				<tr height=112px rowspan=2><td class=A2 style="text-align:center; vertical-align:middle">DESCRIPCIÓN</td></tr>
-				<tr class=Cn3><td class=Cp>El personal tiene vigente la seguridad social, concepto médico de aptitud, entrenamiento y certificación en espacio confinado según el rol?</td></tr>
-				<tr class=Cn2><td class=Cp>Hay un procedimiento específico de la actividad a realizar?</td></tr>
-				<tr class=Cn3><td class=Cp>El personal destinado para la atención de emergencias está entrenado y participó en el simulacro previo a la actividad?</td></tr>
-				<tr class=Cn3><td class=Cp>Líneas de entrada y salida del espacio confinado se encuentran con aislamiento, bloqueadas y etiquetadas?</td></tr>
-				<tr class=Cn2><td class=Cp>Permiten los factores externos hacer el trabajo con seguridad? (viento, tormentas, lluvia, sol, etc.)</td></tr>
-				<tr class=Cn1><td class=Cp>El sitio de trabajo está desgasificado y limpio?</td></tr>
-				<tr class=Cn2><td class=Cp>Se realiza medición de la atmósfera del espacio confinado?</td></tr>
-				<tr class=Cn4><td class=Cp>Este permiso incluye desacople de equipos operativos, que puedan generar drenaje, vapores de producto u otra energía peligrosa? Ver requerimientos respaldo de esta hoja</td?</tr>
-				<tr class=Cn1><td class=Cp>Se tiene iluminación adecuada?</td></tr>
-				<tr class=Cn2><td class=Cp>Se requiere ventilación y extracción forzada?, ¿Equipos disponibles?</td></tr>
-				<tr class=Cn1><td class=Cp>Se tiene ingreso y salida libres?</td></tr>
-				<tr class=Cn2><td class=Cp>Se han definido los tiempos de trabajo y relevos en el EC?</td></tr>
-				<tr class=Cn4><td class=Cp>Se tiene en cuenta la posibilidad de cambios en la atmósfera del Espacio Confinado? Ver requerimientos para soldadura en el respaldo de esta hoja</td></tr>
-				<tr class=Cn1><td class=Cp>Se tienen precauciones para el estrés térmico?</td></tr>
-				<tr class=Cn3><td class=Cp>Están los desagües y áreas cercanas limpias y libres de sustancias combustibles, inflamables, tóxicos?</td></tr>
-				<tr class=Cn1><td class=Cp>Se demarcó y señalizó el área bajo control?</td></tr>
-				<tr class=Cn2><td class=Cp>Está disponible y listo el Equipo de Primeros Auxilios?</td></tr>
-				<tr class=Cn1><td class=Cp>Está disponible y listo el Equipo Contra Incendio?</td></tr>
-				<tr class=Cn2><td class=Cp>Se han suspendido tareas vecinas que puedan afectar el trabajo?</td></tr>
-				<tr class=Cn2><td class=Cp>Se tienen precauciones para exposición al plomo?</td></tr>
-				<tr class=Cn3><td class=Cp>El procedimiento de rescate y plan de emergencias específico para la tarea está disponible y ha sido probado?</td></tr>
-				<tr class=Cn2><td class=Cp>Hay un medio de comunicación permanente con el exterior?</td></tr>
-				<tr class=Cn3><td class=Cp>Todo el personal que va a ingresar al espacio confinado realizó el autoreporte de condiciones de salud?</td></tr>
-
-<!--				<tr height=111.50px rowspan=2><td class=A2 style=text-align:center>DESCRIPCIÓN</td></tr> -->
-				<tr height=70><td class=Cp style="background-color:rgba(0,0,0,0.20); color:rgba(0,0,0,1); font-size:28px; text-align:center"><b>Elementos de Protección</b><br>(Ver matriz de EPPs vigente)</td></tr>
-
-				<tr class=Cn2><td class=Cp>Respirador autónomo (Suministro aire grado D, SCBA, 5 min, etc)</td></tr>
-				<tr class=Cn2><td class=Cp>Protección respiratoria (con cartucho o filtro purificador de aire)</td></tr>
-				<tr class=Cn1><td class=Cp>Protección auditiva</td></tr>
-				<tr class=Cn1><td class=Cp>Protección facial</td></tr>
-				<tr class=Cn1><td class=Cp>Gafas de seguridad</td></tr>
-				<tr class=Cn1><td class=Cp>Zapatos de seguridad tipo:</td></tr>
-				<tr class=Cn1><td class=Cp>Guantes tipo:</td></tr>
-				<tr class=Cn1><td class=Cp>Arnés de seguridad, eslingas, línea de vida</td></tr>
-				<tr class=Cn1><td class=Cp>Equipo de salvamento</td></tr>
-				<tr class=Cn1><td class=Cp>Ropa tipo:</td></tr>
-				<tr class=Cn1><td class=Cp>Otro:</td></tr>
-			</table>
-<!-- /12 -->			</div>
-<!-- 13 -->	<div style="position:relative; width:100vw; left:0px; top:-5130px">		<!-- este div sube el formato de aqui hacia abajo -->
+		</div>
+		</div>
+<!-- 13 -->	<div style="position:relative; width:100vw; left:0px; top:-3170px">		<!-- este div sube el formato de aqui hacia abajo -->
 			<table border=0>
 				<tr><td width=1%></td><td width=98%></td><td width=1%></td></tr>
 				<tr height=35>
