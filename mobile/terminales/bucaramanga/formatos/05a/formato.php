@@ -190,12 +190,8 @@
 		</div>
 
 <!-- *****************************************			 sección B			 ***************************************** -->
-		<div style="position:relative; width:100%; top:280px">
-			<hr>
-			<table border=0>
-				<tr><td class=B><b>&nbsp;&nbsp;B. DOCUMENTACIÓN ADICIONAL Y APROBACIONES DIARIAS</b></td></tr>
-			</table>
-		</div>
+		<hr>
+		<div style="position:relative; width:100%; top:280px"><table border=0><tr><td class=B><b>&nbsp;B. DOCUMENTACIÓN ADICIONAL Y APROBACIONES DIARIAS</b></td></tr></table></div>
 		<div style="position:relative; width:55.75%; left:0.50%; top:300px; background-color:white">
 			<table border=1>
 				<tr class=C><td class=A3>DOCUMENTACIÓN</td></tr>
@@ -260,6 +256,17 @@
 					<td class=A21><input name=hora_final5 type=time value='<?=$hora;?>' min=<?=date("H:i");?>></td>
 					<td class=A22><input name=hora_final6 type=time value='<?=$hora;?>' min=<?=date("H:i");?>></td>
 				</tr>
+
+
+				<tr class=C>
+					<td class=A21>
+						<? for ($i = 0; $i <= 6; $i++): ?>
+						<input name="firma_ejecutor<?=$i?>"	style="font-size:18px; text-align:center; display:inline" value='abc'>
+						<? endfor; ?>
+					</td>
+				</tr>
+
+<!--
 				<tr class=C>
 					<td class=A21><input name=firma_ejecutor1	style="font-size:18px; text-align:center; display:none" value=''></td>
 					<td class=A22><input name=firma_ejecutor2	style="font-size:18px; text-align:center; display:none" value=''></td>
@@ -268,6 +275,7 @@
 					<td class=A21><input name=firma_ejecutor5	style="font-size:18px; text-align:center; display:none" value=''></td>
 					<td class=A22><input name=firma_ejecutor6	style="font-size:18px; text-align:center; display:none" value=''></td>
 				</tr>
+-->
 				<tr class=C>
 					<td class=A21><input name=firma_vigia1	style="font-size:18px; text-align:center; display:none" value=''></td>
 					<td class=A22><input name=firma_vigia2	style="font-size:18px; text-align:center; display:none" value=''></td>
