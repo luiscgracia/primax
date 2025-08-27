@@ -147,11 +147,9 @@
 		<div id=nombre style="position:absolute; display:none; width:43.75%; left:0.50%; background-color:white">
 			<table border=0>
 				<tr height=80px><td class=A3><b>NOMBRE Y APELLIDOS</b></td></tr>
-				<tr><td><input name=nombre1 id=nombre1 value='' style="width:100%; display:none" placeholder=Persona&nbsp;autorizada&nbsp;1 maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-				<tr><td><input name=nombre2 id=nombre2 value='' style="width:100%; display:none" placeholder=Persona&nbsp;autorizada&nbsp;2 maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-				<tr><td><input name=nombre3 id=nombre3 value='' style="width:100%; display:none" placeholder=Persona&nbsp;autorizada&nbsp;3 maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-				<tr><td><input name=nombre4 id=nombre4 value='' style="width:100%; display:none" placeholder=Persona&nbsp;autorizada&nbsp;4 maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-				<tr><td><input name=nombre5 id=nombre5 value='' style="width:100%; display:none" placeholder=Persona&nbsp;autorizada&nbsp;5 maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
+				<? for ($i = 1; $i <= 5; $i++): ?>
+				<tr><td><input name=nombre<?=$i?> id=nombre<?=$i?> value='' style="width:100%; display:none" placeholder="Persona&nbsp;autorizada&nbsp;<?=$i?>" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
+				<? endfor; ?>
 			</table>
 		</div>
 		<div id=dkf style="position:absolute; display:none; width:55.00%; left:44.25%; background-color:white; overflow:scroll">
@@ -161,37 +159,18 @@
 					<td style=width:350px	class=A2><b>CARGO (ROL)</b></td>
 					<td style=width:100px	class=A2><b>FIRMA</b></td>
 				</tr>
+				<? for ($i = 1; $i <= 5; $i++): ?>
 				<tr>
-					<td><input name=cedula1 id=cedula1 value='' style="width:100%; display:none; text-align:center" maxlength=10 pattern=^(?:[0-9]{8,10})$ inputmode=numeric></td>
-					<td><input name=cargo1	id=cargo1  value='' style="width:100%; display:none" maxlength=20 pattern=.{1,} onkeyup=mayuscula(this)></td>
+					<td><input name=cedula<?=$i?> id=cedula<?=$i?> value='' style="width:100%; display:none; text-align:center" maxlength=10 pattern=^(?:[0-9]{8,10})$ inputmode=numeric></td>
+					<td><input name=cargo<?=$i?>	id=cargo<?=$i?>  value='' style="width:100%; display:none" maxlength=20 pattern=.{1,} onkeyup=mayuscula(this)></td>
 					<td style="background-color:rgba(0,0,0,0.2); border:0px solid rgba(255,112,0,1)"></td>
 				</tr>
-				<tr>
-					<td><input name=cedula2 id=cedula2 value='' style="width:100%; display:none; text-align:center" maxlength=10 pattern=^(?:[0-9]{8,10})$ inputmode=numeric></td>
-					<td><input name=cargo2	id=cargo2  value='' style="width:100%; display:none" maxlength=20 pattern=.{1,} onkeyup=mayuscula(this)></td>
-					<td style="background-color:rgba(0,0,0,0.2); border:0px solid rgba(255,112,0,1)"></td>
-				</tr>
-				<tr>
-					<td><input name=cedula3 id=cedula3 value='' style="width:100%; display:none; text-align:center" maxlength=10 pattern=^(?:[0-9]{8,10})$ inputmode=numeric></td>
-					<td><input name=cargo3	id=cargo3  value='' style="width:100%; display:none" maxlength=20 pattern=.{1,} onkeyup=mayuscula(this)></td>
-					<td style="background-color:rgba(0,0,0,0.2); border:0px solid rgba(255,112,0,1)"></td>
-				</tr>
-				<tr>
-					<td><input name=cedula4 id=cedula4 value='' style="width:100%; display:none; text-align:center" maxlength=10 pattern=^(?:[0-9]{8,10})$ inputmode=numeric></td>
-					<td><input name=cargo4	id=cargo4  value='' style="width:100%; display:none" maxlength=20 pattern=.{1,} onkeyup=mayuscula(this)></td>
-					<td style="background-color:rgba(0,0,0,0.2); border:0px solid rgba(255,112,0,1)"></td>
-				</tr>
-				<tr>
-					<td><input name=cedula5 id=cedula5 value='' style="width:100%; display:none; text-align:center" maxlength=10 pattern=^(?:[0-9]{8,10})$ inputmode=numeric></td>
-					<td><input name=cargo5	id=cargo5  value='' style="width:100%; display:none" maxlength=20 pattern=.{1,} onkeyup=mayuscula(this)></td>
-					<td style="background-color:rgba(0,0,0,0.2); border:0px solid rgba(255,112,0,1)"></td>
-				</tr>
+				<? endfor; ?>
 			</table>
 		</div>
 
 <!-- *****************************************			 sección B			 ***************************************** -->
-		<hr>
-		<div style="position:relative; width:100%; top:280px"><table border=0><tr><td class=B><b>&nbsp;B. DOCUMENTACIÓN ADICIONAL Y APROBACIONES DIARIAS</b></td></tr></table></div>
+		<div style="position:relative; width:100%; top:280px"><hr><table border=0><tr><td class=B><b>&nbsp;B. DOCUMENTACIÓN ADICIONAL Y APROBACIONES DIARIAS</b></td></tr></table></div>
 		<div style="position:relative; width:55.75%; left:0.50%; top:300px; background-color:white">
 			<table border=1>
 				<tr class=C><td class=A3>DOCUMENTACIÓN</td></tr>
@@ -206,102 +185,40 @@
 				<tr class=C><td class=C style="padding:0 10">AUTORIZACIÓN EMISOR<br>(Antes del inicio de labores)</td></tr>
 			</table>
 		</div>
-<!-- 8 -->			<div style="position:relative; width:43.00%; left:56.25%; top:-551.25px; background-color:white; overflow:scroll">
+		<div style="position:relative; width:43.00%; left:56.25%; top:-551.25px; background-color:white; overflow:scroll">
 			<table border=1>
-				<tr class=C>
-					<td style=width:205px class=A21>DÍA 1<input name=fechaB1 id=fechaB1 type=date onfocusout="f1a()" min=<?=$fechamin ;?> max=<?=$fechamax;?> required></td>
-					<td style=width:205px class=A22>DÍA 2<input name=fechaB2 id=fechaB2 type=date onfocusout="f2a()" min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
-					<td style=width:205px class=A21>DÍA 3<input name=fechaB3 id=fechaB3 type=date onfocusout="f3a()" min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
-					<td style=width:205px class=A22>DÍA 4<input name=fechaB4 id=fechaB4 type=date onfocusout="f4a()" min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
-					<td style=width:205px class=A21>DÍA 5<input name=fechaB5 id=fechaB5 type=date onfocusout="f5a()" min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
-					<td style=width:205px class=A22>DÍA 6<input name=fechaB6 id=fechaB6 type=date onfocusout="f6a()" min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
-				</tr>
-				<tr class=C>
-					<td class=A21><input name=num_cert_habil1 value='' inputmode=numeric style="width:60%; text-align:center" maxlength=6 pattern=^(?:[0-9]{4,6})$ required></td>
-					<td class=A22><input name=num_cert_habil2 inputmode=numeric style="width:60%; text-align:center" maxlength=6 pattern=^(?:[0-9]{4,6})$></td>
-					<td class=A21><input name=num_cert_habil3 inputmode=numeric style="width:60%; text-align:center" maxlength=6 pattern=^(?:[0-9]{4,6})$></td>
-					<td class=A22><input name=num_cert_habil4 inputmode=numeric style="width:60%; text-align:center" maxlength=6 pattern=^(?:[0-9]{4,6})$></td>
-					<td class=A21><input name=num_cert_habil5 inputmode=numeric style="width:60%; text-align:center" maxlength=6 pattern=^(?:[0-9]{4,6})$></td>
-					<td class=A22><input name=num_cert_habil6 inputmode=numeric style="width:60%; text-align:center" maxlength=6 pattern=^(?:[0-9]{4,6})$></td>
-				</tr>
-				<tr class=C>
-					<td class=A21><input name=num_pers_ejecutan1 value='' inputmode=numeric style="width:40%; text-align:center" maxlength=1 pattern=^(?:[0-5]{1})$ required></td>
-					<td class=A22><input name=num_pers_ejecutan2 inputmode=numeric style="width:40%; text-align:center" maxlength=1 pattern=^(?:[0-5]{1})$></td>
-					<td class=A21><input name=num_pers_ejecutan3 inputmode=numeric style="width:40%; text-align:center" maxlength=1 pattern=^(?:[0-5]{1})$></td>
-					<td class=A22><input name=num_pers_ejecutan4 inputmode=numeric style="width:40%; text-align:center" maxlength=1 pattern=^(?:[0-5]{1})$></td>
-					<td class=A21><input name=num_pers_ejecutan5 inputmode=numeric style="width:40%; text-align:center" maxlength=1 pattern=^(?:[0-5]{1})$></td>
-					<td class=A22><input name=num_pers_ejecutan6 inputmode=numeric style="width:40%; text-align:center" maxlength=1 pattern=^(?:[0-5]{1})$></td>
-				</tr>
-				<tr class=C>
-					<td class=A21><input name=num_pers_autoreporte1 value='' inputmode=numeric style="width:40%; text-align:center" maxlength=1 pattern=^(?:[0-5]{1})$ required></td>
-					<td class=A22><input name=num_pers_autoreporte2 inputmode=numeric style="width:40%; text-align:center" maxlength=1 pattern=^(?:[0-5]{1})$></td>
-					<td class=A21><input name=num_pers_autoreporte3 inputmode=numeric style="width:40%; text-align:center" maxlength=1 pattern=^(?:[0-5]{1})$></td>
-					<td class=A22><input name=num_pers_autoreporte4 inputmode=numeric style="width:40%; text-align:center" maxlength=1 pattern=^(?:[0-5]{1})$></td>
-					<td class=A21><input name=num_pers_autoreporte5 inputmode=numeric style="width:40%; text-align:center" maxlength=1 pattern=^(?:[0-5]{1})$></td>
-					<td class=A22><input name=num_pers_autoreporte6 inputmode=numeric style="width:40%; text-align:center" maxlength=1 pattern=^(?:[0-5]{1})$></td>
-				</tr>
-				<tr class=C>
-					<td class=A21><input name=hora_inicio1 type=time value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
-					<td class=A22><input name=hora_inicio2 type=time value='<?=$hora;?>' min=<?=date("H:i");?>></td>
-					<td class=A21><input name=hora_inicio3 type=time value='<?=$hora;?>' min=<?=date("H:i");?>></td>
-					<td class=A22><input name=hora_inicio4 type=time value='<?=$hora;?>' min=<?=date("H:i");?>></td>
-					<td class=A21><input name=hora_inicio5 type=time value='<?=$hora;?>' min=<?=date("H:i");?>></td>
-					<td class=A22><input name=hora_inicio6 type=time value='<?=$hora;?>' min=<?=date("H:i");?>></td>
-				</tr>
-				<tr class=C>
-					<td class=A21><input name=hora_final1 type=time value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
-					<td class=A22><input name=hora_final2 type=time value='<?=$hora;?>' min=<?=date("H:i");?>></td>
-					<td class=A21><input name=hora_final3 type=time value='<?=$hora;?>' min=<?=date("H:i");?>></td>
-					<td class=A22><input name=hora_final4 type=time value='<?=$hora;?>' min=<?=date("H:i");?>></td>
-					<td class=A21><input name=hora_final5 type=time value='<?=$hora;?>' min=<?=date("H:i");?>></td>
-					<td class=A22><input name=hora_final6 type=time value='<?=$hora;?>' min=<?=date("H:i");?>></td>
-				</tr>
-
-
-				<tr class=C>
-					<td class=A21>
-						<? for ($i = 0; $i <= 6; $i++): ?>
-						<input name="firma_ejecutor<?=$i?>"	style="font-size:18px; text-align:center; display:inline" value='abc'>
-						<? endfor; ?>
-					</td>
-				</tr>
-
-<!--
-				<tr class=C>
-					<td class=A21><input name=firma_ejecutor1	style="font-size:18px; text-align:center; display:none" value=''></td>
-					<td class=A22><input name=firma_ejecutor2	style="font-size:18px; text-align:center; display:none" value=''></td>
-					<td class=A21><input name=firma_ejecutor3	style="font-size:18px; text-align:center; display:none" value=''></td>
-					<td class=A22><input name=firma_ejecutor4	style="font-size:18px; text-align:center; display:none" value=''></td>
-					<td class=A21><input name=firma_ejecutor5	style="font-size:18px; text-align:center; display:none" value=''></td>
-					<td class=A22><input name=firma_ejecutor6	style="font-size:18px; text-align:center; display:none" value=''></td>
-				</tr>
--->
-				<tr class=C>
-					<td class=A21><input name=firma_vigia1	style="font-size:18px; text-align:center; display:none" value=''></td>
-					<td class=A22><input name=firma_vigia2	style="font-size:18px; text-align:center; display:none" value=''></td>
-					<td class=A21><input name=firma_vigia3	style="font-size:18px; text-align:center; display:none" value=''></td>
-					<td class=A22><input name=firma_vigia4	style="font-size:18px; text-align:center; display:none" value=''></td>
-					<td class=A21><input name=firma_vigia5	style="font-size:18px; text-align:center; display:none" value=''></td>
-					<td class=A22><input name=firma_vigia6	style="font-size:18px; text-align:center; display:none" value=''></td>
-				</tr>
-				<tr class=C>
-					<td class=A21><input name=firma_supervisor1	style="font-size:18px; text-align:center; display:none" value=''></td>
-					<td class=A22><input name=firma_supervisor2	style="font-size:18px; text-align:center; display:none" value=''></td>
-					<td class=A21><input name=firma_supervisor3	style="font-size:18px; text-align:center; display:none" value=''></td>
-					<td class=A22><input name=firma_supervisor4	style="font-size:18px; text-align:center; display:none" value=''></td>
-					<td class=A21><input name=firma_supervisor5	style="font-size:18px; text-align:center; display:none" value=''></td>
-					<td class=A22><input name=firma_supervisor6	style="font-size:18px; text-align:center; display:none" value=''></td>
-				</tr>
-				<tr class=C>
-					<td class=A21><input name=autorizacion_emisor1	style="font-size:18px; text-align:center; display:none" value=''></td>
-					<td class=A22><input name=autorizacion_emisor2	style="font-size:18px; text-align:center; display:none" value=''></td>
-					<td class=A21><input name=autorizacion_emisor3	style="font-size:18px; text-align:center; display:none" value=''></td>
-					<td class=A22><input name=autorizacion_emisor4	style="font-size:18px; text-align:center; display:none" value=''></td>
-					<td class=A21><input name=autorizacion_emisor5	style="font-size:18px; text-align:center; display:none" value=''></td>
-					<td class=A22><input name=autorizacion_emisor6	style="font-size:18px; text-align:center; display:none" value=''></td>
-				</tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++): ?>
+					<td style=width:205px class=A21>DÍA <?=$i?><input name=fechaB<?=$i?> id=fechaB<?=$i?> type=date onfocusout="f<?=$i?>a()" min=<?=$fechamin ;?> max=<?=$fechamax;?> required></td>
+				<? endfor; ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++): ?>
+					<td class=A21><input name="num_cert_habil<?=$i?> value='' "inputmode=numeric style="width:60%; text-align:center" maxlength=6 pattern=^(?:[0-9]{4,6})$></td>
+				<? endfor; ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++): ?>
+					<td class=A21><input name="num_pers_ejecutan<?=$i?> value='' "inputmode=numeric style="width:40%; text-align:center" maxlength=1 pattern=^(?:[0-5]{1})$></td>
+				<? endfor; ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++): ?>
+					<td class=A21><input name="num_pers_autoreporte<?=$i?> value='' "inputmode=numeric style="width:40%; text-align:center" maxlength=1 pattern=^(?:[0-5]{1})$></td>
+				<? endfor; ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++): ?>
+					<td class=A21><input name="hora_inicio<?=$i?>" type=time value='<?=$hora;?>' min=<?=date("H:i");?>></td>
+				<? endfor; ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++): ?>
+					<td class=A21><input name="hora_final<?=$i?>" type=time value='<?=$hora;?>' min=<?=date("H:i");?>></td>
+				<? endfor; ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++): ?>
+					<td class=A21><input name="firma_ejecutor<?=$i?>"	style="font-size:18px; text-align:center; display:none" value='ABC<?=$i?>'></td>
+				<? endfor; ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++): ?>
+					<td class=A21><input name="firma_vigia<?=$i?>"	style="font-size:18px; text-align:center; display:none" value='DEF<?=$i?>'></td>
+				<? endfor; ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++): ?>
+					<td class=A21><input name="firma_supervisor<?=$i?>"	style="font-size:18px; text-align:center; display:none" value='GHI<?=$i?>'></td>
+				<? endfor; ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++): ?>
+					<td class=A21><input name="autorizacion_emisor<?=$i?>"	style="font-size:18px; text-align:center; display:none" value='JKL<?=$i?>'></td>
+				<? endfor; ?></tr>
 			</table>
-<!-- /8 -->			</div>
+		</div>
 
 <!-- *****************************************			 sección C		 ***************************************** -->
 <!-- 9 -->	<div style="position:relative; left:0px; top:-550px"> <!-- este div mueve hacia abajo desde la sección C -->
