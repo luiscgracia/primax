@@ -13,13 +13,12 @@ $formulario = "formulario".$formato."_title";
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <style>
-	body					{font-family:Arlrdlt; font-size:9px; text-align:center; color:rgba(0,0,191,1)}
+	body					{font-family:Arlrdlt; font-size:9px; text-align:center; color:rgba(0,20,200,1)}
 	button				{background-color:rgba(0,255,0,0.0); border:0px; border-radius:0px; cursor:pointer; height:25px}
 	div.radio			{font-size:13px}
 	div.resultado	{font-size: 6px; width: 7mm; background-color:rgba(255,0,0,0.0)}
 	div.date			{font-size: 6px; text-align:right}
 	div.hora			{font-size: 8px; width:14mm; background-color:rgba(255,0,0,0.0)}
-	
 </style>
 <script>
 	function closed() {window.open('','_parent',''); window.close();}
@@ -70,6 +69,7 @@ while ($row = $resultado->fetch_assoc()){extract($row);}
 	<div style="position:absolute; left:17.65cm; top: 1.67cm" class="radio"><?if ($tipo_trabajo == 'F') {echo '&#10687;';}?></div>
 
 <!-- *****************************************			 DÍA 1			 ***************************************** -->
+<div style="position:absolute; width:100%; left:0; top: 0cm">
 	<div style="position:absolute; left:10.70cm; top: 2.67cm"><?echo $dia1_fecha;?></div>
 	<div style="position:absolute; left: 3.75cm; top: 2.93cm"><?echo substr($dia1_equipo,0,30);?></div>
 	<div style="position:absolute; left: 8.95cm; top: 2.93cm"><?echo substr($dia1_marca,0,30-6);?></div>
@@ -81,13 +81,12 @@ while ($row = $resultado->fetch_assoc()){extract($row);}
 	<div style="position:absolute; left:14.00cm; top: 3.23cm"><?echo $dia1_H2S;?></div>
 	<div style="position:absolute; left:15.40cm; top: 3.23cm"><?echo $dia1_CO;?></div>
 	<div style="position:absolute; left:19.20cm; top: 3.10cm" class="radio"><?if ($dia1_pasa_bumptest == 'SI') {echo '&#10687;';}?></div>
-	<div style="position:absolute; left:20.05cm; top: 3.10cm" class="radio"><?if ($dia1_pasa_bumptest == 'SI') {echo '&#10687;';}?></div>
+	<div style="position:absolute; left:20.05cm; top: 3.10cm" class="radio"><?if ($dia1_pasa_bumptest == 'NO') {echo '&#10687;';}?></div>
 
 	<? $renglon1Tabla1Dia1 = '3.8794cm'; ?>
 	<? $renglon2Tabla1Dia1 = '4.1094cm'; ?>			<!-- se aumenta 0.23cm -->
 	<? $renglon3Tabla1Dia1 = '4.3394cm'; ?>			<!-- se aumenta 0.23cm -->
 	<? $renglon4Tabla1Dia1 = '4.5694cm'; ?>			<!-- se aumenta 0.23cm -->
-
 	<div style="position:absolute; left: 5.62cm; top: <?=$renglon1Tabla1Dia1?>" class=date>			<?if  ($dia1_H1_1 != '') {echo date ("h:i A", strtotime($dia1_H1_1));} else {echo '';}?></div>
 	<div style="position:absolute; left: 6.35cm; top: <?=$renglon1Tabla1Dia1?>" class=resultado><?echo $dia1_R1_1;?></div>
 	<div style="position:absolute; left: 7.10cm; top: <?=$renglon1Tabla1Dia1?>" class=date>			<?if  ($dia1_H2_1 != '') {echo date ("h:i A", strtotime($dia1_H2_1));} else {echo '';}?></div>
@@ -236,6 +235,7 @@ while ($row = $resultado->fetch_assoc()){extract($row);}
 	<div style="position:absolute; left:16.12cm; top: <?=$renglon5Tabla2Dia1?>" class=hora><?if ($dia1_HS4_5 != '') {echo date ("h:i A", strtotime($dia1_HS4_5));} else {echo '';}?></div>
 	<div style="position:absolute; left:17.62cm; top: <?=$renglon5Tabla2Dia1?>" class=hora><?if ($dia1_HE5_5 != '') {echo date ("h:i A", strtotime($dia1_HE5_5));} else {echo '';}?></div>
 	<div style="position:absolute; left:19.12cm; top: <?=$renglon5Tabla2Dia1?>" class=hora><?if ($dia1_HS5_5 != '') {echo date ("h:i A", strtotime($dia1_HS5_5));} else {echo '';}?></div>
+</div>
 
 <!-- *****************************************			 DÍA 2			 ***************************************** -->
 <div style="position:absolute; width:100%; left:0; top: 4.18cm">			<!-- se aumenta 4.18cm cada día -->

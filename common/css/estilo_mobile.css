@@ -7,7 +7,7 @@ span								{font-size:27px}
 span.seccion				{font-size:32px; text-align:left}
 span.aviso					{font-size:32px; display:inline-block}
 table								{table-layout:fixed; width:100%; margin-left:auto; margin-right:auto; border-collapse:separate; border-spacing:0px 0px}
-input								{font-size:32px; height:10mm; font-family:Arial; color:rgba(0,0,191,1); background-color:rgba(0,255,0,0.1); border:2px solid rgba(255,112,0,1); vertical-align:middle}
+input								{font-size:32px; height:10mm; font-family:Arial; color:rgba(0,0,191,1); background-color:rgba(0,255,0,0.1); border:2px solid rgba(255,112,0,1); text-align:center; vertical-align:middle}
 input:focus					{background-color:rgba(255,112,0,0.25)}
 input::placeholder	{text-align:center; vertical-align:top; font-size:28px; color:rgba(0,0,255,0.5)}
 hr									{width:100%; border-top:2px solid rgba(255,112,0,1)}
@@ -46,7 +46,7 @@ input[type="texto"]:focus	{background-color:rgba(255,112,0,0.25)}
 input.consecutivo		{font-size:36px; height:10mm; width:100%; font-family:SCHLBKB; text-align:center; color:rgba(0,0,191,1); border:2px solid rgba(255,112,0,1)}
 button							{border:0; background-color:rgba(255,112,0,0); cursor:pointer}
 select							{font-size:40px; width:80%; height:70px; background-color:rgba(255,112,0,0.33); color:rgba(0,0,191,1); border:1px solid rgba(0,128,0,1); border-radius:15px; font-family:Arlrdlt}
-option							{font-size:50px}
+option							{font-size:24px}
 td									{font-size:28px; text-align:center}
 td.Ar								{font-size:28px; text-align:right}
 td.A1								{font-size:24px; width:100%; font-weight:bold}
@@ -60,7 +60,7 @@ td.Bl								{font-size:32px; width:100%; text-align:left;	vertical-align:middle
 td.Bct							{font-size:32px; text-align:center; vertical-align:top}
 td.Bc								{font-size:32px; text-align:center; vertical-align:middle}
 td.Br								{font-size:32px; text-align:right;	vertical-align:middle}
-tr.C								{height:30px; vertical-align:top}
+tr.C								{height:30px; vertical-align:middle}
 tr.D								{height:30px}
 td.numero						{font-size:34px; text-align:right; vertical-align:top}
 td.texto2						{font-size:24px; text-align:right}

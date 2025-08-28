@@ -8,13 +8,11 @@
 <title>Diligenciar Consecutivo</title>
 <style>
 	td.Aright	{font-size:24px; text-align:right}
-	td.Aleft	{font-size:24px; text-align:left}
-	td.LAleft	{font-size:24px; text-align:left}
+	td.Aleft	{font-size:22px; text-align:left}
 	td.Anota	{font-size:28px; text-align:justify}
 	td.A1			{font-size:22px}
 	td.A0			{font-size:30px; font-weight:bold}
-	select.product {background-color:rgba(0,255,0,0.1); color:rgba(0,0,191,1); border:2px solid rgba(255,112,0,1); border-radius:3px;
-									font-family:Arial; ; font-size:34px; height:10mm}
+	select.product {background-color:rgba(0,255,0,0.1); color:rgba(0,0,191,1); border:2px solid rgba(255,112,0,1); border-radius:3px; font-family:Arial; font-size:24px; height:10mm}
 </style>
 </head>
 <script type="text/javascript">
@@ -87,20 +85,20 @@
 ?>
 <!-- *****************************************			 INICIO DEL FORMULARIO			 ***************************************** (816px = 215,9 mm) -->
 <!-- 1 --> <div class=noimprimir>
-<!-- 2 --> <div class=fijar style="top:90px; left:15px">
-	<a href='https://api.whatsapp.com/send?phone=<? echo $celular_soporte; ?>
-	&text=<? if ($fecha <= date('Y-m-d / 12:00')) {echo 'Buenos días, ';} else {echo 'Buenas tardes, ';} ?>
-	le escribo de PRIMAX <? echo strtoupper($terminal); ?>, estoy diligenciando el formato <? echo $$formulario; ?>.' target=_blank>
-	<img src=../../../../../common/imagenes/whatsapp.png style=pointer-events:auto width=70 height=auto></a>
-<!-- /2 -->	</div>
+	<div class=fijar style="top:90px; left:15px">
+		<a href='https://api.whatsapp.com/send?phone=<?=$celular_soporte;?>
+		&text=<? if ($fecha <= date('Y-m-d / 12:00')) {echo 'Buenos días, ';} else {echo 'Buenas tardes, ';}?>
+		le escribo de PRIMAX <?=strtoupper($terminal);?>, estoy diligenciando el formato <?=$$formulario;?>.' target=_blank>
+		<img src=../../../../../common/imagenes/whatsapp.png style=pointer-events:auto width=70 height=auto></a>
+	</div>
 <form id=formato name=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
 <!-- 3 -->		<div style="position:absolute; left:50vw; margin-left:-50vw; top:0px; width:100vw">
 		<table border=0 style="color:black; background-color:rgba(255,255,255,1)">
 			<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
 			<tr height=100>
 				<td colspan=2>
-					<input style=display:none name=estado type=texto value=value=<? echo $estado_formulario1; ?> readonly>
-					<span style="font-size:36px; width:100%; display:inline-block; background-color:none"><b><? echo $$formulario; ?></b></span>
+					<input style=display:none name=estado type=texto value=value=<?=$estado_formulario1;?> readonly>
+					<span style="font-size:36px; width:83%; display:inline-block; background-color:none"><b><?=$$formulario;?></b></span>
 				</td>
 				<td>
 					<input name=consecutivo class=consecutivo style="color:red; background-color:rgba(255,255,255,1); border:0" type=texto
@@ -108,7 +106,7 @@
 												else {if ($consec <= 99) {echo '&#8470; 0000';}
 													else {if ($consec <= 999) {echo '&#8470; 000';}
 														else {if ($consec <= 9999) {echo '&#8470; 00';}
-															else {if ($consec <= 99999) {echo '&#8470; 0';} else {echo '&#8470; ';}}}}} echo $consec; ?>' readonly>
+															else {if ($consec <= 99999) {echo '&#8470; 0';} else {echo '&#8470; ';}}}}} echo $consec;?>' readonly>
 				</td>
 			</tr>
 			<tr>
@@ -119,11 +117,11 @@
 			</tr>
 		</table>
 		<hr>
-		<!-- *****************************************			 sección A			 ***************************************** -->
+<!-- *****************************************			 sección A			 ***************************************** -->
 		<table border=0>
 			<tr>
 				<td style=font-size:30px>
-					TERMINAL: <span style="font-size:30px; text-decoration:underline; color:rgba(0,0,191,1)"><?echo strtoupper($terminal);?></span><br>
+					TERMINAL: <span style="font-size:30px; text-decoration:underline; color:rgba(0,0,191,1)"><?=strtoupper($terminal);?></span><br>
 					<span style="font-size:24px; color:rgba(0,0,0,1)">ENTREGA TANQUE</span>
 				</td>
 			</tr>
@@ -136,8 +134,8 @@
 				<td style=width:19.0% class=A1><br>HORA ENTREGA TANQUE (24 HRS)</td>
 			</tr>
 			<tr>
-				<td class=A><input name=tanque id=tanque type=text style="width:96%; text-align:center" onkeyup="mayuscula(this); t()" maxlength=7 pattern=.{1,} autofocus required></td>
-				<td class=A>
+				<td><input name=tanque id=tanque type=text style=width:96% onkeyup="mayuscula(this); t()" maxlength=8 pattern=.{1,} autofocus required></td>
+				<td>
 					<form method=post>
 						<select style=width:100% name=producto id=producto type=text onfocusout=p() class=product required>
 							<option value="" disabled selected></option>
@@ -149,16 +147,16 @@
 						</select>
 					</form>
 				</td>
-				<td class=A><input name=fechaA			type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> required></td>
-				<td class=A><input name=horaentrega	type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
+				<td><input name=fechaA			type=date value='<?=$hoy;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
+				<td><input name=horaentrega	type=time value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
 			</tr>
 	 		<tr height=10px><td></td></tr>
 		</table>
 		<table>
 			<tr><td width=50%></td><td width=50%></td></tr>
 			<tr>
-				<td class=A1><br>CAPACIDAD MÁXIMA OPERACIONAL<input name=capacidad type=text style="width:50%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A1><br>NIVEL MÁXIMO DE LLENADO<input name=nivel_llenado	 type=text style="width:50%; text-align:center" maxlength=6 pattern=^(([0-9]){1,3}?(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td class=A1><br>CAPACIDAD MÁXIMA OPERACIONAL (BLS)<input name=capacidad type=text style=width:50% maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$ inputmode=numeric required></td>
+				<td class=A1><br>NIVEL MÁXIMO DE LLENADO (mm)<input name=nivel_llenado	 type=text style=width:50% maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$ inputmode=numeric required></td>
 			</tr>
 	 		<tr height=10px><td></td></tr>
 		</table>
@@ -170,47 +168,47 @@
 		</table>
 		<table border=1>
 			<tr>
-				<td style="width:16.7%; border:0"></td>
-				<td style="width:16.6%; border:0"></td>
-				<td style="width:16.7%; border:0"></td>
-				<td style="width:16.7%; border:0"></td>
-				<td style="width:16.6%; border:0"></td>
-				<td style="width:16.7%; border:0"></td>
+				<td style="width:10%"></td>
+				<td style="width:18%"></td>
+				<td style="width:18%"></td>
+				<td style="width:18%"></td>
+				<td style="width:18%"></td>
+				<td style="width:18%"></td>
 			</tr>
 			<tr>
 				<td class=A1></td>
 				<td class=A1>NIVEL DE PRODUCTO (metros)</td>
-				<td class=A1>VOLUMEN EN TABQUE (Barriles)</td>
+				<td class=A1>VOLUMEN EN TANQUE (Barriles)</td>
 				<td class=A1>NIVEL DE AGUA (metros)</td>
 				<td class=A1>TEMPERATURA (°F)</td>
 				<td class=A1>API 60°F</td>
 			</tr>
 			<tr>
 				<td class=A1>INICIAL</td>
-				<td class=A><input name=medicion_inicialA type=text style="width:98%; text-align:center" maxlength=6 pattern=^(([0-9]){1,3}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=medicion_inicialB type=text style="width:98%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=medicion_inicialC type=text style="width:98%; text-align:center" maxlength=6 pattern=^(([0-9]){1,3}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=medicion_inicialD type=text style="width:98%; text-align:center" maxlength=6 pattern=^(([0-9]){1,3}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=medicion_inicialE type=text style="width:98%; text-align:center" maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td><input name=medicion_inicialA type=text style=width:98% maxlength=5 placeholder=##.##  pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
+				<td><input name=medicion_inicialB type=text style=width:98% maxlength=5 placeholder=#####  pattern=^([0-9]{1,5}?)$ inputmode=numeric required></td>
+				<td><input name=medicion_inicialC type=text style=width:98% maxlength=5 placeholder=##.##  pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
+				<td><input name=medicion_inicialD type=text style=width:98% maxlength=6 placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
+				<td><input name=medicion_inicialE type=text style=width:98% maxlength=6 placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
 			</tr>
 			<tr>
 				<td class=A1>FINAL</td>
-				<td class=A><input name=medicion_finalA type=text style="width:98%; text-align:center" maxlength=6 pattern=^(([0-9]){1,3}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=medicion_finalB type=text style="width:98%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=medicion_finalC type=text style="width:98%; text-align:center" maxlength=6 pattern=^(([0-9]){1,3}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=medicion_finalD type=text style="width:98%; text-align:center" maxlength=6 pattern=^(([0-9]){1,3}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=medicion_finalE type=text style="width:98%; text-align:center" maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td><input name=medicion_finalA type=text style=width:98% maxlength=5 placeholder=##.##  pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
+				<td><input name=medicion_finalB type=text style=width:98% maxlength=5 placeholder=#####  pattern=^([0-9]{1,5}?)$ inputmode=numeric required></td>
+				<td><input name=medicion_finalC type=text style=width:98% maxlength=5 placeholder=##.##  pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
+				<td><input name=medicion_finalD type=text style=width:98% maxlength=6 placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
+				<td><input name=medicion_finalE type=text style=width:98% maxlength=6 placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
 			</tr>
 			<tr height=10><td></td></tr>
 		</table>
 		<table border=1>
 			<tr height=0>
-				<td style="width:16.7%; border:0"></td>
-				<td style="width:16.6%; border:0"></td>
-				<td style="width:16.7%; border:0"></td>
-				<td style="width:16.7%; border:0"></td>
-				<td style="width:16.6%; border:0"></td>
-				<td style="width:16.7%; border:0"></td>
+				<td style="width:10%"></td>
+				<td style="width:18%"></td>
+				<td style="width:18%"></td>
+				<td style="width:18%"></td>
+				<td style="width:18%"></td>
+				<td style="width:18%"></td>
 			</tr>
 			<tr><td colspan=6 class=A0>CONTADORES</td></tr>
 			<tr>
@@ -223,19 +221,15 @@
 			</tr>
 			<tr>
 				<td class=A1>INICIAL</td>
-				<td class=A><input name=contador1_inicial type=text style="width:98%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=contador2_inicial type=text style="width:98%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=contador3_inicial type=text style="width:98%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=contador4_inicial type=text style="width:98%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=contador5_inicial type=text style="width:98%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<? for ($i = 1; $i <= 5; $i++):?>
+				<td><input name=contador<?=$i?>_inicial type=text style=width:98% maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$ inputmode=numeric required></td>
+				<? endfor?>
 			</tr>
 			<tr>
 				<td class=A1>FINAL</td>
-				<td class=A><input name=contador1_final type=text style="width:98%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=contador2_final type=text style="width:98%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=contador3_final type=text style="width:98%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=contador4_final type=text style="width:98%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=contador5_final type=text style="width:98%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<? for ($i = 1; $i <= 5; $i++):?>
+				<td><input name=contador<?=$i?>_final type=text style=width:98% maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$ inputmode=numeric required></td>
+				<? endfor?>
 			</tr>
 		</table>
 		<hr>
@@ -246,57 +240,57 @@
 		</table>
 		<table border=0>
 			<tr>
-				<td style="width:46%; border:0"></td>
-				<td style="width:20%; border:0"></td>
-				<td style="width:20%; border:0"></td>
-				<td style="width:14%; border:0"></td>
+				<td style="width:49%"></td>
+				<td style="width:20%"></td>
+				<td style="width:20%"></td>
+				<td style="width:11%"></td>
 			</tr>
 			<tr>
-				<td style=text-align:right	class=A>VOLUMEN A RECIBIR&nbsp;</td>
-				<td style=text-align:left		class=A><input name=volumen_recibir type=text style="width:92.70%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td style=text-align:left		class=A>BLS BRUTOS</td>
+				<td style=text-align:right>VOLUMEN A RECIBIR&nbsp;</td>
+				<td style=text-align:left	><input name=volumen_recibir type=text style=width:180px maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$ inputmode=numeric required></td>
+				<td style=text-align:left	>BLS BRUTOS</td>
 			</tr>
 			<tr>
-				<td style=text-align:right	class=A>VOLUMEN FINAL ESTIMADO&nbsp;</td>
-				<td style=text-align:left		class=A><input name=volumen_final type=text style="width:92.70%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td style=text-align:left		class=A>BLS BRUTOS</td>
+				<td style=text-align:right>VOLUMEN FINAL ESTIMADO&nbsp;</td>
+				<td style=text-align:left	><input name=volumen_final type=text style=width:180px maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$ inputmode=numeric required></td>
+				<td style=text-align:left	>BLS BRUTOS</td>
 			</tr>
 			<tr>
-				<td style=text-align:right	class=A>MEDIDA FINAL ESTIMADA&nbsp;</td>
-				<td style=text-align:left		class=A><input name=medida_final type=text style="width:92.70%; text-align:center" maxlength=6 pattern=^(([0-9]){1,3}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td style=text-align:left		class=A>METROS</td>
+				<td style=text-align:right>MEDIDA FINAL ESTIMADA&nbsp;</td>
+				<td style=text-align:left	><input name=medida_final type=text style=width:180px maxlength=5 placeholder=##.## pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
+				<td style=text-align:left	>METROS</td>
 			</tr>
 			<tr>
-				<td style=text-align:right	class=A>RATA DE BOMBEO&nbsp;</td>
-				<td style=text-align:left		class=A><input name=rata_bombeo type=text style="width:92.70%; text-align:center" maxlength=6 pattern=^(([0-9]){1,3}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td style=text-align:left		class=A>BLS/HORA</td>
+				<td style=text-align:right>RATA DE BOMBEO&nbsp;</td>
+				<td style=text-align:left	><input name=rata_bombeo type=text style=width:180px maxlength=5 placeholder=##.## pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
+				<td style=text-align:left	>BLS/HORA</td>
 			</tr>
 			<tr>
-				<td style=text-align:right	class=A>HORA INICIACIÓN&nbsp;</td>
-				<td style=text-align:left		class=A><input name=hora_inicial  type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
-				<td style=text-align:left		class=A></td>
+				<td style=text-align:right>HORA INICIACIÓN&nbsp;</td>
+				<td style=text-align:left	><input name=hora_inicial  type=time value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
+				<td style=text-align:left	></td>
 			</tr>
 			<tr>
-				<td style=text-align:right	class=A>HORA FINAL ESTIMADA&nbsp;</td>
-				<td style=text-align:left		class=A><input name=hora_final  type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
-				<td style=text-align:left		class=A></td>
+				<td style=text-align:right>HORA FINAL ESTIMADA&nbsp;</td>
+				<td style=text-align:left	><input name=hora_final  type=time value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
+				<td style=text-align:left	></td>
 			</tr>
 			<tr>
-				<td style=text-align:right	class=A>CUPO MÁXIMO DE RECIBO&nbsp;</td>
-				<td style=text-align:left		class=A><input name=cupo_maximo type=text style="width:92.70%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td style=text-align:left		class=A>BLS BRUTOS</td>
+				<td style=text-align:right>CUPO MÁXIMO DE RECIBO&nbsp;</td>
+				<td style=text-align:left	><input name=cupo_maximo type=text style=width:92.70% maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$ inputmode=numeric required></td>
+				<td style=text-align:left	>BLS BRUTOS</td>
 			</tr>
 			<tr>
-				<td style=text-align:right	class=A>REPRESENTANTE DE TERMINAL&nbsp;</td>
-				<td colspan=3 style=text-align:left class=A><input name=representante_planta		type=text style="width:98%; text-align:left" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+				<td style=text-align:right>REPRESENTANTE DE TERMINAL&nbsp;</td>
+				<td colspan=3 style=text-align:left><input name=representante_planta		type=text style="width:99%; text-align:left" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
 			</tr>
 			<tr>
-				<td style=text-align:right	class=A>REPRESENTANTE DE POLIDUCTO&nbsp;</td>
-				<td colspan=3 style=text-align:left class=A><input name=representante_poliducto	type=text style="width:98%; text-align:left" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+				<td style=text-align:right>REPRESENTANTE DE POLIDUCTO&nbsp;</td>
+				<td colspan=3 style=text-align:left><input name=representante_poliducto	type=text style="width:99%; text-align:left" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
 			</tr>
 		</table>
 		<br>
-		<hr style="width:100%; border-top:7px dashed rgba(255,112,0,1)">
+		<hr style="width:100%; border-top:4px dashed rgba(255,112,0,1)">
 		<br>
 <!-- hasta aquí va la tirilla media carta -->
 
@@ -305,34 +299,32 @@
 		</table>
 		<table border=1>
 			<tr>
-				<td style="width:20%; border:0"></td>
-				<td style="width:19.5%; border:0"></td>
-				<td style="width:19.5%; border:0"></td>
-				<td style="width:19.5%; border:0"></td>
-				<td style="width:21.5%; border:0"></td>
+				<td style="width:20%"></td>
+				<td style="width:19.5%"></td>
+				<td style="width:19.5%"></td>
+				<td style="width:19.5%"></td>
+				<td style="width:21.5%"></td>
 			</tr>
 			<tr>
-				<td colspan=4 class=A>NIVEL PRODUCTO</td>
-				<td rowspan=2 class=A>TEMPERATURA °F</td>
+				<td colspan=4>NIVEL PRODUCTO</td>
+				<td rowspan=2>TEMPERATURA °F</td>
 			</tr>
 			<tr>
-				<td class=A>MEDIDA</td>
-				<td class=A>m</td>
-				<td class=A>cm</td>
-				<td class=A>mm</td>
+				<td>MEDIDA</td>
+				<td>m</td><td>cm</td><td>mm</td>
 			</tr>
 			<tr>
 				<td class=A>NIVEL</td>
-				<td class=A><input name=nivel1_mt	type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric required></td>
-				<td class=A><input name=nivel1_cm	type=text style="width:90%; text-align:center" maxlength=2 pattern=^(?:[0-9]{0,2})$ inputmode=numeric required></td>
-				<td class=A><input name=nivel1_mm	type=text style="width:90%; text-align:center" maxlength=1 pattern=^(?:[0-9]{0,1})$ inputmode=numeric required></td>
-				<td rowspan=2 class=A><input name=temperatura1	type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric required></td>
+				<td><input name=nivel1_mt	type=text style=width:90% maxlength=2 placeholder=## pattern=^([0-9]{1,2}?)$ inputmode=numeric required></td>
+				<td><input name=nivel1_cm	type=text style=width:90% maxlength=2 placeholder=## pattern=^([0-9]{1,2}?)$ inputmode=numeric required></td>
+				<td><input name=nivel1_mm	type=text style=width:90% maxlength=1 placeholder=#  pattern=^([0-9]{1}?)$	 inputmode=numeric required></td>
+				<td rowspan=2><input name=temperatura1	type=text style=width:90% maxlength=6 placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
 			</tr>
 			<tr>
 				<td class=A>AGUA</td>
-				<td class=A><input name=agua1_mt	type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric required></td>
-				<td class=A><input name=agua1_cm	type=text style="width:90%; text-align:center" maxlength=2 pattern=^(?:[0-9]{0,2})$ inputmode=numeric required></td>
-				<td class=A><input name=agua1_mm	type=text style="width:90%; text-align:center" maxlength=1 pattern=^(?:[0-9]{0,1})$ inputmode=numeric required></td>
+				<td><input name=agua1_mt	type=text style=width:90% maxlength=2 placeholder=## pattern=^([0-9]{1,2}?)$ inputmode=numeric required></td>
+				<td><input name=agua1_cm	type=text style=width:90% maxlength=2 placeholder=## pattern=^([0-9]{1,2}?)$ inputmode=numeric required></td>
+				<td><input name=agua1_mm	type=text style=width:90% maxlength=1 placeholder=#  pattern=^([0-9]{1}?)$	 inputmode=numeric required></td>
 			</tr>
 		</table>
 		<table border=0>
@@ -344,21 +336,21 @@
 			</tr>
 			<tr height=10px><td></td>
 			<tr>
-				<td class=Aright>SI&nbsp;</td><td><input name=alarma_alto				type=radio value=SI required></td>
-				<td class=Aright>NO&nbsp;</td><td><input name=alarma_alto				type=radio value=NO></td>
+				<td class=Aright>SI</td><td><input name=alarma_alto				type=radio value=SI required></td>
+				<td class=Aright>NO</td><td><input name=alarma_alto				type=radio value=NO></td>
 				<td></td><td></td>
 				<td class=Aleft>&nbsp;&nbsp;AL PROBAR LA ALARMA NIVEL ALTO, FUNCIONÓ?</td>
 			</tr>
 			<tr>
-				<td class=Aright>SI&nbsp;</td><td><input name=alarma_alto_alto	type=radio value=SI required></td>
-				<td class=Aright>NO&nbsp;</td><td><input name=alarma_alto_alto	type=radio value=NO></td>
+				<td class=Aright>SI</td><td><input name=alarma_alto_alto	type=radio value=SI required></td>
+				<td class=Aright>NO</td><td><input name=alarma_alto_alto	type=radio value=NO></td>
 				<td></td><td></td>
 				<td class=Aleft>&nbsp;&nbsp;AL PROBAR LA ALARMA NIVEL ALTO-ALTO, FUNCIONÓ?</td>
 			</tr>
 			<tr>
-				<td class=Aright>SI&nbsp;</td><td><input name=tanque_drenaje1		type=radio value=SI required></td>
-				<td class=Aright>NO&nbsp;</td><td><input name=tanque_drenaje1		type=radio value=NO></td>
-				<td class=Aright>NA&nbsp;</td><td><input name=tanque_drenaje1		type=radio value=NA></td>
+				<td class=Aright>SI</td><td><input name=tanque_drenaje1		type=radio value=SI required></td>
+				<td class=Aright>NO</td><td><input name=tanque_drenaje1		type=radio value=NO></td>
+				<td class=Aright>NA</td><td><input name=tanque_drenaje1		type=radio value=NA></td>
 				<td class=Aleft>&nbsp;&nbsp;EL TANQUE DE DRENAJE QUEDÓ VACÍO?</td>
 			</tr>
 			<tr height=5px><td></td>
@@ -371,324 +363,161 @@
 		</table>
 		<table border=1>
 			<tr>
-				<td style="width:25.5%; border:0"></td>
-				<td style="width:14.0%; border:0"></td>
-				<td style="width: 9.0%; border:0"></td>
-				<td style="width: 6.0%; border:0"></td>
-				<td style="width: 5.5%; border:0"></td>
-				<td style="width:20.0%; border:0"></td>
-				<td style="width:20.0%; border:0"></td>
+				<td style="width:25.5%"></td>
+				<td style="width:14.0%"></td>
+				<td style="width: 9.0%"></td>
+				<td style="width: 6.0%"></td>
+				<td style="width: 5.5%"></td>
+				<td style="width:20.0%"></td>
+				<td style="width:20.0%"></td>
 			</tr>
 			<tr height=50px>
 				<td class=A1>FECHA (DÍA)</td>
-				<td class=A1>HORA (24HRS)<br>HORA : MIN</td>
+				<td class=A1>HORA (24HRS)</td>
 				<td colspan=3>
 					<table>
 						<tr><td style="width:43.90%"></td><td style="width:29.30%"></td><td style="width:26.80%"></td></tr>
-						<tr><td class=A1 colspan=3; border=0>NIVEL PRODUCTO</td></tr>
+						<tr><td class=A1 colspan=3>NIVEL PRODUCTO</td></tr>
 						<tr><td class=A1 border=0>m</td><td class=A1 border=0>cm</td><td class=A1 border=0>mm</td></tr>
 					</table>
 				</td>
 				<td class=A1>VOL. TANQUE<br>Bls. BRUTOS</td>
 				<td class=A1>CUPO<br>Bls. BRUTOS</td>
 			</tr>
-			<tr height=50px>
-				<td class=A><input name=A1  type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> style=width:90% required></td>
-				<td class=A><input name=A2  type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> style=width:90% required></td>
-				<td class=A><input name=A3  type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric required></td>
-				<td class=A><input name=A31 type=text style="width:90%; text-align:center" maxlength=2 pattern=^(?:[0-9]{0,2})$ inputmode=numeric required></td>
-				<td class=A><input name=A32 type=text style="width:90%; text-align:center" maxlength=1 pattern=^(?:[0-9]{0,1})$ inputmode=numeric required></td>
-				<td class=A><input name=A4  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=A5  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-			</tr>
-			<tr height=50px>
-				<td class=A><input name=B1  type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> style=width:90% required></td>
-				<td class=A><input name=B2  type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> style=width:90% required></td>
-				<td class=A><input name=B3  type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric required></td>
-				<td class=A><input name=B31 type=text style="width:90%; text-align:center" maxlength=2 pattern=^(?:[0-9]{0,2})$ inputmode=numeric required></td>
-				<td class=A><input name=B32 type=text style="width:90%; text-align:center" maxlength=1 pattern=^(?:[0-9]{0,1})$ inputmode=numeric required></td>
-				<td class=A><input name=B4  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=B5  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-			</tr>
-			<tr height=50px>
-				<td class=A><input name=C1  type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> style=width:90%></td>
-				<td class=A><input name=C2  type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> style=width:90%></td>
-				<td class=A><input name=C3  type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric></td>
-				<td class=A><input name=C31 type=text style="width:90%; text-align:center" maxlength=2 pattern=^(?:[0-9]{0,2})$ inputmode=numeric></td>
-				<td class=A><input name=C32 type=text style="width:90%; text-align:center" maxlength=1 pattern=^(?:[0-9]{0,1})$ inputmode=numeric></td>
-				<td class=A><input name=C4  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-				<td class=A><input name=C5  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-			</tr>
-			<tr height=50px>
-				<td class=A><input name=D1  type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> style=width:90%></td>
-				<td class=A><input name=D2  type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> style=width:90%></td>
-				<td class=A><input name=D3  type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric></td>
-				<td class=A><input name=D31 type=text style="width:90%; text-align:center" maxlength=2 pattern=^(?:[0-9]{0,2})$ inputmode=numeric></td>
-				<td class=A><input name=D32 type=text style="width:90%; text-align:center" maxlength=1 pattern=^(?:[0-9]{0,1})$ inputmode=numeric></td>
-				<td class=A><input name=D4  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-				<td class=A><input name=D5  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-			</tr>
-			<tr height=50px>
-				<td class=A><input name=E1  type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> style=width:90%></td>
-				<td class=A><input name=E2  type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> style=width:90%></td>
-				<td class=A><input name=E3  type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric></td>
-				<td class=A><input name=E31 type=text style="width:90%; text-align:center" maxlength=2 pattern=^(?:[0-9]{0,2})$ inputmode=numeric></td>
-				<td class=A><input name=E32 type=text style="width:90%; text-align:center" maxlength=1 pattern=^(?:[0-9]{0,1})$ inputmode=numeric></td>
-				<td class=A><input name=E4  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-				<td class=A><input name=E5  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-			</tr>
-			<tr height=50px>
-				<td class=A><input name=F1  type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> style=width:90%></td>
-				<td class=A><input name=F2  type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> style=width:90%></td>
-				<td class=A><input name=F3  type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric></td>
-				<td class=A><input name=F31 type=text style="width:90%; text-align:center" maxlength=2 pattern=^(?:[0-9]{0,2})$ inputmode=numeric></td>
-				<td class=A><input name=F32 type=text style="width:90%; text-align:center" maxlength=1 pattern=^(?:[0-9]{0,1})$ inputmode=numeric></td>
-				<td class=A><input name=F4  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-				<td class=A><input name=F5  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-			</tr>
-			<tr height=50px>
-				<td class=A><input name=G1  type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> style=width:90%></td>
-				<td class=A><input name=G2  type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> style=width:90%></td>
-				<td class=A><input name=G3  type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric></td>
-				<td class=A><input name=G31 type=text style="width:90%; text-align:center" maxlength=2 pattern=^(?:[0-9]{0,2})$ inputmode=numeric></td>
-				<td class=A><input name=G32 type=text style="width:90%; text-align:center" maxlength=1 pattern=^(?:[0-9]{0,1})$ inputmode=numeric></td>
-				<td class=A><input name=G4  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-				<td class=A><input name=G5  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-			</tr>
-			<tr height=50px>
-				<td class=A><input name=H1  type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> style=width:90%></td>
-				<td class=A><input name=H2  type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> style=width:90%></td>
-				<td class=A><input name=H3  type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric></td>
-				<td class=A><input name=H31 type=text style="width:90%; text-align:center" maxlength=2 pattern=^(?:[0-9]{0,2})$ inputmode=numeric></td>
-				<td class=A><input name=H32 type=text style="width:90%; text-align:center" maxlength=1 pattern=^(?:[0-9]{0,1})$ inputmode=numeric></td>
-				<td class=A><input name=H4  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-				<td class=A><input name=H5  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-			</tr>
-			<tr height=50px>
-				<td class=A><input name=I1  type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> style=width:90%></td>
-				<td class=A><input name=I2  type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> style=width:90%></td>
-				<td class=A><input name=I3  type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric></td>
-				<td class=A><input name=I31 type=text style="width:90%; text-align:center" maxlength=2 pattern=^(?:[0-9]{0,2})$ inputmode=numeric></td>
-				<td class=A><input name=I32 type=text style="width:90%; text-align:center" maxlength=1 pattern=^(?:[0-9]{0,1})$ inputmode=numeric></td>
-				<td class=A><input name=I4  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-				<td class=A><input name=I5  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-			</tr>
-			<tr height=50px>
-				<td class=A><input name=J1  type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> style=width:90%></td>
-				<td class=A><input name=J2  type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> style=width:90%></td>
-				<td class=A><input name=J3  type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric></td>
-				<td class=A><input name=J31 type=text style="width:90%; text-align:center" maxlength=2 pattern=^(?:[0-9]{0,2})$ inputmode=numeric></td>
-				<td class=A><input name=J32 type=text style="width:90%; text-align:center" maxlength=1 pattern=^(?:[0-9]{0,1})$ inputmode=numeric></td>
-				<td class=A><input name=J4  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-				<td class=A><input name=J5  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-			</tr>
-			<tr height=50px>
-				<td class=A><input name=K1  type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> style=width:90%></td>
-				<td class=A><input name=K2  type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> style=width:90%></td>
-				<td class=A><input name=K3  type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric></td>
-				<td class=A><input name=K31 type=text style="width:90%; text-align:center" maxlength=2 pattern=^(?:[0-9]{0,2})$ inputmode=numeric></td>
-				<td class=A><input name=K32 type=text style="width:90%; text-align:center" maxlength=1 pattern=^(?:[0-9]{0,1})$ inputmode=numeric></td>
-				<td class=A><input name=K4  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-				<td class=A><input name=K5  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-			</tr>
-			<tr height=50px>
-				<td class=A><input name=L1  type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> style=width:90%></td>
-				<td class=A><input name=L2  type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> style=width:90%></td>
-				<td class=A><input name=L3  type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric></td>
-				<td class=A><input name=L31 type=text style="width:90%; text-align:center" maxlength=2 pattern=^(?:[0-9]{0,2})$ inputmode=numeric></td>
-				<td class=A><input name=L32 type=text style="width:90%; text-align:center" maxlength=1 pattern=^(?:[0-9]{0,1})$ inputmode=numeric></td>
-				<td class=A><input name=L4  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-				<td class=A><input name=L5  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-			</tr>
-			<tr height=50px>
-				<td class=A><input name=M1  type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> style=width:90%></td>
-				<td class=A><input name=M2  type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> style=width:90%></td>
-				<td class=A><input name=M3  type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric></td>
-				<td class=A><input name=M31 type=text style="width:90%; text-align:center" maxlength=2 pattern=^(?:[0-9]{0,2})$ inputmode=numeric></td>
-				<td class=A><input name=M32 type=text style="width:90%; text-align:center" maxlength=1 pattern=^(?:[0-9]{0,1})$ inputmode=numeric></td>
-				<td class=A><input name=M4  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-				<td class=A><input name=M5  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-			</tr>
-			<tr height=50px>
-				<td class=A><input name=N1  type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> style=width:90%></td>
-				<td class=A><input name=N2  type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> style=width:90%></td>
-				<td class=A><input name=N3  type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric></td>
-				<td class=A><input name=N31 type=text style="width:90%; text-align:center" maxlength=2 pattern=^(?:[0-9]{0,2})$ inputmode=numeric></td>
-				<td class=A><input name=N32 type=text style="width:90%; text-align:center" maxlength=1 pattern=^(?:[0-9]{0,1})$ inputmode=numeric></td>
-				<td class=A><input name=N4  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-				<td class=A><input name=N5  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-			</tr>
-			<tr height=50px>
-				<td class=A><input name=O1  type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> style=width:90%></td>
-				<td class=A><input name=O2  type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> style=width:90%></td>
-				<td class=A><input name=O3  type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric></td>
-				<td class=A><input name=O31 type=text style="width:90%; text-align:center" maxlength=2 pattern=^(?:[0-9]{0,2})$ inputmode=numeric></td>
-				<td class=A><input name=O32 type=text style="width:90%; text-align:center" maxlength=1 pattern=^(?:[0-9]{0,1})$ inputmode=numeric></td>
-				<td class=A><input name=O4  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-				<td class=A><input name=O5  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-			</tr>
-			<tr height=50px>
-				<td class=A><input name=P1  type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> style=width:90%></td>
-				<td class=A><input name=P2  type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> style=width:90%></td>
-				<td class=A><input name=P3  type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric></td>
-				<td class=A><input name=P31 type=text style="width:90%; text-align:center" maxlength=2 pattern=^(?:[0-9]{0,2})$ inputmode=numeric></td>
-				<td class=A><input name=P32 type=text style="width:90%; text-align:center" maxlength=1 pattern=^(?:[0-9]{0,1})$ inputmode=numeric></td>
-				<td class=A><input name=P4  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-				<td class=A><input name=P5  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-			</tr>
-			<tr height=50px>
-				<td class=A><input name=Q1  type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> style=width:90%></td>
-				<td class=A><input name=Q2  type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> style=width:90%></td>
-				<td class=A><input name=Q3  type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric></td>
-				<td class=A><input name=Q31 type=text style="width:90%; text-align:center" maxlength=2 pattern=^(?:[0-9]{0,2})$ inputmode=numeric></td>
-				<td class=A><input name=Q32 type=text style="width:90%; text-align:center" maxlength=1 pattern=^(?:[0-9]{0,1})$ inputmode=numeric></td>
-				<td class=A><input name=Q4  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-				<td class=A><input name=Q5  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-			</tr>
-			<tr height=50px>
-				<td class=A><input name=R1  type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> style=width:90%></td>
-				<td class=A><input name=R2  type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> style=width:90%></td>
-				<td class=A><input name=R3  type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric></td>
-				<td class=A><input name=R31 type=text style="width:90%; text-align:center" maxlength=2 pattern=^(?:[0-9]{0,2})$ inputmode=numeric></td>
-				<td class=A><input name=R32 type=text style="width:90%; text-align:center" maxlength=1 pattern=^(?:[0-9]{0,1})$ inputmode=numeric></td>
-				<td class=A><input name=R4  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-				<td class=A><input name=R5  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-			</tr>
-			<tr height=50px>
-				<td class=A><input name=S1  type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> style=width:90%></td>
-				<td class=A><input name=S2  type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> style=width:90%></td>
-				<td class=A><input name=S3  type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric></td>
-				<td class=A><input name=S31 type=text style="width:90%; text-align:center" maxlength=2 pattern=^(?:[0-9]{0,2})$ inputmode=numeric></td>
-				<td class=A><input name=S32 type=text style="width:90%; text-align:center" maxlength=1 pattern=^(?:[0-9]{0,1})$ inputmode=numeric></td>
-				<td class=A><input name=S4  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-				<td class=A><input name=S5  type=text style="width:90%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric></td>
-			</tr>
+			<?
+			$filas = 19;
+			$l = range('A','S');
+			for($i = 0; $i < $filas; $i++) {
+			$f = $fechacero;
+			$h = $hora;
+			echo "<tr height=50px>";
+			echo "	<td><input name={$l[$i]}1  type=date style=width:90% value=".$f." required></td>";
+			echo "	<td><input name={$l[$i]}2  type=time style=width:90% value=".$h." required></td>";
+			echo "	<td><input name={$l[$i]}3  type=text style=width:90% maxlength=2 placeholder='##'			pattern=^([0-9]{1,2}?)$	inputmode=numeric required></td>";
+			echo "	<td><input name={$l[$i]}31 type=text style=width:90% maxlength=2 placeholder='##'			pattern=^([0-9]{1,2}?)$	inputmode=numeric required></td>";
+			echo "	<td><input name={$l[$i]}32 type=text style=width:90% maxlength=1 placeholder='#'			pattern=^([0-9]{1}?)$		inputmode=numeric required></td>";
+			echo "	<td><input name={$l[$i]}4  type=text style=width:90% maxlength=5 placeholder='#####'	pattern=^([0-9]{1,5}?)$	inputmode=numeric required></td>";
+			echo "	<td><input name={$l[$i]}5  type=text style=width:90% maxlength=5 placeholder='#####'	pattern=^([0-9]{1,5}?)$	inputmode=numeric required></td>";
+			echo "</tr>";
+			}
+			?>
 		</table>
 		<hr>
 		<table border=1>
 			<tr>
-				<td style="width:25.0%; border:0"></td>
-				<td style="width:14.0%; border:0"></td>
-				<td style="width:21.0%; border:0"></td>
-				<td style="width:20.0%; border:0"></td>
-				<td style="width:20.0%; border:0"></td>
+				<td style="width:25.0%"></td>
+				<td style="width:14.0%"></td>
+				<td style="width:21.0%"></td>
+				<td style="width:20.0%"></td>
+				<td style="width:20.0%"></td>
 			</tr>
 			<tr>
 				<td colspan=5 class=A0>CONTROL DURANTE BOMBEO LÍNEAS NO DEDICADAS</td>
 			</tr>
 			<tr height=50px>
 				<td class=A1>FECHA (DÍA)</td>
-				<td class=A1>HORA (24HRS)<br>HORA : MIN</td>
+				<td class=A1>HORA (24HRS)</td>
 				<td class=A1>TEMPERATURA (°F)</td>
 				<td class=A1>GRAVEDAD API</td>
 				<td class=A1>APARIENCIA</td>
 			</tr>
 			<tr height=50px>
-				<td class=A><input name=T1 type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> style=width:90%></td>
-				<td class=A><input name=T2 type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> style=width:90%></td>
-				<td class=A><input name=T3 type=text style="width:90%; text-align:center" maxlength=6 pattern=^(([0-9]){1,3}?(.\d)?(\d)?)$ inputmode=numeric></td>
-				<td class=A><input name=T4 type=text style="width:90%; text-align:center" maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric></td>
-				<td class=A><input name=T5 type=text style="width:90%; text-align:center" maxlength=10 pattern=.{1,} onkeyup=mayuscula(this)></td>
+				<td><input name=T1 type=date value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> style=width:90%></td>
+				<td><input name=T2 type=time value='<?=$hora;?>' min=<?=date("H:i");?> style=width:90%></td>
+				<td><input name=T3 type=text style=width:90% maxlength=6  placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
+				<td><input name=T4 type=text style=width:90% maxlength=6  placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
+				<td><input name=T5 type=text style=width:90% maxlength=10 pattern=.{1,} onkeyup=mayuscula(this)></td>
 			</tr>
 			<tr height=50px>
-				<td class=A><input name=U1 type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> style=width:90%></td>
-				<td class=A><input name=U2 type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> style=width:90%></td>
-				<td class=A><input name=U3 type=text style="width:90%; text-align:center" maxlength=6 pattern=^(([0-9]){1,3}?(.\d)?(\d)?)$ inputmode=numeric></td>
-				<td class=A><input name=U4 type=text style="width:90%; text-align:center" maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric></td>
-				<td class=A><input name=U5 type=text style="width:90%; text-align:center" maxlength=10 pattern=.{1,} onkeyup=mayuscula(this)></td>
+				<td><input name=U1 type=date value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> style=width:90%></td>
+				<td><input name=U2 type=time value='<?=$hora;?>' min=<?=date("H:i");?> style=width:90%></td>
+				<td><input name=U3 type=text style=width:90% maxlength=6  placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
+				<td><input name=U4 type=text style=width:90% maxlength=6  placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
+				<td><input name=U5 type=text style=width:90% maxlength=10 pattern=.{1,} onkeyup=mayuscula(this)></td>
 			</tr>
 			<tr height=50px>
-				<td class=A><input name=V1 type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> style=width:90%></td>
-				<td class=A><input name=V2 type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> style=width:90%></td>
-				<td class=A><input name=V3 type=text style="width:90%; text-align:center" maxlength=6 pattern=^(([0-9]){1,3}?(.\d)?(\d)?)$ inputmode=numeric></td>
-				<td class=A><input name=V4 type=text style="width:90%; text-align:center" maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric></td>
-				<td class=A><input name=V5 type=text style="width:90%; text-align:center" maxlength=10 pattern=.{1,} onkeyup=mayuscula(this)></td>
+				<td><input name=V1 type=date value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> style=width:90%></td>
+				<td><input name=V2 type=time value='<?=$hora;?>' min=<?=date("H:i");?> style=width:90%></td>
+				<td><input name=V3 type=text style=width:90% maxlength=6  placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
+				<td><input name=V4 type=text style=width:90% maxlength=6  placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
+				<td><input name=V5 type=text style=width:90% maxlength=10 pattern=.{1,} onkeyup=mayuscula(this)></td>
 			</tr>
 		</table>
 		<hr>
 		<table border=0>
+			<tr><td style=width:14%></td><td style=width:1%></td><td style=width:85%></td></tr>
+			<tr><td colspan=3 class=A0>MEDICIÓN FINAL</td></tr>
 			<tr>
-				<td colspan=6 class=A0>MEDICIÓN FINAL</td>
-			</tr>
-		</table>
-		<table border=0>
-			<tr>
-				<td style=width:6%></td><td style=width:4%></td>
-				<td style=width:6%></td><td style=width:4%></td>
-				<td style=width:2%></td><td style=width:78%></td>
+				<td class=Aright>SI&nbsp;<input name=tiempo_reposo	type=radio value=SI required></td>
+				<td></td><td rowspan=2 class=Aleft>DESPUÉS DE LA FINALIZACIÓN DEL BOMBEO, SE HA ESPERADO EL TIEMPO DE REPOSO ESTABLECIDO EN EL PROCEDIMIENTO PARA MEDIR EL TANQUE?</td>
 			</tr>
 			<tr>
-				<td class=Aright>SI&nbsp;</td>
-				<td class=A><input name=tiempo_reposo	type=radio value=SI required></td>
-				<td class=Aright><!--NO&nbsp;--></td>
-				<td class=A><!--<input name=tiempo_reposo	type=radio value=NO--></td>
-				<td></td>
-				<td class=Aleft>DESPUÉS DE LA FINALIZACIÓN DEL BOMBEO, SE HA ESPERADO EL TIEMPO DE REPOSO ESTABLECIDO EN EL PROCEDIMIENTO PARA MEDIR EL TANQUE?</td>
+				<td class=Aright>NO&nbsp;<input name=tiempo_reposo	type=radio value=NO</td>
 			</tr>
 			<tr height=5px><td></td>
 		</table>
 		<table border=1>
 			<tr>
-				<td style="width:20%; border:0"></td>
-				<td style="width:19.5%; border:0"></td>
-				<td style="width:19.5%; border:0"></td>
-				<td style="width:19.5%; border:0"></td>
-				<td style="width:21.5%; border:0"></td>
+				<td style="width:20%"></td>
+				<td style="width:19%"></td>
+				<td style="width:19%"></td>
+				<td style="width:19%"></td>
+				<td style="width:23%"></td>
 			</tr>
 			<tr>
 				<td colspan=4 class=A>NIVEL PRODUCTO</td>
 				<td rowspan=2 class=A>TEMPERATURA °F</td>
 			</tr>
 			<tr>
-				<td class=A>MEDIDA</td>
-				<td class=A>m</td><td class=A>cm</td><td class=A>mm</td>
+				<td>MEDIDA</td>
+				<td>m</td><td>cm</td><td>mm</td>
 			</tr>
 			<tr>
-				<td class=A>NIVEL</td>
-				<td class=A><input name=nivel2_mt	type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric required></td>
-				<td class=A><input name=nivel2_cm	type=text style="width:90%; text-align:center" maxlength=2 pattern=^(?:[0-9]{0,2})$ inputmode=numeric required></td>
-				<td class=A><input name=nivel2_mm	type=text style="width:90%; text-align:center" maxlength=1 pattern=^(?:[0-9]{0,1})$ inputmode=numeric required></td>
-				<td rowspan=2 class=A><input name=temperatura2	type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric required></td>
+				<td>NIVEL</td>
+				<td><input name=nivel2_mt	type=text style=width:90% maxlength=2 placeholder=## pattern=^([0-9]{1,2}?)$ inputmode=numeric required></td>
+				<td><input name=nivel2_cm	type=text style=width:90% maxlength=2 placeholder=## pattern=^([0-9]{1,2}?)$ inputmode=numeric required></td>
+				<td><input name=nivel2_mm	type=text style=width:90% maxlength=1 placeholder=#	 pattern=^([0-9]{1}?)$	 inputmode=numeric required></td>
+				<td rowspan=2 class=A><input name=temperatura2	type=text style=width:90% maxlength=6 placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
 			</tr>
 			<tr>
-				<td class=A>AGUA</td>
-				<td class=A><input name=agua2_mt	type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric required></td>
-				<td class=A><input name=agua2_cm	type=text style="width:90%; text-align:center" maxlength=2 pattern=^(?:[0-9]{0,2})$ inputmode=numeric required></td>
-				<td class=A><input name=agua2_mm	type=text style="width:90%; text-align:center" maxlength=1 pattern=^(?:[0-9]{0,1})$ inputmode=numeric required></td>
+				<td>AGUA</td>
+				<td><input name=agua2_mt	type=text style=width:90% maxlength=2 placeholder=## pattern=^([0-9]{1,2}?)$ inputmode=numeric required></td>
+				<td><input name=agua2_cm	type=text style=width:90% maxlength=2 placeholder=## pattern=^([0-9]{1,2}?)$ inputmode=numeric required></td>
+				<td><input name=agua2_mm	type=text style=width:90% maxlength=1 placeholder=#	 pattern=^([0-9]{1}?)$	 inputmode=numeric required></td>
 			</tr>
 		</table>
 		<table border=1>
 			<tr>
-				<td style="width:25%; border:0"></td>
-				<td style="width:50%; border:0"></td>
-				<td style="width:30%; border:0"></td>
+				<td style="width:25%"></td>
+				<td style="width:50%"></td>
+				<td style="width:30%"></td>
 			</tr>
 			<tr>
-				<td rowspan=3 class=A>PRUEBAS ABREVIADAS DE CALIDAD</td>
-				<td class=A>API OBSERVADO</td>
-				<td class=A><input name=api_observado	type=text style="width:90%; text-align:center" maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td rowspan=3>PRUEBAS ABREVIADAS DE CALIDAD</td>
+				<td>API OBSERVADO</td>
+				<td><input name=api_observado	type=text style=width:90% maxlength=6 placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
 			</tr>
 			<tr>
-				<td class=A>TEMPERATURA OBSERVADA (°F)</td>
-				<td class=A><input name=temperatura		type=text style="width:90%; text-align:center" maxlength=6 pattern=^(([0-9]){1,3}?(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td>TEMPERATURA OBSERVADA (°F)</td>
+				<td><input name=temperatura		type=text style=width:90% maxlength=6 placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
 			</tr>
 			<tr>
-				<td class=A>MARCACIÓN</td>
-				<td class=A><input name=marcacion			type=text style="width:90%; text-align:center" maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric required></td>
+				<td>MARCACIÓN</td>
+				<td><input name=marcacion			type=text style=width:90% maxlength=12 pattern=.{1,} onkeyup=mayuscula(this) required></td>
 			</tr>
 		</table>
 		<table border=0>
 			<tr>
-				<td style=width:6%></td><td style=width:4%></td>
-				<td style=width:6%></td><td style=width:4%></td>
-				<td style=width:6%></td><td style=width:4%></td>
-				<td style=width:70%></td>
+				<td style=width:7%></td><td style=width:5%></td>
+				<td style=width:7%></td><td style=width:5%></td>
+				<td style=width:7%></td><td style=width:5%></td>
+				<td style=width:64%></td>
 			</tr>
 			<tr height=10px><td></td>
 			<tr>
-				<td class=Aright>SI&nbsp;</td><td class=A><input name=tanque_drenaje2 type=radio value=SI onclick=gestionarClickRadio(this) required></td>
-				<td class=Aright>NO&nbsp;</td><td class=A><input name=tanque_drenaje2 type=radio value=NO onclick=gestionarClickRadio(this)></td>
-				<td class=Aright>NA&nbsp;</td><td class=A><input name=tanque_drenaje2 type=radio value=NA onclick=gestionarClickRadio(this)></td>
+				<td class=Aright>SI&nbsp;</td><td><input name=tanque_drenaje2 type=radio value=SI onclick=gestionarClickRadio(this) required></td>
+				<td class=Aright>NO&nbsp;</td><td><input name=tanque_drenaje2 type=radio value=NO onclick=gestionarClickRadio(this)></td>
+				<td class=Aright>NA&nbsp;</td><td><input name=tanque_drenaje2 type=radio value=NA onclick=gestionarClickRadio(this)></td>
 				<td class=Aleft>&nbsp;&nbsp;EL TANQUE DE DRENAJE QUEDÓ VACÍO?</td>
 			</tr>
 			<tr height=5px><td></td>
@@ -710,14 +539,10 @@
 				<td style=width:17%></td>
 				<td style=width:50%></td>
 			</tr>
+			<tr><td colspan=4 class=A0>LIQUIDACIÓN FINAL DE VOLUMEN RECIBIDO<br>MEDICIÓN AUTOMÁTICA</td></tr>
 			<tr>
-				<td colspan=4 class=A0>LIQUIDACIÓN FINAL DE VOLUMEN RECIBIDO<br>MEDICIÓN AUTOMÁTICA</td>
-			</tr>
-			<tr>
-				<td class=Aright>TANQUE:</td>
-				<td class=A><input name=tanque1	id=tanque1	type=text	style="text-align:left; width:100%; background-color:rgba(0,0,0,0); border:0"	readonly></td>
-				<td class=Aright>PRODUCTO:</td>
-				<td class=A><input name=producto1	id=producto1	type=text	style="text-align:left; width:100%; background-color:rgba(0,0,0,0); border:0"	readonly></td>
+				<td class=Aright>TANQUE:</td>		<td><input name=tanque1		id=tanque1		type=text	style="text-align:left; width:100%; background-color:rgba(0,0,0,0)"	readonly></td>
+				<td class=Aright>PRODUCTO:</td>	<td><input name=producto1	id=producto1	type=text	style="text-align:left; width:100%; background-color:rgba(0,0,0,0)"	readonly></td>
 			</tr>
 		</table>
 		<table border=0>
@@ -730,106 +555,101 @@
 				<td style=width:16%></td>
 				<td style=width:16%></td>
 			</tr>
-			<tr>
-				<td colspan=5 class=A></td>
-				<td class=A>INICIAL</td>
-				<td class=A>FINAL</td>
-			</tr>
+			<tr><td colspan=5></td><td>INICIAL</td><td>FINAL</td></tr>
 			<tr>
 				<td colspan=5 class=Aleft>&nbsp;&nbsp;1. MEDIDA NIVEL PRODUCTO</td>
-				<td class=A><input name=inicial1 id=inicial1 	type=text style="width:100%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=final1 id=final1 	type=text style="width:100%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td><input name=inicial1	id=inicial1	type=text style=width:100% maxlength=5 placeholder=##.## pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
+				<td><input name=final1		id=final1		type=text style=width:100% maxlength=5 placeholder=##.## pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
 			</tr>
 			<tr>
 				<td colspan=5 class=Aleft>&nbsp;&nbsp;2. VOLUMEN PRODUCTO (BRUTO)</td>
-				<td class=A><input name=inicial2 id=inicial2 	type=text style="width:100%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=final2 id=final2 	type=text style="width:100%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td><input name=inicial2	id=inicial2	type=text style=width:100% maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$ inputmode=numeric required></td>
+				<td><input name=final2		id=final2		type=text style=width:100% maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$ inputmode=numeric required></td>
 			</tr>
 			<tr>
 				<td colspan=5 class=Aleft>&nbsp;&nbsp;3. MEDIDA NIVEL DE AGUA</td>
-				<td class=A><input name=inicial3 id=inicial3 	type=text style="width:100%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=final3 id=final3 	type=text style="width:100%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td><input name=inicial3	id=inicial3	type=text style=width:100% maxlength=5 placeholder=##.## pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
+				<td><input name=final3		id=final3		type=text style=width:100% maxlength=5 placeholder=##.## pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
 			</tr>
 			<tr>
 				<td colspan=5 class=Aleft>&nbsp;&nbsp;4. VOLUMEN AGUA</td>
-				<td class=A><input name=inicial4 id=inicial4 	type=text style="width:100%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=final4 id=final4 	type=text style="width:100%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td><input name=inicial4	id=inicial4	type=text style=width:100% maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$ inputmode=numeric required></td>
+				<td><input name=final4		id=final4		type=text style=width:100% maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$ inputmode=numeric required></td>
 			</tr>
 			<tr>
 				<td colspan=5 class=Aleft>&nbsp;&nbsp;5. VOLUMEN PRODUCTO SIN AGUA (2-4)</td>
-				<td class=A><input name=inicial5 id=inicial5 	type=text style="width:100%; background-color:rgba(0,0,0,0); text-align:center" readonly></td>
-				<td class=A><input name=final5 id=final5 	type=text style="width:100%; background-color:rgba(0,0,0,0); text-align:center" readonly></td>
+				<td><input name=inicial5	id=inicial5	type=text style="width:100%; background-color:rgba(0,0,0,0); border:0" readonly></td>
+				<td><input name=final5		id=final5		type=text style="width:100%; background-color:rgba(0,0,0,0); border:0" readonly></td>
 			</tr>
 			<tr>
 				<td colspan=5 class=Aleft>&nbsp;&nbsp;6. TEMPERATURA MEDIDA</td>
-				<td class=A><input name=inicial6 id=inicial6 	type=text style="width:100%; text-align:center" maxlength=6 pattern=^(([0-9]){1,3}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=final6 id=final6 	type=text style="width:100%; text-align:center" maxlength=6 pattern=^(([0-9]){1,3}?(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td><input name=inicial6	id=inicial6	type=text style=width:100% maxlength=6 placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
+				<td><input name=final6		id=final6		type=text style=width:100% maxlength=6 placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
 			</tr>
 			<tr>
 				<td colspan=5 class=Aleft>&nbsp;&nbsp;7. GRAVEDAD API 60°F</td>
-				<td class=A><input name=inicial7 id=inicial7 	type=text style="width:100%; text-align:center" maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=final7 id=final7 	type=text style="width:100%; text-align:center" maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td><input name=inicial7	id=inicial7	type=text style=width:100% maxlength=6 placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
+				<td><input name=final7		id=final7		type=text style=width:100% maxlength=6 placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
 			</tr>
 			<tr>
-				<td colspan=5 class=Aleft>&nbsp;&nbsp;8. FACTOR DE CORRECCIÓN A 60°F <span style="font-size:20px">(COEFICIENTE TABLA 6B)</span></td>
-				<td class=A><input name=inicial8 id=inicial8 	type=text style="width:100%; text-align:center" maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A><input name=final8 id=final8 	type=text style="width:100%; text-align:center" maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td colspan=5 class=Aleft>&nbsp;&nbsp;8. FACTOR DE CORRECCIÓN A 60°F <span style="font-size:21px">(COEFICIENTE TABLA 6B)</span></td>
+				<td><input name=inicial8	id=inicial8	type=text style=width:100% maxlength=4 placeholder=#.## pattern=^([0-9]{1}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
+				<td><input name=final8		id=final8		type=text style=width:100% maxlength=4 placeholder=#.## pattern=^([0-9]{1}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
 			</tr>
 			<tr>
 				<td colspan=5 class=Aleft>&nbsp;&nbsp;9.VOLUMEN PRODUCTO 60°F(5x8) (NETO)</td>
-				<td class=A><input name=inicial9 id=inicial9 	type=text style="width:100%; background-color:rgba(0,0,0,0); text-align:center" readonly></td>
-				<td class=A><input name=final9 id=final9 	type=text style="width:100%; background-color:rgba(0,0,0,0); text-align:center" readonly></td>
+				<td><input name=inicial9	id=inicial9	type=text style="width:100%; background-color:rgba(0,0,0,0); border:0" readonly></td>
+				<td><input name=final9		id=final9		type=text style="width:100%; background-color:rgba(0,0,0,0); border:0" readonly></td>
 			</tr>
 			<tr>
 				<td colspan=5 class=Aleft>10. VOLUMEN NETO RECIBIDO EN TANQUE</td>
-				<td class=A style=background-color:rgba(192,192,192,1)></td>
-				<td class=A><input name=final10 id=final10 	type=text style="width:100%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td style=background-color:rgba(192,192,192,1)></td>
+				<td><input name=final10		id=final10	type=text style=width:100% maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$ inputmode=numeric required></td>
 			</tr>
 			<tr>
 				<td colspan=5 class=Aleft>11. VOLUMEN ENTREGADO POR CONTADORES (VENTAS)</td>
-				<td class=A><input name=inicial11 id=inicial11 	type=text style="width:100%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A style=background-color:rgba(192,192,192,1)></td>
+				<td><input name=inicial11	id=inicial11	type=text style=width:100% maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$ inputmode=numeric required></td>
+				<td style=background-color:rgba(192,192,192,1)></td>
 			</tr>
 			<tr>
-				<td colspan=5 class=Aleft>12. TEMPERATURA PROM. ENTREGA DE CONTADORES (°F)</td>
-				<td class=A><input name=inicial12 id=inicial12 	type=text style="width:100%; text-align:center" maxlength=6 pattern=^(([0-9]){1,3}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A style=background-color:rgba(192,192,192,1)></td>
+				<td colspan=5 class=Aleft>12. TEMPERATURA PROM. ENTREGA CONTADORES (°F)</td>
+				<td><input name=inicial12	id=inicial12	type=text style=width:100% maxlength=6 placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
+				<td style=background-color:rgba(192,192,192,1)></td>
 			</tr>
 			<tr>
-<!--		<td colspan=5 class=LAleft>13. FACTOR DE CORRECCIÓN A 60°F <span style="font-size:20px">(COEFICIENTE TABLA 6B)</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONTADORES</td> -->
-				<td colspan=5 class=LAleft><span style="font-size:23.35px">13. FACTOR CORRECCIÓN 60°F&nbsp;<span style="font-size:20px">(COEF. TABLA 6B)</span>&nbsp;CONTADORES</span></td>
-				<td class=A><input name=inicial13 id=inicial13 	type=text style="width:100%; text-align:center" maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=A style=background-color:rgba(192,192,192,1)></td>
+				<td colspan=5 class=Aleft>13. FACTOR CORRECCIÓN 60°F <span style="font-size:18px">(COEF. TABLA 6B) CONTADORES</span></td>
+				<td><input name=inicial13	id=inicial13	type=text style=width:100% maxlength=4 placeholder=#.## pattern=^([0-9]{1}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
+				<td style=background-color:rgba(192,192,192,1)></td>
 			</tr>
 			<tr>
-				<td colspan=5 class=Aleft><span style="font-size:23.45px">14. VOLUMEN NETO ENTREGADO POR CONTADORES (11x13)</span></td>
-				<td class=A style=background-color:rgba(192,192,192,1)></td>
-				<td class=A><input name=final14 id=final14 	type=text style="width:100%; background-color:rgba(0,0,0,0); text-align:center" readonly></td>
+				<td colspan=5 class=Aleft>14. VOLUMEN NETO ENTREGADO POR CONTADORES (11x13)</td>
+				<td style=background-color:rgba(192,192,192,1)></td>
+				<td><input name=final14		id=final14		type=text style="width:100%; background-color:rgba(0,0,0,0)" readonly></td>
 			</tr>
 			<tr>
 				<td colspan=5 class=Aleft>15. VOLUMEN NETO RECIBIDO (10+14)</td>
-				<td class=A style=background-color:rgba(192,192,192,1)></td>
-				<td class=A><input name=final15 id=final15 	type=text style="width:100%; background-color:rgba(0,0,0,0); text-align:center" readonly></td>
+				<td style=background-color:rgba(192,192,192,1)></td>
+				<td><input name=final15		id=final15		type=text style="width:100%; background-color:rgba(0,0,0,0)" readonly></td>
 			</tr>
 			<tr>
 				<td colspan=5 class=Aleft>16. VOLUMEN TIQUETE DEL POLIDUCTO*</td>
-				<td class=A style=background-color:rgba(192,192,192,1)></td>
-				<td class=A><input name=final16 id=final16 	type=text onfocusout=liquidar() style="width:100%; text-align:center" maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td style=background-color:rgba(192,192,192,1)></td>
+				<td><input name=final16		id=final16		type=text onfocusout=liquidar() style=width:100% maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$ inputmode=numeric required></td>
 			</tr>
 			<tr>
 				<td class=Aleft>17. DIFERENCIA (15-16):</td>
 				<td class=Aright>FALTANTE</td>
-				<td class=A style=text-align:left><input name=diferencia	type=radio value=F onclick=gestionarClickRadio(this) required></td>
+				<td style=text-align:left><input name=diferencia	type=radio value=F onclick=gestionarClickRadio(this) required></td>
 				<td class=Aright>SOBRANTE</td>
-				<td class=A style=text-align:left><input name=diferencia	type=radio value=S onclick=gestionarClickRadio(this)></td>
-				<td class=A style=background-color:rgba(192,192,192,1)></td>
-				<td class=A><input name=final17 id=final17 	type=text style="width:100%; background-color:rgba(0,0,0,0); text-align:center" readonly></td>
+				<td style=text-align:left><input name=diferencia	type=radio value=S onclick=gestionarClickRadio(this)></td>
+				<td style=background-color:rgba(192,192,192,1)></td>
+				<td><input name=final17		id=final17		type=text style="width:100%; background-color:rgba(0,0,0,0)" readonly></td>
 			</tr>
 			<tr>
 				<td colspan=5 class=Aleft>18. PORCENTAJE DE VARIACION (17/16 x 100)</td>
-				<td class=A style=background-color:rgba(192,192,192,1)></td>
-				<td class=A style=text-align:left>
-					<input name=final18	id=final18 type=text style="width:80%; text-align:right; background-color:rgba(0,0,0,0); border:0" readonly><span style="font-size:28px; color:rgba(0,0,191,1); background-color:rgba(0,0,0,0)">%</span>
+				<td style=background-color:rgba(192,192,192,1)></td>
+				<td style=text-align:left>
+						<input name=final18		id=final18		type=text style="width:80%; text-align:right; background-color:rgba(0,0,0,0)" readonly><span style="font-size:28px; color:rgba(0,0,191,1); background-color:rgba(0,0,0,0)">%</span>
 				</td>
 			</tr>
 			<tr height=30px><td></td></tr>
@@ -837,41 +657,38 @@
 		</table>
 		<hr>
 		<table border=1>
+			<tr><td width=75%>MAYORISTA</td><td width=25%>VOLUMEN</td></tr>
 			<tr>
-				<td class=A width=75%>MAYORISTA</td>
-				<td class=A width=25%>VOLUMEN</td>
+				<td style="width:100%; text-align:left"><b>&nbsp;PRIMAX COLOMBIA S.A</b></td>
+				<td><input name=volmayor1		type=text	style=width:100%	maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric required></td>
 			</tr>
 			<tr>
-				<td class=A style="width:100%; text-align:left"><b>&nbsp;PRIMAX COLOMBIA S.A</b></td>
-				<td><input name=volmayor1	type=text	style="width:100%; text-align:center"	maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric required></td>
+				<td><input name=mayorista2	type=text	style="width:100%; text-align:left" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td>
+				<td><input name=volmayor2		type=text	style=width:100%	maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric></td>
 			</tr>
 			<tr>
-				<td class=A><input name=mayorista2	type=text	style="width:100%; text-align:left" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td>
-				<td><input name=volmayor2	type=text	style="width:100%; text-align:center"	maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric></td>
+				<td><input name=mayorista3	type=text	style="width:100%; text-align:left" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td>
+				<td><input name=volmayor3		type=text	style=width:100%	maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric></td>
 			</tr>
 			<tr>
-				<td class=A><input name=mayorista3	type=text	style="width:100%; text-align:left" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td>
-				<td><input name=volmayor3	type=text	style="width:100%; text-align:center"	maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric></td>
+				<td><input name=mayorista4	type=text	style="width:100%; text-align:left" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td>
+				<td><input name=volmayor4		type=text	style=width:100%	maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric></td>
 			</tr>
 			<tr>
-				<td class=A><input name=mayorista4	type=text	style="width:100%; text-align:left" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td>
-				<td><input name=volmayor4	type=text	style="width:100%; text-align:center"	maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric></td>
+				<td><input name=mayorista5	type=text	style="width:100%; text-align:left" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td>
+				<td><input name=volmayor5		type=text	style=width:100%	maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric></td>
 			</tr>
 			<tr>
-				<td class=A><input name=mayorista5	type=text	style="width:100%; text-align:left" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td>
-				<td><input name=volmayor5	type=text	style="width:100%; text-align:center"	maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric></td>
+				<td><input name=mayorista6	type=text	style="width:100%; text-align:left" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td>
+				<td><input name=volmayor6		type=text	style=width:100%	maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric></td>
 			</tr>
 			<tr>
-				<td class=A><input name=mayorista6	type=text	style="width:100%; text-align:left" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td>
-				<td><input name=volmayor6	type=text	style="width:100%; text-align:center"	maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric></td>
+				<td><input name=mayorista7	type=text	style="width:100%; text-align:left" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td>
+				<td><input name=volmayor7		type=text	style=width:100%	maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric></td>
 			</tr>
 			<tr>
-				<td class=A><input name=mayorista7	type=text	style="width:100%; text-align:left" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td>
-				<td><input name=volmayor7	type=text	style="width:100%; text-align:center"	maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric></td>
-			</tr>
-			<tr>
-				<td class=A><b>TOTAL</b></td>
-				<td><span id=total_ecopetrol style="width:100%; text-align:center; font-family:Arlrdlt; font-size:34px; color:rgba(0,0,191,1); background-color:rgba(255,112,0,0.33)"></span></td>
+				<td><b>TOTAL</b></td>
+				<td><span id=total_ecopetrol style="width:100%; font-family:Arlrdlt; font-size:34px; color:rgba(0,0,191,1); background-color:rgba(255,112,0,0.33)"></span></td>
 			</tr>
 		</table>
 		<hr>
@@ -882,11 +699,11 @@
 		<hr>
 		<table>
 			<tr height=30px><td width=39%><td width=22%><td width=39%></tr>
-			<tr><td class=A>FINALIZADO POR</td><td class=A>FECHA</td><td class=A>REVISADO POR</td></tr>
+			<tr><td>FINALIZADO POR</td><td>FECHA</td><td>REVISADO POR</td></tr>
 			<tr>
-				<td class=A><input name=finalizadopor  type=text style="width:100%; text-align:center"	maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td class=A><input name=fecha_revision type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> required></td>
-				<td class=A><input name=revisadopor		 type=text style="width:100%; text-align:center"	maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+				<td><input name=finalizadopor  type=text style=width:100%	maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+				<td><input name=fecha_revision type=date value='<?=$hoy;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
+				<td><input name=revisadopor		 type=text style=width:100%	maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
 			</tr>
 		</table>
 		<hr>
@@ -899,16 +716,9 @@
 					<form method="post">
 						<select name="usuario1" id="usuario1" type=text onfocusout="u()" required>
 							<option value="" disabled selected>RESPONSABLE DEL FORMATO</option>
-							<option style="<? if ($numero_usuarios <= 0) {echo 'display:none';} ?>" value="<? echo $usuario[0]; ?>"><? echo $usuario[0]."@primax.com.co"; ?></option>
-							<option style="<? if ($numero_usuarios <= 1) {echo 'display:none';} ?>" value="<? echo $usuario[1]; ?>"><? echo $usuario[1]."@primax.com.co"; ?></option>
-							<option style="<? if ($numero_usuarios <= 2) {echo 'display:none';} ?>" value="<? echo $usuario[2]; ?>"><? echo $usuario[2]."@primax.com.co"; ?></option>
-							<option style="<? if ($numero_usuarios <= 3) {echo 'display:none';} ?>" value="<? echo $usuario[3]; ?>"><? echo $usuario[3]."@primax.com.co"; ?></option>
-							<option style="<? if ($numero_usuarios <= 4) {echo 'display:none';} ?>" value="<? echo $usuario[4]; ?>"><? echo $usuario[4]."@primax.com.co"; ?></option>
-							<option style="<? if ($numero_usuarios <= 5) {echo 'display:none';} ?>" value="<? echo $usuario[5]; ?>"><? echo $usuario[5]."@primax.com.co"; ?></option>
-							<option style="<? if ($numero_usuarios <= 6) {echo 'display:none';} ?>" value="<? echo $usuario[6]; ?>"><? echo $usuario[6]."@primax.com.co"; ?></option>
-							<option style="<? if ($numero_usuarios <= 7) {echo 'display:none';} ?>" value="<? echo $usuario[7]; ?>"><? echo $usuario[7]."@primax.com.co"; ?></option>
-							<option style="<? if ($numero_usuarios <= 8) {echo 'display:none';} ?>" value="<? echo $usuario[8]; ?>"><? echo $usuario[8]."@primax.com.co"; ?></option>
-							<option style="<? if ($numero_usuarios <= 9) {echo 'display:none';} ?>" value="<? echo $usuario[9]; ?>"><? echo $usuario[9]."@primax.com.co"; ?></option>
+							<? for ($i = 0; $i < $numero_usuarios && $i < 10; $i++):?>
+								<option value="<?= $usuario[$i]?>"><?= $usuario[$i]?>@primax.com.co</option>
+							<? endfor;?>
 						</select>
 					</form>
 				</td>
@@ -918,19 +728,19 @@
 		<hr>
 		
 		<!-- *****************************************			 FIN DEL FORMULARIO			 ***************************************** -->
-		<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Fecha diligenciamiento: <?echo $fechaactual;?> / <?echo $horaactual;?></span>
-		<input style=display:none type=text name=fecha value="<?echo $fechaactual;?> / <?echo $horaactual;?>" readonly><br>
-<!--		<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Quedan <?echo number_format($consec_por_usar,0,',','.');?> consecutivos, incluido este.</span><br> -->
+		<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Fecha diligenciamiento: <?=$fechaactual;?> / <?=$horaactual;?></span>
+		<input style=display:none type=text name=fecha value="<?=$fechaactual;?> / <?=$horaactual;?>" readonly><br>
+<!--		<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Quedan <?=number_format($consec_por_usar,0,',','.');?> consecutivos, incluido este.</span><br> -->
 		<table border=0>
 			<tr height=200>
-				<td><input type=image src=../../../../../common/imagenes/grabar.png alt=Submit style="width:100; height:auto; border:0; background-color:rgba(0,0,0,0)"></td>
+				<td><input type=image src=../../../../../common/imagenes/grabar.png alt=Submit style="width:100; height:auto; background-color:rgba(0,0,0,0); border:none"></td>
 				<td><a href=javascript:closed()><img src=../../../../../common/imagenes/regresar.png style="pointer-events:auto; width:100px; height:auto"></a></td>
 			</tr>
 			<tr><td colspan=2><hr></td></tr>
 			<tr>
 				<td><span style="font-family:Arlrdlt; font-size:30px; color:rgba(0,0,0,1)">REVISIÓN FRONT-END: 2024-10</span></td>
 				<td>
-					<a href="mailto:<?echo $correo_pedidos;?>?Subject=Solicitud%20pedido%20libretas%20permisos%20de%20trabajo">
+					<a href="mailto:<?=$correo_pedidos;?>?Subject=Solicitud%20pedido%20libretas%20permisos%20de%20trabajo">
 					<img src=../../../../../common/imagenes/piedepagina_horizontal.svg style="pointer-events:auto; width:100%; height:auto">
 					</a>
 				</td>
@@ -943,7 +753,7 @@
 <!-- *****************************************			 INICIO DES-SELECCIONAR INPUT radio			 ***************************************** -->
 <!-- *****************************************						debe ir al final del html					 ***************************************** -->
 
-<? if ($consec > "$ultimo_consec") {echo "system('cls');<script>setTimeout(cerrarVentana,10*60*1000); document.body.innerHTML = '$aviso_pedido';</script>";} ?>
+<? if ($consec > "$ultimo_consec") {echo "system('cls');<script>setTimeout(cerrarVentana,10*60*1000); document.body.innerHTML = '$aviso_pedido';</script>";}?>
 
 <script type="text/javascript">
 	//Para distinguir la opción actualmente pulsada en cada grupo

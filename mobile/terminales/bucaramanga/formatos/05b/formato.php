@@ -22,6 +22,13 @@
 	tr.Cn3		{height:108px}
 	tr.Cn4		{height:144px}
 	tr.Cn5		{height:180px}
+	
+	#dia1			{background-color:rgba(255,112,  0,0.15)}
+	#dia2			{background-color:rgba(255,255,255,1.00)}
+	#dia3			{background-color:rgba(255,112,  0,0.15)}
+	#dia4			{background-color:rgba(255,255,255,1.00)}
+	#dia5			{background-color:rgba(255,112,  0,0.15)}
+	#dia6			{background-color:rgba(255,255,255,1.00)}
 </style>
 </head>
 <script type="text/javascript">
@@ -101,86 +108,81 @@
 
 		<!-- *****************************************			 sección A			 ***************************************** -->
 		<table border=0>
-			<tr class=C style=height:30px>
-				<td class=B style=text-align:center># PERMISO DE TRABAJO EN ESPACIO CONFINADO&nbsp;<input name=pTEC value='' style="width:13%; text-align:center" type=text inputmode=numeric maxlength=6 pattern=^(?:[0-9]{4,6})$ required></td>
+			<tr><td width=43%></td><td width=5%></td><td width=4%></td><td width=5%></td><td width=43%></td></tr>
+			<tr class=C><td colspan=5># PERMISO DE TRABAJO EN ESPACIO CONFINADO&nbsp;<input name=pTEC style=width:13% type=text inputmode=numeric maxlength=6 pattern=^(?:[0-9]{4,6})$ required></td></tr>
+			<tr class=C style="height:80px">
+				<td class=B style=text-align:right>TRABAJO EN CALIENTE</td><td><input type=radio name=tipo_trabajo id=tipo_trabajoC value=C onclick=gestionarClickRadio(this) required></td>
+				<td></td>
+				<td><input type=radio name=tipo_trabajo id=tipo_trabajoF value=F onclick=gestionarClickRadio(this)></td><td class=B>TRABAJO EN FRÍO</td>
 			</tr>
-		</table>
-		<table border=0>
-			<tr><td width=45%></td><td width= 4%></td><td width=40%></td><td width=11%></td></tr>
-			<tr class=C style="height:80px; vertical-align:middle">
-				<td class=B style=text-align:right>TRABAJO EN CALIENTE&nbsp;</td>
-				<td style=text-align:left><input type=radio name=tipo_trabajo id=tipo_trabajoC value=C onclick=gestionarClickRadio(this) required></td>
-				<td class=B style=text-align:right>TRABAJO EN FRÍO&nbsp;</td>
-				<td style=text-align:left><input type=radio name=tipo_trabajo id=tipo_trabajoF value=F onclick=gestionarClickRadio(this)></td>
-			</tr>
-		</table>
-		<table border=0>
-			<tr style=height:30px><td class=BB><b>LA MEDICIÓN DEBE SER CONTINUA.</b></td></tr>
-			<tr style=height:30px><td class=BB><b>PARA TRABAJO EN CALIENTE; SI EL %LEL SUBE DE 0%, SUSPENDA EL TRABAJO INMEDIATAMENTE.</b></td></tr>
+			<tr style=height:30px><td colspan=5 class=BB><b>LA MEDICIÓN DEBE SER CONTINUA.</b></td></tr>
+			<tr style=height:30px><td colspan=5 class=BB><b>PARA TRABAJO EN CALIENTE; SI EL %LEL SUBE DE 0%, SUSPENDA EL TRABAJO INMEDIATAMENTE.</b></td></tr>
 		</table>
 		<div style="position:absolute; width:100vw; top:350px"><hr></div>
 
 		<!-- *****************************************			 DÍA 1			 ***************************************** -->
-		<? $dia = 'dia1'?>
+		<? $num = '1'; $d = 'dia'; $dia = $d.$num;?>
 		<div style="position:absolute; width:100vw; left:0; top:360px">
-			<table id='<?=$dia?>' border=0 style=background-color:rgba(128,128,128,0)>
+		<div id='<?=$dia?>'>
+			<table border=0>
 				<tr><td width=14%></td><td width=22%></td><td width=64%></td></tr>
 				<tr>
 					<td style="text-align:center; font-size:48px" class=A><b>DÍA 1</b></td>
-					<td class=A style=text-align:left><input name=<?=$dia?>_fecha type=date value=<?=$fechaactual;?> min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
-					<td style="text-align:center; font-size:36px"><b>PRUEBA DE GASES</b></td>
+					<td><input name=<?=$dia?>_fecha type=date value=<?=$fechaactual;?> min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
+					<td style=font-size:36px>PRUEBA DE GASES</td>
 				</tr>
 			</table>
-			<table border=0 style=background-color:rgba(128,128,128,0)>
+			<table border=0>
 				<tr><td style=width:41%></td><td style=width:1%></td><td style=width:58%></td></tr>
 				<tr>
-					<td style=text-align:right class=A>EQUIPO</td><td></td>
+					<td style=text-align:right>EQUIPO</td><td></td>
 					<td style=text-align:left><input style=width:100% name=<?=$dia?>_equipo value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this) required></td>
 				</tr>
 				<tr>
-					<td style=text-align:right class=A>MARCA</td><td></td>
+					<td style=text-align:right>MARCA</td><td></td>
 					<td style=text-align:left><input style=width:100% name=<?=$dia?>_marca value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this) required></td>
 				</tr>
 				<tr>
-					<td style=text-align:right class=A>FECHA CALIBRACIÓN</td><td></td>
+					<td style=text-align:right>FECHA CALIBRACIÓN</td><td></td>
 					<td style=text-align:left><input style=width:40% name=<?=$dia?>_fecha_calib type=date value=<?=$fechacero;?> required></td>
 				</tr>
 				<tr>
-					<td style=text-align:right class=A>PROPIETARIO</td><td></td>
+					<td style=text-align:right>PROPIETARIO</td><td></td>
 					<td style=text-align:left><input style=width:100% name=<?=$dia?>_propietario value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this) required></td>
 				</tr>
 				<tr>
-					<td style=text-align:right class=A>BUMP TEST REALIZADO POR</td><td></td>
+					<td style=text-align:right>BUMP TEST REALIZADO POR</td><td></td>
 					<td style=text-align:left><input style=width:100% name=<?=$dia?>_bumptest_por value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this) required></td>
 				</tr>
 			</table>
-			<table border=0 style=background-color:rgba(128,128,128,0)>
+			<table border=0>
 				<tr height=5px><td width=24.00%></td><td width= 1.33%></td><td width=24.00%></td><td width=1.34%></td><td width=24.00%></td><td width=1.33%></td><td width=24.00%></td></tr>
 				<tr>
-					<td style=text-align:center class=A>% LEL</td><td></td>
-					<td style=text-align:center class=A>O&#8322;</td><td></td>
-					<td style=text-align:center class=A>H&#8322;S</td><td></td>
-					<td style=text-align:center class=A>CO</td>
+					<td>% LEL</td><td></td>
+					<td>O&#8322;</td><td></td>
+					<td>H&#8322;S</td><td></td>
+					<td>CO</td>
 				</tr>
 				<tr>
-					<td><input name='<?=$dia?>_LEL'	value="" style="width:100%; text-align:center" type=text inputmode=numeric maxlength=5 pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ placeholder='##.##' required></td><td></td>
-					<td><input name='<?=$dia?>_O'		value="" style="width:100%; text-align:center" type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###' required></td><td></td>
-					<td><input name='<?=$dia?>_H2S'	value="" style="width:100%; text-align:center" type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###' required></td><td></td>
-					<td><input name='<?=$dia?>_CO'	value="" style="width:100%; text-align:center" type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###' required></td>
+					<td><input name='<?=$dia?>_LEL'	value="" style=width:100% type=text inputmode=numeric maxlength=5 pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ placeholder='##.##' required></td><td></td>
+					<td><input name='<?=$dia?>_O'		value="" style=width:100% type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###' required></td><td></td>
+					<td><input name='<?=$dia?>_H2S'	value="" style=width:100% type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###' required></td><td></td>
+					<td><input name='<?=$dia?>_CO'	value="" style=width:100% type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###' required></td>
 				</tr>
 				<tr height=10><td colspan=7></td></tr>
 			</table>
-			<table border=0 style=background-color:rgba(128,128,128,0)>
+			<table border=0>
 				<tr><td width=12%></td><td width=58%></td><td width=12%></td><td width=18%></td></tr>
 				<tr class=C style=height:60px>
-					<td class=B style=text-align:right></td>
-					<td class=B style=text-align:left>EL EQUIPO PASA BUMP TEST?&nbsp;</td>
-					<td class=B style=text-align:left>SI&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestS value=SI onclick=gestionarClickRadio(this) required></td>
-					<td class=B style=text-align:left>NO&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestN value=NO onclick=gestionarClickRadio(this)></td>
+					<td></td>
+					<td class=B>EL EQUIPO PASA BUMP TEST?&nbsp;</td>
+					<td class=B>SI&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestS value=SI onclick=gestionarClickRadio(this) required></td>
+					<td class=B>NO&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestN value=NO onclick=gestionarClickRadio(this)></td>
 				</tr>
+				<tr height=15><td colspan=4></td></tr>
 			</table>
-			<div style="position:absolute; width:39%; left:0.50%; top:430px; background-color:white; overflow:scroll">
-				<table border=1 style=background-color:rgba(128,128,128,0)>
+			<div style="position:absolute; width:39%; left:0%; top:430px; overflow:scroll">
+				<table border=1 id='<?=$dia?>'>
 					<tr style=height:80px><td style=width:200px class=A1>PRUEBA</td><td style=width:160px class=A1>Perm</td></tr>
 					<tr style=height:80px><td class=A1>% LEL</td>										<td class=A1>0%</td></tr>
 					<tr style=height:80px><td class=A1>OXÍGENO</td>									<td class=A1>19.5-23.5%</td></tr>
@@ -188,148 +190,136 @@
 					<tr style=height:80px><td class=A1>MONÓXIDO DE CARBONO</td>			<td class=A1>25 ppm</td></tr>
 				</table>
 			</div>
-			<div style="position:absolute; width:59.75%; left:39.50%; top:430px; background-color:white; overflow:scroll">
-				<table border=1px style=background-color:rgba(128,128,128,0)>
-					<tr style=height:80px>
-						<td style=width:185 class=A1>Hora<br>1</td><td style=width:185 class=A1>Resultado<br>1</td>
-						<td style=width:185 class=A1>Hora<br>2</td><td style=width:185 class=A1>Resultado<br>2</td>
-						<td style=width:185 class=A1>Hora<br>3</td><td style=width:185 class=A1>Resultado<br>3</td>
-						<td style=width:185 class=A1>Hora<br>4</td><td style=width:185 class=A1>Resultado<br>4</td>
-						<td style=width:185 class=A1>Hora<br>5</td><td style=width:185 class=A1>Resultado<br>5</td>
-						<td style=width:185 class=A1>Hora<br>6</td><td style=width:185 class=A1>Resultado<br>6</td>
-						<td style=width:185 class=A1>Hora<br>7</td><td style=width:185 class=A1>Resultado<br>7</td>
-						<td style=width:185 class=A1>Hora<br>8</td><td style=width:185 class=A1>Resultado<br>8</td>
-						<td style=width:185 class=A1>Hora<br>9</td><td style=width:185 class=A1>Resultado<br>9</td>
-						<td style=width:185 class=A1>Hora<br>10</td><td style=width:185 class=A1>Resultado<br>10</td>
-					</tr>
+			<div style="position:absolute; width:61%; left:39%; top:430px; overflow:scroll">
+				<table border=1px id='<?=$dia?>'>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td class=A><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
-						<td class=A><input name=<?=$dia?>_R<?=$i?>_1 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
+						<td style=width:185 class=A1>Hora<br><?=$i?></td><td style=width:185 class=A1>Resultado<br><?=$i?></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td class=A><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
-						<td class=A><input name=<?=$dia?>_R<?=$i?>_2 value='' id=numero	maxlength=4 placeholder='##.#' pattern=^([0-9]{1,2}(\.[0-9]{1,1})?)$ inputmode=numeric <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_1 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td class=A><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
-						<td class=A><input name=<?=$dia?>_R<?=$i?>_3 value='' id=numero	maxlength=4 placeholder='#.##' pattern=^([0-9]{1}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_2 value='' id=numero	maxlength=4 placeholder='##.#' pattern=^([0-9]{1,2}(\.[0-9]{1,1})?)$ inputmode=numeric <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td class=A><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
-						<td class=A><input name=<?=$dia?>_R<?=$i?>_4 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_3 value='' id=numero	maxlength=4 placeholder='#.##' pattern=^([0-9]{1}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
+						<? endfor?>
+					</tr>
+					<tr style=height:80px>
+						<? for ($i = 1; $i <= 10; $i++): ?>
+						<td><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_4 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 				</table>
 			</div>
-			<div style="position:absolute; width:100vw; left:10px; top:870px">
-				<table style=background-color:rgba(128,128,128,0)>
-					<tr height=30px><td style="font-size:30px; text-align:left">CONTROL DE PERSONAL PARA INGRESO A ESPACIO CONFINADO</td></tr>
+			<div style="position:absolute; width:100vw; left:0px; top:835px">
+				<table border=0 id='<?=$dia?>'>
+					<tr><td style="font-size:30px; text-align:left"><br>&nbsp;CONTROL DE PERSONAL PARA INGRESO A ESPACIO CONFINADO</td></tr>
 				</table>
 			</div>
-			<div style="position:absolute; width:59%; left:0.50%; top:910px; background-color:white; overflow:scroll">
-				<table border=1 style=background-color:rgba(128,128,128,0)>
+			<div style="position:absolute; width:59%; left:0%; top:900px; background-color:white; overflow:scroll">
+				<table border=1 id='<?=$dia?>'>
 					<tr style=height:110px><td class=A1>PERSONAL QUE INGRESA</td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre1 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this) required></td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre2 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre3 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre4 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre5 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
+					<? for ($i = 1; $i <= 5; $i++): ?>
+					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre<?=$i?> value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this) <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td></tr>
+					<? endfor?>
 				</table>
 			</div>
-			<div style="position:absolute; width:39.75%; left:59.50%; top:910px; background-color:white; overflow:scroll">
-				<table border=1 style=background-color:rgba(128,128,128,0)>
+			<div style="position:absolute; width:41%; left:59%; top:900px; background-color:white; overflow:scroll">
+				<table border=1 id='<?=$dia?>'>
 					<tr style=height:110px>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>1</td><td style=width:185 class=A1>Hora<br>Salida<br>1</td>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>2</td><td style=width:185 class=A1>Hora<br>Salida<br>2</td>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>3</td><td style=width:185 class=A1>Hora<br>Salida<br>3</td>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>4</td><td style=width:185 class=A1>Hora<br>Salida<br>4</td>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>5</td><td style=width:185 class=A1>Hora<br>Salida<br>5</td>
+						<? for ($i = 1; $i <= 5; $i++): ?>
+						<td style=width:185 class=A1>Hora<br>Entrada<br><?=$i?></td><td style=width:185 class=A1>Hora<br>Salida<br><?=$i?></td>
+						<? endfor?>
 					</tr>
 					<? for ($j = 1; $j <= 5; $j++): ?>
 					<tr style=height:60px>
 						<? for ($i = 1; $i <= 5; $i++): ?>
-						<td class=A>
-							<input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'required';} else {echo '';} ?>>
-						</td>
-						<td class=A>
-							<input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'required';} else {echo '';} ?>>
-						</td>
+						<td><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'required';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'required';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<? endfor?>
 				</table>
 			</div>
+		</div>
 		</div>
 		<div style="position:absolute; width:100vw; top:1690px"><hr></div>
 
 		<!-- *****************************************			 DÍA 2			 ***************************************** -->
-		<? $dia = 'dia2'?>
+		<? $num = '2'; $dia = $d.$num;?>
 		<div style="position:absolute; width:100vw; left:0; top:1700px">
-			<table id='<?=$dia?>' border=0 style=background-color:rgba(128,128,128,0)>
+		<div id='<?=$dia?>'>
+			<table border=0>
 				<tr><td width=14%></td><td width=22%></td><td width=64%></td></tr>
 				<tr>
 					<td style="text-align:center; font-size:48px" class=A><b>DÍA 2</b></td>
-					<td class=A style=text-align:left><input name=<?=$dia?>_fecha type=date value=<?=$fechaactual;?> min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
-					<td style="text-align:center; font-size:36px"><b>PRUEBA DE GASES</b></td>
+					<td><input name=<?=$dia?>_fecha type=date value=<?=$fechacero;?> min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
+					<td style=font-size:36px>PRUEBA DE GASES</td>
 				</tr>
 			</table>
-			<table border=0 style=background-color:rgba(128,128,128,0)>
+			<table border=0>
 				<tr><td style=width:41%></td><td style=width:1%></td><td style=width:58%></td></tr>
 				<tr>
-					<td style=text-align:right class=A>EQUIPO</td><td></td>
+					<td style=text-align:right>EQUIPO</td><td></td>
 					<td style=text-align:left><input style=width:100% name=<?=$dia?>_equipo value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td>
 				</tr>
 				<tr>
-					<td style=text-align:right class=A>MARCA</td><td></td>
+					<td style=text-align:right>MARCA</td><td></td>
 					<td style=text-align:left><input style=width:100% name=<?=$dia?>_marca value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td>
 				</tr>
 				<tr>
-					<td style=text-align:right class=A>FECHA CALIBRACIÓN</td><td></td>
+					<td style=text-align:right>FECHA CALIBRACIÓN</td><td></td>
 					<td style=text-align:left><input style=width:40% name=<?=$dia?>_fecha_calib type=date value=<?=$fechacero;?>></td>
 				</tr>
 				<tr>
-					<td style=text-align:right class=A>PROPIETARIO</td><td></td>
+					<td style=text-align:right>PROPIETARIO</td><td></td>
 					<td style=text-align:left><input style=width:100% name=<?=$dia?>_propietario value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td>
 				</tr>
 				<tr>
-					<td style=text-align:right class=A>BUMP TEST REALIZADO POR</td><td></td>
+					<td style=text-align:right>BUMP TEST REALIZADO POR</td><td></td>
 					<td style=text-align:left><input style=width:100% name=<?=$dia?>_bumptest_por value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td>
 				</tr>
 			</table>
-			<table border=0 style=background-color:rgba(128,128,128,0)>
+			<table border=0>
 				<tr height=5px><td width=24.00%></td><td width= 1.33%></td><td width=24.00%></td><td width=1.34%></td><td width=24.00%></td><td width=1.33%></td><td width=24.00%></td></tr>
 				<tr>
-					<td style=text-align:center class=A>% LEL</td><td></td>
-					<td style=text-align:center class=A>O&#8322;</td><td></td>
-					<td style=text-align:center class=A>H&#8322;S</td><td></td>
-					<td style=text-align:center class=A>CO</td>
+					<td>% LEL</td><td></td>
+					<td>O&#8322;</td><td></td>
+					<td>H&#8322;S</td><td></td>
+					<td>CO</td>
 				</tr>
 				<tr>
-					<td><input name=<?=$dia?>_LEL	value="" style="width:100%; text-align:center" type=text inputmode=numeric maxlength=5 pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ placeholder='##.##'></td><td></td>
-					<td><input name=<?=$dia?>_O		value="" style="width:100%; text-align:center" type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td><td></td>
-					<td><input name=<?=$dia?>_H2S	value="" style="width:100%; text-align:center" type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td><td></td>
-					<td><input name=<?=$dia?>_CO	value="" style="width:100%; text-align:center" type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td>
+					<td><input name='<?=$dia?>_LEL'	value="" style=width:100% type=text inputmode=numeric maxlength=5 pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ placeholder='##.##'></td><td></td>
+					<td><input name='<?=$dia?>_O'		value="" style=width:100% type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td><td></td>
+					<td><input name='<?=$dia?>_H2S'	value="" style=width:100% type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td><td></td>
+					<td><input name='<?=$dia?>_CO'	value="" style=width:100% type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td>
 				</tr>
 				<tr height=10><td colspan=7></td></tr>
 			</table>
-			<table border=0 style=background-color:rgba(128,128,128,0)>
+			<table border=0>
 				<tr><td width=12%></td><td width=58%></td><td width=12%></td><td width=18%></td></tr>
 				<tr class=C style=height:60px>
-					<td class=B style=text-align:right></td>
-					<td class=B style=text-align:left>EL EQUIPO PASA BUMP TEST?&nbsp;</td>
-					<td class=B style=text-align:left>SI&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestS value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=B style=text-align:left>NO&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestN value=NO onclick=gestionarClickRadio(this)></td>
+					<td></td>
+					<td class=B>EL EQUIPO PASA BUMP TEST?&nbsp;</td>
+					<td class=B>SI&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestS value=SI onclick=gestionarClickRadio(this)></td>
+					<td class=B>NO&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestN value=NO onclick=gestionarClickRadio(this)></td>
 				</tr>
+				<tr height=15><td colspan=4></td></tr>
 			</table>
-			<div style="position:absolute; width:39%; left:0.50%; top:430px; background-color:white; overflow:scroll">
-				<table border=1 style=background-color:rgba(128,128,128,0)>
+			<div style="position:absolute; width:39%; left:0%; top:430px; overflow:scroll">
+				<table border=1 id='<?=$dia?>'>
 					<tr style=height:80px><td style=width:200px class=A1>PRUEBA</td><td style=width:160px class=A1>Perm</td></tr>
 					<tr style=height:80px><td class=A1>% LEL</td>										<td class=A1>0%</td></tr>
 					<tr style=height:80px><td class=A1>OXÍGENO</td>									<td class=A1>19.5-23.5%</td></tr>
@@ -337,144 +327,136 @@
 					<tr style=height:80px><td class=A1>MONÓXIDO DE CARBONO</td>			<td class=A1>25 ppm</td></tr>
 				</table>
 			</div>
-			<div style="position:absolute; width:59.75%; left:39.50%; top:430px; background-color:white; overflow:scroll">
-				<table border=1px style=background-color:rgba(128,128,128,0)>
-					<tr style=height:80px>
-						<td style=width:185 class=A1>Hora<br>1</td><td style=width:185 class=A1>Resultado<br>1</td>
-						<td style=width:185 class=A1>Hora<br>2</td><td style=width:185 class=A1>Resultado<br>2</td>
-						<td style=width:185 class=A1>Hora<br>3</td><td style=width:185 class=A1>Resultado<br>3</td>
-						<td style=width:185 class=A1>Hora<br>4</td><td style=width:185 class=A1>Resultado<br>4</td>
-						<td style=width:185 class=A1>Hora<br>5</td><td style=width:185 class=A1>Resultado<br>5</td>
-						<td style=width:185 class=A1>Hora<br>6</td><td style=width:185 class=A1>Resultado<br>6</td>
-						<td style=width:185 class=A1>Hora<br>7</td><td style=width:185 class=A1>Resultado<br>7</td>
-						<td style=width:185 class=A1>Hora<br>8</td><td style=width:185 class=A1>Resultado<br>8</td>
-						<td style=width:185 class=A1>Hora<br>9</td><td style=width:185 class=A1>Resultado<br>9</td>
-						<td style=width:185 class=A1>Hora<br>10</td><td style=width:185 class=A1>Resultado<br>10</td>
-					</tr>
+			<div style="position:absolute; width:61%; left:39%; top:430px; overflow:scroll">
+				<table border=1px id='<?=$dia?>'>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td class=A><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_R<?=$i?>_1 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
+						<td style=width:185 class=A1>Hora<br><?=$i?></td><td style=width:185 class=A1>Resultado<br><?=$i?></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td class=A><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_R<?=$i?>_2 value='' id=numero	maxlength=4 placeholder='##.#' pattern=^([0-9]{1,2}(\.[0-9]{1,1})?)$ inputmode=numeric></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_1 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td class=A><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_R<?=$i?>_3 value='' id=numero	maxlength=4 placeholder='#.##' pattern=^([0-9]{1}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_2 value='' id=numero	maxlength=4 placeholder='##.#' pattern=^([0-9]{1,2}(\.[0-9]{1,1})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td class=A><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_R<?=$i?>_4 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_3 value='' id=numero	maxlength=4 placeholder='#.##' pattern=^([0-9]{1}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<? endfor?>
+					</tr>
+					<tr style=height:80px>
+						<? for ($i = 1; $i <= 10; $i++): ?>
+						<td><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_4 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 				</table>
 			</div>
-			<div style="position:absolute; width:100vw; left:10px; top:870px">
-				<table style=background-color:rgba(128,128,128,0)>
-					<tr height=30px><td style="font-size:30px; text-align:left">CONTROL DE PERSONAL PARA INGRESO A ESPACIO CONFINADO</td></tr>
+			<div style="position:absolute; width:100vw; left:0px; top:835px">
+				<table border=0 id='<?=$dia?>'>
+					<tr><td style="font-size:30px; text-align:left"><br>&nbsp;CONTROL DE PERSONAL PARA INGRESO A ESPACIO CONFINADO</td></tr>
 				</table>
 			</div>
-			<div style="position:absolute; width:59%; left:0.50%; top:910px; background-color:white; overflow:scroll">
-				<table border=1 style=background-color:rgba(128,128,128,0)>
+			<div style="position:absolute; width:59%; left:0%; top:900px; background-color:white; overflow:scroll">
+				<table border=1 id='<?=$dia?>'>
 					<tr style=height:110px><td class=A1>PERSONAL QUE INGRESA</td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre1 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre2 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre3 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre4 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre5 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
+					<? for ($i = 1; $i <= 5; $i++): ?>
+					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre<?=$i?> value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this) <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td></tr>
+					<? endfor?>
 				</table>
 			</div>
-			<div style="position:absolute; width:39.75%; left:59.50%; top:910px; background-color:white; overflow:scroll">
-				<table border=1 style=background-color:rgba(128,128,128,0)>
+			<div style="position:absolute; width:41%; left:59%; top:900px; background-color:white; overflow:scroll">
+				<table border=1 id='<?=$dia?>'>
 					<tr style=height:110px>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>1</td><td style=width:185 class=A1>Hora<br>Salida<br>1</td>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>2</td><td style=width:185 class=A1>Hora<br>Salida<br>2</td>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>3</td><td style=width:185 class=A1>Hora<br>Salida<br>3</td>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>4</td><td style=width:185 class=A1>Hora<br>Salida<br>4</td>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>5</td><td style=width:185 class=A1>Hora<br>Salida<br>5</td>
+						<? for ($i = 1; $i <= 5; $i++): ?>
+						<td style=width:185 class=A1>Hora<br>Entrada<br><?=$i?></td><td style=width:185 class=A1>Hora<br>Salida<br><?=$i?></td>
+						<? endfor?>
 					</tr>
 					<? for ($j = 1; $j <= 5; $j++): ?>
 					<tr style=height:60px>
 						<? for ($i = 1; $i <= 5; $i++): ?>
-						<td class=A><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
+						<td><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<? endfor?>
 				</table>
 			</div>
+		</div>
 		</div>
 		<div style="position:absolute; width:100vw; top:3030px"><hr></div>
 	
 		<!-- *****************************************			 DÍA 3			 ***************************************** -->
-		<? $dia = 'dia3'?>
+		<? $num = '3'; $dia = $d.$num;?>
 		<div style="position:absolute; width:100vw; left:0; top:3040px">
-			<table id='<?=$dia?>' border=0 style=background-color:rgba(128,128,128,0)>
+		<div id='<?=$dia?>'>
+			<table border=0>
 				<tr><td width=14%></td><td width=22%></td><td width=64%></td></tr>
 				<tr>
 					<td style="text-align:center; font-size:48px" class=A><b>DÍA 3</b></td>
-					<td class=A style=text-align:left><input name=<?=$dia?>_fecha type=date value=<?=$fechaactual;?> min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
-					<td style="text-align:center; font-size:36px"><b>PRUEBA DE GASES</b></td>
+					<td><input name=<?=$dia?>_fecha type=date value=<?=$fechacero;?> min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
+					<td style=font-size:36px>PRUEBA DE GASES</td>
 				</tr>
 			</table>
-			<table border=0 style=background-color:rgba(128,128,128,0)>
+			<table border=0>
 				<tr><td style=width:41%></td><td style=width:1%></td><td style=width:58%></td></tr>
 				<tr>
-					<td style=text-align:right class=A>EQUIPO</td><td></td>
+					<td style=text-align:right>EQUIPO</td><td></td>
 					<td style=text-align:left><input style=width:100% name=<?=$dia?>_equipo value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td>
 				</tr>
 				<tr>
-					<td style=text-align:right class=A>MARCA</td><td></td>
+					<td style=text-align:right>MARCA</td><td></td>
 					<td style=text-align:left><input style=width:100% name=<?=$dia?>_marca value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td>
 				</tr>
 				<tr>
-					<td style=text-align:right class=A>FECHA CALIBRACIÓN</td><td></td>
+					<td style=text-align:right>FECHA CALIBRACIÓN</td><td></td>
 					<td style=text-align:left><input style=width:40% name=<?=$dia?>_fecha_calib type=date value=<?=$fechacero;?>></td>
 				</tr>
 				<tr>
-					<td style=text-align:right class=A>PROPIETARIO</td><td></td>
+					<td style=text-align:right>PROPIETARIO</td><td></td>
 					<td style=text-align:left><input style=width:100% name=<?=$dia?>_propietario value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td>
 				</tr>
 				<tr>
-					<td style=text-align:right class=A>BUMP TEST REALIZADO POR</td><td></td>
+					<td style=text-align:right>BUMP TEST REALIZADO POR</td><td></td>
 					<td style=text-align:left><input style=width:100% name=<?=$dia?>_bumptest_por value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td>
 				</tr>
 			</table>
-			<table border=0 style=background-color:rgba(128,128,128,0)>
+			<table border=0>
 				<tr height=5px><td width=24.00%></td><td width= 1.33%></td><td width=24.00%></td><td width=1.34%></td><td width=24.00%></td><td width=1.33%></td><td width=24.00%></td></tr>
 				<tr>
-					<td style=text-align:center class=A>% LEL</td><td></td>
-					<td style=text-align:center class=A>O&#8322;</td><td></td>
-					<td style=text-align:center class=A>H&#8322;S</td><td></td>
-					<td style=text-align:center class=A>CO</td>
+					<td>% LEL</td><td></td>
+					<td>O&#8322;</td><td></td>
+					<td>H&#8322;S</td><td></td>
+					<td>CO</td>
 				</tr>
 				<tr>
-					<td><input name=<?=$dia?>_LEL	value="" style="width:100%; text-align:center" type=text inputmode=numeric maxlength=5 pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ placeholder='##.##'></td><td></td>
-					<td><input name=<?=$dia?>_O		value="" style="width:100%; text-align:center" type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td><td></td>
-					<td><input name=<?=$dia?>_H2S	value="" style="width:100%; text-align:center" type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td><td></td>
-					<td><input name=<?=$dia?>_CO	value="" style="width:100%; text-align:center" type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td>
+					<td><input name='<?=$dia?>_LEL'	value="" style=width:100% type=text inputmode=numeric maxlength=5 pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ placeholder='##.##'></td><td></td>
+					<td><input name='<?=$dia?>_O'		value="" style=width:100% type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td><td></td>
+					<td><input name='<?=$dia?>_H2S'	value="" style=width:100% type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td><td></td>
+					<td><input name='<?=$dia?>_CO'	value="" style=width:100% type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td>
 				</tr>
 				<tr height=10><td colspan=7></td></tr>
 			</table>
-			<table border=0 style=background-color:rgba(128,128,128,0)>
+			<table border=0>
 				<tr><td width=12%></td><td width=58%></td><td width=12%></td><td width=18%></td></tr>
 				<tr class=C style=height:60px>
-					<td class=B style=text-align:right></td>
-					<td class=B style=text-align:left>EL EQUIPO PASA BUMP TEST?&nbsp;</td>
-					<td class=B style=text-align:left>SI&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestS value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=B style=text-align:left>NO&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestN value=NO onclick=gestionarClickRadio(this)></td>
+					<td></td>
+					<td class=B>EL EQUIPO PASA BUMP TEST?&nbsp;</td>
+					<td class=B>SI&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestS value=SI onclick=gestionarClickRadio(this)></td>
+					<td class=B>NO&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestN value=NO onclick=gestionarClickRadio(this)></td>
 				</tr>
+				<tr height=15><td colspan=4></td></tr>
 			</table>
-			<div style="position:absolute; width:39%; left:0.50%; top:430px; background-color:white; overflow:scroll">
-				<table border=1 style=background-color:rgba(128,128,128,0)>
+			<div style="position:absolute; width:39%; left:0%; top:430px; overflow:scroll">
+				<table border=1 id='<?=$dia?>'>
 					<tr style=height:80px><td style=width:200px class=A1>PRUEBA</td><td style=width:160px class=A1>Perm</td></tr>
 					<tr style=height:80px><td class=A1>% LEL</td>										<td class=A1>0%</td></tr>
 					<tr style=height:80px><td class=A1>OXÍGENO</td>									<td class=A1>19.5-23.5%</td></tr>
@@ -482,144 +464,136 @@
 					<tr style=height:80px><td class=A1>MONÓXIDO DE CARBONO</td>			<td class=A1>25 ppm</td></tr>
 				</table>
 			</div>
-			<div style="position:absolute; width:59.75%; left:39.50%; top:430px; background-color:white; overflow:scroll">
-				<table border=1px style=background-color:rgba(128,128,128,0)>
-					<tr style=height:80px>
-						<td style=width:185 class=A1>Hora<br>1</td><td style=width:185 class=A1>Resultado<br>1</td>
-						<td style=width:185 class=A1>Hora<br>2</td><td style=width:185 class=A1>Resultado<br>2</td>
-						<td style=width:185 class=A1>Hora<br>3</td><td style=width:185 class=A1>Resultado<br>3</td>
-						<td style=width:185 class=A1>Hora<br>4</td><td style=width:185 class=A1>Resultado<br>4</td>
-						<td style=width:185 class=A1>Hora<br>5</td><td style=width:185 class=A1>Resultado<br>5</td>
-						<td style=width:185 class=A1>Hora<br>6</td><td style=width:185 class=A1>Resultado<br>6</td>
-						<td style=width:185 class=A1>Hora<br>7</td><td style=width:185 class=A1>Resultado<br>7</td>
-						<td style=width:185 class=A1>Hora<br>8</td><td style=width:185 class=A1>Resultado<br>8</td>
-						<td style=width:185 class=A1>Hora<br>9</td><td style=width:185 class=A1>Resultado<br>9</td>
-						<td style=width:185 class=A1>Hora<br>10</td><td style=width:185 class=A1>Resultado<br>10</td>
-					</tr>
+			<div style="position:absolute; width:61%; left:39%; top:430px; overflow:scroll">
+				<table border=1px id='<?=$dia?>'>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td class=A><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_R<?=$i?>_1 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
+						<td style=width:185 class=A1>Hora<br><?=$i?></td><td style=width:185 class=A1>Resultado<br><?=$i?></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td class=A><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_R<?=$i?>_2 value='' id=numero	maxlength=4 placeholder='##.#' pattern=^([0-9]{1,2}(\.[0-9]{1,1})?)$ inputmode=numeric></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_1 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td class=A><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_R<?=$i?>_3 value='' id=numero	maxlength=4 placeholder='#.##' pattern=^([0-9]{1}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_2 value='' id=numero	maxlength=4 placeholder='##.#' pattern=^([0-9]{1,2}(\.[0-9]{1,1})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td class=A><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_R<?=$i?>_4 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_3 value='' id=numero	maxlength=4 placeholder='#.##' pattern=^([0-9]{1}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<? endfor?>
+					</tr>
+					<tr style=height:80px>
+						<? for ($i = 1; $i <= 10; $i++): ?>
+						<td><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_4 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 				</table>
 			</div>
-			<div style="position:absolute; width:100vw; left:10px; top:870px">
-				<table style=background-color:rgba(128,128,128,0)>
-					<tr height=30px><td style="font-size:30px; text-align:left">CONTROL DE PERSONAL PARA INGRESO A ESPACIO CONFINADO</td></tr>
+			<div style="position:absolute; width:100vw; left:0px; top:835px">
+				<table border=0 id='<?=$dia?>'>
+					<tr><td style="font-size:30px; text-align:left"><br>&nbsp;CONTROL DE PERSONAL PARA INGRESO A ESPACIO CONFINADO</td></tr>
 				</table>
 			</div>
-			<div style="position:absolute; width:59%; left:0.50%; top:910px; background-color:white; overflow:scroll">
-				<table border=1 style=background-color:rgba(128,128,128,0)>
+			<div style="position:absolute; width:59%; left:0%; top:900px; background-color:white; overflow:scroll">
+				<table border=1 id='<?=$dia?>'>
 					<tr style=height:110px><td class=A1>PERSONAL QUE INGRESA</td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre1 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre2 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre3 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre4 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre5 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
+					<? for ($i = 1; $i <= 5; $i++): ?>
+					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre<?=$i?> value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this) <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td></tr>
+					<? endfor?>
 				</table>
 			</div>
-			<div style="position:absolute; width:39.75%; left:59.50%; top:910px; background-color:white; overflow:scroll">
-				<table border=1 style=background-color:rgba(128,128,128,0)>
+			<div style="position:absolute; width:41%; left:59%; top:900px; background-color:white; overflow:scroll">
+				<table border=1 id='<?=$dia?>'>
 					<tr style=height:110px>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>1</td><td style=width:185 class=A1>Hora<br>Salida<br>1</td>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>2</td><td style=width:185 class=A1>Hora<br>Salida<br>2</td>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>3</td><td style=width:185 class=A1>Hora<br>Salida<br>3</td>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>4</td><td style=width:185 class=A1>Hora<br>Salida<br>4</td>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>5</td><td style=width:185 class=A1>Hora<br>Salida<br>5</td>
+						<? for ($i = 1; $i <= 5; $i++): ?>
+						<td style=width:185 class=A1>Hora<br>Entrada<br><?=$i?></td><td style=width:185 class=A1>Hora<br>Salida<br><?=$i?></td>
+						<? endfor?>
 					</tr>
 					<? for ($j = 1; $j <= 5; $j++): ?>
 					<tr style=height:60px>
 						<? for ($i = 1; $i <= 5; $i++): ?>
-						<td class=A><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
+						<td><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<? endfor?>
 				</table>
 			</div>
+		</div>
 		</div>
 		<div style="position:absolute; width:100vw; top:4370px"><hr></div>
 
 		<!-- *****************************************			 DÍA 4			 ***************************************** -->
-		<? $dia = 'dia4'?>
+		<? $num = '4'; $dia = $d.$num;?>
 		<div style="position:absolute; width:100vw; left:0; top:4380px">
-			<table id='<?=$dia?>' border=0 style=background-color:rgba(128,128,128,0)>
+		<div id='<?=$dia?>'>
+			<table border=0>
 				<tr><td width=14%></td><td width=22%></td><td width=64%></td></tr>
 				<tr>
 					<td style="text-align:center; font-size:48px" class=A><b>DÍA 4</b></td>
-					<td class=A style=text-align:left><input name=<?=$dia?>_fecha type=date value=<?=$fechaactual;?> min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
-					<td style="text-align:center; font-size:36px"><b>PRUEBA DE GASES</b></td>
+					<td><input name=<?=$dia?>_fecha type=date value=<?=$fechacero;?> min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
+					<td style=font-size:36px>PRUEBA DE GASES</td>
 				</tr>
 			</table>
-			<table border=0 style=background-color:rgba(128,128,128,0)>
+			<table border=0>
 				<tr><td style=width:41%></td><td style=width:1%></td><td style=width:58%></td></tr>
 				<tr>
-					<td style=text-align:right class=A>EQUIPO</td><td></td>
+					<td style=text-align:right>EQUIPO</td><td></td>
 					<td style=text-align:left><input style=width:100% name=<?=$dia?>_equipo value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td>
 				</tr>
 				<tr>
-					<td style=text-align:right class=A>MARCA</td><td></td>
+					<td style=text-align:right>MARCA</td><td></td>
 					<td style=text-align:left><input style=width:100% name=<?=$dia?>_marca value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td>
 				</tr>
 				<tr>
-					<td style=text-align:right class=A>FECHA CALIBRACIÓN</td><td></td>
+					<td style=text-align:right>FECHA CALIBRACIÓN</td><td></td>
 					<td style=text-align:left><input style=width:40% name=<?=$dia?>_fecha_calib type=date value=<?=$fechacero;?>></td>
 				</tr>
 				<tr>
-					<td style=text-align:right class=A>PROPIETARIO</td><td></td>
+					<td style=text-align:right>PROPIETARIO</td><td></td>
 					<td style=text-align:left><input style=width:100% name=<?=$dia?>_propietario value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td>
 				</tr>
 				<tr>
-					<td style=text-align:right class=A>BUMP TEST REALIZADO POR</td><td></td>
+					<td style=text-align:right>BUMP TEST REALIZADO POR</td><td></td>
 					<td style=text-align:left><input style=width:100% name=<?=$dia?>_bumptest_por value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td>
 				</tr>
 			</table>
-			<table border=0 style=background-color:rgba(128,128,128,0)>
+			<table border=0>
 				<tr height=5px><td width=24.00%></td><td width= 1.33%></td><td width=24.00%></td><td width=1.34%></td><td width=24.00%></td><td width=1.33%></td><td width=24.00%></td></tr>
 				<tr>
-					<td style=text-align:center class=A>% LEL</td><td></td>
-					<td style=text-align:center class=A>O&#8322;</td><td></td>
-					<td style=text-align:center class=A>H&#8322;S</td><td></td>
-					<td style=text-align:center class=A>CO</td>
+					<td>% LEL</td><td></td>
+					<td>O&#8322;</td><td></td>
+					<td>H&#8322;S</td><td></td>
+					<td>CO</td>
 				</tr>
 				<tr>
-					<td><input name=<?=$dia?>_LEL	value="" style="width:100%; text-align:center" type=text inputmode=numeric maxlength=5 pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ placeholder='##.##'></td><td></td>
-					<td><input name=<?=$dia?>_O		value="" style="width:100%; text-align:center" type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td><td></td>
-					<td><input name=<?=$dia?>_H2S	value="" style="width:100%; text-align:center" type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td><td></td>
-					<td><input name=<?=$dia?>_CO	value="" style="width:100%; text-align:center" type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td>
+					<td><input name='<?=$dia?>_LEL'	value="" style=width:100% type=text inputmode=numeric maxlength=5 pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ placeholder='##.##'></td><td></td>
+					<td><input name='<?=$dia?>_O'		value="" style=width:100% type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td><td></td>
+					<td><input name='<?=$dia?>_H2S'	value="" style=width:100% type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td><td></td>
+					<td><input name='<?=$dia?>_CO'	value="" style=width:100% type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td>
 				</tr>
 				<tr height=10><td colspan=7></td></tr>
 			</table>
-			<table border=0 style=background-color:rgba(128,128,128,0)>
+			<table border=0>
 				<tr><td width=12%></td><td width=58%></td><td width=12%></td><td width=18%></td></tr>
 				<tr class=C style=height:60px>
-					<td class=B style=text-align:right></td>
-					<td class=B style=text-align:left>EL EQUIPO PASA BUMP TEST?&nbsp;</td>
-					<td class=B style=text-align:left>SI&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestS value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=B style=text-align:left>NO&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestN value=NO onclick=gestionarClickRadio(this)></td>
+					<td></td>
+					<td class=B>EL EQUIPO PASA BUMP TEST?&nbsp;</td>
+					<td class=B>SI&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestS value=SI onclick=gestionarClickRadio(this)></td>
+					<td class=B>NO&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestN value=NO onclick=gestionarClickRadio(this)></td>
 				</tr>
+				<tr height=15><td colspan=4></td></tr>
 			</table>
-			<div style="position:absolute; width:39%; left:0.50%; top:430px; background-color:white; overflow:scroll">
-				<table border=1 style=background-color:rgba(128,128,128,0)>
+			<div style="position:absolute; width:39%; left:0%; top:430px; overflow:scroll">
+				<table border=1 id='<?=$dia?>'>
 					<tr style=height:80px><td style=width:200px class=A1>PRUEBA</td><td style=width:160px class=A1>Perm</td></tr>
 					<tr style=height:80px><td class=A1>% LEL</td>										<td class=A1>0%</td></tr>
 					<tr style=height:80px><td class=A1>OXÍGENO</td>									<td class=A1>19.5-23.5%</td></tr>
@@ -627,144 +601,136 @@
 					<tr style=height:80px><td class=A1>MONÓXIDO DE CARBONO</td>			<td class=A1>25 ppm</td></tr>
 				</table>
 			</div>
-			<div style="position:absolute; width:59.75%; left:39.50%; top:430px; background-color:white; overflow:scroll">
-				<table border=1px style=background-color:rgba(128,128,128,0)>
-					<tr style=height:80px>
-						<td style=width:185 class=A1>Hora<br>1</td><td style=width:185 class=A1>Resultado<br>1</td>
-						<td style=width:185 class=A1>Hora<br>2</td><td style=width:185 class=A1>Resultado<br>2</td>
-						<td style=width:185 class=A1>Hora<br>3</td><td style=width:185 class=A1>Resultado<br>3</td>
-						<td style=width:185 class=A1>Hora<br>4</td><td style=width:185 class=A1>Resultado<br>4</td>
-						<td style=width:185 class=A1>Hora<br>5</td><td style=width:185 class=A1>Resultado<br>5</td>
-						<td style=width:185 class=A1>Hora<br>6</td><td style=width:185 class=A1>Resultado<br>6</td>
-						<td style=width:185 class=A1>Hora<br>7</td><td style=width:185 class=A1>Resultado<br>7</td>
-						<td style=width:185 class=A1>Hora<br>8</td><td style=width:185 class=A1>Resultado<br>8</td>
-						<td style=width:185 class=A1>Hora<br>9</td><td style=width:185 class=A1>Resultado<br>9</td>
-						<td style=width:185 class=A1>Hora<br>10</td><td style=width:185 class=A1>Resultado<br>10</td>
-					</tr>
+			<div style="position:absolute; width:61%; left:39%; top:430px; overflow:scroll">
+				<table border=1px id='<?=$dia?>'>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td class=A><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_R<?=$i?>_1 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
+						<td style=width:185 class=A1>Hora<br><?=$i?></td><td style=width:185 class=A1>Resultado<br><?=$i?></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td class=A><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_R<?=$i?>_2 value='' id=numero	maxlength=4 placeholder='##.#' pattern=^([0-9]{1,2}(\.[0-9]{1,1})?)$ inputmode=numeric></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_1 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td class=A><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_R<?=$i?>_3 value='' id=numero	maxlength=4 placeholder='#.##' pattern=^([0-9]{1}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_2 value='' id=numero	maxlength=4 placeholder='##.#' pattern=^([0-9]{1,2}(\.[0-9]{1,1})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td class=A><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_R<?=$i?>_4 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_3 value='' id=numero	maxlength=4 placeholder='#.##' pattern=^([0-9]{1}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<? endfor?>
+					</tr>
+					<tr style=height:80px>
+						<? for ($i = 1; $i <= 10; $i++): ?>
+						<td><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_4 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 				</table>
 			</div>
-			<div style="position:absolute; width:100vw; left:10px; top:870px">
-				<table style=background-color:rgba(128,128,128,0)>
-					<tr height=30px><td style="font-size:30px; text-align:left">CONTROL DE PERSONAL PARA INGRESO A ESPACIO CONFINADO</td></tr>
+			<div style="position:absolute; width:100vw; left:0px; top:835px">
+				<table border=0 id='<?=$dia?>'>
+					<tr><td style="font-size:30px; text-align:left"><br>&nbsp;CONTROL DE PERSONAL PARA INGRESO A ESPACIO CONFINADO</td></tr>
 				</table>
 			</div>
-			<div style="position:absolute; width:59%; left:0.50%; top:910px; background-color:white; overflow:scroll">
-				<table border=1 style=background-color:rgba(128,128,128,0)>
+			<div style="position:absolute; width:59%; left:0%; top:900px; background-color:white; overflow:scroll">
+				<table border=1 id='<?=$dia?>'>
 					<tr style=height:110px><td class=A1>PERSONAL QUE INGRESA</td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre1 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre2 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre3 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre4 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre5 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
+					<? for ($i = 1; $i <= 5; $i++): ?>
+					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre<?=$i?> value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this) <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td></tr>
+					<? endfor?>
 				</table>
 			</div>
-			<div style="position:absolute; width:39.75%; left:59.50%; top:910px; background-color:white; overflow:scroll">
-				<table border=1 style=background-color:rgba(128,128,128,0)>
+			<div style="position:absolute; width:41%; left:59%; top:900px; background-color:white; overflow:scroll">
+				<table border=1 id='<?=$dia?>'>
 					<tr style=height:110px>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>1</td><td style=width:185 class=A1>Hora<br>Salida<br>1</td>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>2</td><td style=width:185 class=A1>Hora<br>Salida<br>2</td>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>3</td><td style=width:185 class=A1>Hora<br>Salida<br>3</td>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>4</td><td style=width:185 class=A1>Hora<br>Salida<br>4</td>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>5</td><td style=width:185 class=A1>Hora<br>Salida<br>5</td>
+						<? for ($i = 1; $i <= 5; $i++): ?>
+						<td style=width:185 class=A1>Hora<br>Entrada<br><?=$i?></td><td style=width:185 class=A1>Hora<br>Salida<br><?=$i?></td>
+						<? endfor?>
 					</tr>
 					<? for ($j = 1; $j <= 5; $j++): ?>
 					<tr style=height:60px>
 						<? for ($i = 1; $i <= 5; $i++): ?>
-						<td class=A><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
+						<td><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<? endfor?>
 				</table>
 			</div>
+		</div>
 		</div>
 		<div style="position:absolute; width:100vw; left:0; top:5710px"><hr></div>
 
 		<!-- *****************************************			 DÍA 5			 ***************************************** -->
-		<? $dia = 'dia5'?>
+		<? $num = '5'; $dia = $d.$num;?>
 		<div style="position:absolute; width:100vw; left:0; top:5720px">
-			<table id='<?=$dia?>' border=0 style=background-color:rgba(128,128,128,0)>
+		<div id='<?=$dia?>'>
+			<table border=0>
 				<tr><td width=14%></td><td width=22%></td><td width=64%></td></tr>
 				<tr>
 					<td style="text-align:center; font-size:48px" class=A><b>DÍA 5</b></td>
-					<td class=A style=text-align:left><input name=<?=$dia?>_fecha type=date value=<?=$fechaactual;?> min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
-					<td style="text-align:center; font-size:36px"><b>PRUEBA DE GASES</b></td>
+					<td><input name=<?=$dia?>_fecha type=date value=<?=$fechacero;?> min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
+					<td style=font-size:36px>PRUEBA DE GASES</td>
 				</tr>
 			</table>
-			<table border=0 style=background-color:rgba(128,128,128,0)>
+			<table border=0>
 				<tr><td style=width:41%></td><td style=width:1%></td><td style=width:58%></td></tr>
 				<tr>
-					<td style=text-align:right class=A>EQUIPO</td><td></td>
+					<td style=text-align:right>EQUIPO</td><td></td>
 					<td style=text-align:left><input style=width:100% name=<?=$dia?>_equipo value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td>
 				</tr>
 				<tr>
-					<td style=text-align:right class=A>MARCA</td><td></td>
+					<td style=text-align:right>MARCA</td><td></td>
 					<td style=text-align:left><input style=width:100% name=<?=$dia?>_marca value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td>
 				</tr>
 				<tr>
-					<td style=text-align:right class=A>FECHA CALIBRACIÓN</td><td></td>
+					<td style=text-align:right>FECHA CALIBRACIÓN</td><td></td>
 					<td style=text-align:left><input style=width:40% name=<?=$dia?>_fecha_calib type=date value=<?=$fechacero;?>></td>
 				</tr>
 				<tr>
-					<td style=text-align:right class=A>PROPIETARIO</td><td></td>
+					<td style=text-align:right>PROPIETARIO</td><td></td>
 					<td style=text-align:left><input style=width:100% name=<?=$dia?>_propietario value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td>
 				</tr>
 				<tr>
-					<td style=text-align:right class=A>BUMP TEST REALIZADO POR</td><td></td>
+					<td style=text-align:right>BUMP TEST REALIZADO POR</td><td></td>
 					<td style=text-align:left><input style=width:100% name=<?=$dia?>_bumptest_por value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td>
 				</tr>
 			</table>
-			<table border=0 style=background-color:rgba(128,128,128,0)>
+			<table border=0>
 				<tr height=5px><td width=24.00%></td><td width= 1.33%></td><td width=24.00%></td><td width=1.34%></td><td width=24.00%></td><td width=1.33%></td><td width=24.00%></td></tr>
 				<tr>
-					<td style=text-align:center class=A>% LEL</td><td></td>
-					<td style=text-align:center class=A>O&#8322;</td><td></td>
-					<td style=text-align:center class=A>H&#8322;S</td><td></td>
-					<td style=text-align:center class=A>CO</td>
+					<td>% LEL</td><td></td>
+					<td>O&#8322;</td><td></td>
+					<td>H&#8322;S</td><td></td>
+					<td>CO</td>
 				</tr>
 				<tr>
-					<td><input name=<?=$dia?>_LEL	value="" style="width:100%; text-align:center" type=text inputmode=numeric maxlength=5 pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ placeholder='##.##'></td><td></td>
-					<td><input name=<?=$dia?>_O		value="" style="width:100%; text-align:center" type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td><td></td>
-					<td><input name=<?=$dia?>_H2S	value="" style="width:100%; text-align:center" type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td><td></td>
-					<td><input name=<?=$dia?>_CO	value="" style="width:100%; text-align:center" type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td>
+					<td><input name='<?=$dia?>_LEL'	value="" style=width:100% type=text inputmode=numeric maxlength=5 pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ placeholder='##.##'></td><td></td>
+					<td><input name='<?=$dia?>_O'		value="" style=width:100% type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td><td></td>
+					<td><input name='<?=$dia?>_H2S'	value="" style=width:100% type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td><td></td>
+					<td><input name='<?=$dia?>_CO'	value="" style=width:100% type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td>
 				</tr>
 				<tr height=10><td colspan=7></td></tr>
 			</table>
-			<table border=0 style=background-color:rgba(128,128,128,0)>
+			<table border=0>
 				<tr><td width=12%></td><td width=58%></td><td width=12%></td><td width=18%></td></tr>
 				<tr class=C style=height:60px>
-					<td class=B style=text-align:right></td>
-					<td class=B style=text-align:left>EL EQUIPO PASA BUMP TEST?&nbsp;</td>
-					<td class=B style=text-align:left>SI&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestS value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=B style=text-align:left>NO&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestN value=NO onclick=gestionarClickRadio(this)></td>
+					<td></td>
+					<td class=B>EL EQUIPO PASA BUMP TEST?&nbsp;</td>
+					<td class=B>SI&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestS value=SI onclick=gestionarClickRadio(this)></td>
+					<td class=B>NO&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestN value=NO onclick=gestionarClickRadio(this)></td>
 				</tr>
+				<tr height=15><td colspan=4></td></tr>
 			</table>
-			<div style="position:absolute; width:39%; left:0.50%; top:430px; background-color:white; overflow:scroll">
-				<table border=1 style=background-color:rgba(128,128,128,0)>
+			<div style="position:absolute; width:39%; left:0%; top:430px; overflow:scroll">
+				<table border=1 id='<?=$dia?>'>
 					<tr style=height:80px><td style=width:200px class=A1>PRUEBA</td><td style=width:160px class=A1>Perm</td></tr>
 					<tr style=height:80px><td class=A1>% LEL</td>										<td class=A1>0%</td></tr>
 					<tr style=height:80px><td class=A1>OXÍGENO</td>									<td class=A1>19.5-23.5%</td></tr>
@@ -772,144 +738,135 @@
 					<tr style=height:80px><td class=A1>MONÓXIDO DE CARBONO</td>			<td class=A1>25 ppm</td></tr>
 				</table>
 			</div>
-			<div style="position:absolute; width:59.75%; left:39.50%; top:430px; background-color:white; overflow:scroll">
-				<table border=1px style=background-color:rgba(128,128,128,0)>
-					<tr style=height:80px>
-						<td style=width:185 class=A1>Hora<br>1</td><td style=width:185 class=A1>Resultado<br>1</td>
-						<td style=width:185 class=A1>Hora<br>2</td><td style=width:185 class=A1>Resultado<br>2</td>
-						<td style=width:185 class=A1>Hora<br>3</td><td style=width:185 class=A1>Resultado<br>3</td>
-						<td style=width:185 class=A1>Hora<br>4</td><td style=width:185 class=A1>Resultado<br>4</td>
-						<td style=width:185 class=A1>Hora<br>5</td><td style=width:185 class=A1>Resultado<br>5</td>
-						<td style=width:185 class=A1>Hora<br>6</td><td style=width:185 class=A1>Resultado<br>6</td>
-						<td style=width:185 class=A1>Hora<br>7</td><td style=width:185 class=A1>Resultado<br>7</td>
-						<td style=width:185 class=A1>Hora<br>8</td><td style=width:185 class=A1>Resultado<br>8</td>
-						<td style=width:185 class=A1>Hora<br>9</td><td style=width:185 class=A1>Resultado<br>9</td>
-						<td style=width:185 class=A1>Hora<br>10</td><td style=width:185 class=A1>Resultado<br>10</td>
-					</tr>
+			<div style="position:absolute; width:61%; left:39%; top:430px; overflow:scroll">
+				<table border=1px id='<?=$dia?>'>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td class=A><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_R<?=$i?>_1 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
+						<td style=width:185 class=A1>Hora<br><?=$i?></td><td style=width:185 class=A1>Resultado<br><?=$i?></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td class=A><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_R<?=$i?>_2 value='' id=numero	maxlength=4 placeholder='##.#' pattern=^([0-9]{1,2}(\.[0-9]{1,1})?)$ inputmode=numeric></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_1 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td class=A><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_R<?=$i?>_3 value='' id=numero	maxlength=4 placeholder='#.##' pattern=^([0-9]{1}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_2 value='' id=numero	maxlength=4 placeholder='##.#' pattern=^([0-9]{1,2}(\.[0-9]{1,1})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td class=A><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_R<?=$i?>_4 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_3 value='' id=numero	maxlength=4 placeholder='#.##' pattern=^([0-9]{1}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<? endfor?>
+					</tr>
+					<tr style=height:80px>
+						<? for ($i = 1; $i <= 10; $i++): ?>
+						<td><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_4 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 				</table>
 			</div>
-			<div style="position:absolute; width:100vw; left:10px; top:870px">
-				<table style=background-color:rgba(128,128,128,0)>
-					<tr height=30px><td style="font-size:30px; text-align:left">CONTROL DE PERSONAL PARA INGRESO A ESPACIO CONFINADO</td></tr>
+			<div style="position:absolute; width:100vw; left:0px; top:835px">
+				<table border=0 id='<?=$dia?>'>
+					<tr><td style="font-size:30px; text-align:left"><br>&nbsp;CONTROL DE PERSONAL PARA INGRESO A ESPACIO CONFINADO</td></tr>
 				</table>
 			</div>
-			<div style="position:absolute; width:59%; left:0.50%; top:910px; background-color:white; overflow:scroll">
-				<table border=1 style=background-color:rgba(128,128,128,0)>
+			<div style="position:absolute; width:59%; left:0%; top:900px; background-color:white; overflow:scroll">
+				<table border=1 id='<?=$dia?>'>
 					<tr style=height:110px><td class=A1>PERSONAL QUE INGRESA</td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre1 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre2 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre3 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre4 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre5 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
+					<? for ($i = 1; $i <= 5; $i++): ?>
+					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre<?=$i?> value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this) <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td></tr>
+					<? endfor?>
 				</table>
 			</div>
-			<div style="position:absolute; width:39.75%; left:59.50%; top:910px; background-color:white; overflow:scroll">
-				<table border=1 style=background-color:rgba(128,128,128,0)>
+			<div style="position:absolute; width:41%; left:59%; top:900px; background-color:white; overflow:scroll">
+				<table border=1 id='<?=$dia?>'>
 					<tr style=height:110px>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>1</td><td style=width:185 class=A1>Hora<br>Salida<br>1</td>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>2</td><td style=width:185 class=A1>Hora<br>Salida<br>2</td>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>3</td><td style=width:185 class=A1>Hora<br>Salida<br>3</td>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>4</td><td style=width:185 class=A1>Hora<br>Salida<br>4</td>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>5</td><td style=width:185 class=A1>Hora<br>Salida<br>5</td>
+						<? for ($i = 1; $i <= 5; $i++): ?>
+						<td style=width:185 class=A1>Hora<br>Entrada<br><?=$i?></td><td style=width:185 class=A1>Hora<br>Salida<br><?=$i?></td>
+						<? endfor?>
 					</tr>
 					<? for ($j = 1; $j <= 5; $j++): ?>
 					<tr style=height:60px>
 						<? for ($i = 1; $i <= 5; $i++): ?>
-						<td class=A><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
+						<td><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<? endfor?>
 				</table>
 			</div>
 		</div>
+		</div>
 		<div style="position:absolute; width:100vw; left:0; top:7050px"><hr></div>
 
 		<!-- *****************************************			 DÍA 6			 ***************************************** -->
-		<? $dia = 'dia6'?>
+		<? $num = '6'; $dia = $d.$num;?>
 		<div style="position:absolute; width:100vw; left:0; top:7060px">
-			<table id='<?=$dia?>' border=0 style=background-color:rgba(128,128,128,0)>
+		<div id='<?=$dia?>'>
+			<table border=0>
 				<tr><td width=14%></td><td width=22%></td><td width=64%></td></tr>
 				<tr>
 					<td style="text-align:center; font-size:48px" class=A><b>DÍA 6</b></td>
-					<td class=A style=text-align:left><input name=<?=$dia?>_fecha type=date value=<?=$fechaactual;?> min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
-					<td style="text-align:center; font-size:36px"><b>PRUEBA DE GASES</b></td>
+					<td><input name=<?=$dia?>_fecha type=date value=<?=$fechacero;?> min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
+					<td style=font-size:36px>PRUEBA DE GASES</td>
 				</tr>
 			</table>
-			<table border=0 style=background-color:rgba(128,128,128,0)>
+			<table border=0>
 				<tr><td style=width:41%></td><td style=width:1%></td><td style=width:58%></td></tr>
 				<tr>
-					<td style=text-align:right class=A>EQUIPO</td><td></td>
+					<td style=text-align:right>EQUIPO</td><td></td>
 					<td style=text-align:left><input style=width:100% name=<?=$dia?>_equipo value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td>
 				</tr>
 				<tr>
-					<td style=text-align:right class=A>MARCA</td><td></td>
+					<td style=text-align:right>MARCA</td><td></td>
 					<td style=text-align:left><input style=width:100% name=<?=$dia?>_marca value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td>
 				</tr>
 				<tr>
-					<td style=text-align:right class=A>FECHA CALIBRACIÓN</td><td></td>
+					<td style=text-align:right>FECHA CALIBRACIÓN</td><td></td>
 					<td style=text-align:left><input style=width:40% name=<?=$dia?>_fecha_calib type=date value=<?=$fechacero;?>></td>
 				</tr>
 				<tr>
-					<td style=text-align:right class=A>PROPIETARIO</td><td></td>
+					<td style=text-align:right>PROPIETARIO</td><td></td>
 					<td style=text-align:left><input style=width:100% name=<?=$dia?>_propietario value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td>
 				</tr>
 				<tr>
-					<td style=text-align:right class=A>BUMP TEST REALIZADO POR</td><td></td>
+					<td style=text-align:right>BUMP TEST REALIZADO POR</td><td></td>
 					<td style=text-align:left><input style=width:100% name=<?=$dia?>_bumptest_por value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td>
 				</tr>
 			</table>
-			<table border=0 style=background-color:rgba(128,128,128,0)>
+			<table border=0>
 				<tr height=5px><td width=24.00%></td><td width= 1.33%></td><td width=24.00%></td><td width=1.34%></td><td width=24.00%></td><td width=1.33%></td><td width=24.00%></td></tr>
 				<tr>
-					<td style=text-align:center class=A>% LEL</td><td></td>
-					<td style=text-align:center class=A>O&#8322;</td><td></td>
-					<td style=text-align:center class=A>H&#8322;S</td><td></td>
-					<td style=text-align:center class=A>CO</td>
+					<td>% LEL</td><td></td>
+					<td>O&#8322;</td><td></td>
+					<td>H&#8322;S</td><td></td>
+					<td>CO</td>
 				</tr>
 				<tr>
-					<td><input name=<?=$dia?>_LEL	value="" style="width:100%; text-align:center" type=text inputmode=numeric maxlength=5 pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ placeholder='##.##'></td><td></td>
-					<td><input name=<?=$dia?>_O		value="" style="width:100%; text-align:center" type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td><td></td>
-					<td><input name=<?=$dia?>_H2S	value="" style="width:100%; text-align:center" type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td><td></td>
-					<td><input name=<?=$dia?>_CO	value="" style="width:100%; text-align:center" type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td>
+					<td><input name='<?=$dia?>_LEL'	value="" style=width:100% type=text inputmode=numeric maxlength=5 pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ placeholder='##.##'></td><td></td>
+					<td><input name='<?=$dia?>_O'		value="" style=width:100% type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td><td></td>
+					<td><input name='<?=$dia?>_H2S'	value="" style=width:100% type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td><td></td>
+					<td><input name='<?=$dia?>_CO'	value="" style=width:100% type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td>
 				</tr>
 				<tr height=10><td colspan=7></td></tr>
 			</table>
-			<table border=0 style=background-color:rgba(128,128,128,0)>
+			<table border=0>
 				<tr><td width=12%></td><td width=58%></td><td width=12%></td><td width=18%></td></tr>
 				<tr class=C style=height:60px>
-					<td class=B style=text-align:right></td>
-					<td class=B style=text-align:left>EL EQUIPO PASA BUMP TEST?&nbsp;</td>
-					<td class=B style=text-align:left>SI&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestS value=SI onclick=gestionarClickRadio(this)></td>
-					<td class=B style=text-align:left>NO&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestN value=NO onclick=gestionarClickRadio(this)></td>
+					<td></td>
+					<td class=B>EL EQUIPO PASA BUMP TEST?&nbsp;</td>
+					<td class=B>SI&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestS value=SI onclick=gestionarClickRadio(this)></td>
+					<td class=B>NO&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestN value=NO onclick=gestionarClickRadio(this)></td>
 				</tr>
 			</table>
-			<div style="position:absolute; width:39%; left:0.50%; top:430px; background-color:white; overflow:scroll">
-				<table border=1 style=background-color:rgba(128,128,128,0)>
+			<div style="position:absolute; width:39%; left:0%; top:430px; overflow:scroll">
+				<table border=1 id='<?=$dia?>'>
 					<tr style=height:80px><td style=width:200px class=A1>PRUEBA</td><td style=width:160px class=A1>Perm</td></tr>
 					<tr style=height:80px><td class=A1>% LEL</td>										<td class=A1>0%</td></tr>
 					<tr style=height:80px><td class=A1>OXÍGENO</td>									<td class=A1>19.5-23.5%</td></tr>
@@ -917,80 +874,70 @@
 					<tr style=height:80px><td class=A1>MONÓXIDO DE CARBONO</td>			<td class=A1>25 ppm</td></tr>
 				</table>
 			</div>
-			<div style="position:absolute; width:59.75%; left:39.50%; top:430px; background-color:white; overflow:scroll">
-				<table border=1px style=background-color:rgba(128,128,128,0)>
-					<tr style=height:80px>
-						<td style=width:185 class=A1>Hora<br>1</td><td style=width:185 class=A1>Resultado<br>1</td>
-						<td style=width:185 class=A1>Hora<br>2</td><td style=width:185 class=A1>Resultado<br>2</td>
-						<td style=width:185 class=A1>Hora<br>3</td><td style=width:185 class=A1>Resultado<br>3</td>
-						<td style=width:185 class=A1>Hora<br>4</td><td style=width:185 class=A1>Resultado<br>4</td>
-						<td style=width:185 class=A1>Hora<br>5</td><td style=width:185 class=A1>Resultado<br>5</td>
-						<td style=width:185 class=A1>Hora<br>6</td><td style=width:185 class=A1>Resultado<br>6</td>
-						<td style=width:185 class=A1>Hora<br>7</td><td style=width:185 class=A1>Resultado<br>7</td>
-						<td style=width:185 class=A1>Hora<br>8</td><td style=width:185 class=A1>Resultado<br>8</td>
-						<td style=width:185 class=A1>Hora<br>9</td><td style=width:185 class=A1>Resultado<br>9</td>
-						<td style=width:185 class=A1>Hora<br>10</td><td style=width:185 class=A1>Resultado<br>10</td>
-					</tr>
+			<div style="position:absolute; width:61%; left:39%; top:430px; overflow:scroll">
+				<table border=1px id='<?=$dia?>'>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td class=A><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_R<?=$i?>_1 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
+						<td style=width:185 class=A1>Hora<br><?=$i?></td><td style=width:185 class=A1>Resultado<br><?=$i?></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td class=A><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_R<?=$i?>_2 value='' id=numero	maxlength=4 placeholder='##.#' pattern=^([0-9]{1,2}(\.[0-9]{1,1})?)$ inputmode=numeric></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_1 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td class=A><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_R<?=$i?>_3 value='' id=numero	maxlength=4 placeholder='#.##' pattern=^([0-9]{1}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_2 value='' id=numero	maxlength=4 placeholder='##.#' pattern=^([0-9]{1,2}(\.[0-9]{1,1})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td class=A><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_R<?=$i?>_4 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_3 value='' id=numero	maxlength=4 placeholder='#.##' pattern=^([0-9]{1}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<? endfor?>
+					</tr>
+					<tr style=height:80px>
+						<? for ($i = 1; $i <= 10; $i++): ?>
+						<td><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_4 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 				</table>
 			</div>
-			<div style="position:absolute; width:100vw; left:10px; top:870px">
-				<table style=background-color:rgba(128,128,128,0)>
-					<tr height=30px><td style="font-size:30px; text-align:left">CONTROL DE PERSONAL PARA INGRESO A ESPACIO CONFINADO</td></tr>
+			<div style="position:absolute; width:100vw; left:0px; top:835px">
+				<table border=0 id='<?=$dia?>'>
+					<tr><td style="font-size:30px; text-align:left"><br>&nbsp;CONTROL DE PERSONAL PARA INGRESO A ESPACIO CONFINADO</td></tr>
 				</table>
 			</div>
-			<div style="position:absolute; width:59%; left:0.50%; top:910px; background-color:white; overflow:scroll">
-				<table border=1 style=background-color:rgba(128,128,128,0)>
+			<div style="position:absolute; width:59%; left:0%; top:900px; background-color:white; overflow:scroll">
+				<table border=1 id='<?=$dia?>'>
 					<tr style=height:110px><td class=A1>PERSONAL QUE INGRESA</td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre1 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre2 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre3 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre4 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre5 value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
+					<? for ($i = 1; $i <= 5; $i++): ?>
+					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre<?=$i?> value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this) <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td></tr>
+					<? endfor?>
 				</table>
 			</div>
-			<div style="position:absolute; width:39.75%; left:59.50%; top:910px; background-color:white; overflow:scroll">
-				<table border=1 style=background-color:rgba(128,128,128,0)>
+			<div style="position:absolute; width:41%; left:59%; top:900px; background-color:white; overflow:scroll">
+				<table border=1 id='<?=$dia?>'>
 					<tr style=height:110px>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>1</td><td style=width:185 class=A1>Hora<br>Salida<br>1</td>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>2</td><td style=width:185 class=A1>Hora<br>Salida<br>2</td>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>3</td><td style=width:185 class=A1>Hora<br>Salida<br>3</td>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>4</td><td style=width:185 class=A1>Hora<br>Salida<br>4</td>
-						<td style=width:185 class=A1>Hora<br>Entrada<br>5</td><td style=width:185 class=A1>Hora<br>Salida<br>5</td>
+						<? for ($i = 1; $i <= 5; $i++): ?>
+						<td style=width:185 class=A1>Hora<br>Entrada<br><?=$i?></td><td style=width:185 class=A1>Hora<br>Salida<br><?=$i?></td>
+						<? endfor?>
 					</tr>
 					<? for ($j = 1; $j <= 5; $j++): ?>
 					<tr style=height:60px>
 						<? for ($i = 1; $i <= 5; $i++): ?>
-						<td class=A><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
-						<td class=A><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?>></td>
+						<td><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<? endfor?>
 				</table>
 			</div>
+		</div>
 		</div>
 		<div style="position:absolute; width:100vw; top:8390px"><hr></div>
 

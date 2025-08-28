@@ -52,7 +52,7 @@
 			<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
 			<tr height=100>
 				<td colspan=2>
-					<input style=display:none name=estado type=texto value=value=<? echo $estado_formulario1; ?> readonly>
+					<input style=display:none name=estado type=texto value=<? echo $estado_formulario1; ?> readonly>
 					<span style="font-size:36px; width:661px; display:inline-block"><b><? echo $$formulario; ?></b></span>
 				</td>
 				<td>
@@ -80,61 +80,35 @@
 			<tr height=30><td></td></tr>
 		</table>
 		<table border=0>
+			<tr><td width=5%></td><td width=70%></td><td width=20%></td><td width=5%></td></tr>
 			<tr>
-				<td style="width:84%" class=Br>PERSONAS AUTORIZADAS PARA EL TRABAJO&nbsp;</td>
-				<td style="width:16%; text-align:left"><input style="width:40%; text-align:center" name=cantidad id=cantidad maxlength=1 type=texto inputmode=numeric pattern=[1-4]{1} required></td>
+				<td></td>
+				<td class=B style=text-align:right><span id=doc_ad_NO>PERSONAS AUTORIZADAS PARA EL TRABAJO&nbsp;</span></td>
+				<td style=text-align:left><input name=cantidad id=cantidad style="width:60%; text-align:center" maxlength=1 placeholder="Máx. 4" inputmode=numeric pattern=^(?:[1-4]{1})$></td>
+				<td></td>
 			</tr>
-	 		<tr height=10><td></td></tr>
 		</table>
 		<table border=0>
-			<tr><td width=1%></td><td width=48.50%></td><td width=1%></td><td width=48.50%></td><td width=1%></td><tr>
-			<tr><td></td>
-				<td><input style=display:none id=nombre1 name=nombre1 maxlength=30 type=texto placeholder=Nombre&nbsp;1er.&nbsp;autorizado pattern=.{1,} onkeyup=mayuscula(this)></td><td></td>
-				<td><input style=display:none id=nombre2 name=nombre2 maxlength=30 type=texto placeholder=Nombre&nbsp;2o.&nbsp;autorizado  pattern=.{1,} onkeyup=mayuscula(this)></td><td></td>
+			<tr><td width=50%></td><td width=50%></td></tr>
+			<? for ($i = 1; $i <= 4; $i += 2): ?>
+			<tr>
+				<td style=text-align:center><input name="nombre<?= $i ?>" id="nombre<?= $i ?>" maxlength=30 style="display:none; width:99%" pattern=.{1,} onkeyup="this.value = this.value.toUpperCase()" placeholder="Nombre <?= $i == 1 ? '1er' : ($i == 3 ? '3er' : $i.'o') ?>. autorizado"></td>
+				<? if ($i < 4): ?>
+					<td style=text-align:center><input name="nombre<?= $i+1 ?>" id="nombre<?= $i+1 ?>" maxlength=30 style="display:none; width:99%" pattern=.{1,} onkeyup="this.value = this.value.toUpperCase()" placeholder="Nombre <?= $i+1 ?>o. autorizado"></td>
+					<? else: ?>
+					<td></td>
+				<? endif; ?>
 			</tr>
-	 		<tr height=10><td></td></tr>
-			<tr><td></td>
-				<td><input style=display:none id=nombre3 name=nombre3 maxlength=30 type=texto placeholder=Nombre&nbsp;3er.&nbsp;autorizado pattern=.{1,} onkeyup=mayuscula(this)></td><td></td>
-				<td><input style=display:none id=nombre4 name=nombre4 maxlength=30 type=texto placeholder=Nombre&nbsp;4o.&nbsp;autorizado  pattern=.{1,} onkeyup=mayuscula(this)></td><td></td>
-			</tr>
-	 		<tr height=10><td></td></tr>
+			<? endfor; ?>
+			<tr height=30><td colspan=6></td></tr>
 		</table>
-		<script>
-			var
-				c = document.getElementById('cantidad');
-				n1 = document.getElementById('nombre1');
-				n2 = document.getElementById('nombre2');
-				n3 = document.getElementById('nombre3');
-				n4 = document.getElementById('nombre4');
-			document.getElementById('cantidad').addEventListener('blur', function(e) {
-				if (c.value <= 1) {c.value = 1;
-				 n1.disabled = false; n1.style.display = 'block'; n1.required = true;
-				 n2.disabled = true; n2.style.display = 'none';
-				 n3.disabled = true; n3.style.display = 'none';
-				 n4.disabled = true; n4.style.display = 'none';};
-				if (c.value == 2) {
-				 n1.disabled = false; n1.style.display = 'block'; n1.required = true;
-				 n2.disabled = false; n2.style.display = 'block'; n2.required = true;
-				 n3.disabled = true; n3.style.display = 'none';
-				 n4.disabled = true; n4.style.display = 'none';};
-				if (c.value == 3) {
-				 n1.disabled = false; n1.style.display = 'block'; n1.required = true;
-				 n2.disabled = false; n2.style.display = 'block'; n2.required = true;
-				 n3.disabled = false; n3.style.display = 'block'; n3.required = true;
-				 n4.disabled = true; n4.style.display = 'none';};
-				if (c.value >= 4) {c.value = 4;
-				 n1.disabled = false; n1.style.display = 'block'; n1.required = true;
-				 n2.disabled = false; n2.style.display = 'block'; n2.required = true;
-				 n3.disabled = false; n3.style.display = 'block'; n3.required = true;
-				 n4.disabled = false; n4.style.display = 'block'; n4.required = true;};});
-		</script>
 		<table border=0>
 			<tr><td width=25vw></td><td width=25vw></td><td width=25vw></td><td width=25vw></td></tr>
 			<tr>
-				<td class=A><br>FECHA<br>									 <input name=fechaA				type=date  value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> required></td>
-				<td class=A>HORA<br>INICIAL<br>						 <input name=horainicialA	type=time  value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
-				<td class=A>HORA<br>FINAL<br>							 <input name=horafinalA		type=time  value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
-				<td class=A>CERTIFICADO<br>HABILITACIÓN<br><input name=certhabilit	class=consecutivo type=texto maxlength=6 style=width:67%	inputmode=numeric pattern=^(?:[0-9]{4,6})$ required></td>
+				<td class=A><br>FECHA<br>									 <input name=fechaA				type=date value=<?echo $fechahoy;?> min=<?echo $fechamin;?> max=<?echo $fechamax;?> required></td>
+				<td class=A>HORA<br>INICIAL<br>						 <input name=horainicialA	type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
+				<td class=A>HORA<br>FINAL<br>							 <input name=horafinalA		type=time value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
+				<td class=A>CERTIFICADO<br>HABILITACIÓN<br><input name=certhabilit	class=consecutivo placeholder="######" type=texto maxlength=6 style=width:67%	inputmode=numeric pattern=^(?:[0-9]{4,6})$ required></td>
 			</tr>
 	 		<tr height=10><td></td></tr>
 		</table>
@@ -146,80 +120,48 @@
 			<tr><td colspan=5 class=B><b>&nbsp;&nbsp;B. DOCUMENTACIÓN ADICIONAL</b></td></tr>
 			<tr><td colspan=5 class=B><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Verificación previa del área de trabajo)</span></td></tr>
 			<tr class=C><td class=Bc>SI</td><td class=Bc>NO</td><td class=Bc>NA</td><td class=Br>#&nbsp;</td><td class=B>REQUISITO DE SEGURIDAD</td></tr>
-			<tr class=C>
-				<td><input type=radio name=B1 id=B1 value=SI onclick=gestionarClickRadio(this) required></td>
-				<td><input type=radio name=B1 id=b1 value=NO onclick=gestionarClickRadio(this)></td>
-				<td><input type=radio name=B1 id=v1 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=numero>1.</td><td class=B>Están los desagües de áreas vecinas limpios y libres de sustancias combustibles?</td>
-			</tr>
-			<tr class=C>
-				<td><input type=radio name=B2 id=B2 value=SI onclick=gestionarClickRadio(this) required></td>
-				<td><input type=radio name=B2 id=b2 value=NO onclick=gestionarClickRadio(this)></td>
-				<td><input type=radio name=B2 id=v2 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=numero>2.</td><td class=B>Están los desagües cercanos Cubiertos y Sellados?</td>
-			</tr>
-			<tr class=C>
-				<td><input type=radio name=B3 id=B3 value=SI onclick=gestionarClickRadio(this) required></td>
-				<td><input type=radio name=B3 id=b3 value=NO onclick=gestionarClickRadio(this)></td>
-				<td><input type=radio name=B3 id=v3 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=numero>3.</td><td class=B>Está el área limpía y libre de sustancias combustibles o tóxicas?</td>
-			</tr>
-			<tr class=C>
-				<td><input type=radio name=B4 id=B4 value=SI onclick=gestionarClickRadio(this) required></td>
-				<td><input type=radio name=B4 id=b4 value=NO onclick=gestionarClickRadio(this)></td>
-				<td><input type=radio name=B4 id=v4 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=numero>4.</td><td class=B>Si se requieren Mantas Anti-fuego, Neblina de agua, Tienda para soldar, están disponibles?<br><span>Ver requerimientos para soldadura en el respaldo de esta hoja</span></td>
-			</tr>
-			<tr class=C>
-				<td><input type=radio name=B5 id=B5 value=SI onclick=gestionarClickRadio(this) required></td>
-				<td><input type=radio name=B5 id=b5 value=NO onclick=gestionarClickRadio(this)></td>
-				<td><input type=radio name=B5 id=v5 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=numero>5.</td><td class=B>Permiten los factores externos efectuar el trabajo con Seguridad?<br><span>(Dirección Viento, Condiciones Atmosféricas, Trabajos vecinos)</span></td>
-			</tr>
-			<tr class=C>
-				<td><input type=radio name=B6 id=B6 value=SI onclick=gestionarClickRadio(this) required></td>
-				<td><input type=radio name=B6 id=b6 value=NO onclick=gestionarClickRadio(this)></td>
-				<td><input type=radio name=B6 id=v6 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=numero>6.</td><td class=B>Se ha identificado y demarcado adecuadamente el Área Bajo Control?</span></td>
-			</tr>
-			<tr class=C>
-				<td><input type=radio name=B7 id=B7 value=SI onclick=gestionarClickRadio(this) required></td>
-				<td><input type=radio name=B7 id=b7 value=NO onclick=gestionarClickRadio(this)></td>
-				<td><input type=radio name=B7 id=v7 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=numero>7.</td><td class=B>Hay algún requisito legal especial? Indique:</td>
-			</tr>
-			<tr class=C>
-				<td></td><td></td><td></td><td></td>
-				<td class=B><textarea name=indiqueB7b maxlength=85 style=width:99% onkeyup=mayuscula(this) pattern=.{1,}></textarea></td>
-			</tr>
-			<tr class=C>
-				<td><input type=radio name=B8 id=B8 value=SI onclick=gestionarClickRadio(this) required></td>
-				<td><input type=radio name=B8 id=b8 value=NO onclick=gestionarClickRadio(this)></td>
-				<td><input type=radio name=B8 id=v8 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=numero>8.</td><td class=B>Se han suspendido todas las áreas u operaciones que impedirían la realización de este trabajo?</td>
-			</tr>
-			<tr class=C>
-				<td><input type=radio name=B9 id=B9 value=SI onclick=gestionarClickRadio(this) required></td>
-				<td><input type=radio name=B9 id=b9 value=NO onclick=gestionarClickRadio(this)></td>
-				<td><input type=radio name=B9 id=v9 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=numero>9.</td><td class=B>Se requiere inspector de Seguridad?</td>
-			</tr>
-			<tr class=C>
-				<td><input type=radio name=B10 id=B10 value=SI onclick=gestionarClickRadio(this) required></td>
-				<td><input type=radio name=B10 id=b10 value=NO onclick=gestionarClickRadio(this)></td>
-				<td><input type=radio name=B10 id=v10 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=numero>10.</td><td class=B>Está disponible y listo el equipo de Primeros Auxilios?</td>
-			</tr>
-			<tr class=C>
-				<td><input type=radio name=B11 id=B11 value=SI onclick=gestionarClickRadio(this) required></td>
-				<td><input type=radio name=B11 id=b11 value=NO onclick=gestionarClickRadio(this)></td>
-				<td><input type=radio name=B11 id=v11 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=numero>11.</td><td class=B>Está disponible y listo el Equipo Contra Incendios? Especifique:</td>
-			</tr>
-			<tr class=C>
-				<td></td><td></td><td></td><td></td>
-				<td class=B><textarea name=especifiqueB11b maxlength=85 style=width:99% onkeyup=mayuscula(this) pattern=.{1,}></textarea></td>
-			</tr>
+
+			<?
+			$security1Questions = [
+				 1 => "Están los desagües de áreas vecinas limpios y libres de sustancias combustibles?",
+				 2 => "Están los desagües cercanos Cubiertos y Sellados?",
+				 3 => "Está el área limpía y libre de sustancias combustibles o tóxicas?",
+				 4 => "Si se requieren Mantas Anti-fuego, Neblina de agua, Tienda para soldar, están disponibles?<br><span>Ver requerimientos para soldadura en el respaldo de esta hoja</span>",
+				 5 => "Permiten los factores externos efectuar el trabajo con Seguridad?<br><span>(Dirección Viento, Condiciones Atmosféricas, Trabajos vecinos)</span>",
+				 6 => "Se ha identificado y demarcado adecuadamente el Área Bajo Control?</span>",
+				 7 => "Hay algún requisito legal especial? Indique:"
+			];
+
+			foreach ($security1Questions as $num => $question) {
+				echo "<tr class='C'>
+					<td><input type='radio' id='B{$num}' name='B{$num}' value='SI' onclick='handleRadioClick(this)' required></td>
+					<td><input type='radio' id='b{$num}' name='B{$num}' value='NO' onclick='handleRadioClick(this)'></td>
+					<td><input type='radio' id='v{$num}' name='B{$num}' value='NA' onclick='handleRadioClick(this)'></td>
+					<td class='numero'>{$num}.</td>
+					<td class='B'>{$question}</td>
+				</tr>";
+			}
+			?>
+			<tr class=C><td colspan=4></td><td class=B><textarea name=indiqueB7b maxlength=85 style=width:99% onkeyup=mayuscula(this) pattern=.{1,}></textarea></td></tr>
+			<?
+			$security2Questions = [
+				 8 => "Se han suspendido todas las áreas u operaciones que impedirían la realización de este trabajo?",
+				 9 => "Se requiere inspector de Seguridad?",
+				10 => "Está disponible y listo el equipo de Primeros Auxilios?",
+				11 => "Está disponible y listo el Equipo Contra Incendios? Especifique:>"
+			];
+
+			foreach ($security2Questions as $num => $question) {
+				echo "<tr class='C'>
+					<td><input type='radio' id='B{$num}' name='B{$num}' value='SI' onclick='handleRadioClick(this)' required></td>
+					<td><input type='radio' id='b{$num}' name='B{$num}' value='NO' onclick='handleRadioClick(this)'></td>
+					<td><input type='radio' id='v{$num}' name='B{$num}' value='NA' onclick='handleRadioClick(this)'></td>
+					<td class='numero'>{$num}.</td>
+					<td class='B'>{$question}</td>
+				</tr>";
+			}
+			?>
+			<tr class=C><td colspan=4></td><td class=B><textarea name=especifiqueB11b maxlength=85 style=width:99% onkeyup=mayuscula(this) pattern=.{1,}></textarea></td></tr>
 	 		<tr height=10><td></td></tr>
 		</table>
 		<table border=0>
@@ -326,7 +268,7 @@
 			<tr>
 				<td class=A><br>EQUIPO<br>					<input name=B13equipo		type=texto maxlength=15 pattern=.{1,} onkeyup=mayuscula(this)></td>
 				<td class=A><br>DUEÑO<br>						<input name=B13dueno		type=texto maxlength=15 pattern=.{1,} onkeyup=mayuscula(this)></td>
-				<td class=A>FECHA<br>CALIBRACIÓN<br><input name=B13fecha 		type=date  value='<?echo $hoy;?>'></td>
+				<td class=A>FECHA<br>CALIBRACIÓN<br><input name=B13fecha 		type=date  value=<?echo $fechacero;?> max=<?echo $fechaactual;?>></td>
 				<td class=A>BUMP<br>TEST<br>				<input name=B13bumptest type=checkbox></td>
 			</tr>
 		</table>
@@ -530,120 +472,157 @@
 <!-- *****************************************			 INICIO DES-SELECCIONAR INPUT radio			 ***************************************** -->
 <!-- *****************************************						debe ir al final del html					 ***************************************** -->
 
-<? if ($consec > "$ultimo_consec") {echo "system('cls');<script>setTimeout(cerrarVentana,10*60*1000); document.body.innerHTML = '$aviso_pedido';</script>";} ?>
-
-<script type="text/javascript">
-	//Para distinguir la opción actualmente pulsada en cada grupo
-	var pref_opcActual = "opcActual_";
-	//Verifica si una variable definida dinámicamente existe o no
-	function varExiste(sNombre) {return (eval("typeof(" + sNombre + ");") != "undefined");}
-	//Asigna un valor a una variable creada dinámicamente a partir de su nombre
-	function asignaVar(sNombre, valor) {eval(sNombre + " = " + valor + ";");}
-	//generamos dinámicamente variables globales para contener la opción pulsada en cada uno de los grupos
-	for (f= 0; f<document.forms.length; f++) {
-		for (i = 0; i< document.forms[f].elements.length; i++) {
-			var eltoAct = document.forms[f].elements[i];
-			var exprCrearVariable = "";
-			if (eltoAct.type == "radio") {
-				//Si la variable no existe la definimos siempre,pero sólo la redefinimos en caso de que el elemento actual del grupo esté asignado
-				if (!varExiste(pref_opcActual + eltoAct.name) ) exprCrearVariable = "var " + pref_opcActual + eltoAct.name + " = ";
-					else exprCrearVariable = pref_opcActual + eltoAct.name + " = ";
-				//El valor será nulo o una referencia al radio actual en función de su está seleccionado o no
-				if(eltoAct.checked) exprCrearVariable += "document.getElementById('" + eltoAct.id + "')";
-					else exprCrearVariable += "null";
-				//Definimos la variable y asignamos el valor sólo si no existe o si el radio actual está marcado 
-				if ( !varExiste(pref_opcActual + eltoAct.name) || eltoAct.checked) eval(exprCrearVariable);}}}
-
-	function gestionarClickRadio(opcPulsada) {
-		//El nombre de la variable que contiene el nombre del grupo actual
-		var svarOpcAct = pref_opcActual + opcPulsada.name;
-		var opcActual = null;
-		opcActual = eval(svarOpcAct);	//recupero dinámicamente una referencia al último radio pulsado de este grupo
-			if (opcActual == opcPulsada) {
-		opcPulsada.checked = false; //deselecciono
-		asignaVar(svarOpcAct, "null");}	//y quito referencia (es como si nunca se hubiera pulsado)
-				else {asignaVar(svarOpcAct, "document.getElementById('" + opcPulsada.id + "')");}}	//Anoto la última opción pulsada de este grupo
-</script>
-
-<!-- script para css select option -->
 <script>
-var x, i, j, l, ll, selElmnt, a, b, c;
-/*look for any elements with the class "custom-select":*/
-x = document.getElementsByClassName("custom-select");
-l = x.length;
-for (i = 0; i < l; i++) {
-	selElmnt = x[i].getElementsByTagName("select")[0];
-	ll = selElmnt.length;
-	/*for each element, create a new DIV that will act as the selected item:*/
-	a = document.createElement("DIV");
-	a.setAttribute("class", "select-selected");
-	a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
-	x[i].appendChild(a);
-	/*for each element, create a new DIV that will contain the option list:*/
-	b = document.createElement("DIV");
-	b.setAttribute("class", "select-items select-hide");
-	for (j = 1; j < ll; j++) {
-		/*for each option in the original select element,
-		create a new DIV that will act as an option item:*/
-		c = document.createElement("DIV");
-		c.innerHTML = selElmnt.options[j].innerHTML;
-		c.addEventListener("click", function(e) {
-				/*when an item is clicked, update the original select box,
-				and the selected item:*/
-				var y, i, k, s, h, sl, yl;
-				s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-				sl = s.length;
-				h = this.parentNode.previousSibling;
-				for (i = 0; i < sl; i++) {
-					if (s.options[i].innerHTML == this.innerHTML) {
-						s.selectedIndex = i;
-						h.innerHTML = this.innerHTML;
-						y = this.parentNode.getElementsByClassName("same-as-selected");
-						yl = y.length;
-						for (k = 0; k < yl; k++) {
-							y[k].removeAttribute("class");
+// Optimized JavaScript functions
+const FormHandler = {
+		// Radio button management with deselection capability
+		currentOptions: {},
+		
+		handleRadioClick(option) {
+			  const groupName = option.name;
+			  const currentOption = this.currentOptions[groupName];
+			  
+			  if (currentOption === option) {
+						option.checked = false;
+						this.currentOptions[groupName] = null;
+			  } else {
+						this.currentOptions[groupName] = option;
+			  }
+			  
+			  // Handle specific radio button logic
+			  this.handleSpecificRadioLogic(option);
+		},
+		
+		handleSpecificRadioLogic(option) {
+			  const handlers = {
+						'cambio': this.handleCambioRadio,
+						'empleado': this.handleEmpleadoRadio,
+						'docum_adic': this.handleDocumAdicRadio
+			  };
+			  
+			  const handler = handlers[option.name];
+			  if (handler) {
+						handler.call(this, option);
+			  }
+		},
+		
+		handleCambioRadio(option) {
+			  const pedidocambio = document.getElementById('pedidocambio');
+			  const pedido = document.getElementById('pedido');
+			  
+			  if (option.value === 'CME') {
+						this.hideElement(pedidocambio);
+						this.hideElement(pedido);
+			  } else if (option.value === 'CDE') {
+						this.showElement(pedidocambio, true);
+						this.showElement(pedido);
+			  }
+		},
+		
+		handleEmpleadoRadio(option) {
+			  const companiacp = document.getElementById('companiacp');
+			  
+			  if (option.value === 'E') {
+						this.hideElement(companiacp);
+			  } else if (option.value === 'CP') {
+						this.showElement(companiacp, true);
+			  }
+		},
+		
+		handleDocumAdicRadio(option) {
+			  const elements = {
+						cantidad: document.getElementById('cantidad'),
+						docAdNO: document.getElementById('doc_ad_NO'),
+						nombres: Array.from({length: 4}, (_, i) => document.getElementById(`nombre${i+1}`))
+			  };
+			  
+			  if (option.value === 'SI') {
+						Object.values(elements).flat().forEach(el => el && this.hideElement(el));
+			  } else if (option.value === 'NO') {
+						this.showElement(elements.cantidad, true);
+						this.showElement(elements.docAdNO);
+			  }
+		},
+		
+		handleQuantityChange() {
+			  const cantidad = document.getElementById('cantidad');
+			  const value = parseInt(cantidad.value) || 1;
+			  cantidad.value = Math.min(Math.max(value, 1), 4);
+			  
+			  const docAdNO = document.getElementById('doc_ad_NO');
+			  this.showElement(docAdNO);
+			  
+			  for (let i = 1; i <= 4; i++) {
+						const nombre = document.getElementById(`nombre${i}`);
+						if (i <= cantidad.value) {
+								this.showElement(nombre, true);
+						} else {
+								this.hideElement(nombre);
 						}
-						this.setAttribute("class", "same-as-selected");
-						break;
-					}
-				}
-				h.click();
-		});
-		b.appendChild(c);
-	}
-	x[i].appendChild(b);
-	a.addEventListener("click", function(e) {
-			/*when the select box is clicked, close any other select boxes,
-			and open/close the current select box:*/
-			e.stopPropagation();
-			closeAllSelect(this);
-			this.nextSibling.classList.toggle("select-hide");
-			this.classList.toggle("select-arrow-active");
-		});
-}
-function closeAllSelect(elmnt) {
-	/*a function that will close all select boxes in the document,
-	except the current select box:*/
-	var x, y, i, xl, yl, arrNo = [];
-	x = document.getElementsByClassName("select-items");
-	y = document.getElementsByClassName("select-selected");
-	xl = x.length;
-	yl = y.length;
-	for (i = 0; i < yl; i++) {
-		if (elmnt == y[i]) {
-			arrNo.push(i)
-		} else {
-			y[i].classList.remove("select-arrow-active");
+			  }
+		},
+		
+		toggleDocumentNumber(num) {
+			  const checkbox = document.getElementById(`D${num}`);
+			  const numberInput = document.getElementById(`numeroD${num}`);
+			  
+			  if (checkbox.checked) {
+						this.showElement(numberInput, true);
+			  } else {
+						this.hideElement(numberInput);
+			  }
+		},
+		
+		showElement(element, required = false) {
+			  if (element) {
+						element.style.display = 'block';
+						element.disabled = false;
+						if (required) element.required = true;
+			  }
+		},
+		
+		hideElement(element) {
+			  if (element) {
+						element.style.display = 'none';
+						element.disabled = true;
+						element.required = false;
+			  }
 		}
-	}
-	for (i = 0; i < xl; i++) {
-		if (arrNo.indexOf(i)) {
-			x[i].classList.add("select-hide");
-		}
-	}
+};
+
+// Global functions for backward compatibility
+function handleRadioClick(option) {
+		FormHandler.handleRadioClick(option);
 }
-/*if the user clicks anywhere outside the select box, then close all select boxes:*/
-document.addEventListener("click", closeAllSelect);
+
+function toggleDocumentNumber(num) {
+		FormHandler.toggleDocumentNumber(num);
+}
+
+// Event listeners
+document.addEventListener('DOMContentLoaded', function() {
+		// Initialize radio button states
+		document.querySelectorAll('input[type="radio"]').forEach(radio => {
+			  if (radio.checked) {
+						FormHandler.currentOptions[radio.name] = radio;
+			  }
+		});
+		
+		// Quantity change handler
+		const cantidad = document.getElementById('cantidad');
+		if (cantidad) {
+			  cantidad.addEventListener('blur', () => FormHandler.handleQuantityChange());
+		}
+		
+		// Disable right-click context menu
+		document.addEventListener('contextmenu', e => e.preventDefault());
+});
+
+// Check if consecutive limit exceeded
+<? if ($consec > $ultimo_consec): ?>
+setTimeout(() => window.close(), 10 * 60 * 1000);
+document.body.innerHTML = '<?= $aviso_pedido ?>';
+<? endif; ?>
 </script>
 <!-- *****************************************			 FIN DES-SELECCIONAR INPUT radio			 ***************************************** -->
 </form>
