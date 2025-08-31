@@ -111,8 +111,7 @@
 			<tr><td width=43%></td><td width=5%></td><td width=4%></td><td width=5%></td><td width=43%></td></tr>
 			<tr class=C><td colspan=5># PERMISO DE TRABAJO EN ESPACIO CONFINADO&nbsp;<input name=pTEC style=width:13% type=text inputmode=numeric maxlength=6 pattern=^(?:[0-9]{4,6})$ required></td></tr>
 			<tr class=C style="height:80px">
-				<td class=B style=text-align:right>TRABAJO EN CALIENTE</td><td><input type=radio name=tipo_trabajo id=tipo_trabajoC value=C onclick=gestionarClickRadio(this) required></td>
-				<td></td>
+				<td class=B style=text-align:right>TRABAJO EN CALIENTE</td><td><input type=radio name=tipo_trabajo id=tipo_trabajoC value=C onclick=gestionarClickRadio(this) required></td><td></td>
 				<td><input type=radio name=tipo_trabajo id=tipo_trabajoF value=F onclick=gestionarClickRadio(this)></td><td class=B>TRABAJO EN FRÍO</td>
 			</tr>
 			<tr style=height:30px><td colspan=5 class=BB><b>LA MEDICIÓN DEBE SER CONTINUA.</b></td></tr>
