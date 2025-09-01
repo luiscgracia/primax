@@ -35,7 +35,7 @@
 	// se valida que no se sobrepase el número de libretas compradas
 	$ultimo_consec = $primerconsecutivo + $formatosporlibreta * $libretas - 1;
 	$consec_por_usar = $ultimo_consec - $consec + 1;
-	$aviso_pedido = "<div class=aviso><br><br><b>".$$formulario.$aviso.$contacto."</b><br><br><br><br><br><br><br><br><br><br></div>";
+	$aviso_pedido = "<div class=aviso><b>".$$formulario.$aviso.$contacto."</b></div>";
 	if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); document.body.innerHTML = '$aviso_pedido';</script>";}
 ?>
 <!-- *****************************************			 INICIO DEL FORMULARIO			 ***************************************** (816px = 215,9 mm) -->

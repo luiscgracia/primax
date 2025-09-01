@@ -31,8 +31,8 @@ $dbpass = 'aFFe.,0698';
 $celular_soporte = "573241693296";
 $celular_pedidos = "324 169 3296";
 $correo_pedidos = "comercial@digiformas.com";
-$aviso = "</b><br>no está habilitado en esta Terminal,<br>ó se diligenciaron todos los formatos comprados.<br><br>Por favor realice un NUEVO PEDIDO de permisos de trabajo.";
-$contacto = "<br><br><br>SOLUCIONES GRÁFICAS LTDA<br>".$correo_pedidos."<br># proveedor PRIMAX: 775594<br><br>Luis Carlos Gracia Puentes<br>".$celular_pedidos."<br><br><br><br><br><br><br><br><br>";
+$aviso = "<br>no está habilitado en esta Terminal,<br>ó se diligenciaron todos los formatos comprados.<br><br>Por favor realice un NUEVO PEDIDO de permisos de trabajo.";
+$contacto = "<br><br><br>SOLUCIONES GRÁFICAS LTDA<br>".$correo_pedidos."<br># proveedor PRIMAX: 775594<br><br>Pedidos por WhatsApp<br>".$celular_pedidos;
 
 $formulario01  = "CERTIFICADO DE HABILITACIÓN";
 $formulario01_title = "HABILITACION";

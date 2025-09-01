@@ -1,7 +1,7 @@
 body								{touch-action:pan-down pan-x pinch-zoom}
 
 div.fijar						{position:fixed; z-index:120}
-div.aviso 					{position:fixed; margin: -5 0 0 -5; background-color:rgba(255,112,0,1); color:black; font-size:48px; z-index:120}
+div.aviso 					{position:fixed; height:200vh; padding:5% 5%; margin: -10 0 0 -10; background-color:rgba(255,112,0,1); color:black; font-size:64px; font-weight:bold; z-index:120}
 a										{text-decoration:none}
 span								{font-size:27px; font-weight:normal}
 span.aviso					{font-size:32px; display:inline-block}
