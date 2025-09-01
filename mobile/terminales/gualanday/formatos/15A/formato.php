@@ -147,8 +147,8 @@
 						</select>
 					</form>
 				</td>
-				<td><input name=fechaA			type=date value='<?=$hoy;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
-				<td><input name=horaentrega	type=time value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
+				<td><input name=fechaA			type=date value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
+				<td><input name=horaentrega	type=time value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
 			</tr>
 	 		<tr height=10px><td></td></tr>
 		</table>
@@ -388,10 +388,10 @@
 			$filas = 19;
 			$l = range('A','S');
 			for($i = 0; $i < $filas; $i++) {
-			$f = $fechacero;
-			$h = $hora;
+			$f = '$fechacero';
+			$h = '$hora';
 			echo "<tr height=50px>";
-			echo "	<td><input name={$l[$i]}1  type=date style=width:90% value=".$f." required></td>";
+			echo "	<td><input name={$l[$i]}1  type=date style=width:90% value=".$f." min=".$fechamin." max=".$fechamax." required></td>";
 			echo "	<td><input name={$l[$i]}2  type=time style=width:90% value=".$h." required></td>";
 			echo "	<td><input name={$l[$i]}3  type=text style=width:90% maxlength=2 placeholder='##'			pattern=^([0-9]{1,2}?)$	inputmode=numeric required></td>";
 			echo "	<td><input name={$l[$i]}31 type=text style=width:90% maxlength=2 placeholder='##'			pattern=^([0-9]{1,2}?)$	inputmode=numeric required></td>";
@@ -422,22 +422,22 @@
 				<td class=A1>APARIENCIA</td>
 			</tr>
 			<tr height=50px>
-				<td><input name=T1 type=date value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> style=width:90%></td>
-				<td><input name=T2 type=time value='<?=$hora;?>' min=<?=date("H:i");?> style=width:90%></td>
+				<td><input name=T1 type=date value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' style=width:90%></td>
+				<td><input name=T2 type=time value='<?=$hora;?>' min='<?=$horamin;?>' style=width:90%></td>
 				<td><input name=T3 type=text style=width:90% maxlength=6  placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
 				<td><input name=T4 type=text style=width:90% maxlength=6  placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
 				<td><input name=T5 type=text style=width:90% maxlength=10 pattern=.{1,} onkeyup=mayuscula(this)></td>
 			</tr>
 			<tr height=50px>
-				<td><input name=U1 type=date value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> style=width:90%></td>
-				<td><input name=U2 type=time value='<?=$hora;?>' min=<?=date("H:i");?> style=width:90%></td>
+				<td><input name=U1 type=date value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' style=width:90%></td>
+				<td><input name=U2 type=time value='<?=$hora;?>' min='<?=$horamin;?>' style=width:90%></td>
 				<td><input name=U3 type=text style=width:90% maxlength=6  placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
 				<td><input name=U4 type=text style=width:90% maxlength=6  placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
 				<td><input name=U5 type=text style=width:90% maxlength=10 pattern=.{1,} onkeyup=mayuscula(this)></td>
 			</tr>
 			<tr height=50px>
-				<td><input name=V1 type=date value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> style=width:90%></td>
-				<td><input name=V2 type=time value='<?=$hora;?>' min=<?=date("H:i");?> style=width:90%></td>
+				<td><input name=V1 type=date value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' style=width:90%></td>
+				<td><input name=V2 type=time value='<?=$hora;?>' min='<?=$horamin;?>' style=width:90%></td>
 				<td><input name=V3 type=text style=width:90% maxlength=6  placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
 				<td><input name=V4 type=text style=width:90% maxlength=6  placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
 				<td><input name=V5 type=text style=width:90% maxlength=10 pattern=.{1,} onkeyup=mayuscula(this)></td>

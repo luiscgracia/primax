@@ -58,7 +58,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 						<span style="font-size:36px; width:660px; display:inline-block"><b><?=$$formulario;?></b></span>
 					</td>
 					<td>
-						<input name=consecutivo class=consecutivo style="color:white; background-color:<?=$color_formato;?>; border:0" type=texto
+						<input name=consecutivo class=consecutivo style="color:white; background-color:<?=$color_formato;?>; border:0px" type=texto
 							value='<? if ($consec <= 9) {echo '&#8470; 00000';}
 													else {if ($consec <= 99) {echo '&#8470; 0000';}
 														else {if ($consec <= 999) {echo '&#8470; 000';}

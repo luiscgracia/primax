@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang=es>
 <head>
 <link rel="SHORTCUT ICON" href="../../../../../common/imagenes/iconoPRIMAX1.ico">
 <link rel="stylesheet" type="text/css" href="../../../../../common/css/noimprimir.css" media="print">
@@ -10,75 +11,76 @@
 </style>
 </head>
 <script>
-	function mayuscula(e) {e.value = e.value.toUpperCase();}
-	function closed() {window.open('','_parent',''); window.close();}
-	function cerrarVentana() {window.close();}
+function mayuscula(e) {e.value = e.value.toUpperCase();}
+function closed() {window.open('','_parent',''); window.close();}
+function cerrarVentana() {window.close();}
 </script>
 <body style="font-family:Arial; color:rgba(0,0,0,1); text-align:center">
 <?
-	include ("../../../../../common/datos.php");
-	include ("../../../../../common/checkbox_num_text.php");
-	include ("../../conectar_db.php");
-	include ("../../../../../common/conectar_db_usuarios.php");
-	include ("../../../../../normal/usuarios.php");
-	include ("../../../../../normal/terminales/".$terminal."/formatos/".basename(dirname(__FILE__))."/consecutivos".basename(dirname(__FILE__)).".php");
-	$formato = basename(dirname(__FILE__));
-	$formulario = "formulario".$formato;
-	$cons = "SELECT MAX(consecutivo) as consecutivo FROM formulario".$formato." LIMIT 1";
+include ("../../../../../common/datos.php");
+include ("../../../../../common/checkbox_num_text.php");
+include ("../../conectar_db.php");
+include ("../../../../../common/conectar_db_usuarios.php");
+include ("../../../../../normal/usuarios.php");
+include ("../../../../../normal/terminales/".$terminal."/formatos/".basename(dirname(__FILE__))."/consecutivos".basename(dirname(__FILE__)).".php");
+$formato = basename(dirname(__FILE__));
+$formulario = "formulario".$formato;
+$cons = "SELECT MAX(consecutivo) as consecutivo FROM formulario".$formato." LIMIT 1";
 
-	//se conecta a la base de datos y se verifica el consecutivo inicial (o el siguiente libre)
-	$consult = $conexion->query('SELECT MAX(consecutivo) as consecutivo FROM formulario'.basename(dirname(__FILE__)).' LIMIT 1');
-	$consulta = $consult->fetch_array(MYSQLI_ASSOC);
-	$consec = (empty($consulta['consecutivo']) ? $primerconsecutivo : $consulta['consecutivo']+=1);
-	$conexion->close();
+//se conecta a la base de datos y se verifica el consecutivo inicial (o el siguiente libre)
+$consult = $conexion->query('SELECT MAX(consecutivo) as consecutivo FROM formulario'.basename(dirname(__FILE__)).' LIMIT 1');
+$consulta = $consult->fetch_array(MYSQLI_ASSOC);
+$consec = (empty($consulta['consecutivo']) ? $primerconsecutivo : $consulta['consecutivo']+=1);
+$conexion->close();
 
-	// se valida que no se sobrepase el número de libretas compradas
-	$ultimo_consec = $primerconsecutivo + $formatosporlibreta * $libretas - 1;
-	$consec_por_usar = $ultimo_consec - $consec + 1;
-	$aviso_pedido = "<div class=aviso><br><br><b>".$$formulario.$aviso.$contacto."</b><br><br><br><br><br><br><br><br><br><br></div>";
-	if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); document.body.innerHTML = '$aviso_pedido';</script>";}
+// se valida que no se sobrepase el número de libretas compradas
+$ultimo_consec = $primerconsecutivo + $formatosporlibreta * $libretas - 1;
+$consec_por_usar = $ultimo_consec - $consec + 1;
+$aviso_pedido = "<div class=aviso><br><br><b>".$$formulario.$aviso.$contacto."</b><br><br><br><br><br><br><br><br><br><br></div>";
+if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); document.body.innerHTML = '$aviso_pedido';</script>";}
 ?>
-<!-- *****************************************			 INICIO DEL FORMULARIO			 ***************************************** (816px = 215,9 mm) -->
+<!-- *****************************************			 INICIO DEL FORMULARIO			 ***************************************** -->
 <div class=noimprimir>
 	<div class=fijar style="top:15px; left:15px">
-		<a href='https://api.whatsapp.com/send?phone=<?=$celular_soporte; ?>
-		&text=<? if ($fecha <= date('Y-m-d / 12:00')) {echo 'Buenos días, ';} else {echo 'Buenas tardes, ';} ?>
-		le escribo de PRIMAX <?=strtoupper($terminal); ?>, estoy diligenciando el formato <?=$$formulario; ?>.' target=_blank>
+		<a href='https://api.whatsapp.com/send?phone=<?=$celular_soporte;?>
+		&text=<? if ($fecha <= date('Y-m-d / 12:00')) {echo 'Buenos días, ';} else {echo 'Buenas tardes, ';}?>
+		le escribo de PRIMAX <?=strtoupper($terminal);?>, estoy diligenciando el formato <?=$$formulario;?>.' target=_blank>
 		<img src=../../../../../common/imagenes/whatsapp.png style=pointer-events:auto width=70 height=auto></a>
 	</div>
-	<form name=formato id=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
-		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; border:12px solid rgba(0,0,0,0.33)">
-			<table border=0 style=background-color:rgba(255,255,255,1)>
+	<? $color_formato = 'rgba(0,0,0,0)' ?>
+	<form id=formato name=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
+		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; height:6670px; border:12px solid <?=$color_formato;?>">
+			<table border=0 style="color:black; background-color:<?=$color_formato;?>">
 				<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
 				<tr height=100>
 					<td colspan=2>
-						<input style=display:none name=estado type=texto value=<?=$estado_formulario1; ?> readonly>
-						<span style='font-size:36px'><b><?=$$formulario; ?></b></span>
+						<input style=display:none name=estado type=texto value=<?=$estado_formulario1;?> readonly>
+						<span style="font-size:36px; width:660px; display:inline-block"><b><?=$$formulario;?></b></span>
 					</td>
 					<td>
-						<input name=consecutivo class=consecutivo style="color:red; background-color:white; border:0px"
+						<input name=consecutivo class=consecutivo style="color:red; background-color:<?=$color_formato;?>; border:0px" type=texto
 							value='<? if ($consec <= 9) {echo '&#8470; 00000';}
 													else {if ($consec <= 99) {echo '&#8470; 0000';}
 														else {if ($consec <= 999) {echo '&#8470; 000';}
 															else {if ($consec <= 9999) {echo '&#8470; 00';}
-																else {if ($consec <= 99999) {echo '&#8470; 0';} else {echo '&#8470; ';}}}}} echo $consec; ?>' readonly>
+																else {if ($consec <= 99999) {echo '&#8470; 0';} else {echo '&#8470; ';}}}}} echo $consec;?>' readonly>
 					</td>
 				</tr>
 				<tr>
-					<td colspan=3>
-						<span style=font-size:20px>CONSULTE EL MANUAL DE PERMISOS DE TRABAJO.</span><br>
-						<span style=font-size:20px>ESTE PERMISO ES VÁLIDO POR UN TURNO O MÁXIMO 12 HORAS.</span><br>
-						<span style=font-size:19.80px>ADVERTENCIA: EN CASO DE QUE SUENE UNA ALARMA DE EMERGENCIA ESTE CERTIFICADO PIERDE VALIDEZ</span><br>
-						<span style="font-size:24px; color:rgba(255,112,0,1)"><b>FORMATO WEB - Rev. Mayo 2014 - TERMINAL <?=strtoupper($terminal);?></b></span>
+					<td colspan=3 class=alertacabecera>
+						CONSULTE EL MANUAL DE PERMISOS DE TRABAJO.<br>
+						ADVERTENCIA: EN CASO DE QUE SUENE UNA ALARMA DE EMERGENCIA ESTE CERTIFICADO PIERDE VALIDEZ<br>
+						ESTE PERMISO ES VÁLIDO POR UN TURNO O MÁXIMO 12 HORAS.<br>
+						<b>FORMATO WEB - Rev. Mayo 2014 - TERMINAL <?=strtoupper($terminal);?></b>
 					</td>
 				</tr>
 			</table>
 			<hr>
 			<table border=0>
-				<tr><td width=80%></td><td width=20%></td></tr>
+				<tr><td width=70%></td><td width=30%></td></tr>
 				<tr>
-					<td style=vertical-align:bottom>INSTALACIÓN<textarea name=instalacion maxlength=68 style=width:99% onkeyup=mayuscula(this) pattern=.{1,} required autofocus></textarea></td>
-					<td style=vertical-align:bottom>CERTIFICADO &#8470;<input name=certificado class=consecutivo maxlength=6 pattern=^(?:[0-9]{4,6})$ inputmode=numeric required></td>
+					<td>INSTALACIÓN<br><textarea name=instalacion maxlength=68 style=width:98% onkeyup=mayuscula(this) pattern=.{1,} required autofocus></textarea></td>
+					<td>CERTIFICADO &#8470;<br><input name=certificado class=consecutivo style=width:50% maxlength=6 pattern=^(?:[0-9]{4,6})$ inputmode=numeric required></td>
 				</tr>
 				<tr>
 			</table>
@@ -88,7 +90,7 @@
 			<table border=0>
 				<tr><td width=17%></td><td width=25%></td><td width=16%></td><td width=25%></td><td width=17%></td></tr>
 				<tr><td colspan=5 class=B><b>&nbsp;&nbsp;A. TAREA A REALIZAR</b></td></tr>
-				<tr><td colspan=5>UBICACIÓN<textarea name=ubicacion maxlength=63 style=width:99% onkeyup=mayuscula(this) pattern=.{1,} required></textarea></td></tr>
+				<tr><td colspan=5>UBICACIÓN<textarea name=ubicacion maxlength=63 style=width:98% onkeyup=mayuscula(this) pattern=.{1,} required></textarea></td></tr>
 				<tr height=30><td></td></tr>
 				<tr>
 					<td></td>
@@ -103,7 +105,7 @@
 				<tr><td width= 4.75%></td><td width=27%></td><td width= 4.75%></td><td width=27%></td><td width= 4.75%></td><td width=27%></td><td width= 4.75%></td></tr>
 				<tr>
 					<td></td>
-					<td>FECHA<input name=fechaA type=date value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
+					<td>FECHA<input name=fechaA type=date value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
 					<td></td>
 					<td>HORA INICIAL<input name=horainicioA type=time value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
 					<td></td>
@@ -111,7 +113,7 @@
 					<td></td>
 				</tr>
 				<tr height=30><td></td></tr>
-				<tr><td colspan=7>DESCRIPCIÓN<textarea name=descripcion type=texto maxlength=74 style=width:99% onkeyup=mayuscula(this) pattern=.{1,} required></textarea></td></tr>
+				<tr><td colspan=7>DESCRIPCIÓN<textarea name=descripcion type=texto maxlength=74 style=width:98% onkeyup=mayuscula(this) pattern=.{1,} required></textarea></td></tr>
 			</table>
 			<hr>
 		
@@ -120,7 +122,7 @@
 				<tr><td width=40%></td><td width= 4%></td><td width=10%><td width=46%></td></tr>
 				<tr><td colspan=4 class=B><b>&nbsp;&nbsp;B. ADMINISTRACIÓN DE CAMBIOS</b></td></tr>
 				<tr class=C>
-					<td rowspan=2 class=B style='text-align:right; vertical-align:middle'>Este trabajo genera un &nbsp;</td>
+					<td rowspan=2 class=B style=text-align:right>Este trabajo genera un &nbsp;</td>
 					<td><input name=cambio id=cambioA type=radio value=CME onclick=handleRadioClick(this) required></td>
 					<td colspan=2 class=B>&nbsp;Cambio de la misma especie<br>&nbsp;ó no hay cambio.</td>
 				</tr>
@@ -174,7 +176,7 @@
 					echo "<tr height=$ap>
 						<td><input type='radio' id='C{$num}' name='C{$num}' value='SI' onclick='handleRadioClick(this)' required></td>
 						<td><input type='radio' id='c{$num}' name='C{$num}' value='NO' onclick='handleRadioClick(this)'></td>
-						<td class='numero'>{$num}.</td><td class=B style=border-left:0px>{$pregunta}</td>
+						<td class=Bnumero>{$num}.&nbsp;</td><td class=Bpregunta style=border-left:0px>{$pregunta}</td>
 					</tr>";
 				}
 				?>
@@ -193,7 +195,7 @@
 					echo "<tr height=$ap>
 						<td><input type='radio' id='C{$num}' name='C{$num}' value='SI' onclick='handleRadioClick(this)' required></td>
 						<td><input type='radio' id='c{$num}' name='C{$num}' value='NO' onclick='handleRadioClick(this)'></td>
-						<td class='numero'>{$num}.</td><td class=B style=border-left:0px>{$pregunta}</td>
+						<td class=Bnumero>{$num}.&nbsp;</td><td class=Bpregunta style=border-left:0px>{$pregunta}</td>
 					</tr>";
 				}
 				?>
@@ -212,7 +214,7 @@
 					echo "<tr height=$ap>
 						<td><input type='radio' id='C{$num}' name='C{$num}' value='SI' onclick='handleRadioClick(this)' required></td>
 						<td><input type='radio' id='c{$num}' name='C{$num}' value='NO' onclick='handleRadioClick(this)'></td>
-						<td class='numero'>{$num}.</td><td class=B style=border-left:0px>{$pregunta}</td>
+						<td class=Bnumero>{$num}.&nbsp;</td><td class=Bpregunta style=border-left:0px>{$pregunta}</td>
 					</tr>";
 				}
 				?>
@@ -234,7 +236,7 @@
 					echo "<tr height=$ap>
 						<td><input type='radio' id='C{$num}' name='C{$num}' value='SI' onclick='handleRadioClick(this)' required></td>
 						<td><input type='radio' id='c{$num}' name='C{$num}' value='NO' onclick='handleRadioClick(this)'></td>
-						<td class='numero'>{$num}.</td><td class=B style=border-left:0px>{$pregunta}</td>
+						<td class=Bnumero>{$num}.&nbsp;</td><td class=Bpregunta style=border-left:0px>{$pregunta}</td>
 					</tr>";
 				}
 				?>
@@ -259,14 +261,14 @@
 					echo "<tr height=$ap>
 						<td><input type='radio' id='C{$num}' name='C{$num}' value='SI' onclick='handleRadioClick(this)' required></td>
 						<td><input type='radio' id='c{$num}' name='C{$num}' value='NO' onclick='handleRadioClick(this)'></td>
-						<td class='numero'>{$num}.</td><td class=B style=border-left:0px>{$pregunta}</td>
+						<td class=Bnumero>{$num}.&nbsp;</td><td class=Bpregunta style=border-left:0px>{$pregunta}</td>
 					</tr>";
 				}
 				?>
 				<tr height=30><td></td></tr>
 				<tr class=C>
 					<td colspan=4>
-						<span>OTRAS ACTIVIDADES NO MENCIONADAS ARRIBA:</span><textarea name=otrasactividades type=texto maxlength=63 style=width:99% onkeyup=mayuscula(this) pattern=.{1,}></textarea>
+						<span>OTRAS ACTIVIDADES NO MENCIONADAS ARRIBA:<br></span><textarea name=otrasactividades type=texto maxlength=63 style=width:98% onkeyup=mayuscula(this) pattern=.{1,}></textarea>
 					</td>
 				</tr>
 			</table>
@@ -306,7 +308,7 @@
 <!-- *****************************************			 sección E			 ***************************************** -->
 			<table>
 				<tr><td class=B><b>&nbsp;&nbsp;E. PRECAUCIONES ADICIONALES</b></td></tr>
-				<tr><td><textarea name=precauciones type=texto maxlength=90 style=width:99% onkeyup=mayuscula(this) pattern=.{1,}></textarea></td></tr>
+				<tr><td><textarea name=precauciones type=texto maxlength=90 style=width:98% onkeyup=mayuscula(this) pattern=.{1,}></textarea></td></tr>
 			</table>
 			<hr>
 
@@ -344,14 +346,14 @@
 			<table border=0>
 				<tr>
 					<td width=55%><input name=ejecutorF		type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-					<td width=26%><input name=fechaejecF	type=date	value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
+					<td width=26%><input name=fechaejecF	type=date	value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
 					<td width=19%><input name=horaejecF		type=time	value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
 				</tr>
 				<tr><td>EJECUTOR</td><td>FECHA</td><td>HORA</td></tr>
 				<tr height=40><td></td></tr>
 				<tr>
 					<td><input name=inspectorF	type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-					<td><input name=fechainspF	type=date	value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
+					<td><input name=fechainspF	type=date	value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
 					<td><input name=horainspF		type=time	value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
 				</tr>
 				<tr><td>INSPECTOR</td><td>FECHA</td><td>HORA</td></tr>
@@ -403,14 +405,14 @@
 			<table border=0>
 				<tr>
 					<td width=55%><input name=aprobadorG	type=texto	maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-					<td width=26%><input name=fechaaprobG	type=date		value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
+					<td width=26%><input name=fechaaprobG	type=date		value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
 					<td width=19%><input name=horaaprobG	type=time		value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
 				</tr>
 				<tr><td>APROBADOR SME</td><td>FECHA</td><td>HORA</td></tr>
 				<tr height=30><td></td></tr>
 				<tr>
 					<td><input name=emisorG				type=texto	maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-					<td><input name=fechaemisorG	type=date		value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
+					<td><input name=fechaemisorG	type=date		value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
 					<td><input name=horaemisorG		type=time		value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
 				</tr>
 				<tr><td>EMISOR</td><td>FECHA</td><td>HORA</td></tr>
@@ -454,7 +456,7 @@
 			</table>
 			<hr>
 			<table>
-				<tr height=30><td></td></tr>
+				<tr height=10><td></td></tr>
 				<tr style="background-color:rgba(0,240,0,0); height:15%">
 					<td>
 						<select name=usuario id=usuario required>
@@ -465,7 +467,7 @@
 						</select>
 					</td>
 				</tr>
-				<tr height=30><td></td></tr>
+				<tr height=10><td></td></tr>
 			</table>
 			<hr>
 
@@ -474,8 +476,8 @@
 			<input style=display:none type=text name=fecha value="<?=$fechaactual;?> / <?=$horaactual;?>" readonly><br>
 			<!--<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Quedan <?=number_format($consec_por_usar,0,',','.');?> consecutivos, incluido este.</span><br>-->
 			<table border=0>
-				<tr height=200>
-					<td><input type=image src=../../../../../common/imagenes/grabar.png alt=Submit style="width:100; height:auto; border:0; background-color:rgba(0,0,0,0)"></td>
+				<tr height=100>
+					<td><input type=image src=../../../../../common/imagenes/grabar.png alt=Submit style="width:100px; height:auto; border:0; background-color:rgba(0,0,0,0)"></td>
 					<td><a href=javascript:closed()><img src=../../../../../common/imagenes/regresar.png style="pointer-events:auto; width:100px; height:auto"></a></td>
 				</tr>
 				<tr><td colspan=2><hr></td></tr>

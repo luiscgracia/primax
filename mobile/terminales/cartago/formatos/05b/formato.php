@@ -81,7 +81,7 @@
 		</table>
 	</div>
 <form name=formato id=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
-<!-- 3 -->		<div style="position:absolute; left:50vw; margin-left:-50vw; top:0px; width:100%; height:9000px; overflow:hidden">
+<!-- 3 -->		<div style="position:absolute; left:50vw; margin-left:-50vw; top:0px; width:100%; height:8860px; overflow:hidden">
 		<table border=0 style="color:black; background-color:rgba(255,255,255,1)">
 			<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
 			<tr height=100>
@@ -126,8 +126,8 @@
 			<table border=0>
 				<tr><td width=14%></td><td width=22%></td><td width=64%></td></tr>
 				<tr>
-					<td style="text-align:center; font-size:48px" class=A><b>DÍA 1</b></td>
-					<td><input name=<?=$dia?>_fecha type=date value=<?=$fechaactual;?> min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
+					<td style="text-align:center; font-size:48px" class=A><b>DÍA <?=$num?></b></td>
+					<td><input name=<?=$dia?>_fecha type=date value='<?=$fechaactual;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
 					<td style=font-size:36px>PRUEBA DE GASES</td>
 				</tr>
 			</table>
@@ -143,7 +143,7 @@
 				</tr>
 				<tr>
 					<td style=text-align:right>FECHA CALIBRACIÓN</td><td></td>
-					<td style=text-align:left><input style=width:40% name=<?=$dia?>_fecha_calib type=date value=<?=$fechacero;?> required></td>
+					<td style=text-align:left><input style=width:40% name=<?=$dia?>_fecha_calib type=date value='<?=$fechacero;?>' required></td>
 				</tr>
 				<tr>
 					<td style=text-align:right>PROPIETARIO</td><td></td>
@@ -198,25 +198,25 @@
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_1 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_2 value='' id=numero	maxlength=4 placeholder='##.#' pattern=^([0-9]{1,2}(\.[0-9]{1,1})?)$ inputmode=numeric <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_3 value='' id=numero	maxlength=4 placeholder='#.##' pattern=^([0-9]{1}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_4 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
@@ -245,8 +245,8 @@
 					<? for ($j = 1; $j <= 5; $j++): ?>
 					<tr style=height:60px>
 						<? for ($i = 1; $i <= 5; $i++): ?>
-						<td><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'required';} else {echo '';} ?>></td>
-						<td><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'required';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1 && $j == 1) {echo 'required';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1 && $j == 1) {echo 'required';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<? endfor?>
@@ -263,8 +263,8 @@
 			<table border=0>
 				<tr><td width=14%></td><td width=22%></td><td width=64%></td></tr>
 				<tr>
-					<td style="text-align:center; font-size:48px" class=A><b>DÍA 2</b></td>
-					<td><input name=<?=$dia?>_fecha type=date value=<?=$fechacero;?> min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
+					<td style="text-align:center; font-size:48px" class=A><b>DÍA <?=$num?></b></td>
+					<td><input name=<?=$dia?>_fecha type=date value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>'></td>
 					<td style=font-size:36px>PRUEBA DE GASES</td>
 				</tr>
 			</table>
@@ -280,7 +280,7 @@
 				</tr>
 				<tr>
 					<td style=text-align:right>FECHA CALIBRACIÓN</td><td></td>
-					<td style=text-align:left><input style=width:40% name=<?=$dia?>_fecha_calib type=date value=<?=$fechacero;?>></td>
+					<td style=text-align:left><input style=width:40% name=<?=$dia?>_fecha_calib type=date value='<?=$fechacero;?>'></td>
 				</tr>
 				<tr>
 					<td style=text-align:right>PROPIETARIO</td><td></td>
@@ -335,25 +335,25 @@
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_1 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_2 value='' id=numero	maxlength=4 placeholder='##.#' pattern=^([0-9]{1,2}(\.[0-9]{1,1})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_3 value='' id=numero	maxlength=4 placeholder='#.##' pattern=^([0-9]{1}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_4 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
@@ -382,8 +382,8 @@
 					<? for ($j = 1; $j <= 5; $j++): ?>
 					<tr style=height:60px>
 						<? for ($i = 1; $i <= 5; $i++): ?>
-						<td><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
-						<td><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<? endfor?>
@@ -400,8 +400,8 @@
 			<table border=0>
 				<tr><td width=14%></td><td width=22%></td><td width=64%></td></tr>
 				<tr>
-					<td style="text-align:center; font-size:48px" class=A><b>DÍA 3</b></td>
-					<td><input name=<?=$dia?>_fecha type=date value=<?=$fechacero;?> min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
+					<td style="text-align:center; font-size:48px" class=A><b>DÍA <?=$num?></b></td>
+					<td><input name=<?=$dia?>_fecha type=date value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>'></td>
 					<td style=font-size:36px>PRUEBA DE GASES</td>
 				</tr>
 			</table>
@@ -417,7 +417,7 @@
 				</tr>
 				<tr>
 					<td style=text-align:right>FECHA CALIBRACIÓN</td><td></td>
-					<td style=text-align:left><input style=width:40% name=<?=$dia?>_fecha_calib type=date value=<?=$fechacero;?>></td>
+					<td style=text-align:left><input style=width:40% name=<?=$dia?>_fecha_calib type=date value='<?=$fechacero;?>'></td>
 				</tr>
 				<tr>
 					<td style=text-align:right>PROPIETARIO</td><td></td>
@@ -472,25 +472,25 @@
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_1 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_2 value='' id=numero	maxlength=4 placeholder='##.#' pattern=^([0-9]{1,2}(\.[0-9]{1,1})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_3 value='' id=numero	maxlength=4 placeholder='#.##' pattern=^([0-9]{1}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_4 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
@@ -519,8 +519,8 @@
 					<? for ($j = 1; $j <= 5; $j++): ?>
 					<tr style=height:60px>
 						<? for ($i = 1; $i <= 5; $i++): ?>
-						<td><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
-						<td><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<? endfor?>
@@ -537,8 +537,8 @@
 			<table border=0>
 				<tr><td width=14%></td><td width=22%></td><td width=64%></td></tr>
 				<tr>
-					<td style="text-align:center; font-size:48px" class=A><b>DÍA 4</b></td>
-					<td><input name=<?=$dia?>_fecha type=date value=<?=$fechacero;?> min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
+					<td style="text-align:center; font-size:48px" class=A><b>DÍA <?=$num?></b></td>
+					<td><input name=<?=$dia?>_fecha type=date value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>'></td>
 					<td style=font-size:36px>PRUEBA DE GASES</td>
 				</tr>
 			</table>
@@ -554,7 +554,7 @@
 				</tr>
 				<tr>
 					<td style=text-align:right>FECHA CALIBRACIÓN</td><td></td>
-					<td style=text-align:left><input style=width:40% name=<?=$dia?>_fecha_calib type=date value=<?=$fechacero;?>></td>
+					<td style=text-align:left><input style=width:40% name=<?=$dia?>_fecha_calib type=date value='<?=$fechacero;?>'></td>
 				</tr>
 				<tr>
 					<td style=text-align:right>PROPIETARIO</td><td></td>
@@ -609,25 +609,25 @@
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_1 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_2 value='' id=numero	maxlength=4 placeholder='##.#' pattern=^([0-9]{1,2}(\.[0-9]{1,1})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_3 value='' id=numero	maxlength=4 placeholder='#.##' pattern=^([0-9]{1}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_4 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
@@ -656,8 +656,8 @@
 					<? for ($j = 1; $j <= 5; $j++): ?>
 					<tr style=height:60px>
 						<? for ($i = 1; $i <= 5; $i++): ?>
-						<td><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
-						<td><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<? endfor?>
@@ -674,8 +674,8 @@
 			<table border=0>
 				<tr><td width=14%></td><td width=22%></td><td width=64%></td></tr>
 				<tr>
-					<td style="text-align:center; font-size:48px" class=A><b>DÍA 5</b></td>
-					<td><input name=<?=$dia?>_fecha type=date value=<?=$fechacero;?> min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
+					<td style="text-align:center; font-size:48px" class=A><b>DÍA <?=$num?></b></td>
+					<td><input name=<?=$dia?>_fecha type=date value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>'></td>
 					<td style=font-size:36px>PRUEBA DE GASES</td>
 				</tr>
 			</table>
@@ -691,7 +691,7 @@
 				</tr>
 				<tr>
 					<td style=text-align:right>FECHA CALIBRACIÓN</td><td></td>
-					<td style=text-align:left><input style=width:40% name=<?=$dia?>_fecha_calib type=date value=<?=$fechacero;?>></td>
+					<td style=text-align:left><input style=width:40% name=<?=$dia?>_fecha_calib type=date value='<?=$fechacero;?>'></td>
 				</tr>
 				<tr>
 					<td style=text-align:right>PROPIETARIO</td><td></td>
@@ -746,25 +746,25 @@
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_1 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_2 value='' id=numero	maxlength=4 placeholder='##.#' pattern=^([0-9]{1,2}(\.[0-9]{1,1})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_3 value='' id=numero	maxlength=4 placeholder='#.##' pattern=^([0-9]{1}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_4 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
@@ -793,8 +793,8 @@
 					<? for ($j = 1; $j <= 5; $j++): ?>
 					<tr style=height:60px>
 						<? for ($i = 1; $i <= 5; $i++): ?>
-						<td><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
-						<td><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<? endfor?>
@@ -811,8 +811,8 @@
 			<table border=0>
 				<tr><td width=14%></td><td width=22%></td><td width=64%></td></tr>
 				<tr>
-					<td style="text-align:center; font-size:48px" class=A><b>DÍA 6</b></td>
-					<td><input name=<?=$dia?>_fecha type=date value=<?=$fechacero;?> min=<?=$fechamin;?> max=<?=$fechamax;?>></td>
+					<td style="text-align:center; font-size:48px" class=A><b>DÍA <?=$num?></b></td>
+					<td><input name=<?=$dia?>_fecha type=date value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>'></td>
 					<td style=font-size:36px>PRUEBA DE GASES</td>
 				</tr>
 			</table>
@@ -828,7 +828,7 @@
 				</tr>
 				<tr>
 					<td style=text-align:right>FECHA CALIBRACIÓN</td><td></td>
-					<td style=text-align:left><input style=width:40% name=<?=$dia?>_fecha_calib type=date value=<?=$fechacero;?>></td>
+					<td style=text-align:left><input style=width:40% name=<?=$dia?>_fecha_calib type=date value='<?=$fechacero;?>'></td>
 				</tr>
 				<tr>
 					<td style=text-align:right>PROPIETARIO</td><td></td>
@@ -882,25 +882,25 @@
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_1 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_2 value='' id=numero	maxlength=4 placeholder='##.#' pattern=^([0-9]{1,2}(\.[0-9]{1,1})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_3 value='' id=numero	maxlength=4 placeholder='#.##' pattern=^([0-9]{1}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<tr style=height:80px>
 						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_4 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
@@ -929,8 +929,8 @@
 					<? for ($j = 1; $j <= 5; $j++): ?>
 					<tr style=height:60px>
 						<? for ($i = 1; $i <= 5; $i++): ?>
-						<td><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
-						<td><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min=<?=date("H:i");?> <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
 						<? endfor?>
 					</tr>
 					<? endfor?>
@@ -938,12 +938,12 @@
 			</div>
 		</div>
 		</div>
-		<div style="position:absolute; width:100vw; top:8390px"><hr></div>
+		<div style="position:absolute; width:100vw; top:8380px"><hr></div>
 
 		<!-- ***************************************************************************************************** -->
 		<div style="position:absolute; width:100vw; top:8400px">
 			<table>
-				<tr height=40><td></td></tr>
+				<tr height=10><td></td></tr>
 				<tr style="background-color:rgba(0,240,0,0); height:15%">
 					<td>
 						<select name=usuario id=usuario required>
@@ -954,7 +954,7 @@
 						</select>
 					</td>
 				</tr>
-				<tr height=30><td></td></tr>
+				<tr height=10><td></td></tr>
 			</table>
 		<hr>
 
@@ -963,7 +963,7 @@
 		<input style="display:none; width:3.10cm" id="fecha" name="fecha" value="<?=$fechaactual;?> / <?=$horaactual;?>" readonly><br>
 <!--		<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Quedan <?=number_format($consec_por_usar,0,',','.');?> consecutivos, incluido este.</span><br> -->
 		<table border=0>
-			<tr height=190>
+			<tr height=100>
 				<td><input type="image" src="../../../../../common/imagenes/grabar.png" alt="Submit" style="width:100; height:auto; border:0; background-color:rgba(0,0,0,0)"></td>
 				<td><a href="javascript:closed()"><img src="../../../../../common/imagenes/regresar.png" style="pointer-events:auto; width:100px; height:auto"></a></td>
 			</tr>
