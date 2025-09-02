@@ -146,7 +146,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 					</tr>";
 				}
 				?>
-				<tr><td colspan=3></td><td colspan=2><textarea name=indiqueB7b maxlength=85 style=width:99% onkeyup=mayuscula(this) pattern=.{1,}></textarea></td></tr>
+				<tr><td class=Bnumero colspan=3></td><td class=Bpregunta colspan=2><textarea name=indiqueB7b maxlength=85 style=width:99% onkeyup=mayuscula(this) pattern=.{1,}></textarea></td></tr>
 				<?
 				$preguntas2 = [
 					 8 => "Se han suspendido todas las áreas u operaciones que impedirían la realización de este trabajo?",
@@ -163,7 +163,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 					</tr>";
 				}
 				?>
-				<tr><td colspan=3></td><td colspan=2><textarea name=especifiqueB11b maxlength=85 style=width:99% onkeyup=mayuscula(this) pattern=.{1,}></textarea></td></tr>
+				<tr><td class=Bnumero colspan=3></td><td class=Bpregunta colspan=2><textarea name=especifiqueB11b maxlength=85 style=width:99% onkeyup=mayuscula(this) pattern=.{1,}></textarea></td></tr>
  				<tr height=20><td colspan=5 style=border:0px></td></tr>
 			</table>
 			<table border=0>

@@ -41,9 +41,9 @@
 <!-- *****************************************			 INICIO DEL FORMULARIO			 ***************************************** (816px = 215,9 mm) -->
 <!-- 1 --> <div class=noimprimir>
 <!-- 2 --> <div class=fijar style="top:30px; left:15px">
-	<a href='https://api.whatsapp.com/send?phone=<? echo $celular_soporte; ?>
+	<a href='https://api.whatsapp.com/send?phone=<?=$celular_soporte; ?>
 	&text=<? if ($fecha <= date('Y-m-d / 12:00')) {echo 'Buenos días, ';} else {echo 'Buenas tardes, ';} ?>
-	le escribo de PRIMAX <? echo strtoupper($terminal); ?>, estoy diligenciando el formato <? echo $$formulario; ?>.' target=_blank>
+	le escribo de PRIMAX <?=strtoupper($terminal); ?>, estoy diligenciando el formato <?=$$formulario; ?>.' target=_blank>
 	<img src=../../../../../common/imagenes/whatsapp.png style=pointer-events:auto width=70 height=auto></a>
 <!-- /2 --> </div>
 <form id=formato name=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
@@ -52,8 +52,8 @@
 			<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
 			<tr height=100>
 				<td colspan=2>
-					<input style=display:none name=estado type=texto value=value=<? echo $estado_formulario1; ?> readonly>
-					<span style="font-size:36px; width:661px; display:inline-block; background-color:none"><b><? echo $$formulario; ?></b></span>
+					<input style=display:none name=estado type=texto value=value=<?=$estado_formulario1; ?> readonly>
+					<span style="font-size:36px; width:661px; display:inline-block; background-color:none"><b><?=$$formulario; ?></b></span>
 				</td>
 				<td>
 					<input name=consecutivo class=consecutivo style="color:red; background-color:white; border:0" type=texto
@@ -68,7 +68,7 @@
 				<td colspan=3>
 					<span style=font-size:20.00px>CONSULTE EL MANUAL DE PERMISOS DE TRABAJO.</span><br>
 					<span style=font-size:19.35px>ADVERTENCIA: EN CASO DE QUE SUENE UNA ALARMA DE EMERGENCIA ESTE CERTIFICADO PIERDE VALIDEZ</span><br>
-					<span style="font-size:24.00px; color:rgba(255,112,0,1)"><b>FORMATO WEB - Rev. Mayo 2014 / TERMINAL <?echo strtoupper($terminal);?></b></span>
+					<span style="font-size:24.00px; color:rgba(255,112,0,1)"><b>FORMATO WEB - Rev. Mayo 2014 / TERMINAL <?=strtoupper($terminal);?></b></span>
 				</td>
 			</tr>
 		</table>
@@ -138,88 +138,53 @@
 			<tr>
 				<td class=A><br>PROFUNDIDAD<br>						 <input name=profundidad maxlength=4 style="width:60%; text-align:center" inputmode=numeric title="#.##"pattern=^([0-9]{1,1}(\.[0-9]{1,2})?)$ required></td>
 				<td class=A>CERTIFICADO<br>HABILITACIÓN<br><input name=certhabilit class=consecutivo maxlength=6 style=width:60% inputmode=numeric pattern=^(?:[0-9]{4,6})$ required></td>
-				<td class=A><br>FECHA<br>									 <input name=fechaA			 type=date value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> required></td>
+				<td class=A><br>FECHA<br>									 <input name=fechaA			 type=date value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
 			</tr>
 	 		<tr height=10><td></td></tr>
 		</table>
 		<hr>
 
 		<!-- *****************************************			 sección B			 ***************************************** -->
-<!-- 4 --> 	<div style="position:absolute; width:52.50%; left:0.50%; background-color:white">
+ 	<div style="position:absolute; width:52.50%; left:0.50%; background-color:white">
 		<table border=1>
-			<tr height=75px><td class=A3></td></tr>
-			<tr height=75px><td class=A># CERTIFICADOS HABILITACIÓN ó<br>PERMISOS TRABAJO RELACIONADOS</td></tr>
-			<tr height=75px><td class=A>Revisión diaria antes de iniciar labores<br>Firma Supervisor/Inspector</td></tr>
+			<tr height=80px><td></td></tr>
+			<tr height=80px><td style=font-size:26px># CERTIFICADOS HABILITACIÓN ó<br>PERMISOS TRABAJO RELACIONADOS</td></tr>
+			<tr height=80px><td>Revisión diaria antes de iniciar labores<br>Firma Supervisor/Inspector</td></tr>
 		</table>
-<!-- /4 --> 	</div>
-<!-- 5 --> 	<div style="position:absolute; width:46.25%; left:53%; background-color:white; overflow:scroll">
+ 	</div>
+ 	<div style="position:absolute; width:46.25%; left:53%; background-color:white; overflow:scroll">
 		<table border=1 bordercolor=#ff7000>
-			<tr height=75px>
-				<td style=width:195px class=A2>DÍA<br>2</td>
-				<td style=width:195px class=A2>DÍA<br>3</td>
-				<td style=width:195px class=A2>DÍA<br>4</td>
-				<td style=width:195px class=A2>DÍA<br>5</td>
-				<td style=width:195px class=A2>DÍA<br>6</td>
-				<td style=width:195px class=A2>DÍA<br>7</td>
-				<td style=width:195px class=A2>DÍA<br>8</td>
-			</tr>
-			<tr height=75px>
-				<td><input name=B2 class=consecutivo maxlength=6 style=width:75% inputmode=numeric pattern=^(?:[0-9]{4,6})$ required></td>
-				<td><input name=B3 class=consecutivo maxlength=6 style=width:75% inputmode=numeric pattern=^(?:[0-9]{4,6})$></td>
-				<td><input name=B4 class=consecutivo maxlength=6 style=width:75% inputmode=numeric pattern=^(?:[0-9]{4,6})$></td>
-				<td><input name=B5 class=consecutivo maxlength=6 style=width:75% inputmode=numeric pattern=^(?:[0-9]{4,6})$></td>
-				<td><input name=B6 class=consecutivo maxlength=6 style=width:75% inputmode=numeric pattern=^(?:[0-9]{4,6})$></td>
-				<td><input name=B7 class=consecutivo maxlength=6 style=width:75% inputmode=numeric pattern=^(?:[0-9]{4,6})$></td>
-				<td><input name=B8 class=consecutivo maxlength=6 style=width:75% inputmode=numeric pattern=^(?:[0-9]{4,6})$></td>
-			</tr>
-			<tr height=75px>
-				<td><input name=B9  style="text-align:center; width:92%" type=texto maxlength=6 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td><input name=B10 style="text-align:center; width:92%" type=texto maxlength=6 pattern=.{1,} onkeyup=mayuscula(this)></td>
-				<td><input name=B11 style="text-align:center; width:92%" type=texto maxlength=6 pattern=.{1,} onkeyup=mayuscula(this)></td>
-				<td><input name=B12 style="text-align:center; width:92%" type=texto maxlength=6 pattern=.{1,} onkeyup=mayuscula(this)></td>
-				<td><input name=B13 style="text-align:center; width:92%" type=texto maxlength=6 pattern=.{1,} onkeyup=mayuscula(this)></td>
-				<td><input name=B14 style="text-align:center; width:92%" type=texto maxlength=6 pattern=.{1,} onkeyup=mayuscula(this)></td>
-				<td><input name=B15 style="text-align:center; width:92%" type=texto maxlength=6 pattern=.{1,} onkeyup=mayuscula(this)></td>
-			</tr>
+			<tr height=80px><? for ($c = 2; $c <= 8; $c++): ?><td style=width:195px class=A2>DÍA<br><?=$c?></td><? endfor; ?></tr>
+			<tr height=80px><? for ($c = 2; $c <= 8; $c++): ?><td><input name=B<?=$c?>	 style=width:75% maxlength=6 pattern=^(?:[0-9]{4,6})$ class=consecutivo inputmode=numeric <?= $c == 2 ? 'required' : '' ?>></td><? endfor; ?></tr>
+			<tr height=80px><? for ($c = 2; $c <= 8; $c++): ?><td><input name=B<?=$c+7?> style=width:92% maxlength=6 pattern=.{1,} type=texto onkeyup=mayuscula(this) <?= $c == 2 ? 'required' : '' ?>></td><? endfor; ?></tr>
 		</table>
-<!-- /5 --> 	</div>
+ 	</div>
 
 		<!-- *****************************************			 sección C			 ***************************************** -->
-<!-- 10 --> 		<div style="position:relative; width:100vw; top:240px"> <!-- este div mueve hacia abajo desde la sección C -->
-		<table border=0>
-			<tr><td width=5%></td><td width=5%></td><td width=5%></td><td width=7%></td><td width=78%></td></tr>
-			<tr><td colspan=5 class=B><b>&nbsp;&nbsp;B. LISTA DE VERIFICACIÓN DE EXCAVACIONES</b></td></tr>
-			<tr class=C><td class=Bc>SI</td><td class=Bc>NO</td><td class=Bc>NA</td><td class=Br>#&nbsp;</td><td class=B></td></tr>
-			<tr class=C>
-				<td><input type=radio name=C1 id=C1 value=SI onclick=gestionarClickRadio(this) required></td>
-				<td><input type=radio name=C1 id=c1 value=NO onclick=gestionarClickRadio(this)></td>
-				<td><input type=radio name=C1 id=k1 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=numero>1.</td><td class=B>Se han consultado los planos del área?</td>
-			</tr>
-			<tr class=C>
-				<td><input type=radio name=C2 id=C2 value=SI onclick=gestionarClickRadio(this) required></td>
-				<td><input type=radio name=C2 id=c2 value=NO onclick=gestionarClickRadio(this)></td>
-				<td><input type=radio name=C2 id=k2 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=numero>2.</td><td class=B>Se han certificado todas las tuberías/cables/ductos del área de la excavación?</td>
-			</tr>
-			<tr class=C>
-				<td><input type=radio name=C3 id=C3 value=SI onclick=gestionarClickRadio(this) required></td>
-				<td><input type=radio name=C3 id=c3 value=NO onclick=gestionarClickRadio(this)></td>
-				<td><input type=radio name=C3 id=k3 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=numero>3.</td><td class=B>Se ha probado el área con un detector de cables/metales?</td>
-			</tr>
-			<tr class=C>
-				<td><input type=radio name=C4 id=C4 value=SI onclick=gestionarClickRadio(this) required></td>
-				<td><input type=radio name=C4 id=c4 value=NO onclick=gestionarClickRadio(this)></td>
-				<td><input type=radio name=C4 id=k4 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=numero>4.</td><td class=B>Se contará con ingreso y salida seguros al área de la excavación?</td>
-			</tr>
-			<tr class=C>
-				<td><input type=radio name=C5 id=C5 value=SI onclick=gestionarClickRadio(this) required></td>
-				<td><input type=radio name=C5 id=c5 value=NO onclick=gestionarClickRadio(this)></td>
-				<td><input type=radio name=C5 id=k5 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=numero>5.</td><td class=B>Se dispone de barreras/cercos/iluminación? y si la excavación debe quedar abierta, estará debidamente identificada y cercada?</td>
-			</tr>
+<!-- 10 --> 		<div style="position:relative; width:100vw; top:250px"> <!-- este div mueve hacia abajo desde la sección C -->
+			<table border=1>
+				<tr><td class=sinbordes width=5%></td><td class=sinbordes width=5%></td><td class=sinbordes width=5%></td><td class=sinbordes width=7%></td><td class=sinbordes width=78%></td></tr>
+				<tr><td class=letraseccion><b>B.&nbsp;</b></td><td colspan=4 class=tituloseccion><b>LISTA DE VERIFICACIÓN DE EXCAVACIONES</b></td></tr>
+				<tr><td class=Bc><b>SI</b></td><td class=Bc><b>NO</b></td><td class=Bc><b>NA</b></td><td class=Br></td><td style=border:0px></td></tr>
+				<?
+				$ap = '50px';
+				$preguntas1 = [
+					 1 => "Se han consultado los planos del área?",
+					 2 => "Se han certificado todas las tuberías/cables/ductos del área de la excavación?",
+					 3 => "Se ha probado el área con un detector de cables/metales?",
+					 4 => "Se contará con ingreso y salida seguros al área de la excavación?",
+					 5 => "Se dispone de barreras/cercos/iluminación? y si la excavación debe quedar abierta, estará debidamente identificada y cercada?"
+				];
+				foreach ($preguntas1 as $num => $pregunta) {
+					echo "<tr height=$ap>
+						<td><input type='radio' id='C{$num}' name='C{$num}' value='SI' onclick='gestionarClickRadio(this)' required></td>
+						<td><input type='radio' id='C{$num}' name='c{$num}' value='NO' onclick='gestionarClickRadio(this)'></td>
+						<td><input type='radio' id='C{$num}' name='k{$num}' value='NA' onclick='gestionarClickRadio(this)'></td>
+						<td class=Bnumero>{$num}.&nbsp;</td><td class=Bpregunta>{$pregunta}</td>
+					</tr>";
+				}
+				?>
+
 			<tr height=110px style=background-color:lightgreen>
 				<td colspan=5 class=B style=text-align:center>Si la respuesta a alguna de las preguntas 1 a 5 es <b>NO</b>,<br>se rechaza esta autorización.</td>
 			</tr>
@@ -227,37 +192,37 @@
 				<td><input type=radio name=C6 id=C6 value=SI onclick=gestionarClickRadio(this) required></td>
 				<td><input type=radio name=C6 id=c6 value=NO onclick=gestionarClickRadio(this)></td>
 				<td><input type=radio name=C6 id=k6 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=numero>6.</td><td class=B>La excavación estará a menos de 3 metros de tuberías o cables?</td>
+				<td class=Bnumero>6.&nbsp;</td><td class=Bpregunta>La excavación estará a menos de 3 metros de tuberías o cables?</td>
 			</tr>
 			<tr class=C>
 				<td><input type=radio name=C7 id=C7 value=SI onclick=gestionarClickRadio(this) required></td>
 				<td><input type=radio name=C7 id=c7 value=NO onclick=gestionarClickRadio(this)></td>
 				<td><input type=radio name=C7 id=k7 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=numero>7.</td><td class=B>Se requiere desacople de equipos?<br># Permiso:&nbsp;<input name=C7a class=consecutivo maxlength=6 style=width:20% inputmode=numeric pattern=^(?:[0-9]{4,6})$></td>
+				<td class=Bnumero>7.&nbsp;</td><td class=Bpregunta>Se requiere desacople de equipos?<br># Permiso:&nbsp;<input name=C7a class=consecutivo maxlength=6 style=width:20% inputmode=numeric pattern=^(?:[0-9]{4,6})$></td>
 			</tr>
 			<tr class=C>
 				<td><input type=radio name=C8 id=C8 value=SI onclick=gestionarClickRadio(this) required></td>
 				<td><input type=radio name=C8 id=c8 value=NO onclick=gestionarClickRadio(this)></td>
 				<td><input type=radio name=C8 id=k8 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=numero>8.</td><td class=B>Se requiere aislamiento eléctrico?<br># Certificado:&nbsp;<input name=C8a	class=consecutivo maxlength=6 style=width:20% inputmode=numeric pattern=^(?:[0-9]{4,6})$></td>
+				<td class=Bnumero>8.&nbsp;</td><td class=Bpregunta>Se requiere aislamiento eléctrico?<br># Certificado:&nbsp;<input name=C8a	class=consecutivo maxlength=6 style=width:20% inputmode=numeric pattern=^(?:[0-9]{4,6})$></td>
 			</tr>
 			<tr class=C>
 				<td><input type=radio name=C9 id=C9 value=SI onclick=gestionarClickRadio(this) required></td>
 				<td><input type=radio name=C9 id=c9 value=NO onclick=gestionarClickRadio(this)></td>
 				<td><input type=radio name=C9 id=k9 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=numero>9.</td><td class=B>Es posible que se acumulen combustibles o vapores entre la excavación?</td>
+				<td class=Bnumero>9.&nbsp;</td><td class=Bpregunta>Es posible que se acumulen combustibles o vapores entre la excavación?</td>
 			</tr>
 			<tr class=C>
 				<td><input type=radio name=C10 id=C10 value=SI onclick=gestionarClickRadio(this) required></td>
 				<td><input type=radio name=C10 id=c10 value=NO onclick=gestionarClickRadio(this)></td>
 				<td><input type=radio name=C10 id=k10 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=numero>10.</td><td class=B>Se requiere apuntalamiento?</td>
+				<td class=Bnumero>10.&nbsp;</td><td class=Bpregunta>Se requiere apuntalamiento?</td>
 			</tr>
 			<tr class=C>
 				<td><input type=radio name=C11 id=C11 value=SI onclick=gestionarClickRadio(this) required></td>
 				<td><input type=radio name=C11 id=c11 value=NO onclick=gestionarClickRadio(this)></td>
 				<td><input type=radio name=C11 id=k11 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=numero>11.</td><td class=B>Afectará la excavación algún camino de acceso?<br>Indique:&nbsp;<input name=C11a maxlength=30 style=width:80% type=texto pattern=.{1,} onkeyup=mayuscula(this)></td>
+				<td class=Bnumero>11.&nbsp;</td><td class=Bpregunta>Afectará la excavación algún camino de acceso?<br>Indique:&nbsp;<input name=C11a maxlength=30 style=width:80% type=texto pattern=.{1,} onkeyup=mayuscula(this)></td>
 			</tr>
 			<tr height=150px style=background-color:lightgreen>
 				<td colspan=5 class=B style=text-align:center>Si la respuesta a alguna de las preguntas 6 a 11 es <b>SI</b>,<br>se deberá detallar en la sección C las correspondientes precauciones de seguridad.</td>
@@ -283,20 +248,20 @@
 			<tr height=30><td></td></tr>
 		</table>
 		<table border=0>
-			<tr><td width=49.999%></td><td width=49.999%></td><td width=0.001%></td><td width=0.001%></td></tr>
+			<tr><td width=50%></td><td width=50%></td><td width=0%></td><td width=0%></td></tr>
 			<tr>
 				<td><input name=ejecutorD				type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
 				<td><input name=nombreejecutorD	type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td><input name=fechaejecD			type=date  value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?>	style=display:none class=mostrarfecha readonly></td>
-				<td><input name=horaejecD				type=time	 value='<?echo $hora;?>' min=<?echo date("H:i");?>	style=display:none></td>
+				<td><input name=fechaejecD			type=date  value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?>	style=display:none class=mostrarfecha readonly></td>
+				<td><input name=horaejecD				type=time	 value='<?=$hora;?>' min=<?=$horamin;?>	style=display:none></td>
 			</tr>
 			<tr><td>EJECUTOR</td><td>NOMBRE</td><td></td><td></td></tr>
 			<tr height=40><td></td></tr>
 			<tr>
 				<td><input name=inspectorD  type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
 				<td><input name=nombreinspD type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td><input name=fechainspD	type=date  value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?>	style=display:none class=mostrarfecha readonly></td>
-				<td><input name=horainspD		type=time	 value='<?echo $hora;?>' min=<?echo date("H:i");?>	style=display:none></td>
+				<td><input name=fechainspD	type=date  value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?>	style=display:none class=mostrarfecha readonly></td>
+				<td><input name=horainspD		type=time	 value='<?=$hora;?>' min=<?=$horamin;?>	style=display:none></td>
 			</tr>
 			<tr><td>INSPECTOR</td><td>NOMBRE</td><td></td><td></td></tr>
 		</table>
@@ -313,12 +278,12 @@
 			<tr height=30><td></td></tr>
 		</table>
 		<table border=0>
-			<tr><td width=49.999%></td><td width=49.999%></td><td width=0.001%></td><td width=0.001%></td></tr>
+			<tr><td width=50%></td><td width=50%></td><td width=0%></td><td width=0%></td></tr>
 			<tr>
 				<td><input name=emisorE				type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
 				<td><input name=nombreemisorE	type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td><input name=fechaemisorE	type=date  value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?>	style=display:none class=mostrarfecha readonly></td>
-				<td><input name=horaemisorE		type=time	 value='<?echo $hora;?>' min=<?echo date("H:i");?>	style=display:none></td>
+				<td><input name=fechaemisorE	type=date  value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?>	style=display:none class=mostrarfecha readonly></td>
+				<td><input name=horaemisorE		type=time	 value='<?=$hora;?>' min=<?=$horamin;?>	style=display:none></td>
 			</tr>
 			<tr>
 				<td>EMISOR</td><td>NOMBRE</td><td></td><td></td>
@@ -347,30 +312,30 @@
 			<tr height=30><td></td></tr>
 			<tr>
 				<td><input name=ejecutorF		type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td><input name=fechaejecF	type=date  value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> required></td>
-				<td><input name=horaejecF		type=time  value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
+				<td><input name=fechaejecF	type=date  value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
+				<td><input name=horaejecF		type=time  value='<?=$hora;?>' min=<?=$horamin;?> required></td>
 			</tr>
 			<tr><td>EJECUTOR</td><td>FECHA</td><td>HORA</td></tr>
 			<tr height=30><td></td></tr>
 			<tr>
 				<td><input name=inspectorF	type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td><input name=fechainspF	type=date  value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> required></td>
-				<td><input name=horainspF		type=time  value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
+				<td><input name=fechainspF	type=date  value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
+				<td><input name=horainspF		type=time  value='<?=$hora;?>' min=<?=$horamin;?> required></td>
 			</tr>
 			<tr><td>INSPECTOR</td><td>FECHA</td><td>HORA</td></tr>
 			<tr height=30><td></td></tr>
 			<tr><td colspan=3><span>ESTA AUTORIZACIÓN ES AHORA RETIRADA Y CANCELADA</td></tr>
 			<tr>
 				<td><input name=emisorF				type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td><input name=fechaemisorF	type=date  value='<?echo $hoy;?>' min=<?echo $fechamin;?> max=<?echo $fechamax;?> required></td>
-				<td><input name=horaemisorF		type=time  value='<?echo $hora;?>' min=<?echo date("H:i");?> required></td>
+				<td><input name=fechaemisorF	type=date  value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
+				<td><input name=horaemisorF		type=time  value='<?=$hora;?>' min=<?=$horamin;?> required></td>
 			</tr>
 			<tr><td>EMISOR</td><td>FECHA</td><td>HORA</td></tr>
 			<tr height=30><td></td></tr>
 		</table>
 		<hr>
 		<table>
-			<tr height=30><td></td></tr>
+			<tr height=10><td></td></tr>
 			<tr style="background-color:rgba(0,240,0,0); height:15%">
 				<td>
 					<form method=post>
@@ -383,16 +348,16 @@
 					</form>
 				</td>
 			</tr>
-			<tr height=30><td></td></tr>
+			<tr height=10><td></td></tr>
 		</table>
 		<hr>
 		
 		<!-- *****************************************			 FIN DEL FORMULARIO			 ***************************************** -->
-		<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Fecha diligenciamiento: <?echo $fechaactual;?> / <?echo $horaactual;?></span>
-		<input style=display:none type=text name=fecha value="<?echo $fechaactual;?> / <?echo $horaactual;?>" readonly><br>
-<!--		<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Quedan <?echo number_format($consec_por_usar,0,',','.');?> consecutivos, incluido este.</span><br> -->
+		<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Fecha diligenciamiento: <?=$fechaactual;?> / <?=$horaactual;?></span>
+		<input style=display:none type=text name=fecha value="<?=$fechaactual;?> / <?=$horaactual;?>" readonly><br>
+<!--		<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Quedan <?=number_format($consec_por_usar,0,',','.');?> consecutivos, incluido este.</span><br> -->
 		<table border=0>
-			<tr height=200>
+			<tr height=100>
 				<td><input type=image src=../../../../../common/imagenes/grabar.png alt=Submit style="width:100; height:auto; border:0; background-color:rgba(0,0,0,0)"></td>
 				<td><a href=javascript:closed()><img src=../../../../../common/imagenes/regresar.png style="pointer-events:auto; width:100px; height:auto"></a></td>
 			</tr>
@@ -400,7 +365,7 @@
 			<tr>
 				<td><span style="font-family:Arlrdlt; font-size:30px; color:rgba(0,0,0,1)">REVISIÓN FRONT-END: 2024-10</span></td>
 				<td>
-					<a href="mailto:<?echo $correo_pedidos;?>?Subject=Solicitud%20pedido%20libretas%20permisos%20de%20trabajo">
+					<a href="mailto:<?=$correo_pedidos;?>?Subject=Solicitud%20pedido%20libretas%20permisos%20de%20trabajo">
 					<img src=../../../../../common/imagenes/piedepagina_horizontal.svg style="pointer-events:auto; width:100%; height:auto">
 					</a>
 				</td>

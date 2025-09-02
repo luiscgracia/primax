@@ -8,8 +8,8 @@
 <title>Diligenciar Consecutivo</title>
 <style>
 	td.C			{font-size:30px; text-align:left;		font-weight:bold}
-	td.Cn			{font-size:28px; text-align:center;	vertical-align:middle}
-	td.Cp			{font-size:28px; text-align:left;		vertical-align:middle; padding:0 7 0 7}
+	td.Cn			{font-size:28px; text-align:right;	vertical-align:top; border-right:0px; width:100%}
+	td.Cp			{font-size:28px; text-align:left;		vertical-align:top; border-left: 0px; width:100%; padding:0 7 0 7}
 	tr.C			{height: 85px; vertical-align:middle}
 	tr.Cn			{height:180px; vertical-align:middle}
 	tr.Cn0		{height:111px; vertical-align:top}
@@ -328,7 +328,7 @@
 			<?php endfor; ?>
 
 			<!-- Separador EPPs -->
-			<tr style="height: 70px;"><td colspan="<?= $config['dias'] * 3 ?>" style="background-color: rgba(0,0,0,0.20);"></td></tr>
+			<tr style="height: 70px;"><td colspan="<?= $config['dias'] * 3 ?>" style="background-color:rgba(0,0,0,0.20)"></td></tr>
 				
 			<!-- EPPs (criterios 24-34) -->
 			<?php for ($criterio = 24; $criterio <= $config['criterios']; $criterio++): ?>

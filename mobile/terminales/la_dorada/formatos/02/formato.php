@@ -153,7 +153,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 					</tr>";
 				}
 				?>
-				<tr><td colspan=3></td><td colspan=2><input name=B15b maxlength=36 type=texto pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
+				<tr><td class=Bnumero colspan=3></td><td class=Bpregunta colspan=2><input name=B15b maxlength=36 type=texto pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
 				<?
 				$preguntas2 = [
 					16 => "Se ha demarcado al área bajo control?",
@@ -169,7 +169,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 					</tr>";
 				}
 				?>
-				<tr><td colspan=3></td><td colspan=2><input name=B18a maxlength=36 type=texto pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
+				<tr><td class=Bnumero colspan=3></td><td class=Bpregunta colspan=2><input name=B18a maxlength=36 type=texto pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
 				<?
 				$preguntas3 = [
 					19 => "Se han suspendido tareas vecinas que pueden afectar el trabajo?",

@@ -49,7 +49,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 	</div>
 	<? $color_formato = 'rgba(100,170,255,1)' ?>
 	<form id=formato name=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
-		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; height:4550px; border:12px solid <?=$color_formato;?>">
+		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; height:4560px; border:12px solid <?=$color_formato;?>">
 			<table border=0 style="color:white; background-color:<?=$color_formato;?>">
 				<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
 				<tr height=100>
@@ -144,9 +144,14 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 					</tr>";
 				}
 				?>
-				<tr class=C><td colspan=4></td><td class=B><textarea name=indiqueB5b maxlength=85 style=width:99% onkeyup=mayuscula(this) pattern=.{1,}></textarea></td></tr>
-				<tr class=C><td colspan=4 class=numero>6.</td><td class=B>Hay algún requisito legal especial? Indique:</td></tr>
-				<tr class=C><td colspan=4></td><td class=B><textarea name=indiqueB6b maxlength=85 style=width:99% onkeyup=mayuscula(this) pattern=.{1,}></textarea></td></tr>
+				<tr><td class=Bnumero colspan=3></td><td class=Bpregunta colspan=2><textarea name=indiqueB5b maxlength=85 style=width:99% onkeyup=mayuscula(this) pattern=.{1,}></textarea></td></tr>
+				<tr class=C>
+					<td><input type=radio name=B6 id=B6 value=SI onclick=gestionarClickRadio(this) required></td>
+					<td><input type=radio name=B6 id=b6 value=NO onclick=gestionarClickRadio(this)></td>
+					<td><input type=radio name=B6 id=v6 value=NA onclick=gestionarClickRadio(this)></td>
+					<td class=numero>6.</td><td class=B>Hay algún requisito legal especial? Indique:</td>
+				</tr>
+				<tr><td class=Bnumero colspan=3></td><td class=Bpregunta colspan=2><textarea name=indiqueB6b maxlength=85 style=width:99% onkeyup=mayuscula(this) pattern=.{1,}></textarea></td></tr>
 				<?
 				$preguntas2 = [
 					 7 => "Se han suspendido todas las áreas u operaciones que impedirían la realización de este trabajo?",
@@ -163,8 +168,8 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 					</tr>";
 				}
 				?>
-				<tr><td colspan=3></td><td colspan=2><textarea name=especifiqueB10b maxlength=85 style=width:99% onkeyup=mayuscula(this) pattern=.{1,}></textarea></td></tr>
-		 		<tr height=10><td></td></tr>
+				<tr><td class=Bnumero colspan=3></td><td class=Bpregunta colspan=2><textarea name=especifiqueB10b maxlength=85 style=width:99% onkeyup=mayuscula(this) pattern=.{1,}></textarea></td></tr>
+		 		<tr height=20><td colspan=5></td></tr>
 			</table>
 			<table border=0>
 				<tr>

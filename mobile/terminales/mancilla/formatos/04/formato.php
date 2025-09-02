@@ -151,7 +151,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 					</tr>";
 				}
 				?>
-				<tr><td colspan=3></td><td colspan=2><input name=B13a maxlength=30 type=texto spattern=.{1,} onkeyup=mayuscula(this)></td></tr>
+				<tr><td class=Bnumero colspan=3></td><td class=Bpregunta colspan=2><input name=B13a maxlength=30 type=texto spattern=.{1,} onkeyup=mayuscula(this)></td></tr>
 				<?
 				$preguntas2 = [
 					14 => "Se ha demarcado al área bajo control?",
