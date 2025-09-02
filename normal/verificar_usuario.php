@@ -1,4 +1,4 @@
-<html>
+<html lang=es>
 <head>
 <title>VERIFICAR USUARIO PRIMAX</title>
 <link rel="SHORTCUT ICON" href="../common/imagenes/iconoPRIMAX1.ico">

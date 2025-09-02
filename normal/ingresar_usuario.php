@@ -1,4 +1,4 @@
-<html>
+<html lang=es>
 <head>
 <title>INGRESAR USUARIO PRIMAX</title>
 <link rel="SHORTCUT ICON" href="../common/imagenes/iconoPRIMAX1.ico">
@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="../common/css/estilo_formatos.css">
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <style>
-  body				{background:url(../common/imagenes/primax.svg) no-repeat center center; background-size:auto 180%; text-align:center}
+  body				{background:url(../common/imagenes/primax.svg) no-repeat center center; background-size:auto 150%; text-align:center}
   input				{color:rgba(0,0,0,1); background-color:rgba(0,0,0,0.1); border:0px; border-radius:10px; font-family:Arlrdbd; text-align:right; outline:none}
   input:focus	{background-color:rgba(255,112,0,0.33); outline:none}
   input[type=text]:hover			{overflow:visible; font-size:100%; background-color:rgba(255,112,0,1); color:rgba(0,0,0,1)}

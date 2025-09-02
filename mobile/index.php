@@ -1,4 +1,4 @@
-<html>
+<html lang="es">
 <head>
 <title>PERMISOS DE TRABAJO - PRIMAX COLOMBIA</title>
 <link rel="SHORTCUT ICON" href="../common/imagenes/iconoPRIMAX1.ico">
@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="../common/css/estilo_formatos.css">
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <style>
-	body				{background:url(../common/imagenes/primax.svg) no-repeat center center; background-size:auto 150%}
+	body				{background:url(../common/imagenes/primax.svg) repeat center center; background-size:auto 150%}
 	input				{color:rgba(0,0,0,1); background-color:rgba(0,0,0,0); font-family:Arlrdbd; font-size:50px; text-align:center; border:none; height:60px}
 	input:hover	{background-color:rgba(255,112,0,0)}
 	select			{font-size:30px; background-color:rgba(205,205,205,1); width:340px; height:50px; text-align:center; padding:12px 0px}
@@ -21,7 +21,7 @@
 	$fecha = date("Y-m-d / H:i");
 ?>
 <script>setTimeout(function(){location.href="index.php"}, 5*60*1000);</script>
-<table style="background-color:none" height=100% width=100%>
+<table style="background-color:none" width=100% height=100% border=0>
 	<tr><td width=10%></td><td width=80%></td><td width=10%></td></tr>
 	<tr style="background-color:none; height:6%">
 		<td></td>
@@ -42,8 +42,8 @@
 			</a>
 		</td>
 		<td style="text-align:center">
-			<input value="PRIMAX COLOMBIA"			onClick="location.reload('index.php');" style="width:100%; cursor:pointer">
-			<input value="PERMISOS DE TRABAJO"	onClick="location.reload('index.php');" style="width:100%; cursor:pointer">
+			<input name=empresa value="PRIMAX COLOMBIA"			onClick="location.reload('index.php');" style="width:100%; cursor:pointer">
+			<input name=permisos_trabajo value="PERMISOS DE TRABAJO"	onClick="location.reload('index.php');" style="width:100%; cursor:pointer">
 			<span style="font-size:30px">APP para CELULAR ó TABLET - <script>document.write("<b>" + window.innerWidth + "px");</script><br><br><br><br></span>
 			<form action="ingresar_usuario.php" method="post" target="_blank">
 				<select name="terminal" id="terminal" type="text" required>
@@ -61,7 +61,7 @@
 					<option value="yumbo">				YUMBO				 </option>
 				</select>
 				<div style="position:relative; width:50%; margin-left:50%; left:-170px; top:50px; background-color:rgba(0,0,255,0)">
-					<input class="enviar" type="submit" value="CONTINUAR" style="background-color:rgba(0,0,0,1); cursor:pointer" autofocus>
+					<input name=continuar class="enviar" type="submit" value="CONTINUAR" style="background-color:rgba(0,0,0,1); cursor:pointer" autofocus>
 				</div>
 			</form>
 		</td>

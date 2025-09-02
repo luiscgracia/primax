@@ -1,4 +1,4 @@
-<html>
+<html lang=es>
 <head>
 <title>PERMISOS DE TRABAJO</title>
 <link rel="SHORTCUT ICON" href="../common/imagenes/iconoPRIMAX1.ico">
@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="../common/css/estilo_formatos.css">
 <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
 <style>
-	body	{color:rgba(0,0,0,1); background:url(../common/imagenes/primax.svg) no-repeat center center; background-size:auto 170%; text-align:center}
+	body	{color:rgba(0,0,0,1); background:url(../common/imagenes/primax.svg) no-repeat center center; background-size:auto 150%; text-align:center}
 	input	{color:rgba(0,0,0,1); background-color:rgba(0,255,255,0); border:0px solid rgba(0,128,0,1); border-radius:10px; font-family:Arlrdbd; font-size:50px; text-align:center}
 	button {background-color:rgba(255,112,0,0.0); width:100%}
 	select {font-size:30px; background-color:rgba(205,205,205,1); width:72%; height:50px; text-align:left; border-radius:10px}

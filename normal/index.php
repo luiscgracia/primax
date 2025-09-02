@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang=es>
 <head>
 <title>PERMISOS DE TRABAJO - PRIMAX COLOMBIA</title>
 <link rel="SHORTCUT ICON" href="../common/imagenes/iconoPRIMAX1.ico">
