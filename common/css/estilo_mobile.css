@@ -71,3 +71,8 @@ td.texto2						{font-size:24px; text-align:right}
 
 #hora								{width:100%}
 #numero							{width: 94%; text-align:center; vertical-align:middle}
+
+.label-checkbox			{display:block; width:18mm; height:18mm; background-image:url('../imagenes/firma.png'); background-size:contain; cursor:pointer}
+.checkbox-oculto:checked + .label-checkbox				{background-color:rgba(255,112,0,1); border-radius:100px}
+.checkbox-oculto:checked + .label-checkbox::after	{opacity:1}
+

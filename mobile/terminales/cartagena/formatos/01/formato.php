@@ -49,7 +49,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 	</div>
 	<? $color_formato = 'rgba(0,0,0,0)' ?>
 	<form id=formato name=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
-		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; height:6670px; border:12px solid <?=$color_formato;?>">
+		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; border:12px solid <?=$color_formato;?>">
 			<table border=0 style="color:black; background-color:<?=$color_formato;?>">
 				<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
 				<tr height=100>
@@ -455,14 +455,14 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				<tr><td>EMISOR</td><td></td><td>HORA</td></tr>
 			</table>
 			<hr>
-			<table>
+			<table border=1>
 				<tr height=10><td></td></tr>
 				<tr style="background-color:rgba(0,240,0,0); height:15%">
 					<td>
-						<select name=usuario id=usuario required>
+						<select name=usuario id=usuario style=width:67% required>
 							<option value="" disabled selected>RESPONSABLE DEL FORMATO</option>
 							<? for ($i = 0; $i < $numero_usuarios && $i < 10; $i++): ?>
-							<option value="<?=$usuario[$i] ?>"><?=$usuario[$i] ?>@primax.com.co</option>
+							<option value="<?=$usuario[$i] ?>"><?=$usuario[$i] ?></option>
 							<? endfor; ?>
 						</select>
 					</td>

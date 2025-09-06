@@ -239,10 +239,10 @@
 			<tr style="background-color:rgba(0,240,0,0); height:15%">
 				<td>
 					<form method=post>
-						<select name=usuario id=usuario type=texto required>
+						<select name=usuario id=usuario style=width:67% type=texto required>
 							<option value='' disabled selected>RESPONSABLE DEL FORMATO</option>
 							<? for ($i = 0; $i < $numero_usuarios && $i < 10; $i++): ?>
-								<option value="<?=$usuario[$i] ?>"><?=$usuario[$i] ?>@primax.com.co</option>
+								<option value="<?=$usuario[$i] ?>"><?=$usuario[$i] ?></option>
 							<? endfor; ?>
 						</select>
 					</form>

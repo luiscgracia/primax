@@ -18,6 +18,7 @@ function cerrarVentana() {window.close();}
 <body style="font-family:Arial; color:rgba(0,0,0,1); text-align:center">
 <?
 include ("../../../../../common/datos.php");
+include ("../../firmas.php");
 include ("../../../../../common/checkbox_num_text.php");
 include ("../../conectar_db.php");
 include ("../../../../../common/conectar_db_usuarios.php");
@@ -112,9 +113,9 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			<table border=0>
 				<tr><td width=25%></td><td width=25%></td><td width=25%></td><td width=25%></td></tr>
 				<tr>
-					<td><br>FECHA<br>									 <input name=fechaA				type=date value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
-					<td>HORA<br>INICIAL<br>						 <input name=horainicialA type=time value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
-					<td>HORA<br>FINAL<br>							 <input name=horafinalA		type=time value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+					<td>					 <br>FECHA<br>			 <input name=fechaA				type=date value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
+					<td>			 HORA<br>INICIAL<br>		 <input name=horainicialA type=time value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+					<td>			 HORA<br>FINAL<br>			 <input name=horafinalA		type=time value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
 					<td>CERTIFICADO<br>HABILITACIÓN<br><input name=certhabilit	type=texto class=consecutivo placeholder="######" maxlength=6 style=width:67% inputmode=numeric pattern=^(?:[0-9]{4,6})$ required></td>
 				</tr>
  				<tr class=sinbordes height=10><td class=sinbordes></td></tr>
@@ -235,17 +236,17 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				<tr><td width=32.50%></td><td width=32.50%></td><td width=25%></td><td width=10%></td></tr>
 				<tr><td colspan=4 class=B>&nbsp;&nbsp;20. PRUEBA DE GASES</td></tr>
 				<tr>
-					<td><br>EQUIPO<br>					<input name=B20a type=texto maxlength=15 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-					<td><br>MARCA<br>						<input name=B20c type=texto maxlength=15 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+					<td>		 <br>EQUIPO<br>			<input name=B20a type=texto maxlength=15 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+					<td>		 <br>MARCA<br>			<input name=B20c type=texto maxlength=15 pattern=.{1,} onkeyup=mayuscula(this) required></td>
 					<td>FECHA<br>CALIBRACIÓN<br><input name=B20e type=date value='<?=$fechacero;?>' max='<?=$fechaactual;?>' required></td>
-					<td>BUMP<br>TEST<br>				<input name=B20g type=checkbox></td>
+					<td> BUMP<br>TEST<br>				<input name=B20g type=checkbox></td>
 				</tr>
 				<tr height=10><td></td></tr>
 				<tr>
-					<td><br>EQUIPO<br>					<input name=B20b type=texto maxlength=15 pattern=.{1,} onkeyup=mayuscula(this)></td>
-					<td><br>MARCA<br>						<input name=B20d type=texto maxlength=15 pattern=.{1,} onkeyup=mayuscula(this)></td>
+					<td>		 <br>EQUIPO<br>			<input name=B20b type=texto maxlength=15 pattern=.{1,} onkeyup=mayuscula(this)></td>
+					<td>		 <br>MARCA<br>			<input name=B20d type=texto maxlength=15 pattern=.{1,} onkeyup=mayuscula(this)></td>
 					<td>FECHA<br>CALIBRACIÓN<br><input name=B20f type=date value='<?=$fechacero;?>' max='<?=$fechaactual;?>'></td>
-					<td>BUMP<br>TEST<br>				<input name=B20h type=checkbox></td>
+					<td> BUMP<br>TEST<br>				<input name=B20h type=checkbox></td>
 				</tr>
 				<tr height=30><td></td></tr>
 			</table>
@@ -306,7 +307,6 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				<table>
 					<tr>
 						<td style=text-align:left>
-						
 							<b>&nbsp;LA MEDICIÓN DEBE SER CONTÍNUA.<br>
 								 &nbsp;SI EL %LEL SE SUBE DE 4%, SUSPENDA EL TRABAJO INMEDIATAMENTE.</b>
 						</td>
@@ -436,16 +436,16 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				<table border=0>
 					<tr><td width=60%></td><td width=21%></td><td width=19%></td></tr>
 					<tr>
-						<td><input name=ejecutorE		type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-						<td><input name=fechaejecE	type=date	 class=mostrarfecha value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' readonly></td>
-						<td><input name=horaejecE		type=time  value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+						<td><input name=ejecutorE			type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+						<td><input name=fechaejecE		type=date	 class=mostrarfecha value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' readonly></td>
+						<td><input name=horaejecE			type=time  value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
 					</tr>
 					<tr><td>EJECUTOR</td><td></td><td>HORA</td></tr>
 					<tr height=30><td></td></tr>
 					<tr>
-						<td><input name=inspectorE	type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-						<td><input name=fechainspE	type=date  class=mostrarfecha value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' readonly></td>
-						<td><input name=horainspE		type=time  value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+						<td><input name=inspectorE		type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+						<td><input name=fechainspE		type=date  class=mostrarfecha value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' readonly></td>
+						<td><input name=horainspE			type=time  value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
 					</tr>
 					<tr><td>INSPECTOR</td><td></td><td>HORA</td></tr>
 					<tr height=30><td></td></tr>
@@ -463,10 +463,10 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 					<tr height=10><td></td></tr>
 					<tr style="background-color:rgba(0,240,0,0); height:15%">
 						<td>
-							<select name=usuario id=usuario required>
+							<select name=usuario id=usuario style=width:67% required>
 								<option value="" disabled selected>RESPONSABLE DEL FORMATO</option>
 								<? for ($i = 0; $i < $numero_usuarios && $i < 10; $i++): ?>
-								<option value="<?=$usuario[$i]?>"><?=$usuario[$i]?>@primax.com.co</option>
+								<option value="<?=$usuario[$i]?>"><?=$usuario[$i]?></option>
 								<? endfor; ?>
 							</select>
 						</td>

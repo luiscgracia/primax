@@ -18,6 +18,7 @@ function cerrarVentana() {window.close();}
 <body style="font-family:Arial; color:rgba(0,0,0,1); text-align:center">
 <?
 include ("../../../../../common/datos.php");
+include ("../../firmas.php");
 include ("../../../../../common/checkbox_num_text.php");
 include ("../../conectar_db.php");
 include ("../../../../../common/conectar_db_usuarios.php");
@@ -49,7 +50,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 	</div>
 	<? $color_formato = 'rgba(0,0,0,0)' ?>
 	<form id=formato name=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
-		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; border:0px solid <?=$color_formato;?>">
+		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; border:12px solid <?=$color_formato;?>">
 			<table border=0 style="color:black; background-color:<?=$color_formato;?>">
 				<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
 				<tr height=100>
@@ -71,7 +72,6 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 						CONSULTE EL MANUAL DE PERMISOS DE TRABAJO.<br>
 						ADVERTENCIA: EN CASO DE QUE SUENE UNA ALARMA DE EMERGENCIA ESTE CERTIFICADO PIERDE VALIDEZ<br>
 						<b>FORMATO WEB - Rev. Mayo 2014 / TERMINAL <?=strtoupper($terminal);?></b>
-						
 					</td>
 				</tr>
 			</table>
@@ -83,9 +83,9 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			</table>
 			<table border=0>
 				<tr>
-					<td><br>FECHA<br>									 <input name=fechaA				type=date value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
-					<td>HORA<br>INICIAL<br>						 <input name=horainicialA type=time value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
-					<td>HORA<br>FINAL<br>							 <input name=horafinalA		type=time value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+					<td>					 <br>FECHA<br>			 <input name=fechaA				type=date value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
+					<td>			 HORA<br>INICIAL<br>		 <input name=horainicialA type=time value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+					<td>			 HORA<br>FINAL<br>			 <input name=horafinalA		type=time value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
 					<td>CERTIFICADO<br>HABILITACIÓN<br><input name=certhabilit	type=texto class=consecutivo placeholder="######" maxlength=6 style=width:67% inputmode=numeric pattern=^(?:[0-9]{4,6})$ required></td>
 				</tr>
 		 		<tr height=30px><td></td></tr>
@@ -390,7 +390,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			</table>
 			<hr>
 
-		<!-- *****************************************			 sección E			 ***************************************** -->
+<!-- *****************************************			 sección E			 ***************************************** -->
 			<table border=0>
 				<tr><td width= 5.00%></td><td width=61.50%></td><td width=18.00%></td><td width=15.50%></td></tr>
 				<tr><td class=letraseccion><b>E.&nbsp;</b></td><td colspan=3 class=tituloseccion><b>CANCELACIÓN</b></td></tr>
@@ -439,11 +439,11 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 					<tr height=10><td></td></tr>
 					<tr style="background-color:rgba(0,240,0,0); height:15%">
 						<td>
-							<select name=usuario id=usuario required>
+							<select name=usuario id=usuario style=width:67% required>
 								<option value="" disabled selected>RESPONSABLE DEL FORMATO</option>
-								<? for ($i = 0; $i < $numero_usuarios && $i < 10; $i++): ?>
-								<option value="<?=$usuario[$i]?>"><?=$usuario[$i]?>@primax.com.co</option>
-								<? endfor; ?>
+								<? for ($i = 0; $i < $numero_usuarios && $i < 10; $i++) { ?>
+								<option value="<?=$usuario[$i]?>"><?=$usuario[$i]?></option>
+								<? } ?>
 							</select>
 						</td>
 					</tr>
@@ -451,7 +451,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				</table>
 			<hr>
 		
-		<!-- *****************************************			 FIN DEL FORMULARIO			 ***************************************** -->
+<!-- *****************************************			 FIN DEL FORMULARIO			 ***************************************** -->
 			<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Fecha diligenciamiento: <?=$fechaactual;?> / <?=$horaactual;?></span>
 			<input style=display:none type=text name=fecha value="<?=$fechaactual;?> / <?=$horaactual;?>" readonly><br>
 			<!--<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Quedan <?=number_format($consec_por_usar,0,',','.');?> consecutivos, incluido este.</span><br>-->

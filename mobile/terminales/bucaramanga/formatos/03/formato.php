@@ -18,6 +18,7 @@ function cerrarVentana() {window.close();}
 <body style="font-family:Arial; color:rgba(0,0,0,1); text-align:center">
 <?
 include ("../../../../../common/datos.php");
+include ("../../firmas.php");
 include ("../../../../../common/checkbox_num_text.php");
 include ("../../conectar_db.php");
 include ("../../../../../common/conectar_db_usuarios.php");
@@ -112,9 +113,9 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			<table border=0>
 				<tr><td width=25%></td><td width=25%></td><td width=25%></td><td width=25%></td></tr>
 				<tr>
-					<td><br>FECHA<br>									 <input name=fechaA				type=date value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
-					<td>HORA<br>INICIAL<br>						 <input name=horainicialA	type=time value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
-					<td>HORA<br>FINAL<br>							 <input name=horafinalA		type=time value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+					<td>					 <br>FECHA<br>			 <input name=fechaA				type=date value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
+					<td>			 HORA<br>INICIAL<br>		 <input name=horainicialA	type=time value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+					<td>			 HORA<br>FINAL<br>			 <input name=horafinalA		type=time value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
 					<td>CERTIFICADO<br>HABILITACIÓN<br><input name=certhabilit  type=texto class=consecutivo placeholder="######" maxlength=6 style=width:67%	inputmode=numeric pattern=^(?:[0-9]{4,6})$ required></td>
 				</tr>
  				<tr class=sinbordes height=10><td class=sinbordes></td></tr>
@@ -268,10 +269,10 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				</tr>
 				<tr height=30><td></td></tr>
 				<tr>
-					<td><br>EQUIPO<br>					<input name=B13equipo		type=texto maxlength=15 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-					<td><br>DUEÑO<br>						<input name=B13dueno		type=texto maxlength=15 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+					<td>		 <br>EQUIPO<br>			<input name=B13equipo		type=texto maxlength=15 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+					<td>		 <br>DUEÑO<br>			<input name=B13dueno		type=texto maxlength=15 pattern=.{1,} onkeyup=mayuscula(this) required></td>
 					<td>FECHA<br>CALIBRACIÓN<br><input name=B13fecha 		type=date  value='<?=$fechacero;?>' max='<?=$fechaactual;?>' required></td>
-					<td>BUMP<br>TEST<br>				<input name=B13bumptest type=checkbox></td>
+					<td> BUMP<br>TEST<br>				<input name=B13bumptest type=checkbox></td>
 				</tr>
 				<tr height=30><td></td></tr>
 			</table>
@@ -400,10 +401,10 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 					<tr height=10><td></td></tr>
 					<tr style="background-color:rgba(0,240,0,0); height:15%">
 						<td>
-							<select name=usuario id=usuario required>
+							<select name=usuario id=usuario style=width:67% required>
 								<option value="" disabled selected>RESPONSABLE DEL FORMATO</option>
 								<? for ($i = 0; $i < $numero_usuarios && $i < 10; $i++): ?>
-								<option value="<?=$usuario[$i]?>"><?=$usuario[$i]?>@primax.com.co</option>
+								<option value="<?=$usuario[$i]?>"><?=$usuario[$i]?></option>
 								<? endfor; ?>
 							</select>
 						</td>

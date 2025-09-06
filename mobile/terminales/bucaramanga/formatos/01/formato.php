@@ -18,6 +18,7 @@ function cerrarVentana() {window.close();}
 <body style="font-family:Arial; color:rgba(0,0,0,1); text-align:center">
 <?
 include ("../../../../../common/datos.php");
+include ("../../firmas.php");
 include ("../../../../../common/checkbox_num_text.php");
 include ("../../conectar_db.php");
 include ("../../../../../common/conectar_db_usuarios.php");
@@ -49,7 +50,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 	</div>
 	<? $color_formato = 'rgba(0,0,0,0)' ?>
 	<form id=formato name=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
-		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; height:6670px; border:12px solid <?=$color_formato;?>">
+		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; border:12px solid <?=$color_formato;?>">
 			<table border=0 style="color:black; background-color:<?=$color_formato;?>">
 				<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
 				<tr height=100>
@@ -138,7 +139,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			</table>
 			<script>
 			var pedidocambio = document.getElementById('pedidocambio');
-			document.getElementById('cambioA').addEventListener('click', function(e) {pedidocambio.disabled=true;	pedidocambio.style.display='none';	pedido.disabled=true;	pedido.style.display='none';});
+			document.getElementById('cambioA').addEventListener('click', function(e) {pedidocambio.disabled=true;	 pedidocambio.style.display='none';	 pedido.disabled=true;	pedido.style.display='none';});
 			document.getElementById('cambioB').addEventListener('click', function(e) {pedidocambio.disabled=false; pedidocambio.style.display='block'; pedido.disabled=false; pedido.style.display='block'; pedidocambio.required=true; pedido.required=true;});
 			</script>
 			<hr>
@@ -340,7 +341,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			</table>
 			<script>
 				var companiacp = document.getElementById('companiacp');
-				document.getElementById('empleadop').addEventListener('click', function(e) {companiacp.disabled = true; companiacp.style.display ="none";});
+				document.getElementById('empleadop').addEventListener('click', function(e)  {companiacp.disabled = true;  companiacp.style.display ="none";});
 				document.getElementById('empleadocp').addEventListener('click', function(e) {companiacp.disabled = false; companiacp.style.display ="block"; companiacp.required = true;});
 			</script>
 			<table border=0>
@@ -403,10 +404,11 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			</table>
 			<br>
 			<table border=0>
+				<tr><td width=55%></td><td width=26%></td><td width=19%></td></tr>
 				<tr>
-					<td width=55%><input name=aprobadorG	type=texto	maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-					<td width=26%><input name=fechaaprobG	type=date		value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
-					<td width=19%><input name=horaaprobG	type=time		value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+					<td><input name=aprobadorG		type=texto	maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+					<td><input name=fechaaprobG		type=date		value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
+					<td><input name=horaaprobG		type=time		value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
 				</tr>
 				<tr><td>APROBADOR SME</td><td>FECHA</td><td>HORA</td></tr>
 				<tr height=30><td></td></tr>
@@ -433,36 +435,37 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				</tr>
 			</table>
 			<table border=0>
+				<tr><td width=55%></td><td width=26%></td><td width=19%></td></tr>
 				<tr>
-					<td width=55%><input name=ejecutorH maxlength=30 type=texto	pattern=.{1,} onkeyup=mayuscula(this) required></td>
-					<td width=26%></td>
-					<td width=19%><input type=time name=horaejecH value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+					<td><input name=ejecutorH			type=texto	maxlength=30	pattern=.{1,} onkeyup=mayuscula(this) required></td>
+					<td></td>
+					<td><input name=horaejecH			type=time		value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
 				</tr>
 				<tr><td>EJECUTOR</td><td></td><td>HORA</td></tr>
 				<tr height=30><td></td></tr>
 				<tr>
-					<td><input name=inspectorH maxlength=30 type=texto	pattern=.{1,} onkeyup=mayuscula(this) required></td>
+					<td><input name=inspectorH		type=texto	maxlength=30	pattern=.{1,} onkeyup=mayuscula(this) required></td>
 					<td></td>
-					<td><input type=time name=horainspH value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+					<td><input name=horainspH			type=time		value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
 				</tr>
 				<tr><td>INSPECTOR</td><td></td><td>HORA</td></tr>
 				<tr height=30><td></td></tr>
 				<tr>
-					<td><input name=emisorH maxlength=30 type=texto	pattern=.{1,} onkeyup=mayuscula(this) required></td>
+					<td><input name=emisorH				type=texto	maxlength=30	pattern=.{1,} onkeyup=mayuscula(this) required></td>
 					<td></td>
-					<td><input type=time name=horaemisorH value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+					<td><input name=horaemisorH		type=time		value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
 				</tr>
 				<tr><td>EMISOR</td><td></td><td>HORA</td></tr>
 			</table>
 			<hr>
-			<table>
+			<table border=0>
 				<tr height=10><td></td></tr>
 				<tr style="background-color:rgba(0,240,0,0); height:15%">
 					<td>
-						<select name=usuario id=usuario required>
+						<select name=usuario id=usuario style=width:67% required>
 							<option value="" disabled selected>RESPONSABLE DEL FORMATO</option>
 							<? for ($i = 0; $i < $numero_usuarios && $i < 10; $i++): ?>
-							<option value="<?=$usuario[$i] ?>"><?=$usuario[$i] ?>@primax.com.co</option>
+							<option value="<?=$usuario[$i] ?>"><?=$usuario[$i] ?></option>
 							<? endfor; ?>
 						</select>
 					</td>

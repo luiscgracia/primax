@@ -1,3 +1,4 @@
+
 <html lang=es>
 <head>
 <title>VERIFICAR USUARIO PRIMAX</title>
@@ -8,14 +9,14 @@
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <style>
-	body	{background:url(../common/imagenes/primax.svg) no-repeat center center; background-size:auto 100%}
+body	{background:url(../common/imagenes/primax.svg) no-repeat center center; background-size:auto 100%}
 </style>
 <script>
-  function cerrarVentana_x_usuario(){window.close();}
+function cerrarVentana_x_usuario(){window.close();}
 </script>
 </head>
 <? $tiempo_cierre_pestana_verificar = 1; ?>		<!-- tiempo en minutos -->
-<body onLoad="setTimeout('window.close()',<? echo $tiempo_cierre_pestana_verificar * 60 * 1000; ?>)">
+<body onLoad="setTimeout('window.close()',<?=$tiempo_cierre_pestana_verificar * 60 * 1000;?>)">
 <?
 date_default_timezone_set('America/Bogota');
 $fecha = date("Y-m-d / H:i");
@@ -28,7 +29,7 @@ $consulta_usuario = "SELECT * FROM usuarios WHERE usuario='$usuario' AND clave='
 $resultado_usuario = $conexion_usuario->query($consulta_usuario) or die($conexion_usuario->error);
 
 if ($resultado_usuario->num_rows<=0)
-	{echo "	<table style='background-color:none' height=100% width=100%>
+	{echo "	<table style='width:100%; height:100%; background-color:none'>
 						<tr>
 							<td style='text-align:center; vertical-align:middle; font-size:80px'>
 								<b>VERIFIQUE USUARIO y/o CLAVE</b>

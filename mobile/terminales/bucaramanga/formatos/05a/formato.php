@@ -7,56 +7,57 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <title>Diligenciar Consecutivo</title>
 <style>
-	td.C			{font-size:30px; text-align:left;		font-weight:bold}
-	td.Cn			{font-size:28px; text-align:right;	vertical-align:top; border-right:0px; width:100%}
-	td.Cp			{font-size:28px; text-align:left;		vertical-align:top; border-left: 0px; width:100%; padding:0 7 0 7}
-	tr.C			{height: 85px; vertical-align:middle}
-	tr.Cn			{height:180px; vertical-align:middle}
-	tr.Cn0		{height:111px; vertical-align:top}
-	tr.Cn1		{height: 48px; vertical-align:top}
-	tr.Cn2		{height: 72px; vertical-align:top}
-	tr.Cn3		{height:108px; vertical-align:top}
-	tr.Cn4		{height:144px; vertical-align:top}
-	tr.Cn5		{height:180px; vertical-align:top}
-	.B1	{background-color:rgba(0,0,0,0.1)}
-	.B2	{background-color:rgba(0,0,0,0.0)}
+td.C			{font-size:30px; text-align:left;		font-weight:bold}
+td.Cn			{font-size:28px; text-align:right;	vertical-align:top; border-right:0px; width:100%}
+td.Cp			{font-size:28px; text-align:left;		vertical-align:top; border-left: 0px; width:100%; padding:0 7 0 7}
+tr.C			{height: 85px; vertical-align:middle}
+tr.Cn			{height:180px; vertical-align:middle}
+tr.Cn0		{height:111px; vertical-align:top}
+tr.Cn1		{height: 48px; vertical-align:top}
+tr.Cn2		{height: 72px; vertical-align:top}
+tr.Cn3		{height:108px; vertical-align:top}
+tr.Cn4		{height:144px; vertical-align:top}
+tr.Cn5		{height:180px; vertical-align:top}
+.B1	{background-color:rgba(0,0,0,0.1)}
+.B2	{background-color:rgba(0,0,0,0.0)}
 </style>
 </head>
 <script type="text/javascript">
-	function mayuscula(e) {e.value = e.value.toUpperCase();}
-	function closed() {window.open('','_parent',''); window.close();}
-	function cerrarVentana() {window.close();}
-	function f1a() {document.getElementById("fechaB1a").value = document.getElementById("fechaB1").value;}
-	function f2a() {document.getElementById("fechaB2a").value = document.getElementById("fechaB2").value;}
-	function f3a() {document.getElementById("fechaB3a").value = document.getElementById("fechaB3").value;}
-	function f4a() {document.getElementById("fechaB4a").value = document.getElementById("fechaB4").value;}
-	function f5a() {document.getElementById("fechaB5a").value = document.getElementById("fechaB5").value;}
-	function f6a() {document.getElementById("fechaB6a").value = document.getElementById("fechaB6").value;}
+function mayuscula(e) {e.value = e.value.toUpperCase();}
+function closed() {window.open('','_parent',''); window.close();}
+function cerrarVentana() {window.close();}
+function f1a() {document.getElementById("fechaB1a").value = document.getElementById("fechaB1").value;}
+function f2a() {document.getElementById("fechaB2a").value = document.getElementById("fechaB2").value;}
+function f3a() {document.getElementById("fechaB3a").value = document.getElementById("fechaB3").value;}
+function f4a() {document.getElementById("fechaB4a").value = document.getElementById("fechaB4").value;}
+function f5a() {document.getElementById("fechaB5a").value = document.getElementById("fechaB5").value;}
+function f6a() {document.getElementById("fechaB6a").value = document.getElementById("fechaB6").value;}
 </script>
 <body style="font-family:Arial; color:rgba(0,0,0,1); text-align:center">
 <?
-	include ("../../../../../common/datos.php");
-	include ("../../../../../common/checkbox_num_text.php");
-	include ("../../conectar_db.php");
-	include ("../../../../../common/conectar_db_usuarios.php");
-	include ("../../../../../normal/usuarios.php");
-	include ("../../../../../normal/terminales/".$terminal."/formatos/".basename(dirname(__FILE__))."/consecutivos".basename(dirname(__FILE__)).".php");
+include ("../../../../../common/datos.php");
+include ("../../firmas.php");
+include ("../../../../../common/checkbox_num_text.php");
+include ("../../conectar_db.php");
+include ("../../../../../common/conectar_db_usuarios.php");
+include ("../../../../../normal/usuarios.php");
+include ("../../../../../normal/terminales/".$terminal."/formatos/".basename(dirname(__FILE__))."/consecutivos".basename(dirname(__FILE__)).".php");
 
-	$formato = basename(dirname(__FILE__));
-	$formulario = "formulario".$formato;
-	$cons = "SELECT MAX(consecutivo) as consecutivo FROM formulario".$formato." LIMIT 1";
+$formato = basename(dirname(__FILE__));
+$formulario = "formulario".$formato;
+$cons = "SELECT MAX(consecutivo) as consecutivo FROM formulario".$formato." LIMIT 1";
 
-	//se conecta a la base de datos y se verifica el consecutivo inicial (o el siguiente libre)
-	$consult = $conexion->query('SELECT MAX(consecutivo) as consecutivo FROM formulario'.basename(dirname(__FILE__)).' LIMIT 1');
-	$consulta = $consult->fetch_array(MYSQLI_ASSOC);
-	$consec = (empty($consulta['consecutivo']) ? $primerconsecutivo : $consulta['consecutivo']+=1);
-	$conexion->close();
+//se conecta a la base de datos y se verifica el consecutivo inicial (o el siguiente libre)
+$consult = $conexion->query('SELECT MAX(consecutivo) as consecutivo FROM formulario'.basename(dirname(__FILE__)).' LIMIT 1');
+$consulta = $consult->fetch_array(MYSQLI_ASSOC);
+$consec = (empty($consulta['consecutivo']) ? $primerconsecutivo : $consulta['consecutivo']+=1);
+$conexion->close();
 
-	// se valida que no se sobrepase el número de libretas compradas
-	$ultimo_consec = $primerconsecutivo + $formatosporlibreta * $libretas - 1;
-	$consec_por_usar = $ultimo_consec - $consec + 1;
-	$aviso_pedido = "<div class=aviso><br><br><b>".$$formulario.$aviso.$contacto."</b><br><br><br><br><br><br><br><br><br><br></div>";
-	if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); document.body.innerHTML = '$aviso_pedido';</script>";}
+// se valida que no se sobrepase el número de libretas compradas
+$ultimo_consec = $primerconsecutivo + $formatosporlibreta * $libretas - 1;
+$consec_por_usar = $ultimo_consec - $consec + 1;
+$aviso_pedido = "<div class=aviso><br><br><b>".$$formulario.$aviso.$contacto."</b><br><br><br><br><br><br><br><br><br><br></div>";
+if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); document.body.innerHTML = '$aviso_pedido';</script>";}
 ?>
 <!-- *****************************************			 INICIO DEL FORMULARIO			 ***************************************** (816px = 215,9 mm) -->
 <!-- 1 --> <div class=noimprimir>
@@ -147,9 +148,9 @@
 		<div id=nombre style="position:absolute; display:none; width:43.75%; left:0.50%; background-color:white">
 			<table border=0>
 				<tr height=80px><td class=A3><b>NOMBRE Y APELLIDOS</b></td></tr>
-				<? for ($i = 1; $i <= 5; $i++): ?>
+				<? for ($i = 1; $i <= 5; $i++) { ?>
 				<tr><td><input name=nombre<?=$i?> id=nombre<?=$i?> value='' style=display:none placeholder="Persona&nbsp;autorizada&nbsp;<?=$i?>" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-				<? endfor; ?>
+				<? } ?>
 			</table>
 		</div>
 		<div id=dkf style="position:absolute; display:none; width:55.00%; left:44.25%; background-color:white; overflow:scroll">
@@ -159,13 +160,13 @@
 					<td style=width:350px	class=A2><b>CARGO (ROL)</b></td>
 					<td style=width:100px	class=A2><b>FIRMA</b></td>
 				</tr>
-				<? for ($i = 1; $i <= 5; $i++): ?>
+				<? for ($i = 1; $i <= 5; $i++) { ?>
 				<tr>
 					<td><input name=cedula<?=$i?> id=cedula<?=$i?> value='' style=display:none maxlength=10 pattern=^(?:[0-9]{8,10})$ inputmode=numeric></td>
 					<td><input name=cargo<?=$i?>	id=cargo<?=$i?>  value='' style=display:none maxlength=20 pattern=.{1,} onkeyup=mayuscula(this)></td>
 					<td style="background-color:rgba(0,0,0,0.2); border:0px solid rgba(255,112,0,1)"></td>
 				</tr>
-				<? endfor; ?>
+				<? } ?>
 			</table>
 		</div>
 
@@ -188,46 +189,16 @@
 		<?	$config = ['clase' => ['B1','B2']]; ?>
 		<div style="position:relative; width:43.00%; left:56.25%; top:-551.25px; background-color:white; overflow:scroll">
 			<table border=1>
-				<tr class=C>
-					<? for ($i = 1; $i <= 6; $i++): ?>
-					<td style=width:205px class="<?= $config['clase'][($i - 1) % 2] ?>">DÍA <?=$i?><input name=fechaB<?=$i?> id=fechaB<?=$i?> type=date onfocusout=f<?=$i?>a() min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
-					<? endfor; ?></tr>
-				<tr class=C>
-					<? for ($i = 1; $i <= 6; $i++): ?>
-					<td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=num_cert_habil<?=$i?>				inputmode=numeric style=width:60% maxlength=6 pattern=^(?:[0-9]{4,6})$></td>
-					<? endfor; ?></tr>
-				<tr class=C>
-					<? for ($i = 1; $i <= 6; $i++): ?>
-					<td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=num_pers_ejecutan<?=$i?>		inputmode=numeric style=width:40% maxlength=1 pattern=^(?:[0-5]{1})$></td>
-					<? endfor; ?></tr>
-				<tr class=C>
-					<? for ($i = 1; $i <= 6; $i++): ?>
-					<td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=num_pers_autoreporte<?=$i?>	inputmode=numeric style=width:40% maxlength=1 pattern=^(?:[0-5]{1})$></td>
-					<? endfor; ?></tr>
-				<tr class=C>
-					<? for ($i = 1; $i <= 6; $i++): ?>
-					<td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=hora_inicio<?=$i?>					type=time value='<?=$hora;?>' min='<?=$horamin;?>'></td>
-					<? endfor; ?></tr>
-				<tr class=C>
-					<? for ($i = 1; $i <= 6; $i++): ?>
-					<td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=hora_final<?=$i?>						type=time value='<?=$hora;?>' min='<?=$horamin;?>'></td>
-					<? endfor; ?></tr>
-				<tr class=C>
-					<? for ($i = 1; $i <= 6; $i++): ?>
-					<td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=firma_ejecutor<?=$i?>				style=display:none></td>
-					<? endfor; ?></tr>
-				<tr class=C>
-					<? for ($i = 1; $i <= 6; $i++): ?>
-					<td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=firma_vigia<?=$i?>					style=display:none></td>
-					<? endfor; ?></tr>
-				<tr class=C>
-					<? for ($i = 1; $i <= 6; $i++): ?>
-					<td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=firma_supervisor<?=$i?>			style=display:none></td>
-					<? endfor; ?></tr>
-				<tr class=C>
-					<? for ($i = 1; $i <= 6; $i++): ?>
-					<td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=autorizacion_emisor<?=$i?>	style=display:none></td>
-					<? endfor; ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td style=width:205px class="<?= $config['clase'][($i - 1) % 2] ?>">DÍA <?=$i?><input name=fechaB<?=$i?> id=fechaB<?=$i?> type=date onfocusout=f<?=$i?>a() min=<?=$fechamin;?> max=<?=$fechamax;?> required></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=num_cert_habil<?=$i?>				inputmode=numeric style=width:60% maxlength=6 pattern=^(?:[0-9]{4,6})$></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=num_pers_ejecutan<?=$i?>			inputmode=numeric style=width:40% maxlength=1 pattern=^(?:[0-5]{1})$></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=num_pers_autoreporte<?=$i?>	inputmode=numeric style=width:40% maxlength=1 pattern=^(?:[0-5]{1})$></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=hora_inicio<?=$i?>						type=time value='<?=$hora;?>' min='<?=$horamin;?>'></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=hora_final<?=$i?>						type=time value='<?=$hora;?>' min='<?=$horamin;?>'></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=firma_ejecutor<?=$i?>				style=display:none></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=firma_vigia<?=$i?>						style=display:none></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=firma_supervisor<?=$i?>			style=display:none></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=autorizacion_emisor<?=$i?>		style=display:none></td><? } ?></tr>
 			</table>
 		</div>
 
@@ -259,7 +230,7 @@
 		</table>
 
 <!-- 10 -->			<div style="position:relative; width:22.60%; left:0.50%; top:8.75px; background-color:white; overflow:scroll">
-		<?php
+		<?
 		// Configuración simple
 		$config = [
 							'dias' => 6,
@@ -291,27 +262,27 @@
 		<table class="tabla-verificacion" border="1">
 			<!-- Encabezado días -->
 			<tr style="height: 80px;">
-				<?php for ($dia = 1; $dia <= $config['dias']; $dia++): ?>
+				<? for ($dia = 1; $dia <= $config['dias']; $dia++) { ?>
 					<td colspan=3 class="<?= $config['clases'][($dia - 1) % 2] ?>" style="width:210px; font-weight:bold;">
 						 DÍA <?= $dia ?><input id="fechaB<?= $dia ?>a" class="fecha-input" readonly>
 					</td>
-				<?php endfor; ?>
+				<? } ?>
 			</tr>
 
 			<!-- Encabezado opciones -->
 			<tr style="height: 45px; font-weight: bold;">
-				<?php for ($dia = 1; $dia <= $config['dias']; $dia++): ?>
-					<?php foreach ($config['opciones'] as $opcion): ?>
+				<? for ($dia = 1; $dia <= $config['dias']; $dia++) { ?>
+					<? foreach ($config['opciones'] as $opcion): ?>
 						<td class="<?= $config['clases'][($dia - 1) % 2] ?>"><?= $opcion ?></td>
-					<?php endforeach; ?>
-				<?php endfor; ?>
+					<? endforeach; ?>
+				<? } ?>
 			</tr>
 
 			<!-- Filas de criterios -->
-			<?php for ($criterio = 1; $criterio <= 23; $criterio++): ?>
+			<? for ($criterio = 1; $criterio <= 23; $criterio++) { ?>
 				<tr class="<?= $config['alturas'][$criterio - 1] ?>">
-					<?php for ($dia = 1; $dia <= $config['dias']; $dia++): ?>
-						<?php foreach ($config['opciones'] as $index => $opcion): ?>
+					<? for ($dia = 1; $dia <= $config['dias']; $dia++) { ?>
+						<? foreach ($config['opciones'] as $index => $opcion) { ?>
 							<td class="<?= $config['clases'][($dia - 1) % 2] ?>">
 								<input 
 										name="C<?= $criterio ?>_<?= $dia ?>" 
@@ -319,22 +290,21 @@
 										type="radio" 
 										value="<?= $opcion ?>" 
 										onclick="gestionarClickRadio(this)"
-										<?= ($criterio == 1 && $dia == 1) ? 'required' : '' ?>
-								>
+										<?= ($criterio == 1 && $dia == 1) ? 'required' : '' ?>>
 							</td>
-						<?php endforeach; ?>
-					<?php endfor; ?>
+						<? } ?>
+					<? } ?>
 				</tr>
-			<?php endfor; ?>
+			<? } ?>
 
 			<!-- Separador EPPs -->
 			<tr style="height: 70px;"><td colspan="<?= $config['dias'] * 3 ?>" style="background-color:rgba(0,0,0,0.20)"></td></tr>
-				
+
 			<!-- EPPs (criterios 24-34) -->
-			<?php for ($criterio = 24; $criterio <= $config['criterios']; $criterio++): ?>
+			<? for ($criterio = 24; $criterio <= $config['criterios']; $criterio++) { ?>
 				<tr class="<?= $config['alturas'][$criterio - 1] ?>">
-					<?php for ($dia = 1; $dia <= $config['dias']; $dia++): ?>
-						<?php foreach ($config['opciones'] as $index => $opcion): ?>
+					<? for ($dia = 1; $dia <= $config['dias']; $dia++) { ?>
+						<? foreach ($config['opciones'] as $index => $opcion) { ?>
 							<td class="<?= $config['clases'][($dia - 1) % 2] ?>">
 								<input 
 										name="C<?= $criterio ?>_<?= $dia ?>" 
@@ -342,13 +312,12 @@
 										type="radio" 
 										value="<?= $opcion ?>" 
 										onclick="gestionarClickRadio(this)"
-										<?= ($criterio == 1 && $dia == 1) ? 'required' : '' ?>
-								>
+										<?= ($criterio == 1 && $dia == 1) ? 'required' : '' ?>>
 							</td>
-						<?php endforeach; ?>
-					<?php endfor; ?>
+						<? } ?>
+					<? } ?>
 				</tr>
-			<?php endfor; ?>
+			<? } ?>
 		</table>
 
 		<script>
@@ -477,7 +446,7 @@
 		</table>
 		<hr>
 
-		<!-- *****************************************			 sección E			 ***************************************** -->
+<!-- *****************************************			 sección E			 ***************************************** -->
 		<table border=0>
 			<tr><td width=5%></td><td width=95%></td></tr>
 			<tr><td colspan=2 class=B><b>&nbsp;&nbsp;E. AUTORIZACIÓN</b></td></tr>
@@ -557,11 +526,11 @@
 			<tr height=30><td></td></tr>
 				<tr style="background-color:rgba(0,240,0,0); height:15%">
 					<td>
-						<select name=usuario id=usuario required>
+						<select name=usuario id=usuario style=width:67% required>
 							<option value='' disabled selected>RESPONSABLE DEL FORMATO</option>
-							<? for ($i = 0; $i < $numero_usuarios && $i < 10; $i++): ?>
-								<option value="<?=$usuario[$i]?>"><?=$usuario[$i]?>@primax.com.co</option>
-							<? endfor; ?>
+							<? for ($i = 0; $i < $numero_usuarios && $i < 10; $i++) { ?>
+								<option value="<?=$usuario[$i]?>"><?=$usuario[$i]?></option>
+							<? } ?>
 						</select>
 					</td>
 				</tr>
@@ -573,7 +542,7 @@
 
 		<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Fecha diligenciamiento: <?=$fechaactual;?> / <?=$horaactual;?></span>
 		<input style="display:none; width:3.10cm" id="fecha" name="fecha" value="<?=$fechaactual;?> / <?=$horaactual;?>" readonly><br>
-<!--		<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Quedan <?=number_format($consec_por_usar,0,',','.');?> consecutivos, incluido este.</span><br> -->
+		<!--<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Quedan <?=number_format($consec_por_usar,0,',','.');?> consecutivos, incluido este.</span><br>-->
 		<table border=0px>
 			<tr height=200>
 				<td><input type="image" src="../../../../../common/imagenes/grabar.png" alt="Submit" style="width:100; height:auto; border:0; background-color:rgba(0,0,0,0)"></td>
@@ -828,8 +797,7 @@ document.addEventListener("click", closeAllSelect);
 				 k5.disabled = false; k5.style.display = "block"; k5.required = true;};});
 		</script>
 <!-- *****************************************			FIN Control Tabla Personas Autorizadas		 ***************************************** -->
-
-</form>
+	</form>
 <!-- /1 --></div>
 <script type='text/javascript'>document.oncontextmenu = function(){return false}</script>
 </body>

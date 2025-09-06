@@ -7,28 +7,28 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <title>Diligenciar Consecutivo</title>
 <style>
-	td.Aright	{font-size:24px; text-align:right}
-	td.Aleft	{font-size:22px; text-align:left}
-	td.Anota	{font-size:28px; text-align:justify}
-	td.A1			{font-size:22px}
-	td.A0			{font-size:30px; font-weight:bold}
-	select.product {background-color:rgba(0,255,0,0.1); color:rgba(0,0,191,1); border:2px solid rgba(255,112,0,1); border-radius:3px; font-family:Arial; font-size:24px; height:10mm}
+td.Aright	{font-size:24px; text-align:right}
+td.Aleft	{font-size:22px; text-align:left}
+td.Anota	{font-size:28px; text-align:justify}
+td.A1			{font-size:22px}
+td.A0			{font-size:30px; font-weight:bold}
+select.product {background-color:rgba(0,255,0,0.1); color:rgba(0,0,191,1); border:2px solid rgba(255,112,0,1); border-radius:3px; font-family:Arial; font-size:24px; height:10mm}
 </style>
 </head>
 <script type="text/javascript">
-	function mayuscula(e) {e.value = e.value.toUpperCase();}
-	function closed() {window.open('','_parent',''); window.close();}
-	function cerrarVentana() {window.close();}
- 	function sumar_ecopetrol() {var total = 0; $(".ecopetrol").each(function() {if (isNaN(parseFloat($(this).val()))) {total += 0} else {total += parseFloat($(this).val())}});
-	  document.getElementById('total_ecopetrol').innerHTML = total}
+function mayuscula(e) {e.value = e.value.toUpperCase();}
+function closed() {window.open('','_parent',''); window.close();}
+function cerrarVentana() {window.close();}
+function sumar_ecopetrol() {var total = 0; $(".ecopetrol").each(function() {if (isNaN(parseFloat($(this).val()))) {total += 0} else {total += parseFloat($(this).val())}});
+  document.getElementById('total_ecopetrol').innerHTML = total}
 </script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript">
-	function t() {document.getElementById("tanque1").value = document.getElementById("tanque").value;}
-	function p() {document.getElementById("producto1").value = document.getElementById("producto").value.toUpperCase();}
-	function u() {document.getElementById("usuario").value = document.getElementById("usuario1").value;}
-  function liquidar() {
+function t() {document.getElementById("tanque1").value = document.getElementById("tanque").value;}
+function p() {document.getElementById("producto1").value = document.getElementById("producto").value.toUpperCase();}
+function u() {document.getElementById("usuario").value = document.getElementById("usuario1").value;}
+function liquidar() {
 	var i2, f2, i4, f4, i8, f8, f10, i11, i13, f16, i5, f5, i9, f9, f14, f15, f17, f18;
 		 i2 = document.getElementById("inicial2").value;
 		 f2 = document.getElementById("final2").value;
@@ -61,27 +61,28 @@
 </script>
 <body style="font-family:Arial; color:rgba(0,0,0,1); text-align:center">
 <?
-	include ("../../../../../common/datos.php");
-	include ("../../../../../common/checkbox_num_text.php");
-	include ("../../conectar_db.php");
-	include ("../../../../../common/conectar_db_usuarios.php");
-	include ("../../../../../normal/usuarios.php");
-	include ("../../../../../normal/terminales/".$terminal."/formatos/".basename(dirname(__FILE__))."/consecutivos".basename(dirname(__FILE__)).".php");
-	$formato = basename(dirname(__FILE__));
-	$formulario = "formulario".$formato;
-	$cons = "SELECT MAX(consecutivo) as consecutivo FROM formulario".$formato." LIMIT 1";
+include ("../../../../../common/datos.php");
+include ("../../firmas.php");
+include ("../../../../../common/checkbox_num_text.php");
+include ("../../conectar_db.php");
+include ("../../../../../common/conectar_db_usuarios.php");
+include ("../../../../../normal/usuarios.php");
+include ("../../../../../normal/terminales/".$terminal."/formatos/".basename(dirname(__FILE__))."/consecutivos".basename(dirname(__FILE__)).".php");
+$formato = basename(dirname(__FILE__));
+$formulario = "formulario".$formato;
+$cons = "SELECT MAX(consecutivo) as consecutivo FROM formulario".$formato." LIMIT 1";
 
-	//se conecta a la base de datos y se verifica el consecutivo inicial (o el siguiente libre)
-	$consult = $conexion->query('SELECT MAX(consecutivo) as consecutivo FROM formulario'.basename(dirname(__FILE__)).' LIMIT 1');
-	$consulta = $consult->fetch_array(MYSQLI_ASSOC);
-	$consec = (empty($consulta['consecutivo']) ? $primerconsecutivo : $consulta['consecutivo']+=1);
-	$conexion->close();
+//se conecta a la base de datos y se verifica el consecutivo inicial (o el siguiente libre)
+$consult = $conexion->query('SELECT MAX(consecutivo) as consecutivo FROM formulario'.basename(dirname(__FILE__)).' LIMIT 1');
+$consulta = $consult->fetch_array(MYSQLI_ASSOC);
+$consec = (empty($consulta['consecutivo']) ? $primerconsecutivo : $consulta['consecutivo']+=1);
+$conexion->close();
 
-	// se valida que no se sobrepase el número de libretas compradas
-	$ultimo_consec = $primerconsecutivo + $formatosporlibreta * $libretas - 1;
-	$consec_por_usar = $ultimo_consec - $consec + 1;
-	$aviso_pedido = "<div class=aviso><br><br><b>".$$formulario.$aviso.$contacto."</b><br><br><br><br><br><br><br><br><br><br></div>";
-	if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); document.body.innerHTML = '$aviso_pedido';</script>";}
+// se valida que no se sobrepase el número de libretas compradas
+$ultimo_consec = $primerconsecutivo + $formatosporlibreta * $libretas - 1;
+$consec_por_usar = $ultimo_consec - $consec + 1;
+$aviso_pedido = "<div class=aviso><br><br><b>".$$formulario.$aviso.$contacto."</b><br><br><br><br><br><br><br><br><br><br></div>";
+if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); document.body.innerHTML = '$aviso_pedido';</script>";}
 ?>
 <!-- *****************************************			 INICIO DEL FORMULARIO			 ***************************************** (816px = 215,9 mm) -->
 <!-- 1 --> <div class=noimprimir>
@@ -148,7 +149,7 @@
 					</form>
 				</td>
 				<td><input name=fechaA			type=date value='<?=$hoy;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
-				<td><input name=horaentrega type=time value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
+				<td><input name=horaentrega type=time value='<?=$hora;?>' min=<?=$horamin;?> required></td>
 			</tr>
 	 		<tr height=10px><td></td></tr>
 		</table>
@@ -267,12 +268,12 @@
 			</tr>
 			<tr>
 				<td style=text-align:right>HORA INICIACIÓN&nbsp;</td>
-				<td style=text-align:left	><input name=hora_inicial  type=time value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
+				<td style=text-align:left	><input name=hora_inicial  type=time value='<?=$hora;?>' min=<?=$horamin;?> required></td>
 				<td style=text-align:left	></td>
 			</tr>
 			<tr>
 				<td style=text-align:right>HORA FINAL ESTIMADA&nbsp;</td>
-				<td style=text-align:left	><input name=hora_final  type=time value='<?=$hora;?>' min=<?=date("H:i");?> required></td>
+				<td style=text-align:left	><input name=hora_final  type=time value='<?=$hora;?>' min=<?=$horamin;?> required></td>
 				<td style=text-align:left	></td>
 			</tr>
 			<tr>
@@ -474,22 +475,22 @@
 				<td class=A1>APARIENCIA</td>
 			</tr>
 			<tr height=50px>
-				<td><input name=T1 type=date value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> style=width:90%></td>
-				<td><input name=T2 type=time value='<?=$hora;?>' min=<?=date("H:i");?> style=width:90%></td>
+				<td><input name=T1 type=date value='<?=$fechacero;?>'	min=<?=$fechamin;?> max=<?=$fechamax;?> style=width:90%></td>
+				<td><input name=T2 type=time value='<?=$hora;?>'			min=<?=$horamin;?> style=width:90%></td>
 				<td><input name=T3 type=text style=width:90% maxlength=6  placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
 				<td><input name=T4 type=text style=width:90% maxlength=6  placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
 				<td><input name=T5 type=text style=width:90% maxlength=10 pattern=.{1,} onkeyup=mayuscula(this)></td>
 			</tr>
 			<tr height=50px>
-				<td><input name=U1 type=date value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> style=width:90%></td>
-				<td><input name=U2 type=time value='<?=$hora;?>' min=<?=date("H:i");?> style=width:90%></td>
+				<td><input name=U1 type=date value='<?=$fechacero;?>'	min=<?=$fechamin;?> max=<?=$fechamax;?> style=width:90%></td>
+				<td><input name=U2 type=time value='<?=$hora;?>'			min=<?=$horamin;?> style=width:90%></td>
 				<td><input name=U3 type=text style=width:90% maxlength=6  placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
 				<td><input name=U4 type=text style=width:90% maxlength=6  placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
 				<td><input name=U5 type=text style=width:90% maxlength=10 pattern=.{1,} onkeyup=mayuscula(this)></td>
 			</tr>
 			<tr height=50px>
-				<td><input name=V1 type=date value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> style=width:90%></td>
-				<td><input name=V2 type=time value='<?=$hora;?>' min=<?=date("H:i");?> style=width:90%></td>
+				<td><input name=V1 type=date value='<?=$fechacero;?>'	min=<?=$fechamin;?> max=<?=$fechamax;?> style=width:90%></td>
+				<td><input name=V2 type=time value='<?=$hora;?>'			min=<?=$horamin;?> style=width:90%></td>
 				<td><input name=V3 type=text style=width:90% maxlength=6  placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
 				<td><input name=V4 type=text style=width:90% maxlength=6  placeholder=###.## pattern=^([0-9]{1,3}(\.[0-9]{1,2})?)$ inputmode=numeric></td>
 				<td><input name=V5 type=text style=width:90% maxlength=10 pattern=.{1,} onkeyup=mayuscula(this)></td>
@@ -595,13 +596,13 @@
 				<td>m</td><td>cm</td><td>mm</td>
 			</tr>
 			<tr>
-				<td><input name=referencia2_manual_mt type=text style=width:90% maxlength=2 placeholder=## pattern=^([0-9]{1,2}?)$ inputmode=numeric required></td>
-				<td><input name=referencia2_manual_cm type=text style=width:90% maxlength=2 placeholder=## pattern=^([0-9]{1,2}?)$ inputmode=numeric required></td>
-				<td><input name=referencia2_manual_mm type=text style=width:90% maxlength=1 placeholder=#	 pattern=^([0-9]{1}?)$	 inputmode=numeric required></td>
-				<td><input name=referencia2_aforo_mt  type=text style=width:90% maxlength=2 placeholder=## pattern=^([0-9]{1,2}?)$ inputmode=numeric required></td>
-				<td><input name=referencia2_aforo_cm  type=text style=width:90% maxlength=2 placeholder=## pattern=^([0-9]{1,2}?)$ inputmode=numeric required></td>
-				<td><input name=referencia2_aforo_mm  type=text style=width:90% maxlength=1 placeholder=#	 pattern=^([0-9]{1}?)$	 inputmode=numeric required></td>
-				<td><input name=dif_alt_referencia2   type=text style=width:90% maxlength=5 placeholder=##.## pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ required></td>
+				<td><input name=referencia2_manual_mt type=text style=width:90% maxlength=2 placeholder=##		pattern=^([0-9]{1,2}?)$	inputmode=numeric required></td>
+				<td><input name=referencia2_manual_cm type=text style=width:90% maxlength=2 placeholder=##		pattern=^([0-9]{1,2}?)$	inputmode=numeric required></td>
+				<td><input name=referencia2_manual_mm type=text style=width:90% maxlength=1 placeholder=#			pattern=^([0-9]{1}?)$		inputmode=numeric required></td>
+				<td><input name=referencia2_aforo_mt  type=text style=width:90% maxlength=2 placeholder=##		pattern=^([0-9]{1,2}?)$	inputmode=numeric required></td>
+				<td><input name=referencia2_aforo_cm  type=text style=width:90% maxlength=2 placeholder=##		pattern=^([0-9]{1,2}?)$	inputmode=numeric required></td>
+				<td><input name=referencia2_aforo_mm  type=text style=width:90% maxlength=1 placeholder=#			pattern=^([0-9]{1}?)$		inputmode=numeric required></td>
+				<td><input name=dif_alt_referencia2   type=text style=width:90% maxlength=5 placeholder=##.##	pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ required></td>
 			</tr>
 		</table>
 		<table border=1>
@@ -762,31 +763,31 @@
 			<tr><td width=75%>MAYORISTA</td><td width=25%>VOLUMEN</td></tr>
 			<tr>
 				<td style="width:100%; text-align:left"><b>&nbsp;PRIMAX COLOMBIA S.A</b></td>
-				<td><input name=volmayor1		type=text	style=width:100%	maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric required></td>
+				<td><input name=volmayor1		type=text	style=width:100%	maxlength=5 placeholder=#####		pattern=^([0-9]{1,5}?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric required></td>
 			</tr>
 			<tr>
-				<td><input name=mayorista2	type=text	style="width:100%; text-align:left" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td>
-				<td><input name=volmayor2		type=text	style=width:100%	maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric></td>
+				<td><input name=mayorista2	type=text	style="width:100%; text-align:left" maxlength=30	pattern=.{1,} onkeyup=mayuscula(this)></td>
+				<td><input name=volmayor2		type=text	style=width:100%	maxlength=5 placeholder=#####		pattern=^([0-9]{1,5}?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric></td>
 			</tr>
 			<tr>
-				<td><input name=mayorista3	type=text	style="width:100%; text-align:left" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td>
-				<td><input name=volmayor3		type=text	style=width:100%	maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric></td>
+				<td><input name=mayorista3	type=text	style="width:100%; text-align:left" maxlength=30	pattern=.{1,} onkeyup=mayuscula(this)></td>
+				<td><input name=volmayor3		type=text	style=width:100%	maxlength=5 placeholder=#####		pattern=^([0-9]{1,5}?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric></td>
 			</tr>
 			<tr>
-				<td><input name=mayorista4	type=text	style="width:100%; text-align:left" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td>
-				<td><input name=volmayor4		type=text	style=width:100%	maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric></td>
+				<td><input name=mayorista4	type=text	style="width:100%; text-align:left" maxlength=30	pattern=.{1,} onkeyup=mayuscula(this)></td>
+				<td><input name=volmayor4		type=text	style=width:100%	maxlength=5 placeholder=#####		pattern=^([0-9]{1,5}?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric></td>
 			</tr>
 			<tr>
-				<td><input name=mayorista5	type=text	style="width:100%; text-align:left" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td>
-				<td><input name=volmayor5		type=text	style=width:100%	maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric></td>
+				<td><input name=mayorista5	type=text	style="width:100%; text-align:left" maxlength=30	pattern=.{1,} onkeyup=mayuscula(this)></td>
+				<td><input name=volmayor5		type=text	style=width:100%	maxlength=5 placeholder=#####		pattern=^([0-9]{1,5}?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric></td>
 			</tr>
 			<tr>
-				<td><input name=mayorista6	type=text	style="width:100%; text-align:left" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td>
-				<td><input name=volmayor6		type=text	style=width:100%	maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric></td>
+				<td><input name=mayorista6	type=text	style="width:100%; text-align:left" maxlength=30	pattern=.{1,} onkeyup=mayuscula(this)></td>
+				<td><input name=volmayor6		type=text	style=width:100%	maxlength=5 placeholder=#####		pattern=^([0-9]{1,5}?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric></td>
 			</tr>
 			<tr>
-				<td><input name=mayorista7	type=text	style="width:100%; text-align:left" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td>
-				<td><input name=volmayor7		type=text	style=width:100%	maxlength=5 placeholder=##### pattern=^([0-9]{1,5}?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric></td>
+				<td><input name=mayorista7	type=text	style="width:100%; text-align:left" maxlength=30	pattern=.{1,} onkeyup=mayuscula(this)></td>
+				<td><input name=volmayor7		type=text	style=width:100%	maxlength=5 placeholder=#####		pattern=^([0-9]{1,5}?)$	class=ecopetrol	onkeyup=sumar_ecopetrol() inputmode=numeric></td>
 			</tr>
 			<tr>
 				<td><b>TOTAL</b></td>
@@ -809,32 +810,31 @@
 			</tr>
 		</table>
 		<hr>
-
-		<!-- *****************************************			 sección E			 ***************************************** -->
 		<table>
-			<tr height=30px><td></td></tr>
+			<tr height=10px><td></td></tr>
 			<tr style=background-color:rgba(0,240,0,0)>
 				<td style="text-align:center">
 					<form method="post">
-						<select name="usuario1" id="usuario1" type=text onfocusout="u()" required>
+						<select name="usuario1" id="usuario1" style=width:67% type=text onfocusout="u()" required>
 							<option value="" disabled selected>RESPONSABLE DEL FORMATO</option>
-							<? for ($i = 0; $i < $numero_usuarios && $i < 10; $i++):?>
-								<option value="<?= $usuario[$i]?>"><?= $usuario[$i]?>@primax.com.co</option>
-							<? endfor;?>
+							<? for ($i = 0; $i < $numero_usuarios && $i < 10; $i++) { ?>
+							<option value="<?= $usuario[$i]?>"><?= $usuario[$i]?></option>
+							<? } ?>
 						</select>
 					</form>
 				</td>
 			</tr>
 			<tr><td><input name="usuario" id="usuario" type=text style="font-size:1px; height:1px; width:100%; color:rgba(255,0,0,0); background-color:rgba(0,0,0,0); border:0px" required></td></tr>
+			<tr height=10px><td></td></tr>
 		</table>
 		<hr>
 
 		<!-- *****************************************			 FIN DEL FORMULARIO			 ***************************************** -->
 		<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Fecha diligenciamiento: <?=$fechaactual;?> / <?=$horaactual;?></span>
 		<input style=display:none type=text name=fecha value="<?=$fechaactual;?> / <?=$horaactual;?>" readonly><br>
-<!--		<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Quedan <?=number_format($consec_por_usar,0,',','.');?> consecutivos, incluido este.</span><br> -->
+		<!--<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Quedan <?=number_format($consec_por_usar,0,',','.');?> consecutivos, incluido este.</span><br>-->
 		<table border=0>
-			<tr height=200>
+			<tr height=100>
 				<td><input type=image src=../../../../../common/imagenes/grabar.png alt=Submit style="width:100; height:auto; background-color:rgba(0,0,0,0); border:none"></td>
 				<td><a href=javascript:closed()><img src=../../../../../common/imagenes/regresar.png style="pointer-events:auto; width:100px; height:auto"></a></td>
 			</tr>
