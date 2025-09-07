@@ -72,6 +72,9 @@ while ($row = $resultado->fetch_assoc()){extract($row);}
 	<div style="position:absolute; left:19.45cm; top: 2.00cm"><?echo $certhabilit;?></div>
 	<div style="position:absolute; left: 5.00cm; top: 2.50cm"><?echo $empresaA;?></div>
 	<div style="position:absolute; left:10.20cm; top: 2.50cm"><?echo $nombreA;?></div>
+	<? $firmaAa = "<img src='../../../../../common/firmas/".basename(dirname(__DIR__,2))."/firma1.png' style='width:auto; height:10mm'>"; ?>
+<!--	<div style="position:absolute; left:16.15cm; top: 2.10cm; width: 4.30cm; text-align:left; background-color:rgba(0,0,0,0.0)"><?if ($firmaA=='on') {echo $firmaAa;}?></div>-->
+	<div style="position:absolute; left:16.15cm; top: 2.40cm; width: 4.30cm; height: 0.40cm; text-align:left; background-color:rgba(0,0,0,0.1)"><?if ($firmaA=='on') {echo "FIRMADO POR lcgp";}?></div>
 
 <!-- *****************************************			 sección B			 ***************************************** -->
 	<div style="position:absolute; left: 6.10cm; top: 3.42cm; font-size:9.70px"><?echo substr($descripcion,0,90-0);?></div>

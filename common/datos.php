@@ -7,13 +7,15 @@ date_default_timezone_set("America/Bogota");
 $fechaactual = date("Y-m-d");
  $horaactual = date("g:i A");
 
-		 $fechacero = date("Y-m-d");			// para iniciar los formatos se asigna $fechacero="";
-//		 $fechacero = date("0000-00-00");			//se asigna esta fecha para los campos que pueden tener cualquier fecha, p. ej. las calibraciones
+		 $fechacero = "";				// para iniciar los formatos se asigna $fechacero="";
+					$hora = "";				// para iniciar los formatos se asigna $hora="";
+//		 $fechacero = date("Y-m-d");
+//					$hora = date("H:i");
+
 	$fecha_oculta = date("Y-m-d");			//se asigna esta fecha para el momento de diligenciar los formatos
-					$hora = date("H:i");				// para iniciar los formatos se asigna $hora="";
 			 $horamin = date("H:i");
 
-$dias = 0;			// número de días para permitir la edición en los formatos
+$dias = 2;			// número de días para permitir la edición en los formatos
 $fechahoy = date("Y-m-d / g:i A");
 $fechamin = date("Y-m-d", strtotime("- $dias days", strtotime(date("Y-m-d"))));
 $fechamax = date("Y-m-d", strtotime("+ $dias days", strtotime(date("Y-m-d"))));
