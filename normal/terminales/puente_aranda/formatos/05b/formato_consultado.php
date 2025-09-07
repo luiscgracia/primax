@@ -62,7 +62,7 @@ while ($row = $resultado->fetch_assoc()){extract($row);}
 	<div style="position:absolute; left: 0.00cm; top:0.70cm; color:rgba(0,0,190,1); width:100%"><span style="font-size:10px; font-family:Arial"><b>TERMINAL <?echo strtoupper($terminal);?></b></span></div>
 	<div style="position:absolute; left:18.40cm; top:0.77cm; color:rgba(0,0,0,1)"><span style="font-family:Arlrdbd; font-size:7px"><?echo $estado;?></span></div>
 <!--	<div style="position:absolute; left:18.40cm; top:1.36cm; color:rgba(0,0,0,1)"><span style="font-family:Arlrdbd; font-size:7px"><?echo strtoupper($terminal);?></span></div>-->
-	<div style="position:absolute; left:18.40cm; top:1.32cm; color:rgba(0,0,0,1)"><span style="font-family:Arlrdbd; font-size:7px"><?echo $usuario;?>@primax.com.co</span></div>
+	<div style="position:absolute; left:18.40cm; top:1.32cm; color:rgba(0,0,0,1)"><span style="font-family:Arlrdbd; font-size:7px"><?echo $usuario;?></span></div>
 
 	<div style="position:absolute; left:14.10cm; top: 1.45cm"><?echo $pTEC;?></div>
 	<div style="position:absolute; left:11.45cm; top: 1.67cm" class="radio"><?if ($tipo_trabajo == 'C') {echo '&#10687;';}?></div>

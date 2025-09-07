@@ -55,10 +55,10 @@ if ($resultado->num_rows > 0)
 {while ($formato = $resultado->fetch_array()) {
 if ($formato['consecutivo'] <= 9) {$cons = '00000'.$formato['consecutivo'];}
 	else {if ($formato['consecutivo'] <= 99) {$cons = '0000'.$formato['consecutivo'];}
-				else {if ($formato['consecutivo'] <= 999) {$cons = '000'.$formato['consecutivo'];}
-					else {if ($formato['consecutivo'] <= 9999) {$cons = '00'.$formato['consecutivo'];}
-						else {if ($formato['consecutivo'] <= 99999) {$cons = '0'.$formato['consecutivo'];}
-							else {$cons = $formato['consecutivo'];}}}}};
+		else {if ($formato['consecutivo'] <= 999) {$cons = '000'.$formato['consecutivo'];}
+			else {if ($formato['consecutivo'] <= 9999) {$cons = '00'.$formato['consecutivo'];}
+				else {if ($formato['consecutivo'] <= 99999) {$cons = '0'.$formato['consecutivo'];}
+					else {$cons = $formato['consecutivo'];}}}}};
 echo "
 <div class='contenido'>
 	<table style='width: 50%; margin-left:auto; margin-right:auto' border='1' cellpadding='0' cellspacing='0'>

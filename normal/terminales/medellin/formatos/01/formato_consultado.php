@@ -65,7 +65,7 @@ while ($row = $resultado->fetch_assoc()){extract($row);}
 	<div style="position:absolute; left: 0.00cm; top:0.70cm; color:rgba(0,0,190,1); width:100%"><span style="font-size:10px; font-family:Arial"><b>TERMINAL <?echo strtoupper($terminal);?></b></span></div>
 	<div style="position:absolute; left:18.00cm; top:0.77cm; color:rgba(0,0,0,1)"><span style="font-size:7px; font-family:Arlrdbd"><?echo $estado;?></span></div>
 <!--	<div style="position:absolute; left:18.00cm; top:1.50cm; color:rgba(0,0,0,1)"><span style="font-size:7px; font-family:Arlrdbd"><?echo strtoupper($terminal);?></span></div>-->
-	<div style="position:absolute; left:18.00cm; top:1.35cm; color:rgba(0,0,0,1)"><span style="font-size:7px; font-family:Arlrdbd"><?echo $usuario;?>@primax.com.co</span></div>
+	<div style="position:absolute; left:18.00cm; top:1.35cm; color:rgba(0,0,0,1)"><span style="font-size:7px; font-family:Arlrdbd"><?echo $usuario;?></span></div>
 
 	<div style="position:absolute; left: 3.40cm; top:2.30cm"><?echo substr($instalacion,0,68);?></div>
 	<div style="position:absolute; left:19.05cm; top:2.30cm"><?echo $certificado;?></div>

@@ -18,7 +18,6 @@ function cerrarVentana() {window.close();}
 <body style="font-family:Arial; color:rgba(0,0,0,1); text-align:center">
 <?
 include ("../../../../../common/datos.php");
-include ("../../firmas.php");
 include ("../../../../../common/checkbox_num_text.php");
 include ("../../conectar_db.php");
 include ("../../../../../common/conectar_db_usuarios.php");

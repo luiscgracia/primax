@@ -250,17 +250,17 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				<tr><td width=32.50%></td><td width=32.50%></td><td width=25%></td><td width=10%></td></tr>
 				<tr><td colspan=4 class=B>&nbsp;&nbsp;22. PRUEBA DE GASES</td></tr>
 				<tr>
-					<td><br>EQUIPO<br>					<input name=B22a type=texto maxlength=15 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-					<td><br>MARCA<br>						<input name=B22c type=texto maxlength=15 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+					<td>		 <br>EQUIPO<br>			<input name=B22a type=texto maxlength=15 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+					<td>		 <br>MARCA<br>			<input name=B22c type=texto maxlength=15 pattern=.{1,} onkeyup=mayuscula(this) required></td>
 					<td>FECHA<br>CALIBRACIÓN<br><input name=B22e type=date value='<?=$fechacero;?>' max='<?=$fechaactual;?>' required></td>
-					<td>BUMP<br>TEST<br>				<input name=B22g type=checkbox></td>
+					<td> BUMP<br>TEST<br>				<input name=B22g type=checkbox></td>
 				</tr>
 				<tr height=10><td></td></tr>
 				<tr>
-					<td><br>EQUIPO<br>					<input name=B22b type=texto maxlength=15 pattern=.{1,} onkeyup=mayuscula(this)></td>
-					<td><br>MARCA<br>						<input name=B22d type=texto maxlength=15 pattern=.{1,} onkeyup=mayuscula(this)></td>
+					<td>			<br>EQUIPO<br>		<input name=B22b type=texto maxlength=15 pattern=.{1,} onkeyup=mayuscula(this)></td>
+					<td>			<br>MARCA<br>			<input name=B22d type=texto maxlength=15 pattern=.{1,} onkeyup=mayuscula(this)></td>
 					<td>FECHA<br>CALIBRACIÓN<br><input name=B22f type=date value='<?=$fechacero;?>' max='<?=$fechaactual;?>'></td>
-					<td>BUMP<br>TEST<br>				<input name=B22h type=checkbox></td>
+					<td> BUMP<br>TEST<br>				<input name=B22h type=checkbox></td>
 				</tr>
 				<tr height=30><td></td></tr>
 			</table>

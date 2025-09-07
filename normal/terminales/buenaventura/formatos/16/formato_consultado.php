@@ -59,7 +59,7 @@ while ($row = $resultado->fetch_assoc()){extract($row);}
 
 	<div style="position:absolute; left: 0.00cm; top:0.70cm; color:rgba(0,0,190,1); width:100%"><span style="font-size:10px; font-family:Arial"><b>TERMINAL <?echo strtoupper($terminal);?></b></span></div>
 	<div style="position:absolute; left:18.00cm; top:0.60cm; color:rgba(0,0,0,1)"><span style="font-family:Arlrdbd; font-size:7px"><?echo $estado;?></span></div>
-	<div style="position:absolute; left:18.00cm; top:0.78cm; color:rgba(0,0,0,1)"><span style="font-family:Arlrdbd; font-size:7px"><?echo $usuario;?>@primax.com.co</span></div>
+	<div style="position:absolute; left:18.00cm; top:0.78cm; color:rgba(0,0,0,1)"><span style="font-family:Arlrdbd; font-size:7px"><?echo $usuario;?></span></div>
 
 <!-- ************************ 7.45 *****************			 sección A			 ***************************************** -->
 	<div style="position:absolute; left: 3.05cm; top: 2.23cm"><?echo $fechaA;?></div>

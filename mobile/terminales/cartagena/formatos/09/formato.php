@@ -10,33 +10,33 @@
 </style>
 </head>
 <script>
-	function mayuscula(e) {e.value = e.value.toUpperCase();}
-	function closed() {window.open('','_parent',''); window.close();}
-	function cerrarVentana() {window.close();}
+function mayuscula(e) {e.value = e.value.toUpperCase();}
+function closed() {window.open('','_parent',''); window.close();}
+function cerrarVentana() {window.close();}
 </script>
 <body style="font-family:Arial; color:rgba(0,0,0,1); text-align:center">
 <?
-	include ("../../../../../common/datos.php");
-	include ("../../../../../common/checkbox_num_text.php");
-	include ("../../conectar_db.php");
-	include ("../../../../../common/conectar_db_usuarios.php");
-	include ("../../../../../normal/usuarios.php");
-	include ("../../../../../normal/terminales/".$terminal."/formatos/".basename(dirname(__FILE__))."/consecutivos".basename(dirname(__FILE__)).".php");
-	$formato = basename(dirname(__FILE__));
-	$formulario = "formulario".$formato;
-	$cons = "SELECT MAX(consecutivo) as consecutivo FROM formulario".$formato." LIMIT 1";
+include ("../../../../../common/datos.php");
+include ("../../../../../common/checkbox_num_text.php");
+include ("../../conectar_db.php");
+include ("../../../../../common/conectar_db_usuarios.php");
+include ("../../../../../normal/usuarios.php");
+include ("../../../../../normal/terminales/".$terminal."/formatos/".basename(dirname(__FILE__))."/consecutivos".basename(dirname(__FILE__)).".php");
+$formato = basename(dirname(__FILE__));
+$formulario = "formulario".$formato;
+$cons = "SELECT MAX(consecutivo) as consecutivo FROM formulario".$formato." LIMIT 1";
 
-	//se conecta a la base de datos y se verifica el consecutivo inicial (o el siguiente libre)
-	$consult = $conexion->query('SELECT MAX(consecutivo) as consecutivo FROM formulario'.basename(dirname(__FILE__)).' LIMIT 1');
-	$consulta = $consult->fetch_array(MYSQLI_ASSOC);
-	$consec = (empty($consulta['consecutivo']) ? $primerconsecutivo : $consulta['consecutivo']+=1);
-	$conexion->close();
+//se conecta a la base de datos y se verifica el consecutivo inicial (o el siguiente libre)
+$consult = $conexion->query('SELECT MAX(consecutivo) as consecutivo FROM formulario'.basename(dirname(__FILE__)).' LIMIT 1');
+$consulta = $consult->fetch_array(MYSQLI_ASSOC);
+$consec = (empty($consulta['consecutivo']) ? $primerconsecutivo : $consulta['consecutivo']+=1);
+$conexion->close();
 
-	// se valida que no se sobrepase el número de libretas compradas
-	$ultimo_consec = $primerconsecutivo + $formatosporlibreta * $libretas - 1;
-	$consec_por_usar = $ultimo_consec - $consec + 1;
-	$aviso_pedido = "<div class=aviso><br><br><b>".$$formulario.$aviso.$contacto."</b><br><br><br><br><br><br><br><br><br><br></div>";
-	if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); document.body.innerHTML = '$aviso_pedido';</script>";}
+// se valida que no se sobrepase el número de libretas compradas
+$ultimo_consec = $primerconsecutivo + $formatosporlibreta * $libretas - 1;
+$consec_por_usar = $ultimo_consec - $consec + 1;
+$aviso_pedido = "<div class=aviso><br><br><b>".$$formulario.$aviso.$contacto."</b><br><br><br><br><br><br><br><br><br><br></div>";
+if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); document.body.innerHTML = '$aviso_pedido';</script>";}
 ?>
 <!-- *****************************************			 INICIO DEL FORMULARIO			 ***************************************** (816px = 215,9 mm) -->
 <!-- 1 --> <div class=noimprimir>
@@ -47,7 +47,7 @@
 	<img src=../../../../../common/imagenes/whatsapp.png style=pointer-events:auto width=70 height=auto></a>
 <!-- /2 --> </div>
 <form id=formato name=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
-<!-- 3 --> 	<div style="position:absolute; left:50vw; margin-left:-50vw; top:0vw; width:100vw">
+<!-- 3 --> 	<div style="position:absolute; left:50vw; margin-left:-50vw; top:0vw; width:100vw; height:4050px; overflow:hidden">
 		<table border=0 style="color:black; background-color:white">
 			<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
 			<tr height=100>
@@ -80,8 +80,6 @@
 			<tr><td>DESCRIPCIÓN DEL TRABAJO<br><textarea name=descripcion maxlength=70 style=width:99% onkeyup=mayuscula(this) pattern=.{1,} required autofocus></textarea></td></tr>
 			<tr height=30><td></td></tr>
 			<tr><td>UBICACIÓN Y DESCRIPCIÓN DE LA EXCAVACIÓN<br><textarea name=ubicacion1 maxlength=200 style=width:99% onkeyup=mayuscula(this) pattern=.{1,} required></textarea></td></tr>
-			<tr><td><textarea name=ubicacion2 style=display:none></textarea></td></tr>
-			<tr><td><textarea name=ubicacion3 style=display:none></textarea></td></tr>
 			<tr height=30><td></td></tr>
 		</table>
 		<table border=0>
@@ -136,7 +134,7 @@
 		<table border=0>
 			<tr><td width=33%></td><td width=34%></td><td width=33%></td></tr>
 			<tr>
-				<td class=A><br>PROFUNDIDAD<br>						 <input name=profundidad maxlength=4 style="width:60%; text-align:center" inputmode=numeric title="#.##"pattern=^([0-9]{1,1}(\.[0-9]{1,2})?)$ required></td>
+				<td class=A><br>PROFUNDIDAD<br>						 <input name=profundidad maxlength=4 style=width:60% inputmode=numeric title=#.## pattern=^([0-9]{1,1}(\.[0-9]{1,2})?)$ required></td>
 				<td class=A>CERTIFICADO<br>HABILITACIÓN<br><input name=certhabilit class=consecutivo maxlength=6 style=width:60% inputmode=numeric pattern=^(?:[0-9]{4,6})$ required></td>
 				<td class=A><br>FECHA<br>									 <input name=fechaA			 type=date value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
 			</tr>
@@ -154,9 +152,9 @@
  	</div>
  	<div style="position:absolute; width:46.25%; left:53%; background-color:white; overflow:scroll">
 		<table border=1 bordercolor=#ff7000>
-			<tr height=80px><? for ($c = 2; $c <= 8; $c++): ?><td style=width:195px class=A2>DÍA<br><?=$c?></td><? endfor; ?></tr>
-			<tr height=80px><? for ($c = 2; $c <= 8; $c++): ?><td><input name=B<?=$c?>	 style=width:75% maxlength=6 pattern=^(?:[0-9]{4,6})$ class=consecutivo inputmode=numeric <?= $c == 2 ? 'required' : '' ?>></td><? endfor; ?></tr>
-			<tr height=80px><? for ($c = 2; $c <= 8; $c++): ?><td><input name=B<?=$c+7?> style=width:92% maxlength=6 pattern=.{1,} type=texto onkeyup=mayuscula(this) <?= $c == 2 ? 'required' : '' ?>></td><? endfor; ?></tr>
+			<tr height=80px><? for ($c = 2; $c <= 8; $c++) { ?><td style=width:195px class=A2>DÍA<br><?=$c?></td><? } ?></tr>
+			<tr height=80px><? for ($c = 2; $c <= 8; $c++) { ?><td><input name=B<?=$c?>		style=width:75% maxlength=6 pattern=^(?:[0-9]{4,6})$ class=consecutivo inputmode=numeric <?= $c == 2 ? 'required' : '' ?>></td><? } ?></tr>
+			<tr height=80px><? for ($c = 2; $c <= 8; $c++) { ?><td><input name=B<?=$c+7?>	style=width:92% maxlength=6 pattern=.{1,} type=texto onkeyup=mayuscula(this) <?= $c == 2 ? 'required' : '' ?>></td><? } ?></tr>
 		</table>
  	</div>
 
@@ -184,173 +182,161 @@
 					</tr>";
 				}
 				?>
+				<tr height=110px style=background-color:lightgreen><td colspan=5 class=B style=text-align:center>Si la respuesta a alguna de las preguntas 1 a 5 es <b>NO</b>,<br>se rechaza esta autorización.</td></tr>
+				<tr class=C>
+					<td><input type=radio name=C6 id=C6 value=SI onclick=gestionarClickRadio(this) required></td>
+					<td><input type=radio name=C6 id=c6 value=NO onclick=gestionarClickRadio(this)></td>
+					<td><input type=radio name=C6 id=k6 value=NA onclick=gestionarClickRadio(this)></td>
+					<td class=Bnumero>6.&nbsp;</td><td class=Bpregunta>La excavación estará a menos de 3 metros de tuberías o cables?</td>
+				</tr>
+				<tr class=C>
+					<td><input type=radio name=C7 id=C7 value=SI onclick=gestionarClickRadio(this) required></td>
+					<td><input type=radio name=C7 id=c7 value=NO onclick=gestionarClickRadio(this)></td>
+					<td><input type=radio name=C7 id=k7 value=NA onclick=gestionarClickRadio(this)></td>
+					<td class=Bnumero>7.&nbsp;</td><td class=Bpregunta>Se requiere desacople de equipos?<br># Permiso:&nbsp;<input name=C7a class=consecutivo maxlength=6 style=width:20% inputmode=numeric pattern=^(?:[0-9]{4,6})$></td>
+				</tr>
+				<tr class=C>
+					<td><input type=radio name=C8 id=C8 value=SI onclick=gestionarClickRadio(this) required></td>
+					<td><input type=radio name=C8 id=c8 value=NO onclick=gestionarClickRadio(this)></td>
+					<td><input type=radio name=C8 id=k8 value=NA onclick=gestionarClickRadio(this)></td>
+					<td class=Bnumero>8.&nbsp;</td><td class=Bpregunta>Se requiere aislamiento eléctrico?<br># Certificado:&nbsp;<input name=C8a	class=consecutivo maxlength=6 style=width:20% inputmode=numeric pattern=^(?:[0-9]{4,6})$></td>
+				</tr>
+				<tr class=C>
+					<td><input type=radio name=C9 id=C9 value=SI onclick=gestionarClickRadio(this) required></td>
+					<td><input type=radio name=C9 id=c9 value=NO onclick=gestionarClickRadio(this)></td>
+					<td><input type=radio name=C9 id=k9 value=NA onclick=gestionarClickRadio(this)></td>
+					<td class=Bnumero>9.&nbsp;</td><td class=Bpregunta>Es posible que se acumulen combustibles o vapores entre la excavación?</td>
+				</tr>
+				<tr class=C>
+					<td><input type=radio name=C10 id=C10 value=SI onclick=gestionarClickRadio(this) required></td>
+					<td><input type=radio name=C10 id=c10 value=NO onclick=gestionarClickRadio(this)></td>
+					<td><input type=radio name=C10 id=k10 value=NA onclick=gestionarClickRadio(this)></td>
+					<td class=Bnumero>10.&nbsp;</td><td class=Bpregunta>Se requiere apuntalamiento?</td>
+				</tr>
+				<tr class=C>
+					<td><input type=radio name=C11 id=C11 value=SI onclick=gestionarClickRadio(this) required></td>
+					<td><input type=radio name=C11 id=c11 value=NO onclick=gestionarClickRadio(this)></td>
+					<td><input type=radio name=C11 id=k11 value=NA onclick=gestionarClickRadio(this)></td>
+					<td class=Bnumero>11.&nbsp;</td><td class=Bpregunta>Afectará la excavación algún camino de acceso?<br>Indique:&nbsp;<input name=C11a maxlength=30 style=width:80% type=texto pattern=.{1,} onkeyup=mayuscula(this)></td>
+				</tr>
+				<tr height=150px style=background-color:lightgreen><td colspan=5 class=B style=text-align:center>Si la respuesta a alguna de las preguntas 6 a 11 es <b>SI</b>,<br>se deberá detallar en la sección C las correspondientes precauciones de seguridad.</td></tr>
+	 		<tr height=20><td></td></tr>
+			</table>
+			<table border=0><tr><td>REQUISITOS ADICIONALES DE SEGURIDAD<br><textarea name=requisitos1 maxlength=330 style=width:99% onkeyup=mayuscula(this) pattern=.{1,}></textarea></td></tr></table>
 
-			<tr height=110px style=background-color:lightgreen>
-				<td colspan=5 class=B style=text-align:center>Si la respuesta a alguna de las preguntas 1 a 5 es <b>NO</b>,<br>se rechaza esta autorización.</td>
-			</tr>
-			<tr class=C>
-				<td><input type=radio name=C6 id=C6 value=SI onclick=gestionarClickRadio(this) required></td>
-				<td><input type=radio name=C6 id=c6 value=NO onclick=gestionarClickRadio(this)></td>
-				<td><input type=radio name=C6 id=k6 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=Bnumero>6.&nbsp;</td><td class=Bpregunta>La excavación estará a menos de 3 metros de tuberías o cables?</td>
-			</tr>
-			<tr class=C>
-				<td><input type=radio name=C7 id=C7 value=SI onclick=gestionarClickRadio(this) required></td>
-				<td><input type=radio name=C7 id=c7 value=NO onclick=gestionarClickRadio(this)></td>
-				<td><input type=radio name=C7 id=k7 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=Bnumero>7.&nbsp;</td><td class=Bpregunta>Se requiere desacople de equipos?<br># Permiso:&nbsp;<input name=C7a class=consecutivo maxlength=6 style=width:20% inputmode=numeric pattern=^(?:[0-9]{4,6})$></td>
-			</tr>
-			<tr class=C>
-				<td><input type=radio name=C8 id=C8 value=SI onclick=gestionarClickRadio(this) required></td>
-				<td><input type=radio name=C8 id=c8 value=NO onclick=gestionarClickRadio(this)></td>
-				<td><input type=radio name=C8 id=k8 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=Bnumero>8.&nbsp;</td><td class=Bpregunta>Se requiere aislamiento eléctrico?<br># Certificado:&nbsp;<input name=C8a	class=consecutivo maxlength=6 style=width:20% inputmode=numeric pattern=^(?:[0-9]{4,6})$></td>
-			</tr>
-			<tr class=C>
-				<td><input type=radio name=C9 id=C9 value=SI onclick=gestionarClickRadio(this) required></td>
-				<td><input type=radio name=C9 id=c9 value=NO onclick=gestionarClickRadio(this)></td>
-				<td><input type=radio name=C9 id=k9 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=Bnumero>9.&nbsp;</td><td class=Bpregunta>Es posible que se acumulen combustibles o vapores entre la excavación?</td>
-			</tr>
-			<tr class=C>
-				<td><input type=radio name=C10 id=C10 value=SI onclick=gestionarClickRadio(this) required></td>
-				<td><input type=radio name=C10 id=c10 value=NO onclick=gestionarClickRadio(this)></td>
-				<td><input type=radio name=C10 id=k10 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=Bnumero>10.&nbsp;</td><td class=Bpregunta>Se requiere apuntalamiento?</td>
-			</tr>
-			<tr class=C>
-				<td><input type=radio name=C11 id=C11 value=SI onclick=gestionarClickRadio(this) required></td>
-				<td><input type=radio name=C11 id=c11 value=NO onclick=gestionarClickRadio(this)></td>
-				<td><input type=radio name=C11 id=k11 value=NA onclick=gestionarClickRadio(this)></td>
-				<td class=Bnumero>11.&nbsp;</td><td class=Bpregunta>Afectará la excavación algún camino de acceso?<br>Indique:&nbsp;<input name=C11a maxlength=30 style=width:80% type=texto pattern=.{1,} onkeyup=mayuscula(this)></td>
-			</tr>
-			<tr height=150px style=background-color:lightgreen>
-				<td colspan=5 class=B style=text-align:center>Si la respuesta a alguna de las preguntas 6 a 11 es <b>SI</b>,<br>se deberá detallar en la sección C las correspondientes precauciones de seguridad.</td>
-			</tr>
- 		<tr height=20><td></td></tr>
-		</table>
-		<table border=0>
-			<tr><td>REQUISITOS ADICIONALES DE SEGURIDAD<br><textarea name=requisitos1 maxlength=330 style=width:99% onkeyup=mayuscula(this) pattern=.{1,}></textarea></td></tr>
-			<tr><td><textarea name=requisitos2 style=display:none></textarea></td></tr>
-			<tr><td><textarea name=requisitos3 style=display:none></textarea></td></tr>
-			<tr><td><textarea name=requisitos4 style=display:none></textarea></td></tr>
-		</table>
+<!-- *****************************************			 sección D			 ***************************************** -->
+			<hr>
+			<table border=0>
+				<tr><td width= 5.00vw></td><td width=61.50vw></td><td width=18.00vw></td><td width=15.50vw></td></tr>
+				<tr><td colspan=4 class=B><b>&nbsp;&nbsp;D. ACEPTACIÓN</b></td></tr>
+				<tr>
+					<td class=Bct>&nbsp;&nbsp;&#9679;&nbsp;</td>
+					<td class=B colspan=3>He leído este permiso.&nbsp;&nbsp;Entiendo su naturaleza y alcance y confirmo que se tomarán las precauciones necesarias para efectuar el trabajo con seguridad.</td>
+				</tr>
+				<tr height=30><td></td></tr>
+			</table>
+			<table border=0>
+				<tr><td width=50%></td><td width=50%></td><td width=0%></td><td width=0%></td></tr>
+				<tr>
+					<td><input name=ejecutorD				type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+					<td><input name=nombreejecutorD	type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+					<td><input name=fechaejecD			type=date  value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?>	class=mostrarfecha readonly></td>
+					<td><input name=horaejecD				type=time	 value='<?=$hora;?>' min=<?=$horamin;?>	style=display:none></td>
+				</tr>
+				<tr><td>EJECUTOR</td><td>NOMBRE</td><td></td><td></td></tr>
+				<tr height=40><td></td></tr>
+				<tr>
+					<td><input name=inspectorD  		type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+					<td><input name=nombreinspD 		type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+					<td><input name=fechainspD			type=date  value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?>	class=mostrarfecha readonly></td>
+					<td><input name=horainspD				type=time	 value='<?=$hora;?>' min=<?=$horamin;?>	style=display:none></td>
+				</tr>
+				<tr><td>INSPECTOR</td><td>NOMBRE</td><td></td><td></td></tr>
+			</table>
+			<hr>
 
-		<!-- *****************************************			 sección D			 ***************************************** -->
-		<hr>
-		<table border=0>
-			<tr><td width= 5.00vw></td><td width=61.50vw></td><td width=18.00vw></td><td width=15.50vw></td></tr>
-			<tr><td colspan=4 class=B><b>&nbsp;&nbsp;D. ACEPTACIÓN</b></td></tr>
-			<tr>
-				<td class=Bct>&nbsp;&nbsp;&#9679;&nbsp;</td>
-				<td class=B colspan=3>He leído este permiso.&nbsp;&nbsp;Entiendo su naturaleza y alcance y confirmo que se tomarán las precauciones necesarias para efectuar el trabajo con seguridad.</td>
-			</tr>
-			<tr height=30><td></td></tr>
-		</table>
-		<table border=0>
-			<tr><td width=50%></td><td width=50%></td><td width=0%></td><td width=0%></td></tr>
-			<tr>
-				<td><input name=ejecutorD				type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td><input name=nombreejecutorD	type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td><input name=fechaejecD			type=date  value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?>	style=display:none class=mostrarfecha readonly></td>
-				<td><input name=horaejecD				type=time	 value='<?=$hora;?>' min=<?=$horamin;?>	style=display:none></td>
-			</tr>
-			<tr><td>EJECUTOR</td><td>NOMBRE</td><td></td><td></td></tr>
-			<tr height=40><td></td></tr>
-			<tr>
-				<td><input name=inspectorD  type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td><input name=nombreinspD type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td><input name=fechainspD	type=date  value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?>	style=display:none class=mostrarfecha readonly></td>
-				<td><input name=horainspD		type=time	 value='<?=$hora;?>' min=<?=$horamin;?>	style=display:none></td>
-			</tr>
-			<tr><td>INSPECTOR</td><td>NOMBRE</td><td></td><td></td></tr>
-		</table>
-		<hr>
+<!-- *****************************************			 sección E			 ***************************************** -->
+			<table border=0>
+				<tr><td width= 5.00vw></td><td width=27.65vw></td><td width=33.85vw></td><td width=18.00vw></td><td width=15.50vw></td></tr>
+				<tr><td colspan=4 class=B><b>&nbsp;&nbsp;E. AUTORIZACIÓN</b></td></tr>
+				<tr>
+					<td class=Bct>&nbsp;&nbsp;&#9679;&nbsp;</td>
+					<td class=B colspan=4>He verificado el lugar de trabajo y estoy satisfecho con las condiciones de seguridad.  Por lo tanto, <b>AUTORIZO</b> efectuar la excavación.</td>
+				</tr>
+				<tr height=30><td></td></tr>
+			</table>
+			<table border=0>
+				<tr><td width=50%></td><td width=50%></td><td width=0%></td><td width=0%></td></tr>
+				<tr>
+					<td><input name=emisorE					type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+					<td><input name=nombreemisorE		type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+					<td><input name=fechaemisorE		type=date  value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?>	class=mostrarfecha readonly></td>
+					<td><input name=horaemisorE			type=time	 value='<?=$hora;?>' min=<?=$horamin;?>	style=display:none></td>
+				</tr>
+				<tr>
+					<td>EMISOR</td><td>NOMBRE</td><td></td><td></td>
+				</tr>
+			</table>
+			<hr>
 
-		<!-- *****************************************			 sección E			 ***************************************** -->
-		<table border=0>
-			<tr><td width= 5.00vw></td><td width=27.65vw></td><td width=33.85vw></td><td width=18.00vw></td><td width=15.50vw></td></tr>
-			<tr><td colspan=4 class=B><b>&nbsp;&nbsp;E. AUTORIZACIÓN</b></td></tr>
-			<tr>
-				<td class=Bct>&nbsp;&nbsp;&#9679;&nbsp;</td>
-				<td class=B colspan=4>He verificado el lugar de trabajo y estoy satisfecho con las condiciones de seguridad.  Por lo tanto, <b>AUTORIZO</b> efectuar la excavación.</td>
-			</tr>
-			<tr height=30><td></td></tr>
-		</table>
-		<table border=0>
-			<tr><td width=50%></td><td width=50%></td><td width=0%></td><td width=0%></td></tr>
-			<tr>
-				<td><input name=emisorE				type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td><input name=nombreemisorE	type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td><input name=fechaemisorE	type=date  value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?>	style=display:none class=mostrarfecha readonly></td>
-				<td><input name=horaemisorE		type=time	 value='<?=$hora;?>' min=<?=$horamin;?>	style=display:none></td>
-			</tr>
-			<tr>
-				<td>EMISOR</td><td>NOMBRE</td><td></td><td></td>
-			</tr>
-		</table>
-		<hr>
-
-		<!-- *****************************************			 sección F			 ***************************************** -->
-		<table border=0>
-			<tr><td width= 5.00vw></td><td width=61.50vw></td><td width=18.00vw></td><td width=15.50vw></td></tr>
-			<tr><td colspan=4 class=B><b>&nbsp;&nbsp;F. CANCELACIÓN</b></td></tr>
-			<tr>
-				<td class=Bct>&nbsp;&nbsp;&#9679;&nbsp;</td>
-				<td class=B colspan=3>Cuando se diligencia esta sección, la autorización NO puede ser revalidada.</td>
-			</tr>
-			<tr>
-				<td class=Bct>&nbsp;&nbsp;&#9679;&nbsp;</td>
-				<td class=B colspan=3>Certifico que la excavación amparada por esta autorización ha sido rellenada y el área ha quedado en condiciones de seguridad.</td>
-			</tr>
-		</table>
-		<table border=0>
-			<tr>
-				<td width=60vw></td><td width=21vw></td><td width=19vw></td>
-			</tr>
-			<tr><td colspan=3>NOTAS&nbsp;<input name=notas_cancelacion maxlength=85 type=texto pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
-			<tr height=30><td></td></tr>
-			<tr>
-				<td><input name=ejecutorF		type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td><input name=fechaejecF	type=date  value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
-				<td><input name=horaejecF		type=time  value='<?=$hora;?>' min=<?=$horamin;?> required></td>
-			</tr>
-			<tr><td>EJECUTOR</td><td>FECHA</td><td>HORA</td></tr>
-			<tr height=30><td></td></tr>
-			<tr>
-				<td><input name=inspectorF	type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td><input name=fechainspF	type=date  value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
-				<td><input name=horainspF		type=time  value='<?=$hora;?>' min=<?=$horamin;?> required></td>
-			</tr>
-			<tr><td>INSPECTOR</td><td>FECHA</td><td>HORA</td></tr>
-			<tr height=30><td></td></tr>
-			<tr><td colspan=3><span>ESTA AUTORIZACIÓN ES AHORA RETIRADA Y CANCELADA</td></tr>
-			<tr>
-				<td><input name=emisorF				type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td><input name=fechaemisorF	type=date  value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
-				<td><input name=horaemisorF		type=time  value='<?=$hora;?>' min=<?=$horamin;?> required></td>
-			</tr>
-			<tr><td>EMISOR</td><td>FECHA</td><td>HORA</td></tr>
-			<tr height=30><td></td></tr>
-		</table>
-		<hr>
-		<table>
-			<tr height=10><td></td></tr>
-			<tr style="background-color:rgba(0,240,0,0); height:15%">
-				<td>
-					<form method=post>
+<!-- *****************************************			 sección F			 ***************************************** -->
+			<table border=0>
+				<tr><td width= 5.00vw></td><td width=61.50vw></td><td width=18.00vw></td><td width=15.50vw></td></tr>
+				<tr><td colspan=4 class=B><b>&nbsp;&nbsp;F. CANCELACIÓN</b></td></tr>
+				<tr>
+					<td class=Bct>&nbsp;&nbsp;&#9679;&nbsp;</td>
+					<td class=B colspan=3>Cuando se diligencia esta sección, la autorización NO puede ser revalidada.</td>
+				</tr>
+				<tr>
+					<td class=Bct>&nbsp;&nbsp;&#9679;&nbsp;</td>
+					<td class=B colspan=3>Certifico que la excavación amparada por esta autorización ha sido rellenada y el área ha quedado en condiciones de seguridad.</td>
+				</tr>
+			</table>
+			<table border=0>
+				<tr>
+					<td width=60vw></td><td width=21vw></td><td width=19vw></td>
+				</tr>
+				<tr><td colspan=3>NOTAS&nbsp;<input name=notas_cancelacion maxlength=85 type=texto pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
+				<tr height=30><td></td></tr>
+				<tr>
+					<td><input name=ejecutorF			type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+					<td><input name=fechaejecF		type=date  value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
+					<td><input name=horaejecF			type=time  value='<?=$hora;?>' min=<?=$horamin;?> required></td>
+				</tr>
+				<tr><td>EJECUTOR</td><td>FECHA</td><td>HORA</td></tr>
+				<tr height=30><td></td></tr>
+				<tr>
+					<td><input name=inspectorF		type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+					<td><input name=fechainspF		type=date  value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
+					<td><input name=horainspF			type=time  value='<?=$hora;?>' min=<?=$horamin;?> required></td>
+				</tr>
+				<tr><td>INSPECTOR</td><td>FECHA</td><td>HORA</td></tr>
+				<tr height=30><td></td></tr>
+				<tr><td colspan=3><span>ESTA AUTORIZACIÓN ES AHORA RETIRADA Y CANCELADA</td></tr>
+				<tr>
+					<td><input name=emisorF				type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+					<td><input name=fechaemisorF	type=date  value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
+					<td><input name=horaemisorF		type=time  value='<?=$hora;?>' min=<?=$horamin;?> required></td>
+				</tr>
+				<tr><td>EMISOR</td><td>FECHA</td><td>HORA</td></tr>
+				<tr height=30><td></td></tr>
+			</table>
+			<hr>
+			<table>
+				<tr height=10><td></td></tr>
+				<tr style="background-color:rgba(0,240,0,0); height:15%">
+					<td>
 						<select name=usuario id=usuario type=texto style=width:67% required>
 							<option value='' disabled selected>RESPONSABLE DEL FORMATO</option>
-							<? for ($i = 0; $i < $numero_usuarios && $i < 10; $i++): ?>
-								<option value="<?=$usuario[$i] ?>"><?=$usuario[$i] ?></option>
-							<? endfor; ?>
+							<? for ($i = 0; $i < $numero_usuarios && $i < 10; $i++) { ?>
+							<option value="<?=$usuario[$i] ?>"><?=$usuario[$i] ?></option>
+							<? } ?>
 						</select>
-					</form>
-				</td>
-			</tr>
-			<tr height=10><td></td></tr>
-		</table>
-		<hr>
+					</td>
+				</tr>
+				<tr height=10><td></td></tr>
+			</table>
+			<hr>
 		
 		<!-- *****************************************			 FIN DEL FORMULARIO			 ***************************************** -->
 		<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Fecha diligenciamiento: <?=$fechaactual;?> / <?=$horaactual;?></span>

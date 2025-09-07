@@ -7,58 +7,58 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <title>Diligenciar Consecutivo</title>
 <style>
-	td.Z			{font-size:24px; background-color:rgba(200,200,200,0.6)}
-	td.A1			{font-size:30px}
-	td.C			{font-size:23px; text-align:left}
-	td.Cn			{font-size:28px; text-align:center}
-	td.Cp			{font-size:30px; text-align:left; padding:0 10}
-	td.Cd			{font-size:23px; text-align:center; font-weight:bold}
-	td.Zd			{font-size:23px; text-align:center; font-weight:bold; background-color:rgba(200,200,200,0.6)}
-	tr.C			{height: 60px}
-	tr.Cn			{height:180px}
-	tr.Cn0		{height:111px}
-	tr.Cn1		{height: 44px}
-	tr.Cn2		{height: 72px}
-	tr.Cn3		{height:108px}
-	tr.Cn4		{height:144px}
-	tr.Cn5		{height:180px}
+td.Z			{font-size:24px; background-color:rgba(200,200,200,0.6)}
+td.A1			{font-size:30px}
+td.C			{font-size:23px; text-align:left}
+td.Cn			{font-size:28px; text-align:center}
+td.Cp			{font-size:30px; text-align:left; padding:0 10}
+td.Cd			{font-size:23px; text-align:center; font-weight:bold}
+td.Zd			{font-size:23px; text-align:center; font-weight:bold; background-color:rgba(200,200,200,0.6)}
+tr.C			{height: 60px}
+tr.Cn			{height:180px}
+tr.Cn0		{height:111px}
+tr.Cn1		{height: 44px}
+tr.Cn2		{height: 72px}
+tr.Cn3		{height:108px}
+tr.Cn4		{height:144px}
+tr.Cn5		{height:180px}
 	
-	#dia1			{background-color:rgba(255,112,  0,0.15)}
-	#dia2			{background-color:rgba(255,255,255,1.00)}
-	#dia3			{background-color:rgba(255,112,  0,0.15)}
-	#dia4			{background-color:rgba(255,255,255,1.00)}
-	#dia5			{background-color:rgba(255,112,  0,0.15)}
-	#dia6			{background-color:rgba(255,255,255,1.00)}
+#dia1			{background-color:rgba(255,112,  0,0.15)}
+#dia2			{background-color:rgba(255,255,255,1.00)}
+#dia3			{background-color:rgba(255,112,  0,0.15)}
+#dia4			{background-color:rgba(255,255,255,1.00)}
+#dia5			{background-color:rgba(255,112,  0,0.15)}
+#dia6			{background-color:rgba(255,255,255,1.00)}
 </style>
 </head>
 <script type="text/javascript">
-	function mayuscula(e) {e.value = e.value.toUpperCase();}
-	function closed() {window.open('','_parent',''); window.close();}
-	function cerrarVentana() {window.close();}
+function mayuscula(e) {e.value = e.value.toUpperCase();}
+function closed() {window.open('','_parent',''); window.close();}
+function cerrarVentana() {window.close();}
 </script>
 <body style="font-family:Arial; color:rgba(0,0,0,1); text-align:center">
 <?
-	include ("../../../../../common/datos.php");
-	include ("../../../../../common/checkbox_num_text.php");
-	include ("../../conectar_db.php");
-	include ("../../../../../common/conectar_db_usuarios.php");
-	include ("../../../../../normal/usuarios.php");
-	include ("../../../../../normal/terminales/".$terminal."/formatos/".basename(dirname(__FILE__))."/consecutivos".basename(dirname(__FILE__)).".php");
-	$formato = basename(dirname(__FILE__));
-	$formulario = "formulario".$formato;
-	$cons = "SELECT MAX(consecutivo) as consecutivo FROM formulario".$formato." LIMIT 1";
+include ("../../../../../common/datos.php");
+include ("../../../../../common/checkbox_num_text.php");
+include ("../../conectar_db.php");
+include ("../../../../../common/conectar_db_usuarios.php");
+include ("../../../../../normal/usuarios.php");
+include ("../../../../../normal/terminales/".$terminal."/formatos/".basename(dirname(__FILE__))."/consecutivos".basename(dirname(__FILE__)).".php");
+$formato = basename(dirname(__FILE__));
+$formulario = "formulario".$formato;
+$cons = "SELECT MAX(consecutivo) as consecutivo FROM formulario".$formato." LIMIT 1";
 
-	//se conecta a la base de datos y se verifica el consecutivo inicial (o el siguiente libre)
-	$consult = $conexion->query('SELECT MAX(consecutivo) as consecutivo FROM formulario'.basename(dirname(__FILE__)).' LIMIT 1');
-	$consulta = $consult->fetch_array(MYSQLI_ASSOC);
-	$consec = (empty($consulta['consecutivo']) ? $primerconsecutivo : $consulta['consecutivo']+=1);
-	$conexion->close();
+//se conecta a la base de datos y se verifica el consecutivo inicial (o el siguiente libre)
+$consult = $conexion->query('SELECT MAX(consecutivo) as consecutivo FROM formulario'.basename(dirname(__FILE__)).' LIMIT 1');
+$consulta = $consult->fetch_array(MYSQLI_ASSOC);
+$consec = (empty($consulta['consecutivo']) ? $primerconsecutivo : $consulta['consecutivo']+=1);
+$conexion->close();
 
-	// se valida que no se sobrepase el número de libretas compradas
-	$ultimo_consec = $primerconsecutivo + $formatosporlibreta * $libretas - 1;
-	$consec_por_usar = $ultimo_consec - $consec + 1;
-	$aviso_pedido = "<div class=aviso><br><br><b>".$$formulario.$aviso.$contacto."</b><br><br><br><br><br><br><br><br><br><br></div>";
-	if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); document.body.innerHTML = '$aviso_pedido';</script>";}
+// se valida que no se sobrepase el número de libretas compradas
+$ultimo_consec = $primerconsecutivo + $formatosporlibreta * $libretas - 1;
+$consec_por_usar = $ultimo_consec - $consec + 1;
+$aviso_pedido = "<div class=aviso><br><br><b>".$$formulario.$aviso.$contacto."</b><br><br><br><br><br><br><br><br><br><br></div>";
+if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); document.body.innerHTML = '$aviso_pedido';</script>";}
 ?>
 <!-- *****************************************			 INICIO DEL FORMULARIO			 ***************************************** (816px = 215,9 mm) -->
 <!-- 1 --> <div class=noimprimir>
@@ -192,33 +192,33 @@
 			<div style="position:absolute; width:61%; left:39%; top:430px; overflow:scroll">
 				<table border=1px id='<?=$dia?>'>
 					<tr style=height:80px>
-						<? for ($i = 1; $i <= 10; $i++): ?>
+						<? for ($i = 1; $i <= 10; $i++) { ?>
 						<td style=width:185 class=A1>Hora<br><?=$i?></td><td style=width:185 class=A1>Resultado<br><?=$i?></td>
-						<? endfor?>
+						<? } ?>
 					</tr>
 					<tr style=height:80px>
-						<? for ($i = 1; $i <= 10; $i++): ?>
+						<? for ($i = 1; $i <= 10; $i++) { ?>
 						<td><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_1 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
-						<? endfor?>
+						<? } ?>
 					</tr>
 					<tr style=height:80px>
-						<? for ($i = 1; $i <= 10; $i++): ?>
+						<? for ($i = 1; $i <= 10; $i++) { ?>
 						<td><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_2 value='' id=numero	maxlength=4 placeholder='##.#' pattern=^([0-9]{1,2}(\.[0-9]{1,1})?)$ inputmode=numeric <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
-						<? endfor?>
+						<? } ?>
 					</tr>
 					<tr style=height:80px>
-						<? for ($i = 1; $i <= 10; $i++): ?>
+						<? for ($i = 1; $i <= 10; $i++) { ?>
 						<td><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_3 value='' id=numero	maxlength=4 placeholder='#.##' pattern=^([0-9]{1}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
-						<? endfor?>
+						<? } ?>
 					</tr>
 					<tr style=height:80px>
-						<? for ($i = 1; $i <= 10; $i++): ?>
+						<? for ($i = 1; $i <= 10; $i++) { ?>
 						<td><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_R<?=$i?>_4 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
-						<? endfor?>
+						<? } ?>
 					</tr>
 				</table>
 			</div>
@@ -230,26 +230,26 @@
 			<div style="position:absolute; width:59%; left:0%; top:900px; background-color:white; overflow:scroll">
 				<table border=1 id='<?=$dia?>'>
 					<tr style=height:110px><td class=A1>PERSONAL QUE INGRESA</td></tr>
-					<? for ($i = 1; $i <= 5; $i++): ?>
+					<? for ($i = 1; $i <= 5; $i++) { ?>
 					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre<?=$i?> value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this) <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td></tr>
-					<? endfor?>
+					<? } ?>
 				</table>
 			</div>
 			<div style="position:absolute; width:41%; left:59%; top:900px; background-color:white; overflow:scroll">
 				<table border=1 id='<?=$dia?>'>
 					<tr style=height:110px>
-						<? for ($i = 1; $i <= 5; $i++): ?>
+						<? for ($i = 1; $i <= 5; $i++) { ?>
 						<td style=width:185 class=A1>Hora<br>Entrada<br><?=$i?></td><td style=width:185 class=A1>Hora<br>Salida<br><?=$i?></td>
-						<? endfor?>
+						<? } ?>
 					</tr>
-					<? for ($j = 1; $j <= 5; $j++): ?>
+					<? for ($j = 1; $j <= 5; $j++) { ?>
 					<tr style=height:60px>
-						<? for ($i = 1; $i <= 5; $i++): ?>
+						<? for ($i = 1; $i <= 5; $i++) { ?>
 						<td><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1 && $j == 1) {echo 'required';} else {echo '';} ?>></td>
 						<td><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1 && $j == 1) {echo 'required';} else {echo '';} ?>></td>
-						<? endfor?>
+						<? } ?>
 					</tr>
-					<? endfor?>
+					<? } ?>
 				</table>
 			</div>
 		</div>
@@ -264,7 +264,7 @@
 				<tr><td width=14%></td><td width=22%></td><td width=64%></td></tr>
 				<tr>
 					<td style="text-align:center; font-size:48px" class=A><b>DÍA <?=$num?></b></td>
-					<td><input name=<?=$dia?>_fecha type=date value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>'></td>
+					<td><input name=<?=$dia?>_fecha type=date value='<?=$fechaactual;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
 					<td style=font-size:36px>PRUEBA DE GASES</td>
 				</tr>
 			</table>
@@ -272,23 +272,23 @@
 				<tr><td style=width:41%></td><td style=width:1%></td><td style=width:58%></td></tr>
 				<tr>
 					<td style=text-align:right>EQUIPO</td><td></td>
-					<td style=text-align:left><input style=width:100% name=<?=$dia?>_equipo value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td>
+					<td style=text-align:left><input style=width:100% name=<?=$dia?>_equipo value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this) required></td>
 				</tr>
 				<tr>
 					<td style=text-align:right>MARCA</td><td></td>
-					<td style=text-align:left><input style=width:100% name=<?=$dia?>_marca value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td>
+					<td style=text-align:left><input style=width:100% name=<?=$dia?>_marca value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this) required></td>
 				</tr>
 				<tr>
 					<td style=text-align:right>FECHA CALIBRACIÓN</td><td></td>
-					<td style=text-align:left><input style=width:40% name=<?=$dia?>_fecha_calib type=date value='<?=$fechacero;?>'></td>
+					<td style=text-align:left><input style=width:40% name=<?=$dia?>_fecha_calib type=date value='<?=$fechacero;?>' required></td>
 				</tr>
 				<tr>
 					<td style=text-align:right>PROPIETARIO</td><td></td>
-					<td style=text-align:left><input style=width:100% name=<?=$dia?>_propietario value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td>
+					<td style=text-align:left><input style=width:100% name=<?=$dia?>_propietario value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this) required></td>
 				</tr>
 				<tr>
 					<td style=text-align:right>BUMP TEST REALIZADO POR</td><td></td>
-					<td style=text-align:left><input style=width:100% name=<?=$dia?>_bumptest_por value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this)></td>
+					<td style=text-align:left><input style=width:100% name=<?=$dia?>_bumptest_por value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this) required></td>
 				</tr>
 			</table>
 			<table border=0>
@@ -300,10 +300,10 @@
 					<td>CO</td>
 				</tr>
 				<tr>
-					<td><input name='<?=$dia?>_LEL'	value="" style=width:100% type=text inputmode=numeric maxlength=5 pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ placeholder='##.##'></td><td></td>
-					<td><input name='<?=$dia?>_O'		value="" style=width:100% type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td><td></td>
-					<td><input name='<?=$dia?>_H2S'	value="" style=width:100% type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td><td></td>
-					<td><input name='<?=$dia?>_CO'	value="" style=width:100% type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###'></td>
+					<td><input name='<?=$dia?>_LEL'	value="" style=width:100% type=text inputmode=numeric maxlength=5 pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ placeholder='##.##' required></td><td></td>
+					<td><input name='<?=$dia?>_O'		value="" style=width:100% type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###' required></td><td></td>
+					<td><input name='<?=$dia?>_H2S'	value="" style=width:100% type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###' required></td><td></td>
+					<td><input name='<?=$dia?>_CO'	value="" style=width:100% type=text inputmode=numeric maxlength=3 pattern=^(?:[0-9]{1,3})$ placeholder='###' required></td>
 				</tr>
 				<tr height=10><td colspan=7></td></tr>
 			</table>
@@ -312,7 +312,7 @@
 				<tr class=C style=height:60px>
 					<td></td>
 					<td class=B>EL EQUIPO PASA BUMP TEST?&nbsp;</td>
-					<td class=B>SI&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestS value=SI onclick=gestionarClickRadio(this)></td>
+					<td class=B>SI&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestS value=SI onclick=gestionarClickRadio(this) required></td>
 					<td class=B>NO&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestN value=NO onclick=gestionarClickRadio(this)></td>
 				</tr>
 				<tr height=15><td colspan=4></td></tr>
@@ -329,33 +329,33 @@
 			<div style="position:absolute; width:61%; left:39%; top:430px; overflow:scroll">
 				<table border=1px id='<?=$dia?>'>
 					<tr style=height:80px>
-						<? for ($i = 1; $i <= 10; $i++): ?>
+						<? for ($i = 1; $i <= 10; $i++) { ?>
 						<td style=width:185 class=A1>Hora<br><?=$i?></td><td style=width:185 class=A1>Resultado<br><?=$i?></td>
-						<? endfor?>
+						<? } ?>
 					</tr>
 					<tr style=height:80px>
-						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
-						<td><input name=<?=$dia?>_R<?=$i?>_1 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
-						<? endfor?>
+						<? for ($i = 1; $i <= 10; $i++) { ?>
+						<td><input name=<?=$dia?>_H<?=$i?>_1 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_1 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
+						<? } ?>
 					</tr>
 					<tr style=height:80px>
-						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
-						<td><input name=<?=$dia?>_R<?=$i?>_2 value='' id=numero	maxlength=4 placeholder='##.#' pattern=^([0-9]{1,2}(\.[0-9]{1,1})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
-						<? endfor?>
+						<? for ($i = 1; $i <= 10; $i++) { ?>
+						<td><input name=<?=$dia?>_H<?=$i?>_2 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_2 value='' id=numero	maxlength=4 placeholder='##.#' pattern=^([0-9]{1,2}(\.[0-9]{1,1})?)$ inputmode=numeric <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
+						<? } ?>
 					</tr>
 					<tr style=height:80px>
-						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
-						<td><input name=<?=$dia?>_R<?=$i?>_3 value='' id=numero	maxlength=4 placeholder='#.##' pattern=^([0-9]{1}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
-						<? endfor?>
+						<? for ($i = 1; $i <= 10; $i++) { ?>
+						<td><input name=<?=$dia?>_H<?=$i?>_3 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_3 value='' id=numero	maxlength=4 placeholder='#.##' pattern=^([0-9]{1}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
+						<? } ?>
 					</tr>
 					<tr style=height:80px>
-						<? for ($i = 1; $i <= 10; $i++): ?>
-						<td><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
-						<td><input name=<?=$dia?>_R<?=$i?>_4 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td>
-						<? endfor?>
+						<? for ($i = 1; $i <= 10; $i++) { ?>
+						<td><input name=<?=$dia?>_H<?=$i?>_4 value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_R<?=$i?>_4 value='' id=numero	maxlength=5 placeholder='##.##' pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
+						<? } ?>
 					</tr>
 				</table>
 			</div>
@@ -367,26 +367,26 @@
 			<div style="position:absolute; width:59%; left:0%; top:900px; background-color:white; overflow:scroll">
 				<table border=1 id='<?=$dia?>'>
 					<tr style=height:110px><td class=A1>PERSONAL QUE INGRESA</td></tr>
-					<? for ($i = 1; $i <= 5; $i++): ?>
-					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre<?=$i?> value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this) <? if ($i == 1) {echo 'requiredo';} else {echo '';} ?>></td></tr>
-					<? endfor?>
+					<? for ($i = 1; $i <= 5; $i++) { ?>
+					<tr style=height:60px><td class=A1><input style=width:100% name=<?=$dia?>_nombre<?=$i?> value="" maxlength=30 type=text pattern=.{1,} onkeyup=mayuscula(this) <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td></tr>
+					<? } ?>
 				</table>
 			</div>
 			<div style="position:absolute; width:41%; left:59%; top:900px; background-color:white; overflow:scroll">
 				<table border=1 id='<?=$dia?>'>
 					<tr style=height:110px>
-						<? for ($i = 1; $i <= 5; $i++): ?>
+						<? for ($i = 1; $i <= 5; $i++) { ?>
 						<td style=width:185 class=A1>Hora<br>Entrada<br><?=$i?></td><td style=width:185 class=A1>Hora<br>Salida<br><?=$i?></td>
-						<? endfor?>
+						<? } ?>
 					</tr>
-					<? for ($j = 1; $j <= 5; $j++): ?>
+					<? for ($j = 1; $j <= 5; $j++) { ?>
 					<tr style=height:60px>
-						<? for ($i = 1; $i <= 5; $i++): ?>
-						<td><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
-						<td><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1 && $j == 1) {echo 'requiredo';} else {echo '';} ?>></td>
-						<? endfor?>
+						<? for ($i = 1; $i <= 5; $i++) { ?>
+						<td><input name=<?=$dia?>_HE<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1 && $j == 1) {echo 'required';} else {echo '';} ?>></td>
+						<td><input name=<?=$dia?>_HS<?=$i?>_<?=$j?> value='<?=$hora;?>' type=time min='<?=$horamin;?>' <? if ($i == 1 && $j == 1) {echo 'required';} else {echo '';} ?>></td>
+						<? } ?>
 					</tr>
-					<? endfor?>
+					<? } ?>
 				</table>
 			</div>
 		</div>
@@ -863,6 +863,7 @@
 					<td class=B>SI&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestS value=SI onclick=gestionarClickRadio(this)></td>
 					<td class=B>NO&nbsp;<input type=radio name=<?=$dia?>_pasa_bumptest id=<?=$dia?>_pasa_bumptestN value=NO onclick=gestionarClickRadio(this)></td>
 				</tr>
+				<tr height=15><td colspan=4></td></tr>
 			</table>
 			<div style="position:absolute; width:39%; left:0%; top:430px; overflow:scroll">
 				<table border=1 id='<?=$dia?>'>
