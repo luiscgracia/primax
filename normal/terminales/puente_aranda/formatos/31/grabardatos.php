@@ -30,18 +30,22 @@ $usuario = $_REQUEST['usuario'];
 $fecha = $_REQUEST['fecha'];
 $fechaA = $_REQUEST['fechaA'];
 $horaA = $_REQUEST['horaA'];
+$firmaA = $_REQUEST['firmaA'];
 $certhabilit = $_REQUEST['certhabilit'];
 $empresaA = $_REQUEST['empresaA'];
 $nombreA = $_REQUEST['nombreA'];
 $descripcion = $_REQUEST['descripcion'];
 $equipos = $_REQUEST['equipos'];
 $ejecutorC = $_REQUEST['ejecutorC'];
+$firmaejecC = $_REQUEST['firmaejecC'];
 $inspectorC = $_REQUEST['inspectorC'];
+$firmainspC = $_REQUEST['firmainspC'];
 $hora1D = $_REQUEST['hora1D'];
 $fecha1D = $_REQUEST['fecha1D'];
 $hora2D = $_REQUEST['hora2D'];
 $fecha2D = $_REQUEST['fecha2D'];
 $emisorD = $_REQUEST['emisorD'];
+$firmaemisorD = $_REQUEST['firmaemisorD'];
 $EPP_B = $_REQUEST['EPP_B'];
 $otrosE = $_REQUEST['otrosE'];
 $EPP_CE = $_REQUEST['EPP_CE'];
@@ -436,10 +440,13 @@ $IL24 = $_REQUEST['IL24'];
 $IM24 = $_REQUEST['IM24'];
 $certificadoK = $_REQUEST['certificadoK'];
 $ejecutorK = $_REQUEST['ejecutorK'];
+$firmaejecK = $_REQUEST['firmaejecK'];
 $horaejecK = $_REQUEST['horaejecK'];
 $inspectorK = $_REQUEST['inspectorK'];
+$firmainspK = $_REQUEST['firmainspK'];
 $horainspK = $_REQUEST['horainspK'];
 $emisorK = $_REQUEST['emisorK'];
+$firmaemisorK = $_REQUEST['firmaemisorK'];
 $horaemisorK = $_REQUEST['horaemisorK'];
 
 $datos = "INSERT INTO formulario".$formato." (
@@ -449,18 +456,22 @@ $datos = "INSERT INTO formulario".$formato." (
 `fecha`,
 `fechaA`,
 `horaA`,
+`firmaA`,
 `certhabilit`,
 `empresaA`,
 `nombreA`,
 `descripcion`,
 `equipos`,
 `ejecutorC`,
+`firmaejecC`,
 `inspectorC`,
+`firmainspC`,
 `hora1D`,
 `fecha1D`,
 `hora2D`,
 `fecha2D`,
 `emisorD`,
+`firmaemisorD`,
 `EPP_B`,
 `otrosE`,
 `EPP_CE`,
@@ -855,10 +866,13 @@ $datos = "INSERT INTO formulario".$formato." (
 `IM24`,
 `certificadoK`,
 `ejecutorK`,
+`firmaejecK`,
 `horaejecK`,
 `inspectorK`,
+`firmainspK`,
 `horainspK`,
 `emisorK`,
+`firmaemisorK`,
 `horaemisorK`
 )
 
@@ -869,18 +883,22 @@ VALUES (
 '$fecha',
 '$fechaA',
 '$horaA',
+'$firmaA',
 '$certhabilit',
 '$empresaA',
 '$nombreA',
 '$descripcion',
 '$equipos',
 '$ejecutorC',
+'$firmaejecC',
 '$inspectorC',
+'$firmainspC',
 '$hora1D',
 '$fecha1D',
 '$hora2D',
 '$fecha2D',
 '$emisorD',
+'$firmaemisorD',
 '$EPP_B',
 '$otrosE',
 '$EPP_CE',
@@ -1275,10 +1293,13 @@ VALUES (
 '$IM24',
 '$certificadoK',
 '$ejecutorK',
+'$firmaejecK',
 '$horaejecK',
 '$inspectorK',
+'$firmainspK',
 '$horainspK',
 '$emisorK',
+'$firmaemisorK',
 '$horaemisorK'
 )";
 

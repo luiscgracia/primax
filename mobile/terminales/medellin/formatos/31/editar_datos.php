@@ -64,14 +64,14 @@
 <!-- /2 --> </div>
 <form name=formato id=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
 	<div style='position:absolute; left:50vw; margin-left:-50vw; top:0vw; width:100vw; height:12000px'>
-		<table style='background-color:rgba(255,255,255,1)' border=0>
+		<table style='background-color:rgba(255,255,255,1)' border=1>
 			<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
 			<tr height=100>
 				<td colspan=2 style='background-color:none'>
 					<input style='display:none; border:0' name=estado type=text value="; echo $estado_formulario2; echo " readonly>
 					<span style='width:70%; display:inline-block; font-size:36px; background-color:none'><b>"; echo $$formulario; echo "</b></span>
 				</td>
-				<td style='font-family:SCHLBKB; font-size:35px; color:red'>
+				<td rowspan=2 style='font-family:SCHLBKB; font-size:35px; color:red'>
 					";	if ($row['consecutivo'] < 9) {echo '&#8470; 00000'; echo $row['consecutivo'];}
 								else if ($row['consecutivo'] < 99) {echo '&#8470; 0000'; echo $row['consecutivo'];}
 									else if ($row['consecutivo'] < 999) {echo '&#8470; 000'; echo $row['consecutivo'];}
@@ -82,7 +82,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan=3>
+				<td colspan=2>
 					<span style='font-size:24.00px; color:rgba(255,112,0,1)'><b>FORMATO WEB - Rev. Mayo 2014 / TERMINAL "; echo strtoupper($terminal); echo "</b></span>
 				</td>
 			</tr>
@@ -104,11 +104,12 @@
 			<tr height=30><td></td></tr>
 		</table>
 		<table>
-			<tr><td width=50%></td><td width=50%></td></tr>
-			<tr><td colspan=2>AISLAMIENTO SOLICITADO POR</td></tr>
+			<tr><td width=46.5%></td><td width=46.5%></td><td width=7%></td></tr>
+			<tr><td colspan=3>AISLAMIENTO SOLICITADO POR</td></tr>
 			<tr>
 				<td>EMPRESA<input name=empresaA maxlength=30 type=texto placeholder=EMPRESA	pattern=.{1,} onkeyup=mayuscula(this) value='$row[empresaA]' required></td>
 				<td>NOMBRE<input name=nombreA maxlength=30 type=texto placeholder=NOMBRE	pattern=.{1,} onkeyup=mayuscula(this) value='$row[nombreA]' required></td>
+				<td><input name=firmaA type=checkbox "; if ($row['firmaA'] == 'on') {echo 'checked';} echo " id=firma1 class=checkbox-oculto style='width:1px; height:1px; opacity:0' required><label for=firma1 class=label-checkbox></label></td>
 			</tr>
 		</table>
 		<hr>
@@ -121,32 +122,32 @@
 		<hr>
 		<!-- *****************************************			 sección C			 ***************************************** -->
 		<table border=0>
-			<tr><td width=5.0%></td><td width=54.4%></td><td width=21.6%></td><td width=19%></td></tr>
+			<tr><td width=5%></td><td width=47.4%></td><td width=7%></td><td width=21.6%></td><td width=12%></td><td width=7%></td></tr>
 			<tr><td colspan=4 class=B>&nbsp;&nbsp;<b>C. ACEPTACIÓN</b></td></tr>
+			<tr>
+				<td colspan=2 style=vertical-align:bottom><input name=ejecutorC		type=texto		maxlength=30 value='$row[ejecutorC]' pattern=.{1,} onkeyup=mayuscula(this) required></td>
+				<td colspan=1 style=vertical-align:bottom><input name=firmaejecC 	type=checkbox	"; if ($row['firmaejecC'] == 'on') {echo 'checked';} echo " id=firma2 class=checkbox-oculto style='width:1px; height:1px; opacity:0' required><label for=firma2 class=label-checkbox></label></td>
+				<td colspan=1 style=vertical-align:bottom><input name=fechaejecC	type=date			class=mostrarfecha	value='$row[fechaejecC]'	min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
+				<td colspan=2 style=vertical-align:bottom><input name=horaejecC		type=time			class=mostrarhora		value='$row[horaejecC]'		min='<?=$horamin;?>' required></td>
+			</tr>
+			<tr><td colspan=2>EJECUTOR</td><td></td><!--<td>FECHA</td><td colspan=2>HORA</td></tr>-->
+			<tr><td colspan=6 style=text-align:left><span style=font-size:20px>&nbsp;&nbsp;PERSONA AUTORIZADA PARA REALIZAR EL AISLAMIENTO/APERTURA DEL EQUIPO.</span></td></tr>
 			<tr height=30><td></td></tr>
 			<tr>
-				<td colspan=2><input name=ejecutorC		type=texto	maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) value='$row[ejecutorC]' required></td>
-<!--				<td><input name=fechaejecC	type=date	min='<?echo $fechamin;?>' max='<?echo $fechamax;?>' value='$row[fechaejecC]' required></td>-->
-<!--				<td><input name=horaejecC	type=time		min=<?echo date('H:i');?> value='$row[horaejecC]' required></td>-->
+				<td colspan=2 style=vertical-align:bottom><input name=inspectorC	type=texto		maxlength=30 value='$row[inspectorC]' pattern=.{1,} onkeyup=mayuscula(this) required></td>
+				<td colspan=1 style=vertical-align:bottom><input name=firmainspC 	type=checkbox	"; if ($row['firmainspC'] == 'on') {echo 'checked';} echo " id=firma3 class=checkbox-oculto style='width:1px; height:1px; opacity:0' required><label for=firma3 class=label-checkbox></label></td>
+				<td colspan=1 style=vertical-align:bottom><input name=fechainspC	type=date			class=mostrarfecha	value='$row[fechainspC]'	min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
+				<td colspan=2 style=vertical-align:bottom><input name=horainspC		type=time			class=mostrarhora		value='$row[horainspC]'		min='<?=$horamin;?>' required></td>
 			</tr>
-<!--			<tr><td colspan=2>EJECUTOR</td><td>FECHA</td><td>HORA</td></tr>-->
-			<tr><td colspan=4 style=text-align:left><span style=font-size:20px>&nbsp;&nbsp;PERSONA AUTORIZADA PARA REALIZAR EL AISLAMIENTO/APERTURA DEL EQUIPO.</span></td></tr>
-			<tr height=40><td></td></tr>
-			<tr>
-				<td colspan=2><input name=inspectorC	type=texto	maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) value='$row[inspectorC]' required></td>
-<!--				<td><input name=fechainspC	type=date	min='<?echo $fechamin;?>' max='<?echo $fechamax;?>' value='$row[fechainspC]' required></td>-->
-<!--				<td><input name=horainspC		type=time	min=<?echo date('H:i');?> value='$row[horainspC]' required></td>-->
-			</tr>
-<!--			<tr><td colspan=2>INSPECTOR</td><td>FECHA</td><td>HORA</td></tr>-->
-			<tr><td colspan=4 style=text-align:left><span style=font-size:20px>&nbsp;&nbsp;INSPECTOR</span></td></tr>
+			<tr><td colspan=2>INSPECTOR</td><td></td><!--<td>FECHA</td><td colspan=2>HORA</td></tr>-->
 			<tr height=15><td></td></tr>
 			<tr>
 				<td class=Bct>&nbsp;&nbsp;&#9679;&nbsp;</td>
-				<td colspan=3 class=B>Acepto la responsabilidad de realizar el AISLAMIENTO / APERTURA del equipo mencionado en la sección B.</td>
+				<td colspan=5 class=B>Acepto la responsabilidad de realizar el AISLAMIENTO / APERTURA del equipo mencionado en la sección B.</td>
 			</tr>
 			<tr>
 				<td class=Bct>&nbsp;&nbsp;&#9679;&nbsp;</td>
-				<td colspan=3 class=B>Confirmo ademas, que estoy calificado para realizar el AISLAMIENTO / APERTURA del equipo propuesto.</td>
+				<td colspan=5 class=B>Confirmo ademas, que estoy calificado para realizar el AISLAMIENTO / APERTURA del equipo propuesto.</td>
 			</tr>
 		</table>
 		<hr>
@@ -169,14 +170,15 @@
 			</tr>
 		</table>
 		<table border=0>
-			<tr><td width=5%></td><td width=20%></td><td width=20%></td><td width=14.4%></td><td width=21.6%></td><td width=19%></td></tr>
+			<tr><td width=5%></td><td width=47.4%></td><td width=7%></td><td width=21.6%></td><td width=12%></td><td width=7%></td></tr>
 			<tr height=30><td></td></tr>
 			<tr>
-				<td colspan=4><input name=emisorD	type=texto	maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) value='$row[emisorD]' required></td>
-<!--				<td><input name=fechaemisorD			type=date		min='<?echo $fechamin;?>' max='<?echo $fechamax;?>' value='$row[fechaemisorD]' required></td>-->
-<!--				<td><input name=horaemisorD				type=time		min=<?echo date('H:i');?> value='$row[horaemisorD]' required></td>-->
+				<td colspan=2 style=vertical-align:bottom><input name=emisorD				type=texto		maxlength=30 value='$row[emisorD]' pattern=.{1,} onkeyup=mayuscula(this) required></td>
+				<td colspan=1 style=vertical-align:bottom><input name=firmaemisorD 	type=checkbox	"; if ($row['firmaemisorD'] == 'on') {echo 'checked';} echo " id=firma4 class=checkbox-oculto style='width:1px; height:1px; opacity:0' required><label for=firma4 class=label-checkbox></label></td>
+				<td colspan=1 style=vertical-align:bottom><input name=fechaemisorD	type=date			class=mostrarfecha	value='$row[fechaemisorD]'	min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
+				<td colspan=2 style=vertical-align:bottom><input name=horaemisorD		type=time			class=mostrarhora		value='$row[horaemisorD]'		min='<?=$horamin;?>' required></td>
 			</tr>
-			<tr><td colspan=4>EMISOR</td><!--<td>FECHA</td><td>HORA</td>--></tr>
+			<tr><td colspan=2>EMISOR</td><td></td><!--<td>FECHA</td><td colspan=2>HORA</td></tr>-->
 		</table>
 		<hr>
 		<!-- *****************************************			 sección E			 ***************************************** -->
@@ -1437,30 +1439,33 @@
 			<tr height=30><td></td></tr>
 		</table>
 		<table border=0>
-			<tr><td width=60vw></td><td width=21vw></td><td width=19vw></td></tr>
+			<tr><td width=52.40%></td><td width=7%></td><td width=21.60%></td><td width=19%></td></tr>
 			<tr>
-				<td><input name=ejecutorK		type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) value='$row[ejecutorK]' required></td>
-<!--				<td><input name=fechaejecK	type=date  class=mostrarfecha value='$row[fechaejecK]' style=display:none></td>-->
-<!--				<td><input name=horaejecK		type=time  value='$row[horaejecK]' required></td>-->
+				<td style=vertical-align:bottom><input name=ejecutorK		type=texto		maxlength=30 value='$row[ejecutorK]' pattern=.{1,} onkeyup=mayuscula(this) required></td>
+				<td style=vertical-align:bottom><input name=firmaejecK 	type=checkbox	"; if ($row['firmaejecK'] == 'on') {echo 'checked';} echo " id=firma5 class=checkbox-oculto style='width:1px; height:1px; opacity:0' required><label for=firma5 class=label-checkbox></label></td>
+				<td style=vertical-align:bottom><input name=fechaejecK	type=date			class=mostrarfecha	value='$row[fechaejecK]'	min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
+				<td style=vertical-align:bottom><input name=horaejecK		type=time			class=mostrarhora		value='$row[horaejecK]'		min='<?=$horamin;?>' required></td>
 			</tr>
-			<tr><td>EJECUTOR</td><td></td><td></td></tr>
-			<tr><td colspan=3 style=text-align:left><span style=font-size:20px>&nbsp;&nbsp;PERSONA AUTORIZADA QUE REALIZÓ EL AISLAMIENTO/APERTURA DEL EQUIPO.</span></td></tr>
+			<tr><td>EJECUTOR</td><td></td><td></td><td></td></tr>
+			<tr><td colspan=4 style=text-align:left><span style=font-size:20px>&nbsp;&nbsp;PERSONA AUTORIZADA QUE REALIZÓ EL AISLAMIENTO/APERTURA DEL EQUIPO.</span></td></tr>
 			<tr height=30><td></td></tr>
 			<tr>
-				<td><input name=inspectorK	type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) value='$row[inspectorK]' required></td>
-<!--				<td><input name=fechainspK	type=date  class=mostrarfecha value='$row[fechainspK]' style=display:none></td>-->
-<!--				<td><input name=horainspK		type=time  value='$row[horainspK]' required></td>-->
+				<td style=vertical-align:bottom><input name=inspectorK	type=texto		maxlength=30 value='$row[inspectorK]' pattern=.{1,} onkeyup=mayuscula(this) required></td>
+				<td style=vertical-align:bottom><input name=firmainspK 	type=checkbox	"; if ($row['firmainspK'] == 'on') {echo 'checked';} echo " id=firma6 class=checkbox-oculto style='width:1px; height:1px; opacity:0' required><label for=firma6 class=label-checkbox></label></td>
+				<td style=vertical-align:bottom><input name=fechainspK	type=date			class=mostrarfecha	value='$row[fechainspK]'	min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
+				<td style=vertical-align:bottom><input name=horainspK		type=time			class=mostrarhora		value='$row[horainspK]'		min='<?=$horamin;?>' required></td>
 			</tr>
-			<tr><td>INSPECTOR</td><td></td><td></td></tr>
-				<tr height=30><td></td></tr>
-				<tr><td colspan=3><span>ESTE CERTIFICADO ES AHORA RETIRADO Y CANCELADO</td></tr>
-				<tr>
-					<td><input name=emisorK				type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) value='$row[emisorK]' required></td>
-					<td><input name=fechaemisorK	type=date  class=mostrarfecha value='$row[fechaemisorK]'readonly></td>
-					<td><input name=horaemisorK		type=time  value='$row[horaemisorK]' required></td>
-				</tr>
-				<tr><td>EMISOR</td><td></td><td>HORA</td></tr>
-			</table>
+			<tr><td>INSPECTOR</td><td></td><td></td><td></td></tr>
+			<tr height=30><td></td></tr>
+			<tr><td colspan=3><span>ESTE CERTIFICADO ES AHORA RETIRADO Y CANCELADO</td></tr>
+			<tr>
+				<td style=vertical-align:bottom><input name=emisorK				type=texto		maxlength=30 value='$row[emisorK]' pattern=.{1,} onkeyup=mayuscula(this) required></td>
+				<td style=vertical-align:bottom><input name=firmaemisorK 	type=checkbox	"; if ($row['firmaemisorK'] == 'on') {echo 'checked';} echo " id=firma7 class=checkbox-oculto style='width:1px; height:1px; opacity:0' required><label for=firma7 class=label-checkbox></label></td>
+				<td style=vertical-align:bottom><input name=fechaemisorK	type=date			class=mostrarfecha	value='$row[fechaemisorK]'	min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
+				<td style=vertical-align:bottom><input name=horaemisorK		type=time			value='$row[horaemisorK]'		min='<?=$horamin;?>' required></td>
+			</tr>
+			<tr><td>EMISOR</td><td></td><td></td><td>HORA</td></tr>
+		</table>
 
 		<!-- *****************************************			 sección xxx			 ***************************************** -->
 		<table>
@@ -1475,7 +1480,7 @@
 		<input style='display:none; width:3.10cm' type=text id=fecha name=fecha value='$row[fecha]' readonly><br>
 <!--		<span style='font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)'>Quedan "; echo number_format($consec_por_usar,0,',','.'); echo " consecutivos, incluido este.</span><br> -->
 		<table border=0>
-			<tr height=200>
+			<tr height=100px>
 				<td>
 					<div style='position:relative; left:0%; margin-left:0; top:50px; background-color:rgba(0,0,255,0)'>
 						<img style='width:auto; height:100px' src='../../../../../common/imagenes/editar.png'>

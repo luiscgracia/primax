@@ -49,8 +49,11 @@ include ("../../conectar_db.php");
 include ("../../../../../common/conectar_db_usuarios.php");
 include ("../../../../../normal/usuarios.php");
 include ("../../../../../normal/terminales/".$terminal."/formatos/".basename(dirname(__FILE__))."/consecutivos".basename(dirname(__FILE__)).".php");
-//$nombre = "LUIS&nbsp;CARLOS&nbsp;GRACIA&nbsp;PUENTES&nbsp;ABC";
-$nombre = "";
+$nombre = '';
+$fechacero = '';
+$hora = '';
+$chk = '';
+//$nombre = "";
 $formato = basename(dirname(__FILE__));
 $formulario = "formulario".$formato;
 $cons = "SELECT MAX(consecutivo) as consecutivo FROM formulario".$formato." LIMIT 1";
@@ -69,34 +72,35 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 ?>
 <!-- *****************************************			 INICIO DEL FORMULARIO			 ***************************************** (816px = 215,9 mm) -->
 <!-- 1 --> <div class=noimprimir>
-<!-- 2 --> <div class=fijar style="top:30px; left:15px">
-	<a href='https://api.whatsapp.com/send?phone=<?=$celular_soporte; ?>
-	&text=<? if ($fecha <= date('Y-m-d / 12:00')) {echo 'Buenos días, ';} else {echo 'Buenas tardes, ';} ?>
-	le escribo de PRIMAX <?=strtoupper($terminal); ?>, estoy diligenciando el formato <?=$$formulario; ?>.' target=_blank>
-	<img src=../../../../../common/imagenes/whatsapp.png style=pointer-events:auto width=70 height=auto></a>
-<!-- /2 -->	</div>
-<form id=formato name=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
-<!-- 3 -->		<div style="position:absolute; left:50%; margin-left:-50%; top:0px; width:100%; height:12500px; overflow:hidden">
-		<table border=0 style="color:black; background-color:rgba(255,255,255,1)">
-			<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
-			<tr height=100>
-				<td colspan=2>
-					<input style=display:none name=estado type=texto value=<?=$estado_formulario1; ?> readonly>
-					<span style="font-size:36px; width:80%; display:inline-block; background-color:none"><b><?=$$formulario; ?></b></span>
-				</td>
-				<td style=background-color:rgba(255,255,0,0) rowspan=2>
-					<input name=consecutivo class=consecutivo style="color:red; background-color:rgba(255,255,255,1); border:0" type=texto
-						value='<? if ($consec <= 9) {echo '&#8470; 00000';}
-												else {if ($consec <= 99) {echo '&#8470; 0000';}
-													else {if ($consec <= 999) {echo '&#8470; 000';}
-														else {if ($consec <= 9999) {echo '&#8470; 00';}
-															else {if ($consec <= 99999) {echo '&#8470; 0';} else {echo '&#8470; ';}}}}} echo $consec; ?>' readonly>
-				</td>
-			</tr>
-			<tr><td colspan=2><span style=font-size:24px><b>FORMATO WEB - Rev. Mayo 2014</b></span></td>
-			</tr>
-		</table>
-		<hr>
+	<div class=fijar style="top:30px; left:15px">
+		<a href='https://api.whatsapp.com/send?phone=<?=$celular_soporte; ?>
+		&text=<? if ($fecha <= date('Y-m-d / 12:00')) {echo 'Buenos días, ';} else {echo 'Buenas tardes, ';} ?>
+		le escribo de PRIMAX <?=strtoupper($terminal); ?>, estoy diligenciando el formato <?=$$formulario; ?>.' target=_blank>
+		<img src=../../../../../common/imagenes/whatsapp.png style=pointer-events:auto width=70 height=auto></a>
+	</div>
+	<? $color_formato = 'rgba(0,0,0,0.0)' ?>
+	<form id=formato name=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
+		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; height:12200px; border:12px solid <?=$color_formato;?>">
+			<table border=0 style="color:black; background-color:<?=$color_formato;?>">
+				<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
+				<tr height=100>
+					<td colspan=2>
+						<input style=display:none name=estado type=texto value=<?=$estado_formulario1; ?> readonly>
+						<span style="font-size:36px; width:80%; display:inline-block"><b><?=$$formulario; ?></b></span>
+					</td>
+					<td rowspan=2>
+						<input name=consecutivo class=consecutivo style="color:red; background-color:<?=$color_formato;?>; border:0" type=texto
+							value='<? if ($consec <= 9) {echo '&#8470; 00000';}
+													else {if ($consec <= 99) {echo '&#8470; 0000';}
+														else {if ($consec <= 999) {echo '&#8470; 000';}
+															else {if ($consec <= 9999) {echo '&#8470; 00';}
+																else {if ($consec <= 99999) {echo '&#8470; 0';} else {echo '&#8470; ';}}}}} echo $consec;?>' readonly>
+					</td>
+				</tr>
+				<tr><td colspan=2><span style=font-size:24px><b>FORMATO WEB - Rev. Mayo 2014</b></span></td>
+				</tr>
+			</table>
+			<hr>
 		<!-- *****************************************			 sección A			 ***************************************** -->
 		<table>
 			<tr><td width= 4.75%></td><td width=27%></td><td width= 4.75%></td><td width=27%></td><td width= 4.75%></td><td width=27%></td><td width= 4.75%></td></tr>
@@ -107,7 +111,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				<td></td>
 				<td><br>HORA<br><input name=horaA type=time value='<?=$hora;?>' min=<?=$horamin;?> required></td>
 				<td></td>
-				<td>CERTIFICADO<br>HABILITACIÓN<input name=certhabilit class=consecutivo style=width:75% maxlength=6 placeholder=###### pattern=^(?:[0-9]{4,6})$ inputmode=numeric required></td>
+				<td>CERTIFICADO<br>HABILITACIÓN<input name=certhabilit value='' class=consecutivo style=width:75% maxlength=6 placeholder=###### pattern=^(?:[0-9]{4,6})$ inputmode=numeric required></td>
 				<td></td>
 			</tr>
 			<tr height=30><td></td></tr>
@@ -118,7 +122,10 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			<tr>
 				<td><input name=empresaA	maxlength=30	value='<?=$nombre?>' type=texto pattern=.{1,} onkeyup=mayuscula(this) required>EMPRESA</td>
 				<td><input name=nombreA		maxlength=30	value='<?=$nombre?>' type=texto pattern=.{1,} onkeyup=mayuscula(this) required>NOMBRE</td>
-				<td><input name=firmaA type=checkbox id=firma-checkbox1 class=checkbox-oculto style="width:1px; height:1px; opacity:0" required><label for=firma-checkbox1 class=label-checkbox></label></td>
+				<td>
+					<input name=firmaA type=checkbox id=firma1 class=checkbox-oculto style="width:1px; height:1px; opacity:0" required>
+					<label for=firma1 class=label-checkbox></label>
+				</td>
 			</tr>
 		</table>
 		<hr>
@@ -132,33 +139,25 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 <!-- *****************************************			 sección C			 ***************************************** -->
 		<table border=0>
 			<tr><td width=5%></td><td width=47.4%></td><td width=7%></td><td width=21.6%></td><td width=12%></td><td width=7%></td></tr>
-			<tr><td colspan=5 class=B>&nbsp;&nbsp;<b>C. ACEPTACIÓN</b></td></tr>
+			<tr><td colspan=6 class=B>&nbsp;&nbsp;<b>C. ACEPTACIÓN</b></td></tr>
 			<tr height=30><td></td></tr>
 			<tr>
-				<td colspan=2><input name=ejecutorC		type=texto		maxlength=30 value='<?=$nombre?>' pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td colspan=1><input name=firmaejecC 	type=checkbox	id=firma-checkbox2 class=checkbox-oculto style="width:1px; height:1px; opacity:0" required><label for=firma-checkbox2 class=label-checkbox></label></td>
-				<!--<td colspan=1><input name=fechaejecC	type=date			value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>-->
-				<!--<td colspan=2><input name=horaejecC		type=time			value='<?=$hora;?>' min=<?=$horamin;?> required></td>-->
+				<td colspan=2><input name=ejecutorC		type=texto		maxlength=30 value='<?=$nombre?>' pattern=.{1,} onkeyup=mayuscula(this) required>EJECUTOR</td>
+				<td colspan=1><input name=firmaejecC 	type=checkbox	id=firma2 class=checkbox-oculto style="width:1px; height:1px; opacity:0" required><label for=firma2 class=label-checkbox></label></td>
+				<td colspan=1><input name=fechaejecC	type=date			class=mostrarfecha	value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
+				<td colspan=2><input name=horaejecC		type=time			class=mostrarhora		value='<?=$hora;?>' min=<?=$horamin;?> required></td>
 			</tr>
-			<tr><td>EJECUTOR</td></tr>
 			<tr><td colspan=6><span style=font-size:24px>&nbsp;&nbsp;PERSONA AUTORIZADA PARA REALIZAR EL AISLAMIENTO/APERTURA DEL EQUIPO</span></td></tr>
-			<tr height=40><td></td></tr>
+			<tr height=30><td></td></tr>
 			<tr>
-				<td colspan=2><input name=inspectorC	type=texto		maxlength=30 value='<?=$nombre?>' pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td colspan=1><input name=firmainspC	type=checkbox id=firma-checkbox3 class=checkbox-oculto style="width:1px; height:1px; opacity:0" required><label for=firma-checkbox3 class=label-checkbox></label></td>
-				<!--<td colspan=1><input name=fechainspC	type=date			value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>-->
-				<!--<td colspan=2><input name=horainspC		type=time			value='<?=$hora;?>' min=<?=$horamin;?> required></td>-->
+				<td colspan=2><input name=inspectorC	type=texto		maxlength=30 value='<?=$nombre?>' pattern=.{1,} onkeyup=mayuscula(this) required>INSPECTOR</td>
+				<td colspan=1 rowspan=2><input name=firmainspC	type=checkbox id=firma3 class=checkbox-oculto style="width:1px; height:1px; opacity:0" required><label for=firma3 class=label-checkbox></label></td>
+				<td colspan=1><input name=fechainspC	type=date			class=mostrarfecha	value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
+				<td colspan=2><input name=horainspC		type=time			class=mostrarhora		value='<?=$hora;?>' min=<?=$horamin;?> required></td>
 			</tr>
-			<tr><td>INSPECTOR</td></tr>
 			<tr height=15><td></td></tr>
-			<tr>
-				<td class=Bct>&nbsp;&nbsp;&#9679;&nbsp;</td>
-				<td colspan=5 class=B>Acepto la responsabilidad de realizar el AISLAMIENTO / APERTURA del equipo mencionado en la sección B.</td>
-			</tr>
-			<tr>
-				<td class=Bct>&nbsp;&nbsp;&#9679;&nbsp;</td>
-				<td colspan=5 class=B>Confirmo ademas, que estoy calificado para realizar el AISLAMIENTO / APERTURA del equipo propuesto.</td>
-			</tr>
+			<tr><td class=Bct>&#9679;</td><td colspan=5 class=B>Acepto la responsabilidad de realizar el AISLAMIENTO / APERTURA del equipo mencionado en la sección B.</td></tr>
+			<tr><td class=Bct>&#9679;</td><td colspan=5 class=B>Confirmo ademas, que estoy calificado para realizar el AISLAMIENTO / APERTURA del equipo propuesto.</td></tr>
 		</table>
 		<hr>
 		<!-- *****************************************			 sección D			 ***************************************** -->
@@ -183,12 +182,11 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			<tr><td width=52.40%></td><td width=7%></td><td width=21.60%></td><td width=19%></td></tr>
 			<tr height=30><td></td></tr>
 			<tr>
-				<td><input name=emisorD				type=texto		maxlength=30 value='<?=$nombre?>' pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td><input name=firmaemisorD	type=checkbox id=firma-checkbox4 class=checkbox-oculto style="width:1px; height:1px; opacity:0" required><label for=firma-checkbox4 class=label-checkbox></label></td>
-				<!--<td><input name=fechaemisorD	type=date			value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>-->
-				<!--<td><input name=horaemisorD		type=time			value='<?=$hora;?>' min=<?=$horamin;?> required></td>-->
+				<td><input name=emisorD				type=texto		maxlength=30 value='<?=$nombre?>' pattern=.{1,} onkeyup=mayuscula(this) required>EMISOR</td>
+				<td><input name=firmaemisorD	type=checkbox id=firma4 class=checkbox-oculto style="width:1px; height:1px; opacity:0" required><label for=firma4 class=label-checkbox></label></td>
+				<td><input name=fechaemisorD	type=date			class=mostrarfecha	value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
+				<td><input name=horaemisorD		type=time			class=mostrarhora		value='<?=$hora;?>' min=<?=$horamin;?> required></td>
 			</tr>
-			<tr><td>EMISOR</td></tr>
 		</table>
 		<hr>
 		<!-- *****************************************			 sección E			 ***************************************** -->
@@ -219,12 +217,12 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			<tr><td width=5.0%></td><td width=5.0%></td><td width=2.5%></td><td width=5.0%></td><td width=7.5%></td><td width=75.0%></td></tr>
 			<tr height=10><td></td></tr>
 			<tr>
-				<td><input name=FAE1 id=FAE1 value=SI type=radio onclick=gestionarClickRadio(this) required></td><td colspan=2 class=B>SI</td>
+				<td><input name=FAE1 id=FAE1 value=SI type=radio onclick=gestionarClickRadio(this) <?=$chk?> required></td><td colspan=2 class=B>SI</td>
 				<td><input name=FAE1 id=fae1 value=NO type=radio onclick=gestionarClickRadio(this)				 ></td><td class=B>NO</td>
 				<td class=B>&nbsp;&nbsp;AISLAMIENTO ELÉCTRICO</td>
 			</tr>
 			<tr height=100><td colspan=6 class=B>EQUIPOS A SER AISLADOS<input name=equiposAE maxlength=45 value='<?=$nombre?>' style=background-color:white type=texto pattern=.{1,} onkeyup=mayuscula(this) value='' required></tr>
-			<tr><td><input name=voltajeF id=menor400  value=-400	type=radio onclick=gestionarClickRadio(this) required></td><td colspan=5 class=B>Menor 400V</td></tr>
+			<tr><td><input name=voltajeF id=menor400  value=-400	type=radio onclick=gestionarClickRadio(this) <?=$chk?> required></td><td colspan=5 class=B>Menor 400V</td></tr>
 			<tr><td><input name=voltajeF id=menor1000 value=-1000	type=radio onclick=gestionarClickRadio(this)></td><td colspan=5 class=B>Mayor 400V - Menor 1000V</td></tr>
 			<tr><td><input name=voltajeF id=mayor1000 value=1000	type=radio onclick=gestionarClickRadio(this)></td><td colspan=5 class=B>Mayor 1000V (Únicamente empresa de energía)</td></tr>
 			<tr height=30><td></td></tr>
@@ -244,7 +242,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			];
 			foreach ($preguntas1 as $num => $pregunta) {
 				echo "<tr height=$ap>
-					<td><input type='radio' id='AE{$num}' name='AE{$num}' value='SI' onclick='gestionarClickRadio(this)' required></td>
+					<td><input type='radio' id='AE{$num}' name='AE{$num}' value='SI' onclick='gestionarClickRadio(this)' $chk required></td>
 					<td><input type='radio' id='ae{$num}' name='AE{$num}' value='NA' onclick='gestionarClickRadio(this)'></td>
 					<td class=Bpregunta style=border-left:0px>{$pregunta}</td>
 				</tr>";
@@ -255,12 +253,12 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			<tr><td width=5.0%></td><td width=5.0%></td><td width=2.5%></td><td width=5.0%></td><td width=7.5%></td><td width=75.0%></td></tr>
 			<tr height=10><td></td></tr>
 			<tr>
-				<td><input name=FAM1 id=FAM1 value=SI type=radio onclick=gestionarClickRadio(this) required></td><td colspan=2 class=B>SI</td>
+				<td><input name=FAM1 id=FAM1 value=SI type=radio onclick=gestionarClickRadio(this) <?=$chk?> required></td><td colspan=2 class=B>SI</td>
 				<td><input name=FAM1 id=fam1 value=NO type=radio onclick=gestionarClickRadio(this)></td><td class=B>NO</td>
 				<td class=B>&nbsp;&nbsp;AISLAMIENTO MECÁNICO</td>
 			</tr>
 			<tr height=100><td colspan=6 class=B>EQUIPOS A SER AISLADOS<input name=equiposAM maxlength=45 value='<?=$nombre?>' style=background-color:white type=texto pattern=.{1,} onkeyup=mayuscula(this) value='' required></tr>
-				<td><input name=apequipos id=apequipos value=SI type=radio onclick=gestionarClickRadio(this) required></td><td colspan=2 class=B>SI</td>
+				<td><input name=apequipos id=apequipos value=SI type=radio onclick=gestionarClickRadio(this) <?=$chk?> required></td><td colspan=2 class=B>SI</td>
 				<td><input name=apequipos id=APequipos value=NO type=radio onclick=gestionarClickRadio(this)></td><td class=B>NO</td>
 				<td class=B>&nbsp;&nbsp;REQUIERE APERTURA DE EQUIPOS?</td>
 			<tr height=30><td></td></tr>
@@ -280,7 +278,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			];
 			foreach ($preguntas2 as $num => $pregunta) {
 				echo "<tr height=$ap>
-					<td><input type='radio' id='AM{$num}' name='AM{$num}' value='SI' onclick='gestionarClickRadio(this)' required></td>
+					<td><input type='radio' id='AM{$num}' name='AM{$num}' value='SI' onclick='gestionarClickRadio(this)' $chk required></td>
 					<td><input type='radio' id='am{$num}' name='AM{$num}' value='NA' onclick='gestionarClickRadio(this)'></td>
 					<td class=Bpregunta style=border-left:0px>{$pregunta}</td>
 				</tr>";
@@ -305,7 +303,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			];
 			foreach ($preguntas3 as $num => $pregunta) {
 				echo "<tr height=$ap>
-					<td><input type='radio' id='F{$num}' name='F{$num}' value='SI' onclick='gestionarClickRadio(this)' required></td>
+					<td><input type='radio' id='F{$num}' name='F{$num}' value='SI' onclick='gestionarClickRadio(this)' $chk required></td>
 					<td><input type='radio' id='f{$num}' name='F{$num}' value='NA' onclick='gestionarClickRadio(this)'></td>
 					<td class=Bpregunta style=border-left:0px>{$pregunta}</td>
 				</tr>";
@@ -326,7 +324,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			];
 			foreach ($preguntas4 as $num => $pregunta) {
 				echo "<tr height=$ap>
-					<td><input type='radio' id='F{$num}' name='F{$num}' value='SI' onclick='gestionarClickRadio(this)' required></td>
+					<td><input type='radio' id='F{$num}' name='F{$num}' value='SI' onclick='gestionarClickRadio(this)' $chk required></td>
 					<td><input type='radio' id='f{$num}' name='F{$num}' value='NA' onclick='gestionarClickRadio(this)'></td>
 					<td class=Bpregunta style=border-left:0px>{$pregunta}</td>
 				</tr>";
@@ -341,13 +339,14 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 		</table>
 		<div style="position:relative; width:29%; left:0.50%; top:20px; background-color:white">
 			<table border=1>
+				<tr><td></td></tr>
 				<tr height=160px><td class=A3>RECONEXIÓN SOLICITADA POR</td></tr>
 				<tr height=100px><td><textarea name=GA1 maxlength=20 style=width:99% onkeyup=mayuscula(this) pattern=.{1,} required><?=$nombre?></textarea></td></tr>
 				<tr height=100px><td><textarea name=GA2 maxlength=20 style=width:99% onkeyup=mayuscula(this) pattern=.{1,}><?=$nombre?></textarea></td></tr>
 				<tr height=100px><td><textarea name=GA3 maxlength=20 style=width:99% onkeyup=mayuscula(this) pattern=.{1,}><?=$nombre?></textarea></td></tr>
 			</table>
 		</div>
-<!-- 5 -->		<div style="position:relative; width:69.75%; left:29.50%; top:-444px; background-color:white; overflow:scroll">
+<!-- 5 -->		<div style="position:relative; width:69.75%; left:29.50%; top:-446px; background-color:white; overflow:scroll">
 			<table border=1 bordercolor=#ff7000>
 				<tr>
 					<td style=width:200px></td>
@@ -368,7 +367,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				<tr height=100px>
 					<td style=font-size:34px>
 						SI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NO<br>
-						<input name=GB1 id=GB1 value=SI type=radio onclick=gestionarClickRadio(this) required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input name=GB1 id=GB1 value=SI type=radio onclick=gestionarClickRadio(this) <?=$chk?> required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input name=GB1 id=gb1 value=NO type=radio onclick=gestionarClickRadio(this)>
 					</td>
 					<td><textarea name=GC1 maxlength=20 style=width:99% onkeyup=mayuscula(this) pattern=.{1,} required><?=$nombre?></textarea></td>
@@ -385,7 +384,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 
 					<td style=font-size:34px>
 						SI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NO<br>
-						<input name=GI1 id=GI1 value=SI type=radio onclick=gestionarClickRadio(this) required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input name=GI1 id=GI1 value=SI type=radio onclick=gestionarClickRadio(this) <?=$chk?> required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input name=GI1 id=gi1 value=NO type=radio onclick=gestionarClickRadio(this)>
 					</td>
 				</tr>
@@ -472,8 +471,8 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 					<td class=Bc>CAPACIDAD DE LOS RECIPIENTES<br>PARA RECOGER EL PRODUCTO</td>
 				</tr>
 				<tr>
-					<td><input name=H3 type=text style="width:40%; background-color:white" maxlength=5 placeholder=##### pattern=^(([0-9]){1,5}?)$ inputmode=numeric required> GLS</td>
-					<td><input name=H4 type=text style="width:40%; background-color:white" maxlength=5 placeholder=##### pattern=^(([0-9]){1,5}?)$ inputmode=numeric required> GLS</td>
+					<td><input name=H3 type=text style="width:40%; background-color:white" maxlength=5 value='' placeholder=##### pattern=^(([0-9]){1,5}?)$ inputmode=numeric required> GLS</td>
+					<td><input name=H4 type=text style="width:40%; background-color:white" maxlength=5 value='' placeholder=##### pattern=^(([0-9]){1,5}?)$ inputmode=numeric required> GLS</td>
 				</tr>
 				<tr height=30><td></td></tr>
 			</table>
@@ -507,7 +506,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				];
 				foreach ($preguntas5 as $num => $pregunta) {
 					echo "<tr height=$ap>
-						<td><input type='radio' id='H{$num}' name='H{$num}' value='SI' onclick='gestionarClickRadio(this)' required></td>
+						<td><input type='radio' id='H{$num}' name='H{$num}' value='SI' onclick='gestionarClickRadio(this)' $chk required></td>
 						<td><input type='radio' id='h{$num}' name='H{$num}' value='NA' onclick='gestionarClickRadio(this)'></td>
 						<td class=Bpregunta style=border-left:0px>{$pregunta}</td>
 					</tr>";
@@ -523,7 +522,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 					<td></td>
 					<td class=B>
 						Este documento es requerido para hacer seguimiento a la ubicación de los Puntos de Aislamiento de Energía/Apertura de Equipo incluyendo los Dispositivos de Aislamiento de Energía (DAE), Puntos de Verificación de Energía (PVE) y Puntos de Apertura de Equipos de Proceso (AEP).&nbsp;&nbsp;CUADRO # 
-						<input name=cuadro maxlength=6 style=width:120px placeholder=###### pattern=^(?:[0-9]{4,6})$ inputmode=numeric value='' required>
+						<input name=cuadro value='123456' maxlength=6 style=width:120px placeholder=###### pattern=^(?:[0-9]{4,6})$ inputmode=numeric required>
 					</td>
 				</tr>
 				<tr height=15><td></td></tr>
@@ -570,9 +569,9 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				</tr>
 				<? for ($i = 1; $i <= 24; $i++) { ?>
 				<tr height=70px>
-					<td style="background-color:#ff0000; border:2px solid white"><input name=IB<?=$i?> class=rojo type=checkbox required></td>
+					<td style="background-color:#ff0000; border:2px solid white"><input name=IB<?=$i?> <?=$chk?> class=rojo type=checkbox <?= $i <= 1 ? 'required' : '' ?>></td>
 					<td style="background-color:#ff0000; border:2px solid white">
-						<select name=IC<?=$i?> class=estado required>
+						<select name=IC<?=$i?> class=estado <?= $i <= 1 ? 'required' : '' ?>>
 							<option value="" disabled selected></option>
 							<option value=A>ABIERTO</option>
 							<option value=C>CERRADO</option>
@@ -581,11 +580,11 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 							<option value=O>OTRO</option>
 						</select>
 					</td>
-					<td style="background-color:#008000; border:2px solid white"><input name=ID<?=$i?> class=verde type=checkbox required></td>
-					<td style="background-color:#008000; border:2px solid white"><input name=IE<?=$i?> class=verde type=checkbox required></td>
-					<td style="background-color:#0000ff; border:2px solid white"><input name=IF<?=$i?> class=azul  type=checkbox required></td>
+					<td style="background-color:#008000; border:2px solid white"><input name=ID<?=$i?> <?=$chk?> class=verde type=checkbox <?= $i <= 1 ? 'required' : '' ?>></td>
+					<td style="background-color:#008000; border:2px solid white"><input name=IE<?=$i?> <?=$chk?> class=verde type=checkbox <?= $i <= 1 ? 'required' : '' ?>></td>
+					<td style="background-color:#0000ff; border:2px solid white"><input name=IF<?=$i?> <?=$chk?> class=azul  type=checkbox <?= $i <= 1 ? 'required' : '' ?>></td>
 					<td>
-						<select name=IG<?=$i?> class=dispositivo required>
+						<select name=IG<?=$i?> class=dispositivo <?= $i <= 1 ? 'required' : '' ?>>
 							<option value="" disabled selected></option>
 							<option value="ELÉCTRICO">	ELÉCTRICO		</option>
 							<option value="VÁLVULA">		VÁLVULA			</option>
@@ -593,12 +592,12 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 							<option value="OTRO">				OTRO				</option>
 						</select>
 					</td>
-					<td><input name=IH<?=$i?> type=texto maxlength=15	pattern=.{1,}							value='' onkeyup=mayuscula(this) required></td>
-					<td><input name=II<?=$i?> type=text  maxlength=6	pattern=^(?:[0-9]{4,6})$	value='' placeholder=###### inputmode=numeric style=width:86% required></td>
-					<td><input name=IJ<?=$i?> type=texto maxlength=15	pattern=.{1,}							value='' onkeyup=mayuscula(this) required></td>
-					<td><input name=IK<?=$i?>	type=date  																				value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
-					<td><input name=IL<?=$i?> type=texto maxlength=15	pattern=.{1,}							value='' onkeyup=mayuscula(this) required></td>
-					<td><input name=IM<?=$i?>	type=date	 																				value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> required></td>
+					<td><input name=IH<?=$i?> type=texto maxlength=15	pattern=.{1,}							value='' onkeyup=mayuscula(this) <?= $i <= 1 ? 'required' : '' ?>></td>
+					<td><input name=II<?=$i?> type=text  maxlength=6	pattern=^(?:[0-9]{4,6})$	value='' placeholder=###### inputmode=numeric style=width:86% <?= $i <= 1 ? 'required' : '' ?>></td>
+					<td><input name=IJ<?=$i?> type=texto maxlength=15	pattern=.{1,}							value='' onkeyup=mayuscula(this) <?= $i <= 1 ? 'required' : '' ?>></td>
+					<td><input name=IK<?=$i?>	type=date  																				value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> <?= $i <= 1 ? 'required' : '' ?>></td>
+					<td><input name=IL<?=$i?> type=texto maxlength=15	pattern=.{1,}							value='' onkeyup=mayuscula(this) <?= $i <= 1 ? 'required' : '' ?>></td>
+					<td><input name=IM<?=$i?>	type=date	 																				value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> <?= $i <= 1 ? 'required' : '' ?>></td>
 				</tr>
 				<? } ?>
 				<tr>
@@ -636,7 +635,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 		<table border=0>
 			<tr>
 				<td style=width:5%></td>
-				<td style=width:4%><input type=radio name=certificadoK id=certificadoA value=A onclick=gestionarClickRadio(this) required></td>
+				<td style=width:4%><input type=radio name=certificadoK id=certificadoA value=A onclick=gestionarClickRadio(this) <?=$chk?> required></td>
 				<td style=width:23% class=B> &nbsp;Ha sido<br> &nbsp;completado</td>
 				<td style=width:4%><input type=radio name=certificadoK id=certificadoB value=B onclick=gestionarClickRadio(this)></td>
 				<td style=width:19% class=B> &nbsp;No se ha<br> &nbsp;iniciado</td>
@@ -647,31 +646,26 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 		<table border=0>
 			<tr><td width=52.40%></td><td width=7%></td><td width=21.60%></td><td width=19%></td></tr>
 			<tr>
-				<td style="vertical-align:bottom"><input name=ejecutorK			type=texto maxlength=30 value='<?=$nombre?>' pattern=.{1,} onkeyup=mayuscula(this) value='' required></td>
-				<td style="vertical-align:bottom"><input name=firmaejecK		type=checkbox id=firma-checkbox5 class=checkbox-oculto style="width:1px; height:1px; opacity:0" required><label for=firma-checkbox5 class=label-checkbox></label></td>
-				<!--<td style="vertical-align:bottom"><input name=fechaejecK		type=date  class=mostrarfecha value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> readonly required></td>-->
-				<!--<td style="vertical-align:bottom"><input name=horaejecK			type=time  value='<?=$hora;?>' min=<?=$horamin;?> required></td>-->
+				<td><input name=ejecutorK			type=texto maxlength=30 value='<?=$nombre?>' pattern=.{1,} onkeyup=mayuscula(this) value='' required>EJECUTOR</td>
+				<td><input name=firmaejecK		type=checkbox id=firma5 class=checkbox-oculto style="width:1px; height:1px; opacity:0" required><label for=firma5 class=label-checkbox></label></td>
+				<td><input name=fechaejecK		type=date  class=mostrarfecha	value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> readonly required></td>
+				<td><input name=horaejecK			type=time  class=mostrarhora	value='<?=$hora;?>' min=<?=$horamin;?> required></td>
 			</tr>
-			<tr><td colspan=2>EJECUTOR</td></tr>
 			<tr><td colspan=4 style=text-align:left><span style=font-size:20px>&nbsp;&nbsp;PERSONA AUTORIZADA QUE REALIZÓ EL AISLAMIENTO/APERTURA DEL EQUIPO.</span></td></tr>
 			<tr height=30><td></td></tr>
 			<tr>
-				<td style="vertical-align:bottom"><input name=inspectorK		type=texto maxlength=30 value='<?=$nombre?>' pattern=.{1,} onkeyup=mayuscula(this) value='' required></td>
-				<td style="vertical-align:bottom"><input name=firmainspK		type=checkbox id=firma-checkbox6 class=checkbox-oculto style="width:1px; height:1px; opacity:0" required><label for=firma-checkbox6 class=label-checkbox></label></td>
-				<!--<td style="vertical-align:bottom"><input name=fechainspK		type=date  class=mostrarfecha value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> readonly required></td>-->
-				<!--<td style="vertical-align:bottom"><input name=horainspK			type=time  value='<?=$hora;?>' min=<?=$horamin;?> required></td>-->
+				<td><input name=inspectorK		type=texto maxlength=30 value='<?=$nombre?>' pattern=.{1,} onkeyup=mayuscula(this) value='' required>INSPECTOR</td>
+				<td><input name=firmainspK		type=checkbox id=firma6 class=checkbox-oculto style="width:1px; height:1px; opacity:0" required><label for=firma6 class=label-checkbox></label></td>
+				<td><input name=fechainspK		type=date  class=mostrarfecha	value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> readonly required></td>
+				<td><input name=horainspK			type=time  class=mostrarhora	value='<?=$hora;?>' min=<?=$horamin;?> required></td>
 			</tr>
-			<tr><td colspan=2>INSPECTOR</td></tr>
-			<tr height=30><td></td></tr>
-			<tr><td colspan=5><span>ESTE CERTIFICADO ES AHORA RETIRADO Y CANCELADO</td></tr>
+			<tr height=60><td colspan=4><span>ESTE CERTIFICADO ES AHORA RETIRADO Y CANCELADO</td></tr>
 			<tr>
-				<td style="vertical-align:bottom"><input name=emisorK				type=texto maxlength=30 value='<?=$nombre?>' pattern=.{1,} onkeyup=mayuscula(this) value='' required></td>
-				<td style="vertical-align:bottom"><input name=firmaemisorK	type=checkbox id=firma-checkbox7 class=checkbox-oculto style="width:1px; height:1px; opacity:0" required><label for=firma-checkbox7 class=label-checkbox></label></td>
-				<!--<td style="vertical-align:bottom"><input name=fechaemisorK	type=date  class=mostrarfecha value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> readonly required></td>-->
-				<td></td>
-				<td style="vertical-align:bottom"><input name=horaemisorK		type=time  value='<?=$hora;?>' min=<?=$horamin;?> required></td>
+				<td><input name=emisorK				type=texto maxlength=30 value='<?=$nombre?>' pattern=.{1,} onkeyup=mayuscula(this) value='' required>EMISOR</td>
+				<td><input name=firmaemisorK	type=checkbox id=firma7 class=checkbox-oculto style="width:1px; height:1px; opacity:0" required><label for=firma7 class=label-checkbox></label></td>
+				<td><input name=fechaemisorK	type=date  class=mostrarfecha	value='<?=$fechacero;?>' min=<?=$fechamin;?> max=<?=$fechamax;?> readonly required></td>
+				<td><input name=horaemisorK		type=time  										value='<?=$hora;?>' min=<?=$horamin;?> required>HORA</td>
 			</tr>
-			<tr><td colspan=2>EMISOR</td><td></td><td>HORA</td></tr>
 		</table>
 
 <!-- *****************************************			 sección xxx			 ***************************************** -->

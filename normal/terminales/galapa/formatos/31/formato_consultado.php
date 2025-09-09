@@ -72,9 +72,10 @@ while ($row = $resultado->fetch_assoc()){extract($row);}
 	<div style="position:absolute; left:19.45cm; top: 2.00cm"><?echo $certhabilit;?></div>
 	<div style="position:absolute; left: 5.00cm; top: 2.50cm"><?echo $empresaA;?></div>
 	<div style="position:absolute; left:10.20cm; top: 2.50cm"><?echo $nombreA;?></div>
-	<? $firmaAa = "<img src='../../../../../common/firmas/".basename(dirname(__DIR__,2))."/firma1.png' style='width:auto; height:10mm'>"; ?>
-<!--	<div style="position:absolute; left:16.15cm; top: 2.10cm; width: 4.30cm; text-align:left; background-color:rgba(0,0,0,0.0)"><?if ($firmaA=='on') {echo $firmaAa;}?></div>-->
-	<div style="position:absolute; left:16.15cm; top: 2.40cm; width: 4.30cm; height: 0.40cm; text-align:left; background-color:rgba(0,0,0,0.1)"><?if ($firmaA=='on') {echo "FIRMADO POR lcgp";}?></div>
+	<? $firmaAi = "<img src='../../../../../common/firmas/".basename(dirname(__DIR__,2))."/firma1.png' style='width:auto; height:8mm'>"; ?>
+	<div style="position:absolute; left:16.15cm; top: 2.00cm; width: 43mm; height: 4mm; text-align:left; background-color:rgba(0,0,0,0.0)"><?if ($firmaA=='on') {echo $firmaAi;}?></div>
+<!--	<? $firmaAt = "Firmado por LCGP"; ?>
+	<div style="position:absolute; left:16.15cm; top: 2.40cm; text-align:left; background-color:rgba(0,0,0,0.0); padding:0.1cm 0 0 0"><?if ($firmaA=='on') {echo $firmaAt;}?></div>-->
 
 <!-- *****************************************			 sección B			 ***************************************** -->
 	<div style="position:absolute; left: 6.10cm; top: 3.42cm; font-size:9.70px"><?echo substr($descripcion,0,90-0);?></div>
@@ -90,7 +91,9 @@ while ($row = $resultado->fetch_assoc()){extract($row);}
 
 <!-- *****************************************			 sección C			 ***************************************** -->
 	<div style="position:absolute; left: 6.10cm; top: 4.72cm"><?echo $ejecutorC;?></div>
+	<div style="position:absolute; left:16.75cm; top: 4.22cm; width: 43mm; height: 4mm; text-align:left; background-color:rgba(0,0,0,0.0)"><?if ($firmaejecC=='on') {echo $firmaAi;}?></div>
 	<div style="position:absolute; left: 6.10cm; top: 5.13cm"><?echo $inspectorC;?></div>
+	<div style="position:absolute; left:16.75cm; top: 4.63cm; width: 43mm; height: 4mm; text-align:left; background-color:rgba(0,0,0,0.0)"><?if ($firmainspC=='on') {echo $firmaAi;}?></div>
 
 <!-- *****************************************			 sección D			 ***************************************** -->
 	<div style="position:absolute; left: 8.55cm; top: 6.42cm" class="date"><?if ($hora1D != "") {echo date ("h:i A", strtotime($hora1D));}?></div>
@@ -98,6 +101,7 @@ while ($row = $resultado->fetch_assoc()){extract($row);}
 	<div style="position:absolute; left:14.80cm; top: 6.42cm" class="date"><?if ($hora2D != "") {echo date ("h:i A", strtotime($hora2D));}?></div>
 	<div style="position:absolute; left:17.60cm; top: 6.42cm"><?echo $fecha2D;?></div>
 	<div style="position:absolute; left: 2.70cm; top: 6.94cm"><?echo $emisorD;?></div>
+	<div style="position:absolute; left:16.75cm; top: 6.44cm; width: 43mm; height: 4mm; text-align:left; background-color:rgba(0,0,0,0.0)"><?if ($firmaemisorD=='on') {echo $firmaAi;}?></div>
 
 <!-- *****************************************			 sección E			 ***************************************** -->
 	<div style="position:absolute; left:15.45cm; top: 7.90cm; font-size:9.10px"><?echo substr($otrosE,0,35-0);?></div>
@@ -598,10 +602,13 @@ while ($row = $resultado->fetch_assoc()){extract($row);}
 	<div style="position:absolute; left:10.40cm; top:52.30cm" class="radio"><?if ($certificadoK == 'B') {echo '&#10006;';}?></div>
 	<div style="position:absolute; left:14.25cm; top:52.30cm" class="radio"><?if ($certificadoK == 'C') {echo '&#10006;';}?></div>
 	<div style="position:absolute; left: 6.10cm; top:53.33cm"><?echo $ejecutorK;?></div>
+	<div style="position:absolute; left:16.75cm; top:52.83cm; width: 43mm; height: 4mm; text-align:left; background-color:rgba(0,0,0,0.0)"><?if ($firmaejecK=='on') {echo $firmaAi;}?></div>
 <!--	<div style="position:absolute; left:18.90cm; top:53.33cm" class="date"><?if ($horaejecK != "") {echo date ("h:i A", strtotime($horaejecK));}?></div> -->
 	<div style="position:absolute; left: 6.10cm; top:53.73cm"><?echo $inspectorK;?></div>
+	<div style="position:absolute; left:16.75cm; top:53.23cm; width: 43mm; height: 4mm; text-align:left; background-color:rgba(0,0,0,0.0)"><?if ($firmainspK=='on') {echo $firmaAi;}?></div>
 <!--	<div style="position:absolute; left:18.90cm; top:53.73cm" class="date"><?if ($horainspK != "") {echo date ("h:i A", strtotime($horainspK));}?></div> -->
 	<div style="position:absolute; left: 3.45cm; top:54.63cm"><?echo $emisorK;?></div>
+	<div style="position:absolute; left:14.10cm; top:54.13cm; width: 43mm; height: 4mm; text-align:left; background-color:rgba(0,0,0,0.0)"><?if ($firmaemisorK=='on') {echo $firmaAi;}?></div>
 	<div style="position:absolute; left:18.87cm; top:54.63cm" class="date"><?if ($horaemisorK != "") {echo date ("h:i A", strtotime($horaemisorK));}?></div>
 
 	<!-- *****************************************			 FIN DEL FORMULARIO			 ***************************************** -->
