@@ -49,7 +49,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 	</div>
 	<? $color_formato = 'rgba(255,0,0,1)' ?>
 	<form id=formato name=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
-		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; height:4680px; border:12px solid <?=$color_formato;?>">
+		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; height:4710px; border:12px solid <?=$color_formato;?>">
 			<table border=0 style="color:white; background-color:<?=$color_formato;?>">
 				<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
 				<tr height=100>
@@ -277,8 +277,8 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			</table>
 	 		<div style="position:absolute; width:18.50%; left:0.50%; background-color:white">
 				<table border=1>
-					<tr height=70px><td class=A3>PRUEBA</td></tr>
-					<tr height=70px><td class=A1>%LEL</td></tr>
+					<tr height=75px><td class=A3>PRUEBA</td></tr>
+					<tr height=74px><td class=A1>%LEL</td></tr>
 				</table>
 	 		</div>
 	 		<div style="position:absolute; width:80.25%; left:19%; background-color:white; overflow:scroll">

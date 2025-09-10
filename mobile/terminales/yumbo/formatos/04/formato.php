@@ -49,7 +49,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 	</div>
 	<? $color_formato = 'rgba(0,0,204,1)' ?>
 	<form id=formato name=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
-		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; height:5825px; border:12px solid <?=$color_formato;?>">
+		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; height:5860px; border:12px solid <?=$color_formato;?>">
 			<table border=0 style="color:white; background-color:<?=$color_formato;?>">
 				<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
 				<tr height=100>
@@ -251,14 +251,14 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			</table>
 			<div style="position:absolute; width:36.50%; left:0.50%; background-color:white">
 				<table border=1>
-					<tr height=70px><td class=A3 style=width:55%>PRUEBA</td>																	<td style=width:45% class=A3>Perm</td></tr>
-					<tr height=70px><td class=A1 style=text-align:left>&nbsp;% LEL</td>												<td class=A1>0%</td></tr>
-					<tr height=70px><td class=A1 style=text-align:left>&nbsp;Oxígeno</td>											<td class=A1>19.5%-23.5%</td></tr>
-					<tr height=70px><td class=A1 style=text-align:left>&nbsp;Total<br>&nbsp;Hidrocarburos</td><td class=A1>100 ppm</td></tr>
-					<tr height=70px><td class=A1 style=text-align:left>&nbsp;Etanol</td>											<td class=A1>1000 ppm</td></tr>
-					<tr height=70px><td class=A1 style=text-align:left>&nbsp;Benceno</td>											<td class=A1>0.5 ppm</td></tr>
-					<tr height=70px><td class=A1 style=text-align:left>&nbsp;Plomo<br>&nbsp;Orgánico</td>			<td class=A1>0.075 mg/m&#179;</td></tr>
-					<tr height=70px><td class=A1 style=text-align:left>&nbsp;Monóxido de<br>&nbsp;Carbono</td><td class=A1>25 ppm</td></tr>
+					<tr height=75px><td class=A3 style=width:55%>PRUEBA</td>																	<td style=width:45% class=A3>Perm</td></tr>
+					<tr height=74px><td class=A1 style=text-align:left>&nbsp;% LEL</td>												<td class=A1>0%</td></tr>
+					<tr height=74px><td class=A1 style=text-align:left>&nbsp;Oxígeno</td>											<td class=A1>19.5%-23.5%</td></tr>
+					<tr height=74px><td class=A1 style=text-align:left>&nbsp;Total<br>&nbsp;Hidrocarburos</td><td class=A1>100 ppm</td></tr>
+					<tr height=74px><td class=A1 style=text-align:left>&nbsp;Etanol</td>											<td class=A1>1000 ppm</td></tr>
+					<tr height=74px><td class=A1 style=text-align:left>&nbsp;Benceno</td>											<td class=A1>0.5 ppm</td></tr>
+					<tr height=74px><td class=A1 style=text-align:left>&nbsp;Plomo<br>&nbsp;Orgánico</td>			<td class=A1>0.075 mg/m&#179;</td></tr>
+					<tr height=74px><td class=A1 style=text-align:left>&nbsp;Monóxido de<br>&nbsp;Carbono</td><td class=A1>25 ppm</td></tr>
 				</table>
 			</div>
 			<div style="position:absolute; width:62.25%; left:37.00%; background-color:white; overflow:scroll">
@@ -275,7 +275,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				$l = range('A','P');
 				echo '<style>
 					.tabla20		{border-collapse:collapse; width:100%}
-					.tabla20 td	{border:2px solid #ff7000ff; height:70px; text-align:center; vertical-align:middle; padding:0px}
+					.tabla20 td	{border:2px solid #ff7000ff; height:70px; text-align:center; vertical-align:middle}
 					.hora				{width:190px; background:#ff7000bf; color:#000000ff; font-weight:bold}
 					.result			{width:150px; background:#ff7000bf; color:#000000ff; font-weight:bold}
 					.i20				{width:95%; height:35px; border:2px solid #ff7000ff; border-radius:5px; padding:0px; text-align:center}
@@ -283,10 +283,9 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 					.req20			{border:2px solid rgba(0,0,255,1); background:rgba(0,255,0,0.1)}
 				</style>';
 				echo '<table class=tabla20>
-					<tr>';
+					<tr height=75px>';
 						for ($i = 1; $i <= $columnas; $i++)
-							echo "<td style='border:2px solid #000000ff' class='hora'>Hora<br>$i</td>
-							<td style='border:2px solid #000000ff' class='result'>Resultado<br>$i</td>";
+							echo "<td class='hora'>Hora<br>$i</td><td class='result'>Resultado<br>$i</td>";
 					echo '</tr>';
 					for($i = 0; $i < $filas; $i++) {
 					echo '<tr>';
@@ -302,7 +301,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				echo '</table>';
 				?>
 			</div>
-			<div style="position:relative; width:100%; left:0px; top:565px; background-color:rgba(0,0,255,0)">
+			<div style="position:relative; width:100%; left:0px; top:605px; background-color:rgba(0,0,255,0)">
 				<table>
 					<tr>
 						<td style=text-align:left>
@@ -312,10 +311,10 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 					</tr>
 				</table>
 			</div>
-			<div style="position:relative; width:100%; left:0px; top:580px">
+			<div style="position:relative; width:100%; left:0px; top:620px">
 				<table border=0><tr><td class=B style=width:5%>&nbsp;23.</td><td class=B style="width:95%; font-size:29px">CONTROL DE PERSONAL PARA INGRESO A ESPACIO CONFINADO</td></tr></table>
 		 	</div>
-		 	<div style="position:relative; width:59.50%; left:0.50%; top:580px; background-color:white">
+		 	<div style="position:relative; width:59.50%; left:0.50%; top:620px; background-color:white">
 				<table border=1>
 					<tr height=80px><td class=A3>PERSONAL QUE INGRESA</td></tr>
 					<? for ($i = 1; $i <= 5; $i++): ?>
@@ -323,7 +322,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 					<? endfor; ?>
 				</table>
 		 	</div>
-			<div style="position:relative; width:39.25%; left:60.00%; top:248px; background-color:white; overflow:scroll">
+			<div style="position:relative; width:39.25%; left:60.00%; top:288px; background-color:white; overflow:scroll">
 				<?php
 				$filas = 5;
 				$columnas = 7;
@@ -359,7 +358,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			</div>
 
 <!-- *****************************************			 sección C			 ***************************************** -->
-			<div style="position:relative; left:0px; width:100%; top:255px"> <!-- este div mueve hacia abajo desde la sección C -->
+			<div style="position:relative; left:0px; width:100%; top:295px"> <!-- este div mueve hacia abajo desde la sección C -->
 				<hr>
 				<table border=0>
 					<tr><td width=5%></td><td width=61.50%></td><td width=18%></td><td width=15.50%></td></tr>

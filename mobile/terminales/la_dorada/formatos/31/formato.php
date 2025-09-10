@@ -337,7 +337,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			<tr><td width=5.0%></td><td width=95.0%></td></tr>
 			<tr><td class=B style=vertical-align:top>&nbsp;&nbsp;<b>G.</b></td><td class=B><b>RECONEXIÓN TEMPORAL PARA PRUEBAS</b><br>(SOLO PARA PRUEBAS)</td></tr>
 		</table>
-		<div style="position:relative; width:29%; left:0.50%; top:20px; background-color:white">
+		<div style="position:relative; width:28.75%; left:0.50%; top:20px; background-color:white">
 			<table border=1>
 				<tr><td></td></tr>
 				<tr height=160px><td class=A3>RECONEXIÓN SOLICITADA POR</td></tr>
@@ -531,8 +531,9 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				<tr height=100><td>DESCRIPCIÓN DE LA TAREA<textarea name=descripcionI style=width:99% maxlength=55 type=text onkeyup=mayuscula(this) pattern=.{1,} required><?=$nombre?></textarea></td></tr>
 				<tr height=100><td>PERSONA AUTORIZADA<input name=autorizadoI maxlength=30 value='<?=$nombre?>' type=texto pattern=.{1,} onkeyup=mayuscula(this) required></td></tr>
 			</table>
-		<div style="position:relative; width:9%; left:0.50%; top:20px; background-color:white">
+		<div style="position:relative; width:8.75%; left:0.50%; top:20px; background-color:white">
 			<table border=1>
+				<tr><td></td></tr>
 				<tr height=160px><td class=A2 style="background-color:white; font-size:27px">PASO #</td></tr>
 				<? for ($i = 1; $i <= 24; $i++) { ?>
 				<tr height=70px><td><input name=IA<?=$i?> style="font-size:40px; background-color:white; border:0" maxlength=2 pattern=^(?:[0-9]{1,2})$ inputmode=numeric value='<?=$i?>' required></td></tr>

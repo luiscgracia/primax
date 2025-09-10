@@ -281,8 +281,8 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			</table>
 			<div style="position:absolute; width:18.50%; left:0.50%; background-color:white">
 				<table border=1>
-					<tr height=70px><td class=A3>PRUEBA</td></tr>
-					<tr height=70px><td class=A1>%LEL</td></tr>
+					<tr height=75px><td class=A3>PRUEBA</td></tr>
+					<tr height=74px><td class=A1>%LEL</td></tr>
 				</table>
  			</div>
  			<div style="position:absolute; width:80.25%; left:19%; background-color:white; overflow:scroll">
