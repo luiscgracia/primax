@@ -43,7 +43,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 <div class=noimprimir>
 	<div class=fijar style="top:15px; left:15px">
 		<a href='https://api.whatsapp.com/send?phone=<?=$celular_soporte;?>
-		&text=<? if ($fecha <= date('Y-m-d / 12:00')) {echo 'Buenos días, ';} else {echo 'Buenas tardes, ';}?>
+		&text=<? if ($fecha <= date('Y-m-d / 12:00')) {echo 'Buenos días, ';} else {if ($fecha <= date('Y-m-d / 18:00')) {echo 'Buenas tardes, ';} else {echo 'Buenas noches, ';}}?>
 		le escribo de PRIMAX <?=strtoupper($terminal);?>, estoy diligenciando el formato <?=$$formulario;?>.' target=_blank>
 		<img src=../../../../../common/imagenes/whatsapp.png style=pointer-events:auto width=70 height=auto></a>
 	</div>
@@ -314,26 +314,27 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 
 <!-- *****************************************			 sección F			 ***************************************** -->
 			<table border=0>
-				<tr><td width= 2.00%></td><td width=98%></td></tr>
+				<tr><td width=5%></td><td width=95%></td></tr>
 				<tr><td class=B colspan=2><b>&nbsp;&nbsp;F. ACEPTACIÓN</b></td></tr>
 				<tr>
-					<td class=Bct>&nbsp;&#9679;&nbsp;</td>
+					<td class=Bct>&#9679;</td>
 					<td class=B>Confirmo que la tarea definida en la sección A está especificada en la sección C de este certificado y que no se ejecutará ninguna otra tarea sin autorización previa.</td>
 				</tr>
 				<tr>
-					<td class=Bct>&nbsp;&#9679;&nbsp;</td>
+					<td class=Bct>&#9679;</td>
 					<td class=B>He leído y comprendo a conciencia las restricciones impuestas por este certificado y documentos asociados, e instruiré adecuadamente a todo el personal bajo mi control.</td>
 				</tr>
+				<tr height=30px><td></td></tr>
 			</table>
 			<table border=0>
-				<tr><td width= 5%></td><td width=46%></td><td width=49%></td></tr>
-				<tr class=C>
+				<tr><td width= 5%></td><td width=42%></td><td width=53%></td></tr>
+				<tr height=45px>
 					<td><input name=empleado id=empleadop type=radio value=E onclick=handleRadioClick(this) required></td>
-					<td colspan=2 class=B>EMPLEADO</td>
+					<td colspan=2 style=text-align:left>EMPLEADO</td>
 				</tr>
-				<tr class=C>
+				<tr height=45px>
 					<td><input name=empleado id=empleadocp type=radio value=CP onclick=handleRadioClick(this)></td>
-					<td class=B>CONTRATISTA PERMANENTE </td>
+					<td style=text-align:left>CONTRATISTA PERMANENTE </td>
 					<td><input name=companiacp id=companiacp style=display:none maxlength=30 type=texto pattern=.{1,} onkeyup=mayuscula(this)></td>
 				</tr>
 				<tr height=30><td></td></tr>
@@ -344,43 +345,40 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				document.getElementById('empleadocp').addEventListener('click', function(e) {companiacp.disabled = false; companiacp.style.display ="block"; companiacp.required = true;});
 			</script>
 			<table border=0>
+				<tr><td width=57.50%></td><td width=23%></td><td width=19.50%></td></tr>
 				<tr>
-					<td width=55%><input name=ejecutorF		type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-					<td width=26%><input name=fechaejecF	type=date	value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
-					<td width=19%><input name=horaejecF		type=time	value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+					<td><input name=ejecutorF		type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required>EJECUTOR</td>
+					<td><input name=fechaejecF	type=date	value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required>FECHA</td>
+					<td><input name=horaejecF		type=time	value='<?=$hora;?>' min='<?=$horamin;?>' required>HORA</td>
 				</tr>
-				<tr><td>EJECUTOR</td><td>FECHA</td><td>HORA</td></tr>
-				<tr height=40><td></td></tr>
+				<tr height=30><td></td></tr>
 				<tr>
-					<td><input name=inspectorF	type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-					<td><input name=fechainspF	type=date	value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
-					<td><input name=horainspF		type=time	value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+					<td><input name=inspectorF	type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required>INSPECTOR</td>
+					<td><input name=fechainspF	type=date	value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required>FECHA</td>
+					<td><input name=horainspF		type=time	value='<?=$hora;?>' min='<?=$horamin;?>' required>HORA</td>
 				</tr>
-				<tr><td>INSPECTOR</td><td>FECHA</td><td>HORA</td></tr>
 			</table>
 			<hr>
 
 <!-- *****************************************			 sección G			 ***************************************** -->
-			<table><tr><td class=B><b>&nbsp;&nbsp;G. AUTORIZACIÓN</b><br><span class=seccion>&nbsp;&nbsp;Marque una de las casillas, según corresponda:</span></td></tr></table>
 			<table border=0>
-				<tr class=C><td width=5%></td><td width=95%></td></tr>
-				<tr class=C>
+				<tr><td width=5%></td><td width=75%></td><td width=15%></td><td width=5%></td></tr>
+				<tr><td class=B><b>&nbsp;G.</b></td><td colspan=3 class=B><b>AUTORIZACIÓN</b></td></tr>
+				<tr><td></td><td colspan=3 style=text-align:left><span class=seccion>Marque una de las casillas, según corresponda:</span></td></tr>
+				<tr height=30><td></td></tr>
+				<tr>
 					<td><input type=radio id=docum_adic_SI name=docum_adic value=SI onclick=handleRadioClick(this) required></td>
-					<td class=B>Se requiere documentación adicional. Para cada tarea se deberá diligenciar y aprobar previamente la documentación indicada en la Sección D.</td>
+					<td colspan=3 class=B>Se requiere documentación adicional. Para cada tarea se deberá diligenciar y aprobar previamente la documentación indicada en la Sección D.</td>
 				</tr>
 				<tr height=30><td></td></tr>
-				<tr class=C>
+				<tr>
 					<td><input type=radio id=docum_adic_NO name=docum_adic value=NO onclick=handleRadioClick(this)></td>
-					<td class=B>No se requiere documentación adicional. Por lo tanto, se autoriza la realización de este trabajo con este único certificado, formato de control de interfases y el ATS.</td>
+					<td colspan=3 class=B>No se requiere documentación adicional. Por lo tanto, se autoriza la realización de este trabajo con este único certificado, formato de control de interfases y el ATS.</td>
 				</tr>
-			</table>
-			<table border=0>
-				<tr><td width=5%></td><td width=77%></td><td width=13%></td><td width=5%></td></tr>
 				<tr>
 					<td></td>
 					<td class=B><span style="display:none; font-size:32px" id=doc_ad_NO>Cantidad de personas autorizadas para el trabajo:</span></td>
-					<td><input name=cantidad id=cantidad style="display:none; width:50%" maxlength=1 inputmode=numeric pattern=^(?:[1-7]{1})$></td>
-					<td></td>
+					<td><input name=cantidad id=cantidad style="display:none; width:35%" maxlength=1 inputmode=numeric pattern=^(?:[1-7]{1})$></td>
 				</tr>
 			</table>
 			<table border=0>
@@ -397,26 +395,23 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 					<? endif; ?>
 					<td></td>
 				</tr>
-				<tr height=10><td></td></tr>
 				<? endfor; ?>
-				<tr height=30><td></td></tr>
+				<tr height=10><td></td></tr>
 			</table>
 			<br>
 			<table border=0>
-				<tr><td width=55%></td><td width=26%></td><td width=19%></td></tr>
+				<tr><td width=57.50%></td><td width=23%></td><td width=19.50%></td></tr>
 				<tr>
-					<td><input name=aprobadorG		type=texto	maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-					<td><input name=fechaaprobG		type=date		value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
-					<td><input name=horaaprobG		type=time		value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+					<td><input name=aprobadorG		type=texto	maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required>APROBADOR SME</td>
+					<td><input name=fechaaprobG		type=date		value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required>FECHA</td>
+					<td><input name=horaaprobG		type=time		value='<?=$hora;?>' min='<?=$horamin;?>' required>HORA</td>
 				</tr>
-				<tr><td>APROBADOR SME</td><td>FECHA</td><td>HORA</td></tr>
 				<tr height=30><td></td></tr>
 				<tr>
-					<td><input name=emisorG				type=texto	maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-					<td><input name=fechaemisorG	type=date		value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
-					<td><input name=horaemisorG		type=time		value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+					<td><input name=emisorG				type=texto	maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required>EMISOR</td>
+					<td><input name=fechaemisorG	type=date		value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required>FECHA</td>
+					<td><input name=horaemisorG		type=time		value='<?=$hora;?>' min='<?=$horamin;?>' required>HORA</td>
 				</tr>
-				<tr><td>EMISOR</td><td>FECHA</td><td>HORA</td></tr>
 			</table>
 			<hr>
 
@@ -434,27 +429,24 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				</tr>
 			</table>
 			<table border=0>
-				<tr><td width=55%></td><td width=26%></td><td width=19%></td></tr>
+				<tr><td width=57.50%></td><td width=23%></td><td width=19.50%></td></tr>
 				<tr>
-					<td><input name=ejecutorH			type=texto	maxlength=30	pattern=.{1,} onkeyup=mayuscula(this) required></td>
+					<td><input name=ejecutorH			type=texto	maxlength=30	pattern=.{1,} onkeyup=mayuscula(this) required>EJECUTOR</td>
 					<td></td>
-					<td><input name=horaejecH			type=time		value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+					<td><input name=horaejecH			type=time		value='<?=$hora;?>' min='<?=$horamin;?>' required>HORA</td>
 				</tr>
-				<tr><td>EJECUTOR</td><td></td><td>HORA</td></tr>
 				<tr height=30><td></td></tr>
 				<tr>
-					<td><input name=inspectorH		type=texto	maxlength=30	pattern=.{1,} onkeyup=mayuscula(this) required></td>
+					<td><input name=inspectorH		type=texto	maxlength=30	pattern=.{1,} onkeyup=mayuscula(this) required>INSPECTOR</td>
 					<td></td>
-					<td><input name=horainspH			type=time		value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+					<td><input name=horainspH			type=time		value='<?=$hora;?>' min='<?=$horamin;?>' required>HORA</td>
 				</tr>
-				<tr><td>INSPECTOR</td><td></td><td>HORA</td></tr>
 				<tr height=30><td></td></tr>
 				<tr>
-					<td><input name=emisorH				type=texto	maxlength=30	pattern=.{1,} onkeyup=mayuscula(this) required></td>
+					<td><input name=emisorH				type=texto	maxlength=30	pattern=.{1,} onkeyup=mayuscula(this) required>EMISOR</td>
 					<td></td>
-					<td><input name=horaemisorH		type=time		value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+					<td><input name=horaemisorH		type=time		value='<?=$hora;?>' min='<?=$horamin;?>' required>HORA</td>
 				</tr>
-				<tr><td>EMISOR</td><td></td><td>HORA</td></tr>
 			</table>
 			<hr>
 			<table border=0>

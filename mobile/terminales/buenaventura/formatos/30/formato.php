@@ -91,24 +91,24 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			<tr><td width=50%></td><td width=50%></td></tr>
 			<tr><td colspan=2 class=Bc><b>DATOS PLANTA DESPACHADORA</b></td></tr>
 			<tr height=130px>
-				<td class=Bc><br>COMPAÑIA												<input name=compania						type=text style=width:100% maxlength=30	pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td class=Bc><br>PLACAS CARRO TANQUE						<input name=placasCTK						type=text style=width:40%	maxlength=6		placeholder=ABC123 pattern=^([a-zA-Z]{3}[0-9]{3})$ onkeyup=mayuscula(this) required></td>
+				<td class=Bc><br>COMPAÑIA<br>												<input name=compania					type=text style=width:100% maxlength=30	pattern=.{1,} onkeyup=mayuscula(this) required></td>
+				<td class=Bc>PLACAS<br>CARRO TANQUE<br>							<input name=placasCTK					type=text style=width:40%	maxlength=6		placeholder=ABC123 pattern=^([a-zA-Z]{3}[0-9]{3})$ onkeyup=mayuscula(this) required></td>
 			</tr>
 			<tr height=180px>
-				<td class=Bc><br>GUÍA DE TRANSPORTE							<input name=guia_transporte			type=text style=width:50%	maxlength=12	pattern=^(?:[0-9]{8,12})$ inputmode=numeric required></td>
-				<td class=Bc>VOLÚMEN BRUTO<br>CONTADOR (gls)<br><input name=volumen_bruto				type=text style=width:40%	maxlength=8		pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td class=Bc>GUÍA DE<br>TRANSPORTE<br>							<input name=guia_transporte		type=text style=width:50%	maxlength=12	pattern=^(?:[0-9]{8,12})$ inputmode=numeric required></td>
+				<td class=Bc>VOLÚMEN BRUTO<br>CONTADOR (gls)<br>		<input name=volumen_bruto			type=text style=width:40%	maxlength=8		pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
 			</tr>
 			<tr height=130px>
-				<td class=Bc>TEMP. (ºF) DESPACHO<br>(Danload)<br><input name=temp_despacho			type=text style=width:40%	maxlength=6		pattern=^(([0-9]){1,3}?(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=Bc><br>GRAVEDAD API Xtº OBS. (CTK)<br><input name=gravedad_API_X1			type=text style=width:40%	maxlength=4		pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td class=Bc>TEMP. (ºF) DESPACHO<br>(Danload)<br>		<input name=temp_despacho			type=text style=width:40%	maxlength=6		pattern=^(([0-9]){1,3}?(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td class=Bc>GRAVEDAD<br>API Xtº OBS. (CTK)<br>			<input name=gravedad_API_X1		type=text style=width:40%	maxlength=4		pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
 			</tr>
 			<tr height=180px>
-				<td class=Bc><br>GRAVEDAD API@60ºF (CTK)				<input name=gravedad_API1				type=text style=width:40%	maxlength=4		pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=Bc>GRAVEDAD ESPECÍFICA<br>@ 60ºF (CTK)<br><input name=gravedad_espec1	type=text style=width:40%	maxlength=4		pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td class=Bc>GRAVEDAD<br>API @ 60ºF (CTK)<br>				<input name=gravedad_API1			type=text style=width:40%	maxlength=4		pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td class=Bc>GRAVEDAD<br>ESPECÍFICA @ 60ºF (CTK)<br><input name=gravedad_espec1		type=text style=width:40%	maxlength=4		pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
 			</tr>
 			<tr height=130px>
-				<td class=Bc><br>FACTOR DE CORECCIÓN						 <input name=factor_correccion	type=text style=width:40% maxlength=4		pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=Bc>VOLÚMEN NETO<br>DESPACHADO (Gls)<br><input name=vol_neto_despacho	type=text style=width:40% maxlength=8		pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td class=Bc>FACTOR<br>DE CORECCIÓN<br>							<input name=factor_correccion	type=text style=width:40% maxlength=4		pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td class=Bc>VOLÚMEN NETO<br>DESPACHADO (Gls)<br>		<input name=vol_neto_despacho	type=text style=width:40% maxlength=8		pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$ inputmode=numeric required></td>
 			</tr>
 		</table>
 		<hr>
@@ -118,11 +118,11 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			<tr><td width=50%></td><td width=50%></td></tr>
 			<tr><td colspan=2 class=Bc><b>INFORMACIÓN TANQUE DESPACHADOR</b></td></tr>
 			<tr height=100px>
-				<td colspan=2 class=Bc><br>TANQUE DESPACHADOR No.<input name=TK_despachador	type=text style=width:30% maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric required></td>
+				<td colspan=2 class=Bc>TANQUE<br>DESPACHADOR No.<br><input name=TK_despachador	type=text style=width:30% maxlength=3 pattern=^(?:[0-9]{1,3})$ inputmode=numeric required></td>
 			</tr>
 			<tr height=130px>
-				<td class=Bc><br>GRAVEDAD API@60ºF (CTK)	 <input name=gravedad_API2		type=text style=width:40% maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=Bc><br>GRAVEDAD ESPECÍFICA @ 60ºF<input name=gravedad_espec2	type=text style=width:40% maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td class=Bc>GRAVEDAD<br>API @ 60ºF (CTK)<br>				<input name=gravedad_API2		type=text style=width:40% maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td class=Bc>GRAVEDAD<br>ESPECÍFICA @ 60ºF<br>			<input name=gravedad_espec2	type=text style=width:40% maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
 			</tr>
 		</table>
 		<hr>
@@ -132,11 +132,11 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			<tr><td width=50%></td><td width=50%></td></tr>
 			<tr><td colspan=2 class=Bc><b>INFORMACIÓN DE CALIDAD DE MUESTRA CTK</b></td></tr>
 			<tr height=130px>
-				<td colspan=2 class=Bc>APARIENCIA (C&B)<input name=aparienciaCTK type=text style=width:60% maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+				<td colspan=2 class=Bc>APARIENCIA (C&B)<br><input name=aparienciaCTK type=text style=width:60% maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
 			</tr>
 			<tr height=130px>
-				<td class=Bc><br>DIFERENCIA API CTK vs.API TK<br>(debe ser < 0.7º<br>API Despachador @ 60ºF)<input name=diferenciaAPI1 type=text style=width:40% maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=Bc>GRAVEDAD ESPECÍFICA CTK vs.<br>GRAVEDAD ESPECÍFICA TK DESPACHADOR<br>(debe ser < 0.003 Kgr/l)
+				<td class=Bc><br>DIFERENCIA<br>API CTK vs. API TK<br>(debe ser < 0.7º<br>API Despachador @ 60ºF)<br><input name=diferenciaAPI1 type=text style=width:40% maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td class=Bc>GRAVEDAD ESPECÍFICA CTK vs.<br>GRAVEDAD ESPECÍFICA TK DESPACHADOR<br>(debe ser < 0.003 Kgr/l)<br>
 					<input name=gravedad_espec_CTK_TK1 type=text style=width:40% maxlength=5 pattern=^((0)(.\d)?(\d)?(\d)?)$ inputmode=numeric required>
 				</td>
 			</tr>
@@ -148,16 +148,16 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			<tr><td width=50%></td><td width=50%></td></tr>
 			<tr><td colspan=2 class=Bc><b>PRUEBAS ABREVIADAS CAMIÓN-TANQUE</b></td></tr>
 			<tr height=130px>
-				<td class=Bc>AEROPUERTO RECIBIDOR				<input name=aerop_recibidor	type=text style=width:96% maxlength=30	pattern=.{1,} onkeyup=mayuscula(this) required></td>
-				<td class=Bc>APARIENCIA (C&B)						<input name=aparienciaTK		type=text style=width:96% maxlength=30	pattern=.{1,} onkeyup=mayuscula(this) required></td>
+				<td class=Bc>AEROPUERTO RECIBIDOR<br>		<input name=aerop_recibidor	type=text style=width:96% maxlength=30	pattern=.{1,} onkeyup=mayuscula(this) required></td>
+				<td class=Bc>APARIENCIA (C&B)<br>				<input name=aparienciaTK		type=text style=width:96% maxlength=30	pattern=.{1,} onkeyup=mayuscula(this) required></td>
 			</tr>
 			<tr height=130px>
-				<td class=Bc>GRAVEDAD API Xtº OBS. (CTK)<input name=gravedad_API_X2	type=text style=width:40% maxlength=4		pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=Bc>GRAVEDAD API@60ºF (CTK)		<input name=gravedad_API3		type=text style=width:40% maxlength=4		pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td class=Bc>GRAVEDAD<br>API Xtº OBS. (CTK)<br>	<input name=gravedad_API_X2	type=text style=width:40% maxlength=4		pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td class=Bc>GRAVEDAD<br>API @ 60ºF (CTK)<br>		<input name=gravedad_API3		type=text style=width:40% maxlength=4		pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
 			</tr>
 			<tr height=130px>
 				<td class=Bc><br>GRAVEDAD ESPECÍFICA<br>@ 60ºF (CTK)<br><input name=gravedad_espec3 type=text style=width:40% maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
-				<td class=Bc>DIFERENCIA API CTK vs. API TK<br>(debe ser < 0.7º<br>API Despachador @ 60ºF)<input name=diferenciaAPI2 type=text style=width:40% maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
+				<td class=Bc>DIFERENCIA API CTK vs. API TK<br>(debe ser < 0.7º<br>API Despachador @ 60ºF)<br><input name=diferenciaAPI2 type=text style=width:40% maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$ inputmode=numeric required></td>
 			</tr>
 			<tr height=220px>
 				<td colspan=2 class=Bc>GRAV. ESPECÍF. CTK AEROP. vs.<br>GRAVEDAD ESPECÍFICA TK DESPACHADOR<br>(debe ser < 0.003 Kgr/l)<br>
@@ -172,20 +172,20 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			<tr><td width=50%></td><td width=50%></td></tr>
 			<tr><td colspan=3 class=Bc><b>CONTADOR RECIBO AEROPUERTO</b></td></tr>
 			<tr height=130px>
-				<td class=Bc>TIQUETE No.<br>												<input name=tiquete											type=text style=width:40% maxlength=6 pattern=^(?:[0-9]{1,6})$							inputmode=numeric required></td>
-				<td class=Bc>LECTURA INICIAL<br>										<input name=lectura_inicial							type=text style=width:40% maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$	inputmode=numeric required></td>
+				<td class=Bc>TIQUETE No.<br>													<input name=tiquete											type=text style=width:40% maxlength=6 pattern=^(?:[0-9]{1,6})$							inputmode=numeric required></td>
+				<td class=Bc>LECTURA INICIAL<br>											<input name=lectura_inicial							type=text style=width:40% maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$	inputmode=numeric required></td>
 			</tr>
 			<tr height=130px>
-				<td class=Bc>LECTURA FINAL<br>											<input name=lectura_final								type=text style=width:40% maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$	inputmode=numeric required></td>
-				<td class=Bc>VOLÚMEN BRUTO (Gls)<br>								<input name=vol_bruto										type=text style=width:40% maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$	inputmode=numeric required></td>
+				<td class=Bc>LECTURA FINAL<br>												<input name=lectura_final								type=text style=width:40% maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$	inputmode=numeric required></td>
+				<td class=Bc>VOLÚMEN BRUTO (Gls)<br>									<input name=vol_bruto										type=text style=width:40% maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$	inputmode=numeric required></td>
 			</tr>
 			<tr height=130px>
-				<td class=Bc>TEMPERATURA<br>EN LÍNEA DE RECIBO ºF		<input name=temp_recibo									type=text style=width:40% maxlength=6 pattern=^(([0-9]){1,3}?(.\d)?(\d)?)$	inputmode=numeric required></td>
-				<td class=Bc><br>GRAVEDAD API@60ºF (CTK)<br>				<input name=gravedad_API4								type=text style=width:40% maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$				inputmode=numeric required></td>
+				<td class=Bc>TEMPERATURA<br>EN LÍNEA DE RECIBO ºF<br>	<input name=temp_recibo									type=text style=width:40% maxlength=6 pattern=^(([0-9]){1,3}?(.\d)?(\d)?)$	inputmode=numeric required></td>
+				<td class=Bc>GRAVEDAD<br>API @ 60ºF (CTK)<br>					<input name=gravedad_API4								type=text style=width:40% maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$				inputmode=numeric required></td>
 			</tr>
 			<tr height=180px>
-				<td class=Bc>FACTOR CORRECCIÓN DE VOLÚMEN<br>				<input name=factor_correccion_volumen1	type=text style=width:40% maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$				inputmode=numeric required></td>
-				<td class=Bc>VOLÚMEN NETO<br>RECIBIDO (Gls)<br>			<input name=vol_neto_recibido						type=text style=width:40% maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$	inputmode=numeric required></td>
+				<td class=Bc>FACTOR CORRECCIÓN<br>DE VOLÚMEN<br>			<input name=factor_correccion_volumen1	type=text style=width:40% maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$				inputmode=numeric required></td>
+				<td class=Bc>VOLÚMEN NETO<br>RECIBIDO (Gls)<br>				<input name=vol_neto_recibido						type=text style=width:40% maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$	inputmode=numeric required></td>
 			</tr>
 			<tr height=130px>
 				<td class=Bc>VARIACIÓN DESPACHO vs. RECIBIDO CTK<br><input name=variacion_despacho_recibido type=text style=width:40% maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$	inputmode=numeric required></td>
@@ -206,12 +206,12 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				<td class=Bc>VOLÚMEN BRUTO<br>TABLA AFORO (Gls)<br>	<input name=vol_bruto_tabla_aforo				type=text style=width:40% maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$	inputmode=numeric required></td>
 			</tr>
 			<tr height=130px>
-				<td class=Bc>Gravedad API Ctº observada (TK)				<input name=gravedad_APIC								type=text style=width:40% maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$				inputmode=numeric required></td>
-				<td class=Bc>Gravedad API@60ºF<br>									<input name=gravedad_API5								type=text style=width:40% maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$				inputmode=numeric required></td>
+				<td class=Bc>Gravedad<br>API Ctº observada (TK)<br>	<input name=gravedad_APIC								type=text style=width:40% maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$				inputmode=numeric required></td>
+				<td class=Bc>Gravedad<br>API @60 ºF<br>							<input name=gravedad_API5								type=text style=width:40% maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$				inputmode=numeric required></td>
 			</tr>
 			<tr height=130px>
-				<td class=Bc><br>TEMPERATURA TANQUE ºF							<input name=temp_TK											type=text style=width:40% maxlength=6 pattern=^(([0-9]){1,3}?(.\d)?(\d)?)$	inputmode=numeric required></td>
-				<td class=Bc>FACTOR<br>CORRECCIÓN DE VOLÚMEN				<input name=factor_correccion_volumen2	type=text style=width:40% maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$				inputmode=numeric required></td>
+				<td class=Bc>TEMPERATURA<br>TANQUE ºF<br>						<input name=temp_TK											type=text style=width:40% maxlength=6 pattern=^(([0-9]){1,3}?(.\d)?(\d)?)$	inputmode=numeric required></td>
+				<td class=Bc>FACTOR CORRECCIÓN<br>DE VOLÚMEN<br>		<input name=factor_correccion_volumen2	type=text style=width:40% maxlength=4 pattern=^(([0-9])(.\d)?(\d)?)$				inputmode=numeric required></td>
 			</tr>
 			<tr height=130px>
 				<td class=Bc>VOLÚMEN NETO<br>												<input name=vol_neto										type=text style=width:40% maxlength=8 pattern=^(([0-9]){1,5}?(.\d)?(\d)?)$	inputmode=numeric required></td>

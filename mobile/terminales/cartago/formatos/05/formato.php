@@ -289,7 +289,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				<table border=1 bordercolor=#ff7000>
 					<tr height=70px>
 						<? for ($i = 1; $i <= 8; $i++): ?>
-						<td style=width:170px class=A2>Hora<br><?=$i?></td><td style=width:132px class=A2>Resultado<br><?=$i?></td>
+						<td style=width:190px class=A2>Hora<br><?=$i?></td><td style=width:150px class=A2>Resultado<br><?=$i?></td>
 						<? endfor; ?>
 					</tr>
 					<tr height=70px>
@@ -317,20 +317,18 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 					</tr>
 				</table>
 				<table border=0>
-					<tr><td width=60%></td><td width=21%></td><td width=19%></td></tr>
+					<tr><td width=57.50%></td><td width=23%></td><td width=19.50%></td></tr>
 					<tr>
-						<td><input name=ejecutorC		type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+						<td><input name=ejecutorC		type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required>EJECUTOR</td>
 						<td><input name=fechaejecC	type=date	 class=mostrarfecha value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' readonly></td>
-						<td><input name=horaejecC		type=time  value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+						<td><input name=horaejecC		type=time  value='<?=$hora;?>' min='<?=$horamin;?>' required>HORA</td>
 					</tr>
-					<tr><td>EJECUTOR</td><td></td><td>HORA</td></tr>
-					<tr height=40><td></td></tr>
+					<tr height=30><td></td></tr>
 					<tr>
-						<td><input name=inspectorC  type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+						<td><input name=inspectorC  type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required>INSPECTOR</td>
 						<td><input name=fechainspC  type=date	 class=mostrarfecha value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' readonly></td>
-						<td><input name=horainspC   type=time  value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+						<td><input name=horainspC   type=time  value='<?=$hora;?>' min='<?=$horamin;?>' required>HORA</td>
 					</tr>
-					<tr><td>INSPECTOR</td><td></td><td>HORA</td></tr>
 				</table>
 				<hr>
 
@@ -342,12 +340,11 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				<table border=0>
 					<tr><td width=50%></td><td width=50%></td><td width=0%></td><td width=0%></td></tr>
 					<tr>
-						<td><input name=emisorD				type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-						<td><input name=nombreemisorD	type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+						<td><input name=emisorD				type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required>EMISOR</td>
+						<td><input name=nombreemisorD	type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required>NOMBRE</td>
 						<td><input name=fechaemisorD	type=date	 class=mostrarfecha value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' readonly></td>
 						<td><input name=horaemisorD		type=time	 class=mostrarhora	value='<?=$hora;?>' min='<?=$horamin;?>'	readonly required></td>
 					</tr>
-					<tr><td>EMISOR</td><td>NOMBRE</td><td></td><td></td></tr>
 				</table>
 				<hr>
 
@@ -372,28 +369,25 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 					<tr height=30><td></td></tr>
 				</table>
 				<table border=0>
-					<tr><td width=60%></td><td width=21%></td><td width=19%></td></tr>
+					<tr><td width=57.50%></td><td width=23%></td><td width=19.50%></td></tr>
 					<tr>
-						<td><input name=ejecutorE			type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+						<td><input name=ejecutorE			type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required>EJECUTOR</td>
 						<td><input name=fechaejecE		type=date  class=mostrarfecha value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' readonly></td>
-						<td><input name=horaejecE			type=time  value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+						<td><input name=horaejecE			type=time  value='<?=$hora;?>' min='<?=$horamin;?>' required>HORA</td>
 					</tr>
-					<tr><td>EJECUTOR</td><td></td><td>HORA</td></tr>
 					<tr height=30><td></td></tr>
 					<tr>
-						<td><input name=inspectorE		type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+						<td><input name=inspectorE		type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required>INSPECTOR</td>
 						<td><input name=fechainspE		type=date  class=mostrarfecha value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' readonly></td>
-						<td><input name=horainspE			type=time  value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+						<td><input name=horainspE			type=time  value='<?=$hora;?>' min='<?=$horamin;?>' required>HORA</td>
 					</tr>
-					<tr><td>INSPECTOR</td><td></td><td>HORA</td></tr>
 					<tr height=30><td></td></tr>
 					<tr><td colspan=3><span>ESTE CERTIFICADO ES AHORA RETIRADO Y CANCELADO</td></tr>
 					<tr>
-						<td><input name=emisorE				type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+						<td><input name=emisorE				type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required>EMISOR</td>
 						<td><input name=fechaemisorE	type=date  class=mostrarfecha value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' readonly></td>
-						<td><input name=horaemisorE		type=time  value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+						<td><input name=horaemisorE		type=time  value='<?=$hora;?>' min='<?=$horamin;?>' required>HORA</td>
 					</tr>
-					<tr><td>EMISOR</td><td></td><td>HORA</td></tr>
 					<tr height=30><td></td></tr>
 				</table>
 				<hr>

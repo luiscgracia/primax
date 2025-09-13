@@ -293,7 +293,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 							$q20 = $j ? '':'required';
 							$class20 = $j ? 'i20':'i20 req20';
 							$hora20 = '';
-							echo "<td><input name=B20{$l[$j*2]}".($i+1)." 	value='$hora22' min='$horamin' type=time class='$class20' $q20></td>";
+							echo "<td><input name=B20{$l[$j*2]}".($i+1)." 	type=time class='$class20' value='$hora22' min='$horamin' $q20></td>";
 							echo "<td><input name=B20{$l[$j*2+1]}".($i+1)." type=text class='$class20' value='{$p[$i][0]}' maxlength={$p[$i][1]} pattern='{$p[$i][2]}' placeholder='{$p[$i][3]}' inputmode=numeric $q20></td>";
 						}
 					echo '</tr>';
