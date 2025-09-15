@@ -88,32 +88,19 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 		
 <!-- *****************************************			 sección A			 ***************************************** -->
 			<table border=0>
-				<tr><td width=17%></td><td width=25%></td><td width=16%></td><td width=25%></td><td width=17%></td></tr>
-				<tr><td colspan=5 class=B><b>&nbsp;&nbsp;A. TAREA A REALIZAR</b></td></tr>
-				<tr><td colspan=5>UBICACIÓN<textarea name=ubicacion maxlength=63 style=width:98% onkeyup=mayuscula(this) pattern=.{1,} required></textarea></td></tr>
+				<tr><td width=13.50%></td><td width= 0.50%></td><td width=22.50%></td><td width= 0.50%></td><td width=23.00%></td><td width= 0.50%></td><td width=19.50%></td><td width= 0.50%></td><td width=19.50%></td></tr>
+				<tr><td colspan=9 class=B><b>&nbsp;&nbsp;A. TAREA A REALIZAR</b></td></tr>
+				<tr><td colspan=9>UBICACIÓN<textarea name=ubicacion maxlength=63 style=width:98% onkeyup=mayuscula(this) pattern=.{1,} required></textarea></td></tr>
 				<tr height=30><td></td></tr>
 				<tr>
-					<td></td>
-					<td>APT<br><input name=apt class=consecutivo maxlength=6 style=width:55% inputmode=numeric pattern=^(?:[0-9]{4,6})$ required></td>
-					<td></td>
-					<td>EQUIPO<br><input name=equipo class=consecutivo maxlength=10 style=width:89% inputmode=numeric pattern=^(?:[0-9]{4,10})$ required></td>
-					<td></td>
+					<td>APT					<input name=apt					class=consecutivo value=888886			maxlength=6		inputmode=numeric pattern=^(?:[0-9]{4,6})$	required></td><td></td>
+					<td>EQUIPO			<input name=equipo			class=consecutivo value=8888888880	maxlength=10	inputmode=numeric pattern=^(?:[0-9]{4,10})$	required></td><td></td>
+					<td>FECHA				<input name=fechaA			type=date value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td><td></td>
+					<td>HORA INICIAL<input name=horainicioA	type=time value='<?=$hora;?>' min='<?=$horamin;?>' required></td><td></td>
+					<td>HORA FINAL	<input name=horafinalA	type=time value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
 				</tr>
 				<tr height=30><td></td></tr>
-			</table>
-			<table>
-				<tr><td width= 4.75%></td><td width=27%></td><td width= 4.75%></td><td width=27%></td><td width= 4.75%></td><td width=27%></td><td width= 4.75%></td></tr>
-				<tr>
-					<td></td>
-					<td>FECHA<input name=fechaA type=date value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
-					<td></td>
-					<td>HORA INICIAL<input name=horainicioA type=time value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
-					<td></td>
-					<td>HORA FINAL<input name=horafinalA type=time value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
-					<td></td>
-				</tr>
-				<tr height=30><td></td></tr>
-				<tr><td colspan=7>DESCRIPCIÓN<textarea name=descripcion type=texto maxlength=74 style=width:98% onkeyup=mayuscula(this) pattern=.{1,} required></textarea></td></tr>
+				<tr><td colspan=9>DESCRIPCIÓN<textarea name=descripcion type=texto maxlength=74 style=width:98% onkeyup=mayuscula(this) pattern=.{1,} required></textarea></td></tr>
 			</table>
 			<hr>
 		
