@@ -49,7 +49,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 	</div>
 	<? $color_formato = 'rgba(100,170,255,1)' ?>
 	<form id=formato name=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
-		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; height:4660px; border:1vw solid <?=$color_formato;?>">
+		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; height:4630px; border:1vw solid <?=$color_formato;?>">
 			<table border=0 style="color:white; background-color:<?=$color_formato;?>">
 				<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
 				<tr height=100>
@@ -79,7 +79,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			<table border=0>
 				<tr class=sinbordes><td class=sinbordes width=5%></td><td class=sinbordes width=95%></td></tr>
 				<tr><td class=letraseccion>A.&nbsp;</td><td class=tituloseccion>SOLICITUD</td></tr>
-				<tr><td colspan=2>DESCRIPCIÓN DEL TRABAJO<textarea name=descripcion maxlength=68 style=width:99% onkeyup=mayuscula(this) pattern=.{1,} required autofocus></textarea></td></tr>
+				<tr><td colspan=2>DESCRIPCIÓN DEL TRABAJO<textarea name=descripcion maxlength=68 onkeyup=mayuscula(this) pattern=.{1,} required autofocus></textarea></td></tr>
 				<tr height=10><td></td></tr>
 			</table>
 			<table border=0>
@@ -389,7 +389,6 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 						<td><input name=fechaemisorE	type=date  class=mostrarfecha value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' readonly></td>
 						<td><input name=horaemisorE		type=time  value='<?=$hora;?>' min='<?=$horamin;?>' required>HORA</td>
 					</tr>
-					<tr height=30><td></td></tr>
 				</table>
 				<hr>
 				<table>

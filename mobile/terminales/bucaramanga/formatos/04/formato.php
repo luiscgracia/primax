@@ -49,7 +49,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 	</div>
 	<? $color_formato = 'rgba(0,0,204,1)' ?>
 	<form id=formato name=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
-		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; height:6040px; border:1vw solid <?=$color_formato;?>">
+		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; height:6000px; border:1vw solid <?=$color_formato;?>">
 			<table border=0 style="color:white; background-color:<?=$color_formato;?>">
 				<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
 				<tr height=100>
@@ -80,7 +80,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			<table border=0>
 				<tr class=sinbordes><td class=sinbordes width=5%></td><td class=sinbordes width=95%></td></tr>
 				<tr><td class=letraseccion>A.&nbsp;</td><td class=tituloseccion>SOLICITUD</td></tr>
-				<tr><td colspan=2>DESCRIPCIÓN DEL TRABAJO<textarea name=descripcion maxlength=68 style=width:99% onkeyup=mayuscula(this) pattern=.{1,} required autofocus></textarea></td></tr>
+				<tr><td colspan=2>DESCRIPCIÓN DEL TRABAJO<textarea name=descripcion maxlength=68 onkeyup=mayuscula(this) pattern=.{1,} required autofocus></textarea></td></tr>
 				<tr height=10><td></td></tr>
 			</table>
 			<table border=0>
@@ -375,18 +375,16 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				<table border=0>
 					<tr><td width=60%></td><td width=21%></td><td width=19%></td></tr>
 					<tr>
-						<td><input name=ejecutorC		type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+						<td><input name=ejecutorC		type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required>EJECUTOR</td>
 						<td><input name=fechaejecC	type=date	 class=mostrarfecha value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' readonly></td>
-						<td><input name=horaejecC		type=time	 value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+						<td><input name=horaejecC		type=time	 value='<?=$hora;?>' min='<?=$horamin;?>' required>HORA</td>
 					</tr>
-					<tr><td>EJECUTOR</td><td></td><td>HORA</td></tr>
 					<tr height=40><td></td></tr>
 					<tr>
-						<td><input name=inspectorC  type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+						<td><input name=inspectorC  type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required>INSPECTOR</td>
 						<td><input name=fechainspC  type=date	 class=mostrarfecha value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' readonly></td>
-						<td><input name=horainspC   type=time	 value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+						<td><input name=horainspC   type=time	 value='<?=$hora;?>' min='<?=$horamin;?>' required>HORA</td>
 					</tr>
-					<tr><td>INSPECTOR</td><td></td><td>HORA</td></tr>
 				</table>
 				<hr>
 
@@ -402,12 +400,11 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				<table border=0>
 					<tr><td width=50%></td><td width=50%></td><td width=0%></td><td width=0%></td></tr>
 					<tr>
-						<td><input name=emisorD				type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-						<td><input name=nombreemisorD	type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+						<td><input name=emisorD				type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required>EMISOR</td>
+						<td><input name=nombreemisorD	type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required>NOMBRE</td>
 						<td><input name=fechaemisorD	type=date  class=mostrarfecha value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' readonly></td>
 						<td><input name=horaemisorD		type=time  class=mostrarhora  value='<?=$hora;?>' min='<?=$horamin;?>'	readonly required></td>
 					</tr>
-					<tr><td>EMISOR</td><td>NOMBRE</td><td></td><td></td></tr>
 				</table>
 				<hr>
 
@@ -434,27 +431,23 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				<table border=0>
 					<tr><td width=60%></td><td width=21%></td><td width=19%></td></tr>
 					<tr>
-						<td><input name=ejecutorE			type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+						<td><input name=ejecutorE			type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required>EJECUTOR</td>
 						<td><input name=fechaejecE		type=date	 class=mostrarfecha value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' readonly></td>
-						<td><input name=horaejecE			type=time  value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+						<td><input name=horaejecE			type=time  value='<?=$hora;?>' min='<?=$horamin;?>' required>HORA</td>
 					</tr>
-					<tr><td>EJECUTOR</td><td></td><td>HORA</td></tr>
 					<tr height=30><td></td></tr>
 					<tr>
-						<td><input name=inspectorE		type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+						<td><input name=inspectorE		type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required>INSPECTOR</td>
 						<td><input name=fechainspE		type=date  class=mostrarfecha value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' readonly></td>
-						<td><input name=horainspE			type=time  value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+						<td><input name=horainspE			type=time  value='<?=$hora;?>' min='<?=$horamin;?>' required>HORA</td>
 					</tr>
-					<tr><td>INSPECTOR</td><td></td><td>HORA</td></tr>
 					<tr height=30><td></td></tr>
 					<tr><td colspan=3><span>ESTE CERTIFICADO ES AHORA RETIRADO Y CANCELADO</td></tr>
 					<tr>
-						<td><input name=emisorE				type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
+						<td><input name=emisorE				type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required>EMISOR</td>
 						<td><input name=fechaemisorE	type=date  class=mostrarfecha value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' readonly></td>
-						<td><input name=horaemisorE		type=time  value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
+						<td><input name=horaemisorE		type=time  value='<?=$hora;?>' min='<?=$horamin;?>' required>HORA</td>
 					</tr>
-					<tr><td>EMISOR</td><td></td><td>HORA</td></tr>
-					<tr height=30><td></td></tr>
 				</table>
 				<hr>
 				<table>

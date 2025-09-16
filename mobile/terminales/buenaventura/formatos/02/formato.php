@@ -49,7 +49,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 	</div>
 	<? $color_formato = 'rgba(204,0,0,1)' ?>
 	<form id=formato name=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
-		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; height:6320px; border:1vw solid <?=$color_formato;?>">
+		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; height:6260px; border:1vw solid <?=$color_formato;?>">
 			<table border=0 style="color:white; background-color:<?=$color_formato;?>">
 				<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
 				<tr height=100>
@@ -313,7 +313,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				echo '</table>';
 				?>
 			</div>
-			<div style="position:relative; width:100%; left:0px; top:-590px; background-color:rgba(0,0,255,0)">
+			<div style="position:relative; width:100%; left:0px; top:-600px; background-color:rgba(0,0,255,0)">
 				<table>
 					<tr>
 						<td style=text-align:left>
@@ -324,10 +324,10 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 					</tr>
 				</table>
 			</div>
-			<div style="position:relative; width:100%; left:0px; top:-560px">
+			<div style="position:relative; width:100%; left:0px; top:-570px">
 				<table border=0><tr><td class=B style=width:5%>&nbsp;23.</td><td class=B style="width:95%; font-size:29px">CONTROL DE PERSONAL PARA INGRESO A ESPACIO CONFINADO</td></tr></table>
 			</div>
-			<div style="position:relative; width:59.25%; left:0.50%; top:-560px; background-color:white">
+			<div style="position:relative; width:59.25%; left:0.50%; top:-570px; background-color:white">
 				<table border=1>
 					<tr height=80px><td class=A3>PERSONAL QUE INGRESA</td></tr>
 					<? for ($i = 1; $i <= 5; $i++): ?>
@@ -335,7 +335,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 					<? endfor; ?>
 				</table>
 			</div>
-			<div style="position:relative; width:39.40%; left:59.85%; top:-941px; background-color:white; overflow:scroll">
+			<div style="position:relative; width:39.40%; left:59.85%; top:-951px; background-color:white; overflow:scroll">
 				<?php
 				$filas = 5;
 				$columnas = 7;
@@ -371,7 +371,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			</div>
 
 <!-- *****************************************			 sección C			 ***************************************** -->
-			<div style="position:relative; left:0px; width:100%; top:-890px"> <!-- este div mueve hacia abajo desde la sección C -->
+			<div style="position:relative; left:0px; width:100%; top:-950px"> <!-- este div mueve hacia abajo desde la sección C -->
 				<hr>
 				<table border=0>
 					<tr class=sinbordes><td class=sinbordes width=5%></td><td class=sinbordes width=95%></td></tr>

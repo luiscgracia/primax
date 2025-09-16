@@ -80,7 +80,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			<table border=0>
 				<tr class=sinbordes><td class=sinbordes width=5%></td><td class=sinbordes width=95%></td></tr>
 				<tr><td class=letraseccion>A.&nbsp;</td><td class=tituloseccion>SOLICITUD</td></tr>
-				<tr><td colspan=2>DESCRIPCIÓN DEL TRABAJO<textarea name=descripcion maxlength=68 style=width:99% onkeyup=mayuscula(this) pattern=.{1,} required autofocus></textarea></td></tr>
+				<tr><td colspan=2>DESCRIPCIÓN DEL TRABAJO<textarea name=descripcion maxlength=68 onkeyup=mayuscula(this) pattern=.{1,} required autofocus></textarea></td></tr>
 				<tr height=10><td></td></tr>
 			</table>
 			<table border=0>
