@@ -49,7 +49,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 	</div>
 	<? $color_formato = 'rgba(0,0,204,1)' ?>
 	<form id=formato name=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
-		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; height:5860px; border:12px solid <?=$color_formato;?>">
+		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; height:6040px; border:1vw solid <?=$color_formato;?>">
 			<table border=0 style="color:white; background-color:<?=$color_formato;?>">
 				<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
 				<tr height=100>
@@ -252,16 +252,16 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			<div style="position:absolute; width:36.50%; left:0.50%; background-color:white">
 				<table border=1>
 					<tr height=75px><td class=A3 style=width:55%>PRUEBA</td>																	<td style=width:45% class=A3>Perm</td></tr>
-					<tr height=74px><td class=A1 style=text-align:left>&nbsp;% LEL</td>												<td class=A1>0%</td></tr>
-					<tr height=74px><td class=A1 style=text-align:left>&nbsp;Oxígeno</td>											<td class=A1>19.5%-23.5%</td></tr>
-					<tr height=74px><td class=A1 style=text-align:left>&nbsp;Total<br>&nbsp;Hidrocarburos</td><td class=A1>100 ppm</td></tr>
-					<tr height=74px><td class=A1 style=text-align:left>&nbsp;Etanol</td>											<td class=A1>1000 ppm</td></tr>
-					<tr height=74px><td class=A1 style=text-align:left>&nbsp;Benceno</td>											<td class=A1>0.5 ppm</td></tr>
-					<tr height=74px><td class=A1 style=text-align:left>&nbsp;Plomo<br>&nbsp;Orgánico</td>			<td class=A1>0.075 mg/m&#179;</td></tr>
-					<tr height=74px><td class=A1 style=text-align:left>&nbsp;Monóxido de<br>&nbsp;Carbono</td><td class=A1>25 ppm</td></tr>
+					<tr height=75px><td class=A1 style=text-align:left>&nbsp;% LEL</td>												<td class=A1>0%</td></tr>
+					<tr height=75px><td class=A1 style=text-align:left>&nbsp;Oxígeno</td>											<td class=A1>19.5%-23.5%</td></tr>
+					<tr height=75px><td class=A1 style=text-align:left>&nbsp;Total<br>&nbsp;Hidrocarburos</td><td class=A1>100 ppm</td></tr>
+					<tr height=75px><td class=A1 style=text-align:left>&nbsp;Etanol</td>											<td class=A1>1000 ppm</td></tr>
+					<tr height=75px><td class=A1 style=text-align:left>&nbsp;Benceno</td>											<td class=A1>0.5 ppm</td></tr>
+					<tr height=75px><td class=A1 style=text-align:left>&nbsp;Plomo<br>&nbsp;Orgánico</td>			<td class=A1>0.075 mg/m&#179;</td></tr>
+					<tr height=75px><td class=A1 style=text-align:left>&nbsp;Monóxido de<br>&nbsp;Carbono</td><td class=A1>25 ppm</td></tr>
 				</table>
 			</div>
-			<div style="position:absolute; width:62.25%; left:37.00%; background-color:white; overflow:scroll">
+			<div style="position:absolute; width:62.15%; left:37.10%; background-color:white; overflow:scroll">
 				<?
 				$filas = 7;
 				$columnas = 8;
@@ -275,7 +275,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				$l = range('A','P');
 				echo '<style>
 					.tabla20		{border-collapse:collapse; width:100%}
-					.tabla20 td	{border:2px solid #ff7000ff; height:70px; text-align:center; vertical-align:middle}
+					.tabla20 td	{border:2px solid #ff7000ff; text-align:center; vertical-align:middle}
 					.hora				{width:190px; background:#ff7000bf; color:#000000ff; font-weight:bold}
 					.result			{width:150px; background:#ff7000bf; color:#000000ff; font-weight:bold}
 					.i20				{width:95%; height:35px; border:2px solid #ff7000ff; border-radius:5px; padding:0px; text-align:center}
@@ -288,7 +288,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 							echo "<td class='hora'>Hora<br>$i</td><td class='result'>Resultado<br>$i</td>";
 					echo '</tr>';
 					for($i = 0; $i < $filas; $i++) {
-					echo '<tr>';
+					echo '<tr height=75px>';
 						for($j = 0; $j < $columnas; $j++) {
 							$q20 = $j ? '':'required';
 							$class20 = $j ? 'i20':'i20 req20';
@@ -362,13 +362,13 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				<hr>
 				<table border=0>
 					<tr><td width=5%></td><td width=61.50%></td><td width=18%></td><td width=15.50%></td></tr>
-					<tr><td colspan=4 class=B><b>&nbsp;&nbsp;C. ACEPTACIÓN</b></td></tr>
+					<tr><td class=letraseccion>C.&nbsp;</td><td colspan=3 class=tituloseccion>ACEPTACIÓN</td></tr>
 					<tr>
-						<td class=Bct>&nbsp;&nbsp;&#9679;&nbsp;</td>
+						<td class=Bct>&#9679;</td>
 						<td class=B colspan=3>Confirmo que he leído y entiendo los requisitos indicados en la sección B, que se cumplen y que hay seguridad para ingresar al espacio confinado y realizar el trabajo indicado en la sección A.</td>
 					</tr>
 					<tr>
-						<td class=Bct>&nbsp;&nbsp;&#9679;&nbsp;</td>
+						<td class=Bct>&#9679;</td>
 						<td class=B colspan=3>Confirmo además que se tomarán todas las precauciones necesarias para efectuar el trabajo con seguridad.<br><br></td>
 					</tr>
 				</table>
@@ -393,9 +393,9 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 <!-- *****************************************			 sección D			 ***************************************** -->
 				<table border=0>
 					<tr><td width= 5.00%></td><td width=27.65%></td><td width=33.85%></td><td width=18.00%></td><td width=15.50%></td></tr>
-					<tr><td colspan=4 class=B><b>&nbsp;&nbsp;D. AUTORIZACIÓN</b></td></tr>
+					<tr><td class=letraseccion>D.&nbsp;</td><td colspan=4 class=tituloseccion>AUTORIZACIÓN</td></tr>
 					<tr>
-						<td class=Bct>&nbsp;&nbsp;&#9679;&nbsp;</td>
+						<td class=Bct>&#9679;</td>
 						<td class=B colspan=4>Certifico que los aislamientos y desacoples se han efectuado apropiadamente y que el área es segura para el ingreso.<br>Por lo tanto, <b>AUTORIZO</b> el ingreso al espacio confinado y la realización del trabajo indicado en la sección A.<br><br></td>
 					</tr>
 				</table>
@@ -414,9 +414,9 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 <!-- *****************************************			 sección E			 ***************************************** -->
 				<table border=0>
 					<tr><td width=5%></td><td width=61.50%></td><td width=18%></td><td width=15.50%></td></tr>
-					<tr><td colspan=4 class=B><b>&nbsp;&nbsp;E. CANCELACIÓN</b></td></tr>
-					<tr><td class=Bct>&nbsp;&nbsp;&#9679;&nbsp;</td><td class=B colspan=3>Cuando se diligencia esta sección, el permiso NO puede ser revalidado.</td></tr>
-					<tr><td class=Bct>&nbsp;&nbsp;&#9679;&nbsp;</td><td class=B colspan=3>Certifico que el trabajo que motivó el ingreso al espacio confinado:</td></tr>
+					<tr><td class=letraseccion>E.&nbsp;</td><td colspan=3 class=tituloseccion>CANCELACIÓN</td></tr>
+					<tr><td class=Bct>&#9679;</td><td class=B colspan=3>Cuando se diligencia esta sección, el permiso NO puede ser revalidado.</td></tr>
+					<tr><td class=Bct>&#9679;</td><td class=B colspan=3>Certifico que el trabajo que motivó el ingreso al espacio confinado:</td></tr>
 				</table>
 				<table border=0>
 					<tr>

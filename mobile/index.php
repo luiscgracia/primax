@@ -23,15 +23,9 @@ date_default_timezone_set('America/Bogota');
 $fecha = date("Y-m-d / H:i");
 ?>
 <script>setTimeout(function(){location.href="index.php"}, 5*60*1000);</script>
-<table style="width:100vw; height:100vh" border=0>
+<table style="width:100vw; height:91.20vh" border=0>
 	<tr><td width=10%></td><td width=80%></td><td width=10%></td></tr>
-	<tr height=6%>
-		<td></td>
-		<td></td>
-		<td style="text-align:right">
-			<a href="../normal/index.php" style=pointer-events:auto target=_self><img src="../common/imagenes/logo_normal.svg" style="pointer-events:auto; width:2cm; height:auto"></a>
-		</td>
-	</tr>
+	<tr style="background-color:none; height:6%"><td></td><td></td><td style="text-align:right"><a href="../normal/index.php" style=pointer-events:auto target=_self><img src="../common/imagenes/logo_normal.svg" style="pointer-events:auto; width:2cm; height:auto"></a></td></tr>
   <tr style="background-color:rgba(0,240,0,0); height:88%; vertical-align:middle">
 		<td>
 			<a href="mailto:<?=$correo_pedidos;?>?Subject=Solicitud%20pedido%20libretas%20permisos%20de%20trabajo">

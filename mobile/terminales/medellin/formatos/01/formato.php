@@ -47,9 +47,9 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 		le escribo de PRIMAX <?=strtoupper($terminal);?>, estoy diligenciando el formato <?=$$formulario;?>.' target=_blank>
 		<img src=../../../../../common/imagenes/whatsapp.png style=pointer-events:auto width=70 height=auto></a>
 	</div>
-	<? $color_formato = 'rgba(0,0,0,0)' ?>
+	<? $color_formato = 'rgba(0,0,0,0.0)' ?>
 	<form id=formato name=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
-		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; border:12px solid <?=$color_formato;?>">
+		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; border:1vw solid <?=$color_formato;?>">
 			<table border=0 style="color:black; background-color:<?=$color_formato;?>">
 				<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
 				<tr height=100>
@@ -79,7 +79,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			<table border=0>
 				<tr><td width=70%></td><td width=30%></td></tr>
 				<tr>
-					<td>INSTALACIÓN<br><textarea name=instalacion maxlength=68 style=width:98% onkeyup=mayuscula(this) pattern=.{1,} required autofocus></textarea></td>
+					<td>INSTALACIÓN<br><textarea name=instalacion maxlength=68 onkeyup=mayuscula(this) pattern=.{1,} required autofocus></textarea></td>
 					<td>CERTIFICADO &#8470;<br><input name=certificado class=consecutivo style=width:50% maxlength=6 pattern=^(?:[0-9]{4,6})$ inputmode=numeric required></td>
 				</tr>
 				<tr>
@@ -88,19 +88,29 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 		
 <!-- *****************************************			 sección A			 ***************************************** -->
 			<table border=0>
-				<tr><td width=13.50%></td><td width= 0.50%></td><td width=22.50%></td><td width= 0.50%></td><td width=23.00%></td><td width= 0.50%></td><td width=19.50%></td><td width= 0.50%></td><td width=19.50%></td></tr>
-				<tr><td colspan=9 class=B><b>&nbsp;&nbsp;A. TAREA A REALIZAR</b></td></tr>
-				<tr><td colspan=9>UBICACIÓN<textarea name=ubicacion maxlength=63 style=width:98% onkeyup=mayuscula(this) pattern=.{1,} required></textarea></td></tr>
+				<tr>
+					<td width=14.50%></td>
+
+					<td width=23.50%></td>
+
+					<td width=23.00%></td>
+
+					<td width=19.50%></td>
+
+					<td width=19.50%></td>
+				</tr>
+				<tr><td colspan=5 class=B><b>&nbsp;&nbsp;A. TAREA A REALIZAR</b></td></tr>
+				<tr><td colspan=5>UBICACIÓN<textarea name=ubicacion maxlength=63 onkeyup=mayuscula(this) pattern=.{1,} required></textarea></td></tr>
 				<tr height=30><td></td></tr>
 				<tr>
-					<td>APT					<input name=apt					class=consecutivo value=888886			maxlength=6		inputmode=numeric pattern=^(?:[0-9]{4,6})$	required></td><td></td>
-					<td>EQUIPO			<input name=equipo			class=consecutivo value=8888888880	maxlength=10	inputmode=numeric pattern=^(?:[0-9]{4,10})$	required></td><td></td>
-					<td>FECHA				<input name=fechaA			type=date value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td><td></td>
-					<td>HORA INICIAL<input name=horainicioA	type=time value='<?=$hora;?>' min='<?=$horamin;?>' required></td><td></td>
+					<td>APT					<input name=apt					class=consecutivo maxlength=6		inputmode=numeric pattern=^(?:[0-9]{4,6})$	required></td>
+					<td>EQUIPO			<input name=equipo			class=consecutivo maxlength=10	inputmode=numeric pattern=^(?:[0-9]{4,10})$	required></td>
+					<td>FECHA				<input name=fechaA			type=date value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' required></td>
+					<td>HORA INICIAL<input name=horainicioA	type=time value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
 					<td>HORA FINAL	<input name=horafinalA	type=time value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
 				</tr>
 				<tr height=30><td></td></tr>
-				<tr><td colspan=9>DESCRIPCIÓN<textarea name=descripcion type=texto maxlength=74 style=width:98% onkeyup=mayuscula(this) pattern=.{1,} required></textarea></td></tr>
+				<tr><td colspan=5>DESCRIPCIÓN<textarea name=descripcion type=texto maxlength=74 onkeyup=mayuscula(this) pattern=.{1,} required></textarea></td></tr>
 			</table>
 			<hr>
 		
@@ -252,10 +262,10 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 					</tr>";
 				}
 				?>
-				<tr height=30><td></td></tr>
+				<tr colspan=4 height=30><td class=sinbordes></td></tr>
 				<tr class=C>
-					<td colspan=4>
-						<span>OTRAS ACTIVIDADES NO MENCIONADAS ARRIBA:<br></span><textarea name=otrasactividades type=texto maxlength=63 style=width:98% onkeyup=mayuscula(this) pattern=.{1,}></textarea>
+					<td colspan=4 class=sinbordes>
+						<span>OTRAS ACTIVIDADES NO MENCIONADAS ARRIBA:<br></span><textarea name=otrasactividades type=texto maxlength=63 onkeyup=mayuscula(this) pattern=.{1,}></textarea>
 					</td>
 				</tr>
 			</table>
@@ -295,7 +305,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 <!-- *****************************************			 sección E			 ***************************************** -->
 			<table>
 				<tr><td class=B><b>&nbsp;&nbsp;E. PRECAUCIONES ADICIONALES</b></td></tr>
-				<tr><td><textarea name=precauciones type=texto maxlength=90 style=width:98% onkeyup=mayuscula(this) pattern=.{1,}></textarea></td></tr>
+				<tr><td><textarea name=precauciones type=texto maxlength=90 onkeyup=mayuscula(this) pattern=.{1,}></textarea></td></tr>
 			</table>
 			<hr>
 

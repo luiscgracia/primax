@@ -25,7 +25,7 @@ date_default_timezone_set('America/Bogota');
 $fecha = date("Y-m-d / H:i");
 $terminal = $_POST["terminal"];
 ?>
-<table style="width:100vw; height:100vh" border=0">
+<table style="width:100vw; height:91.20vh" border=0">
 	<tr><td width=10%></td><td width=80%></td><td width=10%></td></tr>
 	<tr style="background-color:none; height:6%"><td colspan=3></td></tr>
   <tr style="background-color:rgba(0,240,0,0); height:88%; vertical-align:middle">

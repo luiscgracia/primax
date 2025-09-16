@@ -49,7 +49,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 	</div>
 	<? $color_formato = 'rgba(100,170,255,1)' ?>
 	<form id=formato name=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
-		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; height:4560px; border:12px solid <?=$color_formato;?>">
+		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; height:4660px; border:1vw solid <?=$color_formato;?>">
 			<table border=0 style="color:white; background-color:<?=$color_formato;?>">
 				<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
 				<tr height=100>
@@ -282,17 +282,17 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			<div style="position:absolute; width:18.50%; left:0.50%; background-color:white">
 				<table border=1>
 					<tr height=75px><td class=A3>PRUEBA</td></tr>
-					<tr height=74px><td class=A1>%LEL</td></tr>
+					<tr height=75px><td class=A1>%LEL</td></tr>
 				</table>
  			</div>
  			<div style="position:absolute; width:80.25%; left:19%; background-color:white; overflow:scroll">
 				<table border=1 bordercolor=#ff7000>
-					<tr height=70px>
+					<tr height=75px>
 						<? for ($i = 1; $i <= 8; $i++): ?>
 						<td style=width:190px class=A2>Hora<br><?=$i?></td><td style=width:150px class=A2>Resultado<br><?=$i?></td>
 						<? endfor; ?>
 					</tr>
-					<tr height=70px>
+					<tr height=75px>
 						<? for ($i = 1; $i <= 8; $i++): ?>
 						<td><input name=B12hora<?=$i?>	id=hora		type=time  value='<?=$hora;?>' min='<?=$horamin;?>' required></td>
 						<td><input name=B12resul<?=$i?> id=numero	type=texto maxlength=5 pattern=^([0-9]{1,2}(\.[0-9]{1,2})?)$ inputmode=numeric required></td>
@@ -306,13 +306,13 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				<hr>
 				<table border=0>
 					<tr><td width=5%></td><td width=61.50%></td><td width=18%></td><td width=15.50%></td></tr>
-					<tr><td colspan=4 class=B><b>&nbsp;&nbsp;C. ACEPTACIÓN</b></td></tr>
+					<tr><td class=letraseccion>C.&nbsp;</td><td colspan=3 class=tituloseccion>ACEPTACIÓN</td></tr>
 					<tr>
-						<td class=Bct>&nbsp;&nbsp;&#9679;&nbsp;</td>
+						<td class=Bct>&#9679;</td>
 						<td class=B colspan=3>Confirmo que los requisitos indicados en la sección B se cumplen y que hay seguridad para realizar el trabajo indicado en la sección A.</td>
 					</tr>
 					<tr>
-						<td class=Bct>&nbsp;&nbsp;&#9679;&nbsp;</td>
+						<td class=Bct>&#9679;</td>
 						<td class=B colspan=3>Confirmo además que se tomarán todas las precauciones necesarias para efectuar el trabajo con seguridad.<br><br></td>
 					</tr>
 				</table>
@@ -334,7 +334,8 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 
 <!-- *****************************************			 sección D			 ***************************************** -->
 				<table border=0>
-					<tr><td class=B><b>&nbsp;&nbsp;D. AUTORIZACIÓN</b></td></tr>
+					<tr><td width= 5.00%></td><td width=95%></td></tr>
+					<tr><td class=letraseccion>D.&nbsp;</td><td class=tituloseccion>AUTORIZACIÓN</td></tr>
 					<tr><td height=30></td></tr>
 				</table>
 				<table border=0>
@@ -351,9 +352,9 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 <!-- *****************************************			 sección E			 ***************************************** -->
 				<table border=0>
 					<tr class=sinbordes><td class=sinbordes width=5%></td><td class=sinbordes width=95%></td></tr>
-					<tr><td class=letraseccion><b>E.&nbsp;</b></td><td class=tituloseccion><b>CANCELACIÓN</b></td></tr>
-					<tr><td class=letraseccion>&#9679;</td><td class=tituloseccion>Cuando se diligencia esta sección, el permiso NO puede ser revalidado.</td></tr>
-					<tr><td class=letraseccion>&#9679;</td><td class=tituloseccion>Certifico que el Trabajo mencionado en la Sección A:</td></tr>
+					<tr><td class=letraseccion>E.&nbsp;</td><td class=tituloseccion>CANCELACIÓN</td></tr>
+					<tr><td class=Bct>&#9679;</td><td class=B>Cuando se diligencia esta sección, el permiso NO puede ser revalidado.</td></tr>
+					<tr><td class=Bct>&#9679;</td><td class=B>Certifico que el Trabajo mencionado en la Sección A:</td></tr>
 				</table>
 				<table border=0>
 					<tr>
@@ -365,7 +366,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 						<td style=width:4%><input type=radio name=cancelacion id=C value=C onclick=gestionarClickRadio(this)></td>
 						<td style=width:41% class=B> &nbsp;Ha iniciado pero no<br> &nbsp;ha terminado</td>
 					</tr>
-					<tr><td></td><td class=tituloseccion colspan=6>Se ha retirado a todo el personal del área y esta ha quedado en condiciones de seguridad.	El ingreso al área está ahora prohibido.</td></tr>
+					<tr><td></td><td class=B colspan=6>Se ha retirado a todo el personal del área y esta ha quedado en condiciones de seguridad.	El ingreso al área está ahora prohibido.</td></tr>
 					<tr height=30><td></td></tr>
 				</table>
 				<table border=0>

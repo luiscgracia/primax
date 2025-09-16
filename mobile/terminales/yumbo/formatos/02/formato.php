@@ -49,7 +49,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 	</div>
 	<? $color_formato = 'rgba(204,0,0,1)' ?>
 	<form id=formato name=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
-		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; height:6070px; border:12px solid <?=$color_formato;?>">
+		<div style="position:absolute; left:50%; margin-left:-50%; top:0%; width:100%; overflow:hidden; height:6320px; border:1vw solid <?=$color_formato;?>">
 			<table border=0 style="color:white; background-color:<?=$color_formato;?>">
 				<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
 				<tr height=100>
@@ -78,17 +78,14 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 
 <!-- *****************************************			 sección A			 ***************************************** -->
 			<table border=0>
-				<tr class=sinbordes><td class=sinbordes width=5%></td><td class=sinbordes width=95%></td></tr>
-				<tr><td class=letraseccion><b>A.&nbsp;</b></td><td class=tituloseccion><b>SOLICITUD</b></td></tr>
-				<tr><td colspan=2>DESCRIPCIÓN DEL TRABAJO<textarea name=descripcion maxlength=68 style=width:99% onkeyup=mayuscula(this) pattern=.{1,} required autofocus></textarea></td></tr>
-				<tr height=10><td></td></tr>
-			</table>
-			<table border=0>
 				<tr><td width=5%></td><td width=70%></td><td width=20%></td><td width=5%></td></tr>
+				<tr><td class=letraseccion>A.&nbsp;</td><td colspan=3 class=tituloseccion>SOLICITUD</td></tr>
+				<tr><td colspan=4>DESCRIPCIÓN DEL TRABAJO<textarea name=descripcion maxlength=68 onkeyup=mayuscula(this) pattern=.{1,} required autofocus></textarea></td></tr>
+				<tr height=30><td colspan=4></td></tr>
 				<tr>
 					<td></td>
 					<td class=B style=text-align:right><span id=doc_ad_NO>PERSONAS AUTORIZADAS PARA EL TRABAJO&nbsp;</span></td>
-					<td style=text-align:left><input name=cantidad id=cantidad style=width:60% maxlength=1 placeholder="Máx. 4" inputmode=numeric pattern=^(?:[1-4]{1})$></td>
+					<td style=text-align:left><input name=cantidad id=cantidad style=width:40% maxlength=1 placeholder="Máx. 4" inputmode=numeric pattern=^(?:[1-4]{1})$></td>
 					<td></td>
 				</tr>
 			</table>
@@ -124,7 +121,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 <!-- *****************************************			 sección B			 ***************************************** -->
 			<table border=1>
 				<tr><td class=sinbordes width=5%></td><td class=sinbordes width=5%></td><td class=sinbordes width=5%></td><td class=sinbordes width=7%></td><td class=sinbordes width=78%></td></tr>
-				<tr><td class=letraseccion><b>B.&nbsp;</b></td><td colspan=4 class=tituloseccion><b>LISTA DE VERIFICACIÓN DE REQUISITOS DE SEGURIDAD</b></td></tr>
+				<tr><td class=letraseccion>B.&nbsp;</td><td colspan=4 class=tituloseccion>LISTA DE VERIFICACIÓN DE REQUISITOS DE SEGURIDAD</td></tr>
 				<tr><td class=Bc><b>SI</b></td><td class=Bc><b>NO</b></td><td class=Bc><b>NA</b></td><td class=Br></td><td class=B style="border:0px; text-align:center"><b>REQUISITO DE SEGURIDAD</b></td></tr>
 				<?
 				$ap = '50px';
@@ -189,10 +186,10 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			</table>
 			<table border=0>
 				<tr>
-					<td width= 5% style=border:0px></td>
-					<td width= 5% style=border:0px></td><td width=26% style=border:0px></td>
-					<td width= 5% style=border:0px></td><td width=26% style=border:0px></td>
-					<td width= 5% style=border:0px></td><td width=26% style=border:0px></td>
+					<td width= 2% style=border:0px></td>
+					<td width= 5% style=border:0px></td><td width=27% style=border:0px></td>
+					<td width= 5% style=border:0px></td><td width=27% style=border:0px></td>
+					<td width= 5% style=border:0px></td><td width=27% style=border:0px></td>
 					<td width= 2% style=border:0px></td>
 				</tr>
 				<tr><td colspan=8 class=B style=border:0px>&nbsp;&nbsp;12. ELEMENTOS DE PROTECCIÓN</td></tr>
@@ -264,19 +261,19 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				</tr>
 				<tr height=30><td></td></tr>
 			</table>
-			<div style="position:absolute; width:36.50%; left:0.50%; background-color:white">
+			<div style="position:relative; width:36.50%; left:0.50%; background-color:white">
 				<table border=1>
 					<tr height=75px><td class=A3 style=width:55%>PRUEBA</td>																	<td style=width:45% class=A3>Perm</td></tr>
-					<tr height=74px><td class=A1 style=text-align:left>&nbsp;% LEL</td>												<td class=A1>0%</td></tr>
-					<tr height=74px><td class=A1 style=text-align:left>&nbsp;Oxígeno</td>											<td class=A1>19.5%-23.5%</td></tr>
-					<tr height=74px><td class=A1 style=text-align:left>&nbsp;Total<br>&nbsp;Hidrocarburos</td><td class=A1>100 ppm</td></tr>
-					<tr height=74px><td class=A1 style=text-align:left>&nbsp;Etanol</td>											<td class=A1>1000 ppm</td></tr>
-					<tr height=74px><td class=A1 style=text-align:left>&nbsp;Benceno</td>											<td class=A1>0.5 ppm</td></tr>
-					<tr height=74px><td class=A1 style=text-align:left>&nbsp;Plomo<br>&nbsp;Orgánico</td>			<td class=A1>0.075 mg/m&#179;</td></tr>
-					<tr height=74px><td class=A1 style=text-align:left>&nbsp;Monóxido de<br>&nbsp;Carbono</td><td class=A1>25 ppm</td></tr>
+					<tr height=75px><td class=A1 style=text-align:left>&nbsp;% LEL</td>												<td class=A1>0%</td></tr>
+					<tr height=75px><td class=A1 style=text-align:left>&nbsp;Oxígeno</td>											<td class=A1>19.5%-23.5%</td></tr>
+					<tr height=75px><td class=A1 style=text-align:left>&nbsp;Total<br>&nbsp;Hidrocarburos</td><td class=A1>100 ppm</td></tr>
+					<tr height=75px><td class=A1 style=text-align:left>&nbsp;Etanol</td>											<td class=A1>1000 ppm</td></tr>
+					<tr height=75px><td class=A1 style=text-align:left>&nbsp;Benceno</td>											<td class=A1>0.5 ppm</td></tr>
+					<tr height=75px><td class=A1 style=text-align:left>&nbsp;Plomo<br>&nbsp;Orgánico</td>			<td class=A1>0.075 mg/m&#179;</td></tr>
+					<tr height=75px><td class=A1 style=text-align:left>&nbsp;Monóxido de<br>&nbsp;Carbono</td><td class=A1>25 ppm</td></tr>
 				</table>
 			</div>
-			<div style="position:absolute; width:62.25%; left:37.00%; background-color:white; overflow:scroll">
+			<div style="position:relative; width:62.15%; left:37.10%; top:-601px; background-color:white; overflow:scroll">
 				<?
 				$filas = 7;
 				$columnas = 8;
@@ -290,10 +287,10 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				$l = range('A','P');
 				echo '<style>
 					.tabla22		{border-collapse:collapse; width:100%}
-					.tabla22 td	{border:2px solid #ff7000ff; height:70px; text-align:center; vertical-align:middle}
+					.tabla22 td	{border:2px solid #ff7000ff; text-align:center; vertical-align:middle}
 					.hora				{width:190px; background:#ff7000bf; color:#000000ff; font-weight:bold}
 					.result			{width:150px; background:#ff7000bf; color:#000000ff; font-weight:bold}
-					.i22				{width:95%; height:35px; border:2px solid #ff7000ff; border-radius:5px; padding:0px; text-align:center}
+					.i22				{width:95%; height:35px; border:2px solid #ff7000ff; border-radius:5px; text-align:center}
 					.i22:focus	{border-color:#ff0000ff; outline:none}
 					.req22			{border:2px solid rgba(0,0,255,1); background:rgba(0,255,0,0.1)}
 				</style>';
@@ -303,7 +300,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 						echo "<td class='hora'>Hora<br>$i</td><td class='result'>Resultado<br>$i</td>";
 					echo '</tr>';
 					for($i = 0; $i < $filas; $i++) {
-					echo '<tr>';
+					echo '<tr height=75px>';
 						for($j = 0; $j < $columnas; $j++) {
 							$q22 = $j ? '':'required';
 							$class22 = $j ? 'i22':'i22 req22';
@@ -316,7 +313,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				echo '</table>';
 				?>
 			</div>
-			<div style="position:relative; width:100%; left:0px; top:605px; background-color:rgba(0,0,255,0)">
+			<div style="position:relative; width:100%; left:0px; top:-590px; background-color:rgba(0,0,255,0)">
 				<table>
 					<tr>
 						<td style=text-align:left>
@@ -327,28 +324,28 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 					</tr>
 				</table>
 			</div>
-			<div style="position:relative; width:100%; left:0px; top:620px">
+			<div style="position:relative; width:100%; left:0px; top:-560px">
 				<table border=0><tr><td class=B style=width:5%>&nbsp;23.</td><td class=B style="width:95%; font-size:29px">CONTROL DE PERSONAL PARA INGRESO A ESPACIO CONFINADO</td></tr></table>
 			</div>
-			<div style="position:relative; width:59.25%; left:0.50%; top:620px; background-color:white">
+			<div style="position:relative; width:59.25%; left:0.50%; top:-560px; background-color:white">
 				<table border=1>
 					<tr height=80px><td class=A3>PERSONAL QUE INGRESA</td></tr>
 					<? for ($i = 1; $i <= 5; $i++): ?>
-					<tr height=50px><td class=A1><input name=B23<?=$i?>	maxlength=30 type=texto pattern=.{1,} onkeyup=mayuscula(this) <?= $i == 1 ? 'required' : '' ?>></td></tr>
+					<tr height=60px><td class=A1><input name=B23<?=$i?>	maxlength=30 type=texto pattern=.{1,} onkeyup=mayuscula(this) <?= $i == 1 ? 'required' : '' ?>></td></tr>
 					<? endfor; ?>
 				</table>
 			</div>
-			<div style="position:relative; width:39.25%; left:60.00%; top:288px; background-color:white; overflow:scroll">
+			<div style="position:relative; width:39.40%; left:59.85%; top:-941px; background-color:white; overflow:scroll">
 				<?php
 				$filas = 5;
 				$columnas = 7;
 				$l = range('A','P');
 				echo '<style>
 					.tabla23		{border-collapse:collapse; width:100%; border:2px solid #ff7000ff}
-					.tabla23 td	{border:2px solid #ff7000ff; text-align:center; vertical-align:middle; padding:0px}
+					.tabla23 td	{border:2px solid #ff7000ff; text-align:center; vertical-align:middle}
 					.horaE			{width:190px; background:#ff7000bf; color:#000000ff; font-weight:bold}
 					.horaS			{width:190px; background:#ff7000bf; color:#000000ff; font-weight:bold}
-					.i23				{width:95%; height:35px; border:2px solid #ff7000ff; border-radius:5px; padding:0px; text-align:center}
+					.i23				{width:95%; height:35px; border:2px solid #ff7000ff; border-radius:5px; text-align:center}
 					.i23:focus	{border-color:#ff7000ff; outline:none}
 					.req23			{border:2px solid rgba(0,0,255,1); background:#ff7000ff}
 				</style>';
@@ -359,7 +356,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 						<td style='border:2px solid #000000ff' class=horaS>Hora Salida<br>$i</td>";
 					echo '</tr>';
 					for ($i = 0; $i < $filas; $i++) {
-					echo '<tr style=height:50px>';
+					echo '<tr style=height:60px>';
 						for ($j = 0; $j < $columnas; $j++) {
 							$q23 = $i || $j ? '':'required';
 							$class23 = $i || $j ? 'i23':'i23 req23';
@@ -374,13 +371,13 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			</div>
 
 <!-- *****************************************			 sección C			 ***************************************** -->
-			<div style="position:relative; left:0px; width:100%; top:295px"> <!-- este div mueve hacia abajo desde la sección C -->
+			<div style="position:relative; left:0px; width:100%; top:-890px"> <!-- este div mueve hacia abajo desde la sección C -->
 				<hr>
 				<table border=0>
 					<tr class=sinbordes><td class=sinbordes width=5%></td><td class=sinbordes width=95%></td></tr>
-					<tr><td class=letraseccion><b>C.&nbsp;</b></td><td class=tituloseccion><b>ACEPTACIÓN</b></td></tr>
-					<tr><td class=letraseccion>&#9679;</td><td class=tituloseccion>Confirmo que los requisitos indicados en la sección B se cumplen y que hay seguridad para ingresar al espacio confinado y para realizar el trabajo indicado en la sección A.</td></tr>
-					<tr><td class=letraseccion>&#9679;</td><td class=tituloseccion>Confirmo además que se tomarán todas las precauciones necesarias para efectuar el trabajo con seguridad.</td></tr>
+					<tr><td class=letraseccion>C.&nbsp;</td><td class=tituloseccion>ACEPTACIÓN</td></tr>
+					<tr><td class=Bct>&#9679;</td><td class=B>Confirmo que los requisitos indicados en la sección B se cumplen y que hay seguridad para ingresar al espacio confinado y para realizar el trabajo indicado en la sección A.</td></tr>
+					<tr><td class=Bct>&#9679;</td><td class=B>Confirmo además que se tomarán todas las precauciones necesarias para efectuar el trabajo con seguridad.</td></tr>
 					<tr height=30><td></td></tr>
 				</table>
 				<table border=0>
@@ -402,8 +399,8 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 <!-- *****************************************			 sección D			 ***************************************** -->
 				<table border=0>
 					<tr class=sinbordes><td class=sinbordes width=5%></td><td class=sinbordes width=95%></td></tr>
-					<tr><td class=letraseccion><b>D.&nbsp;</b></td><td class=tituloseccion><b>AUTORIZACIÓN</b></td></tr>
-					<tr><td class=letraseccion>&#9679;</td><td class=tituloseccion>Certifico que los aislamientos y desacoples se han efectuado apropiadamente y que el área es segura para el ingreso.<br>Por lo tanto, <b>AUTORIZO</b> el ingreso al espacio confinado y la realización del trabajo indicado en la sección A.</td></tr>
+					<tr><td class=letraseccion>D.&nbsp;</td><td class=tituloseccion>AUTORIZACIÓN</td></tr>
+					<tr><td class=Bct>&#9679;</td><td class=B>Certifico que los aislamientos y desacoples se han efectuado apropiadamente y que el área es segura para el ingreso.<br>Por lo tanto, <b>AUTORIZO</b> el ingreso al espacio confinado y la realización del trabajo indicado en la sección A.</td></tr>
 					<tr height=20><td></td><td></td></tr>
 				</table>
 				<table border=0>
@@ -420,9 +417,9 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 <!-- *****************************************			 sección E			 ***************************************** -->
 				<table border=0>
 					<tr class=sinbordes><td class=sinbordes width=5%></td><td class=sinbordes width=95%></td></tr>
-					<tr><td class=letraseccion><b>E.&nbsp;</b></td><td class=tituloseccion><b>CANCELACIÓN</b></td></tr>
-					<tr><td class=letraseccion>&#9679;</td><td class=tituloseccion>Cuando se diligencia esta sección, el permiso NO puede ser revalidado.</td></tr>
-					<tr><td class=letraseccion>&#9679;</td><td class=tituloseccion>Certifico que el trabajo que motivó el ingreso al espacio confinado:</td></tr>
+					<tr><td class=letraseccion>E.&nbsp;</td><td class=tituloseccion>CANCELACIÓN</td></tr>
+					<tr><td class=Bct>&#9679;</td><td class=B>Cuando se diligencia esta sección, el permiso NO puede ser revalidado.</td></tr>
+					<tr><td class=Bct>&#9679;</td><td class=B>Certifico que el trabajo que motivó el ingreso al espacio confinado:</td></tr>
 				</table>
 				<table border=0>
 					<tr>
@@ -434,7 +431,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 						<td style=width:4%><input type=radio name=cancelacion id=C value=C onclick=handleRadioClick(this)></td>
 						<td style=width:41% class=B> &nbsp;Ha iniciado pero no<br> &nbsp;ha terminado</td>
 					</tr>
-					<tr><td></td><td class=tituloseccion colspan=6>Se ha retirado a todo el personal del área y esta ha quedado en condiciones de seguridad.	El ingreso al área está ahora prohibido.</td></tr>
+					<tr><td></td><td class=B colspan=6>Se ha retirado a todo el personal del área y esta ha quedado en condiciones de seguridad.	El ingreso al área está ahora prohibido.</td></tr>
 					<tr height=30><td></td></tr>
 				</table>
 				<table border=0>
