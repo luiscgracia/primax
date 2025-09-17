@@ -34,8 +34,8 @@ input[type="numero"] {text-align:right}
 
 textarea {resize:none; font-family:Arlrdlt; font-size:10px; color:rgba(0,0,191,1); background-color:rgba(255,112,0,0.33); line-height:220%; padding: 5 10 0 5; text-align:justify; border:0px}
 
-select {background-color:rgba(255,112,0,0.33); color:rgba(0,0,0,1); border-radius:7px; cursor:pointer; border:0px solid rgba(0,128,0,1); font-family:Arlrdbd}
-option {background-color:rgba(255,112,0,0.33); color:rgba(0,0,0,1); border-radius:7px; cursor:pointer; font-size:15px}
+select {background-color:rgba(205,205,205,1.00); color:rgba(0,0,0,1); border-radius:10px; cursor:pointer; font-size:24px; border:0px solid rgba(0,128,0,1); font-family:Arlrdbd}
+option {background-color:rgba(255,112,  0,0.50); color:rgba(0,0,0,1); border-radius:10px; cursor:pointer; font-size:20px; text-align:left}
 
 input.consecutivo {height:4mm; font-family:SCHLBKB; font-size:16px; text-align:center; color:red; border:0}
 

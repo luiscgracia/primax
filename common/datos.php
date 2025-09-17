@@ -2,10 +2,6 @@
 $radio = '&#10687;';		// símbolo para las casillas tipo radio
 $check = '&#10004;';		// símbolo para las casillas tipo checkbox
 
-$fecha = "type=date value='".$fechacero."' min='".$fechamin."' max='".$fechamax."' required"
- $hora = "type=time value='".$hora."' min='".$horamin."' required"
-
-
 date_default_timezone_set("America/Bogota");
 	$fecha_old = date("Y-m-d / g:i A");
 $fechaactual = date("Y-m-d");

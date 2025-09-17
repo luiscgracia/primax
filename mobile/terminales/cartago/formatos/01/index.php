@@ -14,11 +14,9 @@
 <link rel="stylesheet" type="text/css" href="../../../../../common/css/fuentes.css">
 <link rel="stylesheet" type="text/css" href="../../../../../common/css/estilo_formatos.css">
 <style>
-	body		{color:rgba(0,0,0,1); background:url(../../../../../common/imagenes/primax.svg) no-repeat center center;
-					 background-size:auto 180%; font-family:Arlrdbd; text-align:center; touch-action:none}
-	input		{color:rgba(0,0,0,1); font-family:Arlrdbd; font-size:50px; text-align:center}
-	select	{font-size:30px; font-family:Arlrdbd; background-color:rgba(205,205,205,1); width:45%; height:50px; text-align:left; border-radius:10px}
-	option	{font-size:30px}
+body		{color:rgba(0,0,0,1); background:url(../../../../../common/imagenes/primax.svg) no-repeat center center; background-size:auto 180%; font-family:Arlrdbd; text-align:center; touch-action:none}
+input		{color:rgba(0,0,0,1); font-family:Arlrdbd; font-size:50px; text-align:center}
+select	{font-size:32px; width:45%; height:50px; text-align:left}
 </style>
 <script>
 	function abrir_formato() {formato = document.formatos.permiso.options[document.formatos.permiso.selectedIndex].value; window.open(formato,'_self','');}
@@ -26,9 +24,9 @@
 </head>
 <? $tiempo_cierre_pestana = 2; ?>		<!-- tiempo en minutos -->
 <body onLoad="setTimeout('window.close()',<? echo $tiempo_cierre_pestana * 60 * 1000; ?>)">
-<table style="background-color:none; height:100%; width:100%; margin-left:auto; margin-right:auto">
-	<tr><td width=10%></td><td width=80%></td><td width=10%></td></tr>
-	<tr style="background-color:none; height:100%">
+<table border=0 style="background-color:none; height:100%; width:100%; margin-left:auto; margin-right:auto">
+	<tr height=10%><td width=10%></td><td width=80%></td><td width=10%></td></tr>
+	<tr style="background-color:none; height:80%">
 		<td style="background-color:none; vertical-align:middle">
 			<a href="mailto:<? echo $correo_pedidos; ?>?Subject=Solicitud%20pedido%20libretas%20permisos%20de%20trabajo">
 			<img style="width:2cm; height:auto; pointer-events:auto" src="../../../../../common/imagenes/pedidos.svg" title="Enviar pedido por correo electrónico a&#x00A;<? echo $correo_pedidos; ?>">
@@ -50,7 +48,6 @@
 					<option value="anular.html">	 ANULAR</option>
 				</select>
 			</form>
-			<span style="font-size:29px">Si no hay elección, en <? echo $tiempo_cierre_pestana; ?> minutos se cierra la pestaña</span>
 		</td>
 		<td style="background-color:none; text-align:right; vertical-align:middle">
 			<a href="https://api.whatsapp.com/send?phone=<? echo $celular_soporte; ?>
@@ -58,6 +55,7 @@
 			<img src="../../../../../common/imagenes/whatsapp.png" style="pointer-events:auto; width:2cm; height:auto"></a>
 		</td>	
 	</tr>
+	<tr height=10%><td colspan=3 style=text-align:center><span style=font-size:24px>Si no hay elección, en <? echo $tiempo_cierre_pestana; ?> minutos se cierra la pestaña</span></td></tr>
 </table>
 </body>
 </html>

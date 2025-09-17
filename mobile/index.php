@@ -11,8 +11,7 @@
 	body				{background:url(../common/imagenes/primax.svg) no-repeat center center; background-size:auto 150%}
 	input				{color:rgba(0,0,0,1); background-color:rgba(0,0,0,0); font-family:Arlrdbd; font-size:50px; text-align:center; border:none; height:60px}
 	input:hover	{background-color:rgba(255,112,0,0)}
-	select			{font-size:30px; background-color:rgba(205,205,205,1); width:340px; height:50px; text-align:center; padding:12px 0px}
-	option			{font-size:30px; background-color:rgba(255,112,0,0.5)}
+	select			{font-size:32px; height:50px; padding:7px 0 0 0}
 	.enviar			{border:0px solid rgba(255,112,0,1); border-radius:10px; width:340px; height:50px; font-size:30px; color:rgba(255,255,255,1); background-color:rgba(0,0,0,1); padding:12px 0px}
 </style>
 </head>
@@ -36,20 +35,20 @@ $fecha = date("Y-m-d / H:i");
 			<input name=empresa						value="PRIMAX COLOMBIA"			onClick=location.reload('index.php') style="width:100%; cursor:pointer">
 			<input name=permisos_trabajo	value="PERMISOS DE TRABAJO"	onClick=location.reload('index.php') style="width:100%; cursor:pointer">
 			<span style="font-size:30px">APP para CELULAR ó TABLET - <script>document.write("<b>" + window.innerWidth + "px");</script><br><br><br><br></span>
-			<form action="ingresar_usuario.php" method="post" target="_blank">
-				<select name=terminal id=terminal type=text style=width:60% required>
-					<option value="" disabled selected>TERMINAL</option>
-					<option value="bucaramanga">	BUCARAMANGA	 </option>
-					<option value="buenaventura"> BUENAVENTURA </option>
-					<option value="cartagena">		CARTAGENA		 </option>
-					<option value="cartago">			CARTAGO			 </option>
-					<option value="galapa">				GALAPA			 </option>
-					<option value="gualanday">		GUALANDAY		 </option>
-					<option value="la_dorada">		LA DORADA		 </option>
-					<option value="mancilla">			MANCILLA		 </option>
-					<option value="medellin">			MEDELLÍN		 </option>
-					<option value="puente_aranda">PUENTE ARANDA</option>
-					<option value="yumbo">				YUMBO				 </option>
+			<form action=ingresar_usuario.php method=post target=_blank>
+				<select name=terminal id=terminal type=text style="width:40%; text-align:center" required>
+					<option value="" disabled selected style=text-align:center>TERMINAL</option>
+					<option value=bucaramanga>	BUCARAMANGA	 </option>
+					<option value=buenaventura> BUENAVENTURA </option>
+					<option value=cartagena>		CARTAGENA		 </option>
+					<option value=cartago>			CARTAGO			 </option>
+					<option value=galapa>				GALAPA			 </option>
+					<option value=gualanday>		GUALANDAY		 </option>
+					<option value=la_dorada>		LA DORADA		 </option>
+					<option value=mancilla>			MANCILLA		 </option>
+					<option value=medellin>			MEDELLÍN		 </option>
+					<option value=puente_aranda>PUENTE ARANDA</option>
+					<option value=yumbo>				YUMBO				 </option>
 				</select>
 				<div style="position:relative; width:30%; margin-left:50%; left:-15%; top:50px">
 					<input name=continuar class=enviar type=submit value=CONTINUAR style="width:100%; background-color:rgba(0,0,0,1); cursor:pointer" autofocus>
