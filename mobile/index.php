@@ -21,7 +21,7 @@ include ('../common/datos.php');
 date_default_timezone_set('America/Bogota');
 $fecha = date("Y-m-d / H:i");
 ?>
-<!--<script>setTimeout(function(){location.href="index.php"}, 5*60*1000);</script>-->
+<script>setTimeout(function(){location.href="index.php"}, 5*60*1000);</script>
 <table style="width:100%; height:91.20vh" border=0>
 	<tr><td width=10%></td><td width=80%></td><td width=10%></td></tr>
 	<tr style="height:10%; vertical-align:middle">

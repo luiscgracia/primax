@@ -144,7 +144,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			<tr><td colspan=3 class=B>PERSONAS AUTORIZADAS PARA EL TRABAJO&nbsp;<input name=cantidad id=cantidad style=width:8% inputmode=numeric maxlength=1 placeholder="Máx. 5" pattern=^(?:[1-5]{1})$ required></td></tr>
 			<tr height=10px><td></td></tr>
 		</table>
-		<div id=nombre style="position:relative; display:none; width:43.75%; left:0.50%; background-color:white">
+		<div id=nombre style="position:absolute; display:inline; width:43.75%; top:930px; left:0.50%; background-color:white">
 			<table border=1>
 				<tr height=80px><td class=A3><b>NOMBRE Y APELLIDOS</b></td></tr>
 				<? for ($i = 1; $i <= 5; $i++) { ?>
@@ -152,7 +152,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 				<? } ?>
 			</table>
 		</div>
-		<div id=dkf style="position:relative; display:none; width:55.00%; top:-383px; left:44.25%; background-color:white; overflow:scroll">
+		<div id=dkf style="position:absolute; display:inline; width:55.00%; top:930px; left:44.25%; background-color:white; overflow:scroll">
 			<table border=1>
 				<tr height=80px>
 					<td style=width:190px class=A2><b>CÉDULA</b></td>
@@ -170,8 +170,8 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 		</div>
 
 <!-- *****************************************			 sección B			 ***************************************** -->
-		<div style="position:relative; width:100%; top:0px"><hr><table border=0><tr><td class=B><b>&nbsp;B. DOCUMENTACIÓN ADICIONAL Y APROBACIONES DIARIAS</b></td></tr></table></div>
-		<div style="position:relative; width:55.75%; left:0.50%; top:0px; background-color:white">
+		<div style="position:absolute; width:100%; top:1320px"><hr><table border=0><tr><td class=B><b>&nbsp;B. DOCUMENTACIÓN ADICIONAL Y APROBACIONES DIARIAS</b></td></tr></table></div>
+		<div style="position:absolute; width:55.75%; left:0.50%; top:1380px; background-color:white">
 			<table border=1>
 				<tr class=C><td class=A2>DOCUMENTACIÓN</td></tr>
 				<tr class=C><td class=C style="padding:0 10"># CERTIFICADO HABILITACIÓN</td></tr>
@@ -186,23 +186,23 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			</table>
 		</div>
 		<?	$config = ['clase' => ['B1','B2']]; ?>
-		<div style="position:relative; width:43.00%; left:56.25%; top:-852px; background-color:white; overflow:scroll">
+		<div style="position:absolute; width:43.00%; left:56.25%; top:1380px; background-color:white; overflow:scroll">
 			<table border=1>
-				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td style=width:205px class="<?= $config['clase'][($i - 1) % 2] ?>">DÍA <?=$i?><input name=fechaB<?=$i?> value='2025-09-17' id=fechaB<?=$i?> type=date onfocusout=f<?=$i?>a() min=<?=$fechamin;?> max=<?=$fechamax;?> <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td><? } ?></tr>
-				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=num_cert_habil<?=$i?>				value=888888 <? if ($i == 1) {echo 'required';} else {echo '';} ?> inputmode=numeric style=width:60% maxlength=6 pattern=^(?:[0-9]{4,6})$></td><? } ?></tr>
-				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=num_pers_ejecutan<?=$i?>			value=5 <? if ($i == 1) {echo 'required';} else {echo '';} ?> inputmode=numeric style=width:40% maxlength=1 pattern=^(?:[0-5]{1})$></td><? } ?></tr>
-				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=num_pers_autoreporte<?=$i?>	value=5 <? if ($i == 1) {echo 'required';} else {echo '';} ?> inputmode=numeric style=width:40% maxlength=1 pattern=^(?:[0-5]{1})$></td><? } ?></tr>
-				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=hora_inicio<?=$i?>						value='19:20' <? if ($i == 1) {echo 'required';} else {echo '';} ?> type=time value='<?=$hora;?>' min='<?=$horamin;?>'></td><? } ?></tr>
-				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=hora_final<?=$i?>						value='19:20' <? if ($i == 1) {echo 'required';} else {echo '';} ?> type=time value='<?=$hora;?>' min='<?=$horamin;?>'></td><? } ?></tr>
-				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=firma_ejecutor<?=$i?>				checked <? if ($i == 1) {echo 'required';} else {echo '';} ?> type=checkbox></td><? } ?></tr>
-				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=firma_vigia<?=$i?>						checked <? if ($i == 1) {echo 'required';} else {echo '';} ?> type=checkbox></td><? } ?></tr>
-				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=firma_supervisor<?=$i?>			checked <? if ($i == 1) {echo 'required';} else {echo '';} ?> type=checkbox></td><? } ?></tr>
-				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=autorizacion_emisor<?=$i?>		checked <? if ($i == 1) {echo 'required';} else {echo '';} ?> type=checkbox></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td style=width:205px class="<?= $config['clase'][($i - 1) % 2] ?>">DÍA <?=$i?><input name=fechaB<?=$i?> id=fechaB<?=$i?> type=date onfocusout=f<?=$i?>a() min=<?=$fechamin;?> max=<?=$fechamax;?> <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=num_cert_habil<?=$i?>				<? if ($i == 1) {echo 'required';} else {echo '';} ?> inputmode=numeric style=width:60% maxlength=6 pattern=^(?:[0-9]{4,6})$></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=num_pers_ejecutan<?=$i?>			<? if ($i == 1) {echo 'required';} else {echo '';} ?> inputmode=numeric style=width:40% maxlength=1 pattern=^(?:[0-5]{1})$></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=num_pers_autoreporte<?=$i?>	<? if ($i == 1) {echo 'required';} else {echo '';} ?> inputmode=numeric style=width:40% maxlength=1 pattern=^(?:[0-5]{1})$></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=hora_inicio<?=$i?>						<? if ($i == 1) {echo 'required';} else {echo '';} ?> type=time value='<?=$hora;?>' min='<?=$horamin;?>'></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=hora_final<?=$i?>						<? if ($i == 1) {echo 'required';} else {echo '';} ?> type=time value='<?=$hora;?>' min='<?=$horamin;?>'></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=firma_ejecutor<?=$i?>				<? if ($i == 1) {echo 'required';} else {echo '';} ?> type=checkbox></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=firma_vigia<?=$i?>						<? if ($i == 1) {echo 'required';} else {echo '';} ?> type=checkbox></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=firma_supervisor<?=$i?>			<? if ($i == 1) {echo 'required';} else {echo '';} ?> type=checkbox></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=autorizacion_emisor<?=$i?>		<? if ($i == 1) {echo 'required';} else {echo '';} ?> type=checkbox></td><? } ?></tr>
 			</table>
 		</div>
 
 <!-- *****************************************			 sección C		 ***************************************** -->
-<!-- 9 -->	<div style="position:relative; left:0px; top:-840px"> <!-- este div mueve hacia abajo desde la sección C -->
+<!-- 9 -->	<div style="position:absolute; left:0px; top:2230px"> <!-- este div mueve hacia abajo desde la sección C -->
 		<hr>
 		<table border=0>
 			<tr><td class=B><b>&nbsp;&nbsp;C. LISTA DE VERIFICACIÓN DE REQUISITOS DE SEGURIDAD</b><br></td></tr>
@@ -228,7 +228,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			<tr height=5px><td></td></tr>
 		</table>
 
-<!-- 10 -->			<div style="position:relative; width:22.60%; left:0.50%; top:8.75px; background-color:white; overflow:scroll">
+<!-- 10 -->			<div style="position:absolute; width:22.60%; left:0.50%; top:150px; background-color:white; overflow:scroll">
 		<?
 		// Configuración simple
 		$config = [
@@ -289,7 +289,6 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 										type="radio" 
 										value="<?= $opcion ?>" 
 										onclick="gestionarClickRadio(this)"
-										checked
 										<?= ($criterio <= 23 && $dia <= 1) ? 'required' : '' ?>>
 							</td>
 						<? } ?>
@@ -312,7 +311,6 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 										type="radio" 
 										value="<?= $opcion ?>" 
 										onclick="gestionarClickRadio(this)"
-										checked
 										<?= ($criterio <= $config['criterios'] && $dia <= 1) ? 'required' : '' ?>>
 							</td>
 						<? } ?>
@@ -353,7 +351,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			console.log('Tabla simple cargada. Uso: Tabla.getValues(), Tabla.reset(), Tabla.export()');
 			</script>
 <!-- /10 -->			</div>
-		<div style="position:relative; width:76.15%; left:23.10%; top:-2638px; background-color:white">
+		<div style="position:absolute; width:76.15%; left:23.10%; top:148px; background-color:white">
 			<table border=1>
 				<tr><td style="width:7%; border:none"></td><td style="width:93%; border:none"></td></tr>
 				<tr rowspan=2 height=125px><td colspan=2 class=A2>DESCRIPCIÓN</td></tr>
@@ -395,7 +393,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			</table>
 		</div>
 		</div>
-<!-- 13 -->	<div style="position:relative; width:100vw; left:0px; top:-3470px">		<!-- este div sube el formato de aqui hacia abajo -->
+<!-- 13 -->	<div style="position:absolute; width:100vw; top:5030px; left:0px">		<!-- este div sube el formato de aqui hacia abajo -->
 			<table border=0>
 				<tr><td width=1%></td><td width=98%></td><td width=1%></td></tr>
 				<tr height=35><td></td><td class=C>Consulte la guía de medición de gases al reverso, la medición debe ser continua y se debe registrar mínimo cada hora en el anexo 1.</td><td></td></tr>

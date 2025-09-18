@@ -346,55 +346,52 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 <!-- *****************************************			 sección C			 ***************************************** -->
 			<table border=0>
 				<tr class=sinbordes><td class=sinbordes width=5%></td><td class=sinbordes width=95%></td></tr>
-				<tr><td class=letraseccion><b>C.&nbsp;</b></td><td class=tituloseccion><b>ACEPTACIÓN</b></td></tr>
-				<tr><td class=letraseccion>&#9679;</td><td class=tituloseccion>Confirmo que los requerimientos de cada tipo de acción indicados en la sección B se han completado, que hay seguridad para efectuar el Trabajo en Altura descrito en este Permiso y que se tomarán las precauciones necesarias para efectuar el trabajo con seguridad.</td></tr>
+				<tr><td class=letraseccion>C.&nbsp;</td><td class=tituloseccion>ACEPTACIÓN</td></tr>
+				<tr><td class=Bct>&#9679;</td><td class=B>Confirmo que los requerimientos de cada tipo de acción indicados en la sección B se han completado, que hay seguridad para efectuar el Trabajo en Altura descrito en este Permiso y que se tomarán las precauciones necesarias para efectuar el trabajo con seguridad.</td></tr>
 				<tr height=30><td></td><td></td></tr>
 			</table>
 			<table border=0>
 				<tr><td width=40%></td><td width=20%></td><td width=21%></td><td width=19%></td></tr>
 				<tr>
-					<td><input name=ejecutorC			type=texto	maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-					<td><input name=cedulaejecC		type=text		maxlength=10 inputmode=numeric pattern=^(?:[0-9]{6,10})$ required></td>
+					<td><input name=ejecutorC			type=texto	maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required>EJECUTOR</td>
+					<td><input name=cedulaejecC		type=text		maxlength=10 inputmode=numeric pattern=^(?:[0-9]{6,10})$ required>CÉDULA</td>
 					<td><input name=fechaejecC		type=date		class=mostrarfecha value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' readonly></td>
-					<td><input name=horaejecC			type=time		value='<?=$hora;?>' min=<?=$horamin;?> required></td>
+					<td><input name=horaejecC			type=time		value='<?=$hora;?>' min=<?=$horamin;?> required>HORA</td>
 				</tr>
-				<tr><td>EJECUTOR</td><td>CÉDULA</td><td></td><td>HORA</td></tr>
 				<tr height=30><td></td></tr>
 				<tr>
-					<td><input name=coordinadorC	type=texto	maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-					<td><input name=cedulacoordC	type=text		maxlength=10 inputmode=numeric pattern=^(?:[0-9]{6,10})$ required></td>
+					<td><input name=coordinadorC	type=texto	maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required>COORDINADOR<br>TRABAJO EN ALTURAS</td>
+					<td><input name=cedulacoordC	type=text		maxlength=10 inputmode=numeric pattern=^(?:[0-9]{6,10})$ required>CÉDULA<br>&nbsp;</td>
 					<td><input name=fechacoordC		type=date		class=mostrarfecha value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' readonly></td>
-					<td><input name=horacoordC		type=time		value='<?=$hora;?>' min=<?=$horamin;?> required></td>
+					<td><input name=horacoordC		type=time		value='<?=$hora;?>' min=<?=$horamin;?> required>HORA<br>&nbsp;</td>
 				</tr>
-				<tr><td>COORDINADOR<br>TRABAJO EN ALTURAS</td><td>CÉDULA<br><br></td><td></td><td>HORA<br><br></td></tr>
 			</table>
 			<hr>
 
 <!-- *****************************************			 sección D			 ***************************************** -->
 			<table border=0>
 				<tr class=sinbordes><td class=sinbordes width=5%></td><td class=sinbordes width=95%></td></tr>
-				<tr><td class=letraseccion><b>D.&nbsp;</b></td><td class=tituloseccion><b>AUTORIZACIÓN</b></td></tr>
-				<tr><td class=letraseccion>&#9679;</td><td class=tituloseccion>El lugar, los equipos y herramientas se han verificado de acuerdo con los requerimientos de la sección B, y estoy satisfecho con sus condiciones de seguridad.	Por lo tanto se autoriza la iniciación de los trabajos.</td></tr>
+				<tr><td class=letraseccion>D.&nbsp;</td><td class=tituloseccion>AUTORIZACIÓN</td></tr>
+				<tr><td class=Bct>&#9679;</td><td class=B>El lugar, los equipos y herramientas se han verificado de acuerdo con los requerimientos de la sección B, y estoy satisfecho con sus condiciones de seguridad.	Por lo tanto se autoriza la iniciación de los trabajos.</td></tr>
 				<tr height=30><td></td><td></td></tr>
 			</table>
 			<table border=0>
 				<tr><td width=40%></td><td width=20%></td><td width=21%></td><td width=19%></td></tr>
 				<tr>
-					<td><input name=emisorD				type=texto	maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-					<td><input name=cedulaemisorD	type=text		maxlength=10 inputmode=numeric pattern=^(?:[0-9]{6,10})$ required></td>
+					<td><input name=emisorD				type=texto	maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required>EMISOR</td>
+					<td><input name=cedulaemisorD	type=text		maxlength=10 inputmode=numeric pattern=^(?:[0-9]{6,10})$ required>CÉDULA</td>
 					<td><input name=fechaemisorD	type=date		class=mostrarfecha value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' readonly></td>
-					<td><input name=horaemisorD		type=time		value='<?=$hora;?>' min=<?=$horamin;?> required></td>
+					<td><input name=horaemisorD		type=time		value='<?=$hora;?>' min=<?=$horamin;?> required>HORA</td>
 				</tr>
-				<tr><td>EMISOR</td><td>CÉDULA</td><td></td><td>HORA</td></tr>
 			</table>
 			<hr>
 
 <!-- *****************************************			 sección E			 ***************************************** -->
 			<table border=0>
 				<tr><td width= 5.00%></td><td width=61.50%></td><td width=18.00%></td><td width=15.50%></td></tr>
-				<tr><td class=letraseccion><b>E.&nbsp;</b></td><td colspan=3 class=tituloseccion><b>CANCELACIÓN</b></td></tr>
-				<tr><td class=letraseccion>&#9679;</td><td class=B colspan=3>Cuando se diligencia esta sección, el permiso NO puede ser revalidado.</td></tr>
-				<tr><td class=letraseccion>&#9679;</td><td class=B colspan=3>Certifico que el trabajo amparado por este permiso:</td></tr>
+				<tr><td class=letraseccion>E.&nbsp;</td><td colspan=3 class=tituloseccion>CANCELACIÓN</td></tr>
+				<tr><td class=Bct>&#9679;</td><td class=B colspan=3>Cuando se diligencia esta sección, el permiso NO puede ser revalidado.</td></tr>
+				<tr><td class=Bct>&#9679;</td><td class=B colspan=3>Certifico que el trabajo amparado por este permiso:</td></tr>
 			</table>
 			<table border=0>
 				<tr>
@@ -410,28 +407,25 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			<table border=0>
 				<tr height=40><td width=40%></td><td width=20%></td><td width=21%></td><td width=19%></td></tr>
 				<tr>
-					<td><input name=ejecutorE			type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-					<td><input name=cedulaejecE		type=text	 maxlength=10 style=width:100% inputmode=numeric pattern=^(?:[0-9]{6,10})$ required></td>
+					<td><input name=ejecutorE			type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required>EJECUTOR</td>
+					<td><input name=cedulaejecE		type=text	 maxlength=10 style=width:100% inputmode=numeric pattern=^(?:[0-9]{6,10})$ required>CÉDULA</td>
 					<td><input name=fechaejecE		type=date  class=mostrarfecha value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' readonly></td>
-					<td><input name=horaejecE			type=time  value='<?=$hora;?>' min=<?=$horamin;?> required></td>
+					<td><input name=horaejecE			type=time  value='<?=$hora;?>' min=<?=$horamin;?> required>HORA</td>
 				</tr>
-				<tr><td>EJECUTOR</td><td>CÉDULA</td><td></td><td>HORA</td></tr>
 				<tr height=30><td></td></tr>
 				<tr>
-					<td><input name=coordinadorE	type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-					<td><input name=cedulacoordE	type=text  maxlength=10 style=width:100% inputmode=numeric pattern=^(?:[0-9]{6,10})$ required></td>
+					<td><input name=coordinadorE	type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required>COORDINADOR<br>TRABAJO EN ALTURAS</td>
+					<td><input name=cedulacoordE	type=text  maxlength=10 style=width:100% inputmode=numeric pattern=^(?:[0-9]{6,10})$ required>CÉDULA<br>&nbsp;</td>
 					<td><input name=fechacoordE		type=date  class=mostrarfecha value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' readonly></td>
-					<td><input name=horacoordE		type=time  value='<?=$hora;?>' min=<?=$horamin;?> required></td>
+					<td><input name=horacoordE		type=time  value='<?=$hora;?>' min=<?=$horamin;?> required>HORA<br>&nbsp;</td>
 				</tr>
-				<tr><td>COORDINADOR<br>TRABAJO EN ALTURAS</td><td>CÉDULA<br><br></td><td></td><td>HORA<br><br></td></tr>
 				<tr height=30><td></td></tr>
 				<tr>
-					<td><input name=emisorE				type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required></td>
-					<td><input name=cedulaemisorE	type=text	 maxlength=10 style=width:100% inputmode=numeric pattern=^(?:[0-9]{6,10})$ required></td>
+					<td><input name=emisorE				type=texto maxlength=30 pattern=.{1,} onkeyup=mayuscula(this) required>EMISOR</td>
+					<td><input name=cedulaemisorE	type=text	 maxlength=10 style=width:100% inputmode=numeric pattern=^(?:[0-9]{6,10})$ required>CÉDULA</td>
 					<td><input name=fechaemisorE	type=date  class=mostrarfecha value='<?=$fechacero;?>' min='<?=$fechamin;?>' max='<?=$fechamax;?>' readonly></td>
-					<td><input name=horaemisorE		type=time  value='<?=$hora;?>' min=<?=$horamin;?> required></td>
+					<td><input name=horaemisorE		type=time  value='<?=$hora;?>' min=<?=$horamin;?> required>HORA</td>
 				</tr>
-				<tr><td>EMISOR</td><td>CÉDULA</td><td></td><td>HORA</td></tr>
 			</table>
 			<hr>
 				<table>
