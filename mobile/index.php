@@ -8,11 +8,11 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
 <style>
-	body				{background:url(../common/imagenes/primax.svg) no-repeat center center; background-size:auto 150%}
-	input				{color:rgba(0,0,0,1); background-color:rgba(0,0,0,0); font-family:Arlrdbd; font-size:50px; text-align:center; border:none; height:60px}
-	input:hover	{background-color:rgba(255,112,0,0)}
-	select			{font-size:32px; height:50px; padding:7px 0 0 0}
-	.enviar			{border:0px solid rgba(255,112,0,1); border-radius:10px; width:340px; height:50px; font-size:30px; color:rgba(255,255,255,1); background-color:rgba(0,0,0,1); padding:12px 0px}
+body				{background:url(../common/imagenes/primax.svg) no-repeat center center; background-size:auto 150%}
+input				{color:rgba(0,0,0,1); background-color:rgba(0,0,0,0); font-family:Arlrdbd; font-size:50px; text-align:center; border:none; height:60px}
+input:hover	{background-color:rgba(255,112,0,0)}
+select			{font-size:32px; height:50px; padding:7px 0 0 0}
+.enviar			{border:0px solid rgba(255,112,0,1); border-radius:10px; width:340px; height:50px; font-size:30px; color:rgba(255,255,255,1); background-color:rgba(0,0,0,1); padding:12px 0px}
 </style>
 </head>
 <body>
@@ -21,21 +21,30 @@ include ('../common/datos.php');
 date_default_timezone_set('America/Bogota');
 $fecha = date("Y-m-d / H:i");
 ?>
-<script>setTimeout(function(){location.href="index.php"}, 5*60*1000);</script>
-<table style="width:100vw; height:91.20vh" border=0>
+<!--<script>setTimeout(function(){location.href="index.php"}, 5*60*1000);</script>-->
+<table style="width:100%; height:91.20vh" border=0>
 	<tr><td width=10%></td><td width=80%></td><td width=10%></td></tr>
-	<tr style="background-color:none; height:6%"><td></td><td></td><td style="text-align:right"><a href="../normal/index.php" style=pointer-events:auto target=_self><img src="../common/imagenes/logo_normal.svg" style="pointer-events:auto; width:2cm; height:auto"></a></td></tr>
-  <tr style="background-color:rgba(0,240,0,0); height:88%; vertical-align:middle">
+	<tr style="height:10%; vertical-align:middle">
+		<td></td>
+		<td></td>
+		<td>
+			<a href=../normal/index.php style=pointer-events:auto target=_self>
+			<img src=../common/imagenes/logo_normal.svg style="pointer-events:auto; width:10vw; height:auto">
+			</a>
+		</td>
+	</tr>
+  <tr style="height:80%; vertical-align:middle">
 		<td>
 			<a href="mailto:<?=$correo_pedidos;?>?Subject=Solicitud%20pedido%20libretas%20permisos%20de%20trabajo">
-			<img style="width:2cm; height:auto; pointer-events:auto" src="../common/imagenes/pedidos.svg" title="Enviar pedido por correo electrónico a&#x00A;<?=$correo_pedidos;?>">
+			<img style="width:10vw; height:auto; pointer-events:auto" src="../common/imagenes/pedidos.svg" title="Enviar pedido por correo electrónico a&#x00A;<?=$correo_pedidos;?>">
 			</a>
 		</td>
 		<td>
 			<input name=empresa						value="PRIMAX COLOMBIA"			onClick=location.reload('index.php') style="width:100%; cursor:pointer">
 			<input name=permisos_trabajo	value="PERMISOS DE TRABAJO"	onClick=location.reload('index.php') style="width:100%; cursor:pointer">
-			<span style="font-size:30px">APP para CELULAR ó TABLET - <script>document.write("<b>" + window.innerWidth + "px");</script><br><br><br><br></span>
-			<form action=ingresar_usuario.php method=post target=_blank>
+			<span style="font-size:30px">APP para CELULAR ó TABLET<br><br><br><br></span>
+			<!--<span style="font-size:30px">APP para CELULAR ó TABLET - <script>document.write("<b>" + window.innerWidth + " x " + window.innerHeight);</script><br><br><br><br></span>-->
+			<form action=ingresar_usuario.php method=post target=_blank rel="noopener noreferrer">
 				<select name=terminal id=terminal type=text style="width:40%; text-align:center" required>
 					<option value="" disabled selected style=text-align:center>TERMINAL</option>
 					<option value=bucaramanga>	BUCARAMANGA	 </option>
@@ -55,13 +64,15 @@ $fecha = date("Y-m-d / H:i");
 				</div>
 			</form>
 		</td>
-		<td style=text-align:right>
-			<a href="https://wa.me/<?=$celular_soporte;?>?text=<? if ($fecha <= date('Y-m-d / 12:00')) {echo 'Buenos días, ';} else {echo 'Buenas tardes, ';} ?>le escribo de PRIMAX.">
-			<img src="../common/imagenes/whatsapp.png" style="pointer-events:auto; width:2cm; height:auto">
+		<td style=text-align:center>
+			<a href="https://wa.me/<?=$celular_soporte;?>?text=<? if ($fecha <= date('Y-m-d / 12:00')) {echo 'Buenos días, ';} else if ($fecha <= date('Y-m-d / 18:00')) {echo 'Buenas tardes, ';} else {echo 'Buenas noches, ';} ?>le escribo de PRIMAX.">
+			<img src="../common/imagenes/whatsapp.png" style="pointer-events:auto; width:10vw; height:auto">
 			</a>
 		</td>
   </tr>
-	<tr style="background-color:none; height:6%"><td colspan=3></td></tr>
+	<tr style=height:10%>
+		<td colspan=3></td>
+	</tr>
 </table>
 </body>
 </html>

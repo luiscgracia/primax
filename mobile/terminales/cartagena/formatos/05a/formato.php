@@ -67,12 +67,12 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 	<img src=../../../../../common/imagenes/whatsapp.png style=pointer-events:auto width=70 height=auto></a>
 </div>
 <form id=formato name=formato method=post action=grabardatos.php enctype=application_x-www-form-urlencoded autocomplete=off>
-<!-- 3 -->		<div style="position:absolute; left:50vw; margin-left:-50vw; top:0px; width:100%; height:7490px; overflow:hidden">
+<!-- 3 -->		<div style="position:absolute; left:50vw; margin-left:-50vw; top:0px; width:100%; height:8000px; overflow:hidden">
 		<table border=0 style="color:black; background-color:rgba(255,255,255,1)">
 			<tr><td width=20%></td><td width=60%></td><td width=20%></td></tr>
 			<tr height=100>
 				<td colspan=2>
-					<input style=display:none name=estado type=texto value=value=<?=$estado_formulario1; ?> readonly>
+					<input style=display:none name=estado type=texto value=<?=$estado_formulario1; ?> readonly>
 					<span style="font-size:36px; width:100%; display:inline-block; background-color:none"><b><?=$$formulario; ?></b></span>
 				</td>
 				<td>
@@ -141,37 +141,37 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 		</table>
 		<table border=0>
 			<tr height=30px><td width=79%></td><td width=1%></td><td width=20%></td></tr>
-			<tr><td colspan=3 class=B>PERSONAS AUTORIZADAS PARA EL TRABAJO&nbsp;<input name=cantidad id=cantidad value='' style=width:8% inputmode=numeric maxlength=1 placeholder="Máx. 5" pattern=^(?:[1-5]{1})$ required></td></tr>
+			<tr><td colspan=3 class=B>PERSONAS AUTORIZADAS PARA EL TRABAJO&nbsp;<input name=cantidad id=cantidad style=width:8% inputmode=numeric maxlength=1 placeholder="Máx. 5" pattern=^(?:[1-5]{1})$ required></td></tr>
 			<tr height=10px><td></td></tr>
 		</table>
-		<div id=nombre style="position:absolute; display:none; width:43.75%; left:0.50%; background-color:white">
-			<table border=0>
+		<div id=nombre style="position:relative; display:none; width:43.75%; left:0.50%; background-color:white">
+			<table border=1>
 				<tr height=80px><td class=A3><b>NOMBRE Y APELLIDOS</b></td></tr>
 				<? for ($i = 1; $i <= 5; $i++) { ?>
-				<tr><td><input name=nombre<?=$i?> id=nombre<?=$i?> value='' style=display:none placeholder="Persona&nbsp;autorizada&nbsp;<?=$i?>" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
+				<tr height=60px><td><input name=nombre<?=$i?> id=nombre<?=$i?> style=display:none placeholder="Persona&nbsp;autorizada&nbsp;<?=$i?>" maxlength=30 pattern=.{1,} onkeyup=mayuscula(this)></td></tr>
 				<? } ?>
 			</table>
 		</div>
-		<div id=dkf style="position:absolute; display:none; width:55.00%; left:44.25%; background-color:white; overflow:scroll">
-			<table border=0>
+		<div id=dkf style="position:relative; display:none; width:55.00%; top:-383px; left:44.25%; background-color:white; overflow:scroll">
+			<table border=1>
 				<tr height=80px>
 					<td style=width:190px class=A2><b>CÉDULA</b></td>
 					<td style=width:350px	class=A2><b>CARGO (ROL)</b></td>
-					<td style=width:100px	class=A2><b>FIRMA</b></td>
+					<td style=width:400px	class=A2><b>FIRMA</b></td>
 				</tr>
 				<? for ($i = 1; $i <= 5; $i++) { ?>
-				<tr>
-					<td><input name=cedula<?=$i?> id=cedula<?=$i?> value='' style=display:none maxlength=10 pattern=^(?:[0-9]{8,10})$ inputmode=numeric></td>
-					<td><input name=cargo<?=$i?>	id=cargo<?=$i?>  value='' style=display:none maxlength=20 pattern=.{1,} onkeyup=mayuscula(this)></td>
-					<td style="background-color:rgba(0,0,0,0.2); border:0px solid rgba(255,112,0,1)"></td>
+				<tr height=60px>
+					<td><input name=cedula<?=$i?> id=cedula<?=$i?> style=display:none maxlength=10 pattern=^(?:[0-9]{8,10})$ inputmode=numeric <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
+					<td><input name=cargo<?=$i?>	id=cargo<?=$i?>  style=display:none maxlength=20 pattern=.{1,} onkeyup=mayuscula(this) <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td>
+					<td style="background-color:rgba(0,0,0,0.2); border:1px solid rgba(255,112,0,1)"></td>
 				</tr>
 				<? } ?>
 			</table>
 		</div>
 
 <!-- *****************************************			 sección B			 ***************************************** -->
-		<div style="position:relative; width:100%; top:280px"><hr><table border=0><tr><td class=B><b>&nbsp;B. DOCUMENTACIÓN ADICIONAL Y APROBACIONES DIARIAS</b></td></tr></table></div>
-		<div style="position:relative; width:55.75%; left:0.50%; top:300px; background-color:white">
+		<div style="position:relative; width:100%; top:0px"><hr><table border=0><tr><td class=B><b>&nbsp;B. DOCUMENTACIÓN ADICIONAL Y APROBACIONES DIARIAS</b></td></tr></table></div>
+		<div style="position:relative; width:55.75%; left:0.50%; top:0px; background-color:white">
 			<table border=1>
 				<tr class=C><td class=A2>DOCUMENTACIÓN</td></tr>
 				<tr class=C><td class=C style="padding:0 10"># CERTIFICADO HABILITACIÓN</td></tr>
@@ -186,23 +186,23 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			</table>
 		</div>
 		<?	$config = ['clase' => ['B1','B2']]; ?>
-		<div style="position:relative; width:43.00%; left:56.25%; top:-551.25px; background-color:white; overflow:scroll">
+		<div style="position:relative; width:43.00%; left:56.25%; top:-852px; background-color:white; overflow:scroll">
 			<table border=1>
-				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td style=width:205px class="<?= $config['clase'][($i - 1) % 2] ?>">DÍA <?=$i?><input name=fechaB<?=$i?> id=fechaB<?=$i?> type=date onfocusout=f<?=$i?>a() min=<?=$fechamin;?> max=<?=$fechamax;?> required></td><? } ?></tr>
-				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=num_cert_habil<?=$i?>				inputmode=numeric style=width:60% maxlength=6 pattern=^(?:[0-9]{4,6})$></td><? } ?></tr>
-				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=num_pers_ejecutan<?=$i?>			inputmode=numeric style=width:40% maxlength=1 pattern=^(?:[0-5]{1})$></td><? } ?></tr>
-				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=num_pers_autoreporte<?=$i?>	inputmode=numeric style=width:40% maxlength=1 pattern=^(?:[0-5]{1})$></td><? } ?></tr>
-				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=hora_inicio<?=$i?>						type=time value='<?=$hora;?>' min='<?=$horamin;?>'></td><? } ?></tr>
-				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=hora_final<?=$i?>						type=time value='<?=$hora;?>' min='<?=$horamin;?>'></td><? } ?></tr>
-				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=firma_ejecutor<?=$i?>				style=display:none></td><? } ?></tr>
-				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=firma_vigia<?=$i?>						style=display:none></td><? } ?></tr>
-				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=firma_supervisor<?=$i?>			style=display:none></td><? } ?></tr>
-				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=autorizacion_emisor<?=$i?>		style=display:none></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td style=width:205px class="<?= $config['clase'][($i - 1) % 2] ?>">DÍA <?=$i?><input name=fechaB<?=$i?> value='2025-09-17' id=fechaB<?=$i?> type=date onfocusout=f<?=$i?>a() min=<?=$fechamin;?> max=<?=$fechamax;?> <? if ($i == 1) {echo 'required';} else {echo '';} ?>></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=num_cert_habil<?=$i?>				value=888888 <? if ($i == 1) {echo 'required';} else {echo '';} ?> inputmode=numeric style=width:60% maxlength=6 pattern=^(?:[0-9]{4,6})$></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=num_pers_ejecutan<?=$i?>			value=5 <? if ($i == 1) {echo 'required';} else {echo '';} ?> inputmode=numeric style=width:40% maxlength=1 pattern=^(?:[0-5]{1})$></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=num_pers_autoreporte<?=$i?>	value=5 <? if ($i == 1) {echo 'required';} else {echo '';} ?> inputmode=numeric style=width:40% maxlength=1 pattern=^(?:[0-5]{1})$></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=hora_inicio<?=$i?>						value='19:20' <? if ($i == 1) {echo 'required';} else {echo '';} ?> type=time value='<?=$hora;?>' min='<?=$horamin;?>'></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=hora_final<?=$i?>						value='19:20' <? if ($i == 1) {echo 'required';} else {echo '';} ?> type=time value='<?=$hora;?>' min='<?=$horamin;?>'></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=firma_ejecutor<?=$i?>				checked <? if ($i == 1) {echo 'required';} else {echo '';} ?> type=checkbox></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=firma_vigia<?=$i?>						checked <? if ($i == 1) {echo 'required';} else {echo '';} ?> type=checkbox></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=firma_supervisor<?=$i?>			checked <? if ($i == 1) {echo 'required';} else {echo '';} ?> type=checkbox></td><? } ?></tr>
+				<tr class=C><? for ($i = 1; $i <= 6; $i++) { ?><td class="<?= $config['clase'][($i - 1) % 2] ?>"><input name=autorizacion_emisor<?=$i?>		checked <? if ($i == 1) {echo 'required';} else {echo '';} ?> type=checkbox></td><? } ?></tr>
 			</table>
 		</div>
 
 <!-- *****************************************			 sección C		 ***************************************** -->
-<!-- 9 -->	<div style="position:relative; left:0px; top:-550px"> <!-- este div mueve hacia abajo desde la sección C -->
+<!-- 9 -->	<div style="position:relative; left:0px; top:-840px"> <!-- este div mueve hacia abajo desde la sección C -->
 		<hr>
 		<table border=0>
 			<tr><td class=B><b>&nbsp;&nbsp;C. LISTA DE VERIFICACIÓN DE REQUISITOS DE SEGURIDAD</b><br></td></tr>
@@ -212,8 +212,8 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			<tr>
 				<td></td>
 				<td class=B>Qué tipo de espacio confinado es?</td>
-				<td style=text-align:right class=B>1</td><td><input name=tipo_esp_conf id=tec1	type=radio value=1 onclick=gestionarClickRadio(this) required></td>
-				<td style=text-align:right class=B>2</td><td><input name=tipo_esp_conf	id=tec2	type=radio value=2 onclick=gestionarClickRadio(this)></td>
+				<td style=text-align:right class=B>1</td><td><input name=tipo_esp_conf id=tec1 type=radio value=1 onclick=gestionarClickRadio(this) required></td>
+				<td style=text-align:right class=B>2</td><td><input name=tipo_esp_conf id=tec2 type=radio value=2 onclick=gestionarClickRadio(this)></td>
 				<td style=text-align:right class=B></td><td></td>
 				<td></td>
 			</tr>
@@ -289,7 +289,8 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 										type="radio" 
 										value="<?= $opcion ?>" 
 										onclick="gestionarClickRadio(this)"
-										<?= ($criterio == 1 && $dia == 1) ? 'required' : '' ?>>
+										checked
+										<?= ($criterio <= 23 && $dia <= 1) ? 'required' : '' ?>>
 							</td>
 						<? } ?>
 					<? } ?>
@@ -311,7 +312,8 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 										type="radio" 
 										value="<?= $opcion ?>" 
 										onclick="gestionarClickRadio(this)"
-										<?= ($criterio == 1 && $dia == 1) ? 'required' : '' ?>>
+										checked
+										<?= ($criterio <= $config['criterios'] && $dia <= 1) ? 'required' : '' ?>>
 							</td>
 						<? } ?>
 					<? } ?>
@@ -393,13 +395,13 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 			</table>
 		</div>
 		</div>
-<!-- 13 -->	<div style="position:relative; width:100vw; left:0px; top:-3170px">		<!-- este div sube el formato de aqui hacia abajo -->
+<!-- 13 -->	<div style="position:relative; width:100vw; left:0px; top:-3470px">		<!-- este div sube el formato de aqui hacia abajo -->
 			<table border=0>
 				<tr><td width=1%></td><td width=98%></td><td width=1%></td></tr>
 				<tr height=35><td></td><td class=C>Consulte la guía de medición de gases al reverso, la medición debe ser continua y se debe registrar mínimo cada hora en el anexo 1.</td><td></td></tr>
 				<tr height=55><td></td><td style="text-align:left; vertical-align:bottom" class=B>OBSERVACIONES</td><td></td></tr>
 				<tr><td></td><td class=A><textarea name=observaciones maxlength=68 style=width:99% onkeyup=mayuscula(this) pattern=.{1,} required></textarea></td><td></td></tr>
-				<tr height=55><td></td><td style="text-align:left; vertical-align:bottom" class=B>HERRAMIENTAS Y/O EQUIPOS A UTILIZAR EN LA ACTIVIDAD</td><td></td></tr>
+				<tr height=55><td></td><td style="text-align:left; vertical-align:bottom" class=B>HERRAMIENTAS y/o EQUIPOS A UTILIZAR EN LA ACTIVIDAD</td><td></td></tr>
 				<tr><td></td><td class=A><textarea name=herramientas maxlength=68 style=width:99% onkeyup=mayuscula(this) pattern=.{1,} required></textarea></td><td></td></tr>
 			</table>
 			<hr>
@@ -522,7 +524,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 		</table>
 		<hr>
 		<table>
-			<tr height=30><td></td></tr>
+			<tr height=10><td></td></tr>
 				<tr style="background-color:rgba(0,240,0,0); height:15%">
 					<td>
 						<select name=usuario id=usuario style=width:67% required>
@@ -533,7 +535,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 						</select>
 					</td>
 				</tr>
-			<tr height=30><td></td></tr>
+			<tr height=10><td></td></tr>
 		</table>
 		<hr>
 
@@ -543,7 +545,7 @@ if ($consec > $ultimo_consec) {echo "<script>setTimeout(cerrarVentana,20000); do
 		<input style="display:none; width:3.10cm" id="fecha" name="fecha" value="<?=$fechaactual;?> / <?=$horaactual;?>" readonly><br>
 		<!--<span style="font-family:Arlrdlt; font-size:32px; color:rgba(0,0,0,1)">Quedan <?=number_format($consec_por_usar,0,',','.');?> consecutivos, incluido este.</span><br>-->
 		<table border=0px>
-			<tr height=200>
+			<tr height=100>
 				<td><input type="image" src="../../../../../common/imagenes/grabar.png" alt="Submit" style="width:100; height:auto; border:0; background-color:rgba(0,0,0,0)"></td>
 				<td><a href="javascript:closed()"><img src="../../../../../common/imagenes/regresar.png" style="pointer-events:auto; width:100px; height:auto"></a></td>
 			</tr>
@@ -707,93 +709,93 @@ document.addEventListener("click", closeAllSelect);
 				if (c.value <= 1) {c.value = 1;
 					n.disabled = false;		n.style.display = "block";
 				dkf.disabled = false; dkf.style.display = "block";
-				 n1.disabled = false; n1.style.display = "block"; n1.required = true;
-				 n2.disabled = true; n2.style.display = "none";
-				 n3.disabled = true; n3.style.display = "none";
-				 n4.disabled = true; n4.style.display = "none";
-				 n5.disabled = true; n5.style.display = "none";
-				 c1.disabled = false; c1.style.display = "block"; c1.required = true;
-				 c2.disabled = true; c2.style.display = "none";
-				 c3.disabled = true; c3.style.display = "none";
-				 c4.disabled = true; c4.style.display = "none";
-				 c5.disabled = true; c5.style.display = "none";
-				 k1.disabled = false; k1.style.display = "block"; k1.required = true;
-				 k2.disabled = true; k2.style.display = "none";
-				 k3.disabled = true; k3.style.display = "none";
-				 k4.disabled = true; k4.style.display = "none";
-				 k5.disabled = true; k5.style.display = "none";};
+				 n1.disabled = false;  n1.style.display = "block"; n1.required = true;
+				 n2.disabled = true;   n2.style.display = "none";
+				 n3.disabled = true;   n3.style.display = "none";
+				 n4.disabled = true;   n4.style.display = "none";
+				 n5.disabled = true;   n5.style.display = "none";
+				 c1.disabled = false;  c1.style.display = "block"; c1.required = true;
+				 c2.disabled = true;   c2.style.display = "none";
+				 c3.disabled = true;   c3.style.display = "none";
+				 c4.disabled = true;   c4.style.display = "none";
+				 c5.disabled = true;   c5.style.display = "none";
+				 k1.disabled = false;  k1.style.display = "block"; k1.required = true;
+				 k2.disabled = true;   k2.style.display = "none";
+				 k3.disabled = true;   k3.style.display = "none";
+				 k4.disabled = true;   k4.style.display = "none";
+				 k5.disabled = true;   k5.style.display = "none";};
 				if (c.value == 2) {
 					n.disabled = false;		n.style.display = "block";
 				dkf.disabled = false; dkf.style.display = "block";
-				 n1.disabled = false; n1.style.display = "block"; n1.required = true;
-				 n2.disabled = false; n2.style.display = "block"; n2.required = true;
-				 n3.disabled = true; n3.style.display = "none";
-				 n4.disabled = true; n4.style.display = "none";
-				 n5.disabled = true; n5.style.display = "none";
-				 c1.disabled = false; c1.style.display = "block"; c1.required = true;
-				 c2.disabled = false; c2.style.display = "block"; c2.required = true;
-				 c3.disabled = true; c3.style.display = "none";
-				 c4.disabled = true; c4.style.display = "none";
-				 c5.disabled = true; c5.style.display = "none";
-				 k1.disabled = false; k1.style.display = "block"; k1.required = true;
-				 k2.disabled = false; k2.style.display = "block"; k2.required = true;
-				 k3.disabled = true; k3.style.display = "none";
-				 k4.disabled = true; k4.style.display = "none";
-				 k5.disabled = true; k5.style.display = "none";};
+				 n1.disabled = false;  n1.style.display = "block"; n1.required = true;
+				 n2.disabled = false;  n2.style.display = "block"; n2.required = true;
+				 n3.disabled = true;   n3.style.display = "none";
+				 n4.disabled = true;   n4.style.display = "none";
+				 n5.disabled = true;   n5.style.display = "none";
+				 c1.disabled = false;  c1.style.display = "block"; c1.required = true;
+				 c2.disabled = false;  c2.style.display = "block"; c2.required = true;
+				 c3.disabled = true;   c3.style.display = "none";
+				 c4.disabled = true;   c4.style.display = "none";
+				 c5.disabled = true;   c5.style.display = "none";
+				 k1.disabled = false;  k1.style.display = "block"; k1.required = true;
+				 k2.disabled = false;  k2.style.display = "block"; k2.required = true;
+				 k3.disabled = true;   k3.style.display = "none";
+				 k4.disabled = true;   k4.style.display = "none";
+				 k5.disabled = true;   k5.style.display = "none";};
 				if (c.value == 3) {
 					n.disabled = false;		n.style.display = "block";
 				dkf.disabled = false; dkf.style.display = "block";
-				 n1.disabled = false; n1.style.display = "block"; n1.required = true;
-				 n2.disabled = false; n2.style.display = "block"; n2.required = true;
-				 n3.disabled = false; n3.style.display = "block"; n3.required = true;
-				 n4.disabled = true; n4.style.display = "none";
-				 n5.disabled = true; n5.style.display = "none";
-				 c1.disabled = false; c1.style.display = "block"; c1.required = true;
-				 c2.disabled = false; c2.style.display = "block"; c2.required = true;
-				 c3.disabled = false; c3.style.display = "block"; c3.required = true;
-				 c4.disabled = true; c4.style.display = "none";
-				 c5.disabled = true; c5.style.display = "none";
-				 k1.disabled = false; k1.style.display = "block"; k1.required = true;
-				 k2.disabled = false; k2.style.display = "block"; k2.required = true;
-				 k3.disabled = false; k3.style.display = "block"; k3.required = true;
-				 k4.disabled = true; k4.style.display = "none";
-				 k5.disabled = true; k5.style.display = "none";};
+				 n1.disabled = false;  n1.style.display = "block"; n1.required = true;
+				 n2.disabled = false;  n2.style.display = "block"; n2.required = true;
+				 n3.disabled = false;  n3.style.display = "block"; n3.required = true;
+				 n4.disabled = true;   n4.style.display = "none";
+				 n5.disabled = true;   n5.style.display = "none";
+				 c1.disabled = false;  c1.style.display = "block"; c1.required = true;
+				 c2.disabled = false;  c2.style.display = "block"; c2.required = true;
+				 c3.disabled = false;  c3.style.display = "block"; c3.required = true;
+				 c4.disabled = true;   c4.style.display = "none";
+				 c5.disabled = true;   c5.style.display = "none";
+				 k1.disabled = false;  k1.style.display = "block"; k1.required = true;
+				 k2.disabled = false;  k2.style.display = "block"; k2.required = true;
+				 k3.disabled = false;  k3.style.display = "block"; k3.required = true;
+				 k4.disabled = true;   k4.style.display = "none";
+				 k5.disabled = true;   k5.style.display = "none";};
 				if (c.value == 4) {
-					n.disabled = false;		n.style.display = "block";
+					n.disabled = false;	  n.style.display = "block";
 				dkf.disabled = false; dkf.style.display = "block";
-				 n1.disabled = false; n1.style.display = "block"; n1.required = true;
-				 n2.disabled = false; n2.style.display = "block"; n2.required = true;
-				 n3.disabled = false; n3.style.display = "block"; n3.required = true;
-				 n4.disabled = false; n4.style.display = "block"; n4.required = true;
-				 n5.disabled = true; n5.style.display = "none";
-				 c1.disabled = false; c1.style.display = "block"; c1.required = true;
-				 c2.disabled = false; c2.style.display = "block"; c2.required = true;
-				 c3.disabled = false; c3.style.display = "block"; c3.required = true;
-				 c4.disabled = false; c4.style.display = "block"; c4.required = true;
-				 c5.disabled = true; c5.style.display = "none";
-				 k1.disabled = false; k1.style.display = "block"; k1.required = true;
-				 k2.disabled = false; k2.style.display = "block"; k2.required = true;
-				 k3.disabled = false; k3.style.display = "block"; k3.required = true;
-				 k4.disabled = false; k4.style.display = "block"; k4.required = true;
-				 k5.disabled = true; k5.style.display = "none";};
+				 n1.disabled = false;  n1.style.display = "block"; n1.required = true;
+				 n2.disabled = false;  n2.style.display = "block"; n2.required = true;
+				 n3.disabled = false;  n3.style.display = "block"; n3.required = true;
+				 n4.disabled = false;  n4.style.display = "block"; n4.required = true;
+				 n5.disabled = true;   n5.style.display = "none";
+				 c1.disabled = false;  c1.style.display = "block"; c1.required = true;
+				 c2.disabled = false;  c2.style.display = "block"; c2.required = true;
+				 c3.disabled = false;  c3.style.display = "block"; c3.required = true;
+				 c4.disabled = false;  c4.style.display = "block"; c4.required = true;
+				 c5.disabled = true;   c5.style.display = "none";
+				 k1.disabled = false;  k1.style.display = "block"; k1.required = true;
+				 k2.disabled = false;  k2.style.display = "block"; k2.required = true;
+				 k3.disabled = false;  k3.style.display = "block"; k3.required = true;
+				 k4.disabled = false;  k4.style.display = "block"; k4.required = true;
+				 k5.disabled = true;   k5.style.display = "none";};
 				if (c.value >= 5) {c.value = 5;
 					n.disabled = false;		n.style.display = "block";
 				dkf.disabled = false; dkf.style.display = "block";
-				 n1.disabled = false; n1.style.display = "block"; n1.required = true;
-				 n2.disabled = false; n2.style.display = "block"; n2.required = true;
-				 n3.disabled = false; n3.style.display = "block"; n3.required = true;
-				 n4.disabled = false; n4.style.display = "block"; n4.required = true;
-				 n5.disabled = false; n5.style.display = "block"; n5.required = true;
-				 c1.disabled = false; c1.style.display = "block"; c1.required = true;
-				 c2.disabled = false; c2.style.display = "block"; c2.required = true;
-				 c3.disabled = false; c3.style.display = "block"; c3.required = true;
-				 c4.disabled = false; c4.style.display = "block"; c4.required = true;
-				 c5.disabled = false; c5.style.display = "block"; c5.required = true;
-				 k1.disabled = false; k1.style.display = "block"; k1.required = true;
-				 k2.disabled = false; k2.style.display = "block"; k2.required = true;
-				 k3.disabled = false; k3.style.display = "block"; k3.required = true;
-				 k4.disabled = false; k4.style.display = "block"; k4.required = true;
-				 k5.disabled = false; k5.style.display = "block"; k5.required = true;};});
+				 n1.disabled = false;  n1.style.display = "block"; n1.required = true;
+				 n2.disabled = false;  n2.style.display = "block"; n2.required = true;
+				 n3.disabled = false;  n3.style.display = "block"; n3.required = true;
+				 n4.disabled = false;  n4.style.display = "block"; n4.required = true;
+				 n5.disabled = false;  n5.style.display = "block"; n5.required = true;
+				 c1.disabled = false;  c1.style.display = "block"; c1.required = true;
+				 c2.disabled = false;  c2.style.display = "block"; c2.required = true;
+				 c3.disabled = false;  c3.style.display = "block"; c3.required = true;
+				 c4.disabled = false;  c4.style.display = "block"; c4.required = true;
+				 c5.disabled = false;  c5.style.display = "block"; c5.required = true;
+				 k1.disabled = false;  k1.style.display = "block"; k1.required = true;
+				 k2.disabled = false;  k2.style.display = "block"; k2.required = true;
+				 k3.disabled = false;  k3.style.display = "block"; k3.required = true;
+				 k4.disabled = false;  k4.style.display = "block"; k4.required = true;
+				 k5.disabled = false;  k5.style.display = "block"; k5.required = true;};});
 		</script>
 <!-- *****************************************			FIN Control Tabla Personas Autorizadas		 ***************************************** -->
 	</form>
